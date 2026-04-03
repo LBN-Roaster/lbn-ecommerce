@@ -1,6 +1,4 @@
-import CartModal from "components/cart/modal";
 import LogoSquare from "components/logo-square";
-import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -9,9 +7,8 @@ import Search, { SearchSkeleton } from "./search";
 
 const { SITE_NAME } = process.env;
 
+const menu = [{ title: "All", path: "/search" }];
 export async function Navbar() {
-  const menu = await getMenu("next-js-frontend-header-menu");
-
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
@@ -52,9 +49,9 @@ export async function Navbar() {
             <Search />
           </Suspense>
         </div>
-        <div className="flex justify-end md:w-1/3">
-          <CartModal />
-        </div>
+        {/* <div className="flex justify-end md:w-1/3"> */}
+          {/* <CartModal /> */}
+        {/* </div> */}
       </div>
     </nav>
   );
