@@ -38,7 +38,6 @@ export type Product = {
   featuredImage: Image;
   priceRange: { minVariantPrice: Money; maxVariantPrice: Money };
   seo: { title: string; description: string };
-  createdAt: string;
   updatedAt: string;
 };
 

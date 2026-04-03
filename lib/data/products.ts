@@ -1,37 +1,74 @@
 import type { Product } from "@/lib/types";
+import fs from "fs";
+import path from "path";
+
+function loadHtml(filename: string): string {
+  return fs.readFileSync(
+    path.join(process.cwd(), "lib/data/html", filename),
+    "utf-8",
+  );
+}
 
 export const products: Product[] = [
   {
     id: "1",
     handle: "my-product",
     availableForSale: true,
-    title: "My Product",
+    title: "Airlock",
     description: "A great product.",
-    descriptionHtml: "<p>A great product.</p>",
-    options: [{ id: "o1", name: "Size", values: ["S", "M", "L"] }],
+    descriptionHtml: loadHtml("airlock.html"),
+    options: [
+      { id: "o1", name: "Màu", values: ["Đen", "Trắng", "Xanh Nhăn"] },
+      {
+        id: "o2",
+        name: "Công Suất",
+        values: ["6-15KG", "30-60KG"],
+      },
+    ],
     priceRange: {
-      minVariantPrice: { amount: "29.00", currencyCode: "USD" },
-      maxVariantPrice: { amount: "29.00", currencyCode: "USD" },
+      minVariantPrice: { amount: "15000000", currencyCode: "VND" },
+      maxVariantPrice: { amount: "15000000", currencyCode: "VND" },
     },
     variants: [
       {
         id: "v1",
-        title: "S",
+        title: "Đen",
         availableForSale: true,
-        selectedOptions: [{ name: "Size", value: "S" }],
-        price: { amount: "29.00", currencyCode: "USD" },
+        selectedOptions: [
+          { name: "Màu", value: "Đen" },
+          { name: "Công Suất", value: "6-15KG" },
+        ],
+        price: { amount: "15000000 ", currencyCode: "VND" },
       },
     ],
     featuredImage: {
-      url: "/placeholder.jpg",
+      url: "/images/airlock.png",
       altText: "My Product",
       width: 800,
       height: 800,
     },
     images: [
       {
-        url: "/placeholder.jpg",
+        url: "/images/airlock1.png",
         altText: "My Product",
+        width: 800,
+        height: 800,
+      },
+      {
+        url: "/images/airlock2.png",
+        altText: "View 1",
+        width: 800,
+        height: 800,
+      },
+      {
+        url: "/images/airlock3.png",
+        altText: "View 2",
+        width: 800,
+        height: 800,
+      },
+      {
+        url: "/images/airlock4.png",
+        altText: "View 3",
         width: 800,
         height: 800,
       },
@@ -39,7 +76,6 @@ export const products: Product[] = [
     seo: { title: "My Product", description: "A great product." },
     tags: [],
     updatedAt: "2024-01-01T00:00:00Z",
-    createdAt: "2024-01-01T00:00:00Z",
   },
   // TODO: Add more products here for testing purposes
 ];
