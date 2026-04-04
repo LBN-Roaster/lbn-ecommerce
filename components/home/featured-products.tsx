@@ -9,10 +9,14 @@ function formatPrice(amount: string, currencyCode: string) {
   }).format(Number(amount));
 }
 
-export async function FeaturedProducts() {
-  const products = await getCollectionProducts({
+export async function FeaturedProducts({ area }: { area?: string }) {
+  const allProducts = await getCollectionProducts({
     collection: "hidden-homepage-featured-items",
   });
+
+  const products = area
+    ? allProducts.filter((p) => p.tags.includes(area))
+    : allProducts;
 
   if (!products.length) return null;
 

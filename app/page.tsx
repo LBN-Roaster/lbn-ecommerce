@@ -5,6 +5,7 @@ import { HeroSection } from "components/home/hero";
 import { JourneySection } from "components/home/journey";
 import { NewsSection } from "components/home/news";
 import Footer from "components/layout/footer";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "LBN - Máy rang cà phê, Nội thất & Bếp công nghiệp",
@@ -12,13 +13,20 @@ export const metadata = {
   openGraph: { type: "website" },
 };
 
-export default function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ area?: string }>;
+}) {
+  const { area } = await searchParams;
   return (
     <>
       <HeroSection />
-      <BusinessAreas />
+      <Suspense fallback={null}>
+        <BusinessAreas />
+      </Suspense>
       <JourneySection />
-      <FeaturedProducts />
+      <FeaturedProducts area={area} />
       <NewsSection />
       <GallerySection />
       <Footer />

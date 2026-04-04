@@ -74,7 +74,7 @@ export const products: Product[] = [
       },
     ],
     seo: { title: "My Product", description: "A great product." },
-    tags: [],
+    tags: ["may-rang"],
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
@@ -126,7 +126,7 @@ export const products: Product[] = [
       },
     ],
     seo: { title: "Máy Tách Đá", description: "Máy tách đá, tạp chất." },
-    tags: [],
+    tags: ["may-rang"],
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
@@ -165,7 +165,7 @@ export const products: Product[] = [
       },
     ],
     seo: { title: "Máy Đốt Khói", description: "Máy đốt khói công nghiệp." },
-    tags: [],
+    tags: ["may-rang"],
     updatedAt: "2024-01-01T00:00:00Z",
   },
 ];
