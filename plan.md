@@ -1,17 +1,43 @@
 # Plan: Replace Shopify with Custom Next.js Backend
 
 ## Context
-The project is a Next.js 15 storefront currently 100% wired to Shopify's Storefront GraphQL API. The user only needs product catalog functionality (create/update/show) — no cart, payments, or transactions. This plan replaces all Shopify-dependent code with a local PostgreSQL database (via Prisma), a custom REST API, a Google Drive image storage layer, and an admin panel for product management.
+The project is a Next.js 15 storefront currently 100% wired to Shopify's Storefront GraphQL API. The goal is to replace all Shopify-dependent code with a custom data layer. Only product catalog functionality is needed — no cart, payments, or transactions.
+
+The migration is split into two phases:
+- **Phase 1** — Hardcoded data (current): fast to ship, no infrastructure needed
+- **Phase 2** — Database + admin panel: when product count or update frequency justifies it
 
 ---
 
-## 1. New Dependencies
+## Phase 1: Hardcoded Data Layer ✅
+
+### What was done
+- Removed all Shopify imports and cart components
+- Created `lib/types.ts` with shared `Product`, `Collection`, `SortFilterItem` types
+- Created `lib/data/products.ts` — hardcoded product array + `getProduct`, `getProducts`, `getProductRecommendations`
+- Created `lib/data/collections.ts` — hardcoded collection array + `getCollection`, `getCollections`, `getCollectionProducts`
+- Created `lib/data/html/` — per-product HTML files loaded via `fs.readFileSync`
+- Images served from `public/images/`
+- Updated all page imports to use `lib/data/*` instead of `lib/shopify`
+- Stripped `CartProvider`, `CartModal`, `getMenu()`, `getCart()`, `validateEnvironmentVariables()` from layout/navbar/footer
+- Stubbed out `app/api/revalidate/route.ts` and `app/[page]/page.tsx`
+
+### Adding a new product
+1. Add images to `public/images/`
+2. Create `lib/data/html/<product-handle>.html`
+3. Add a new entry to the `products` array in `lib/data/products.ts`
+4. Add the handle to a collection's `productHandles` in `lib/data/collections.ts`
+
+---
+
+## Phase 2: Database + Admin Panel
+
+Trigger: when managing products via code files becomes impractical (many products, frequent updates, non-technical editors).
+
+### New Dependencies
 
 ```bash
-# Runtime
 pnpm add prisma @prisma/client next-auth googleapis
-
-# Dev
 pnpm add -D prisma
 ```
 
@@ -21,7 +47,7 @@ pnpm add -D prisma
 
 ---
 
-## 2. Prisma Schema (`prisma/schema.prisma`)
+### Prisma Schema (`prisma/schema.prisma`)
 
 ```prisma
 generator client { provider = "prisma-client-js" }
@@ -35,7 +61,7 @@ model Product {
   descriptionHtml  String           @default("")
   availableForSale Boolean          @default(true)
   tags             String[]
-  seo              Json             // { title: string, description: string }
+  seo              Json
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
   options          ProductOption[]
@@ -58,7 +84,7 @@ model ProductVariant {
   availableForSale Boolean @default(true)
   priceAmount      String
   currencyCode     String  @default("USD")
-  selectedOptions  Json    // [{ name: string, value: string }]
+  selectedOptions  Json
   product          Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId        String
 }
@@ -66,7 +92,7 @@ model ProductVariant {
 model ProductImage {
   id        String  @id @default(cuid())
   url       String
-  fileId    String  @default("")  // Google Drive file ID for deletion
+  fileId    String  @default("")
   altText   String  @default("")
   width     Int     @default(0)
   height    Int     @default(0)
@@ -97,7 +123,7 @@ model CollectionProduct {
 
 ---
 
-## 3. New Files to Create
+### New Files to Create
 
 | File | Purpose |
 |------|---------|
@@ -105,7 +131,6 @@ model CollectionProduct {
 | `lib/db/index.ts` | Prisma client singleton |
 | `lib/db/products.ts` | Data access: getProduct, getProducts, getProductRecommendations |
 | `lib/db/collections.ts` | Data access: getCollection, getCollections, getCollectionProducts |
-| `lib/types.ts` | Shared types (replaces `lib/shopify/types.ts`, same Product/Collection shapes) |
 | `lib/google-drive.ts` | uploadImage(buffer, filename) → URL, deleteImage(fileId) |
 | `lib/auth.ts` | NextAuth options (CredentialsProvider using ADMIN_EMAIL + ADMIN_PASSWORD env vars) |
 | `app/api/auth/[...nextauth]/route.ts` | NextAuth handler |
@@ -124,104 +149,48 @@ model CollectionProduct {
 
 ---
 
-## 4. Files to Modify
+### Files to Modify
 
 | File | Change |
 |------|--------|
-| `next.config.ts` | Replace `cdn.shopify.com` with `lh3.googleusercontent.com` in `remotePatterns` |
-| `app/layout.tsx` | Remove `CartProvider`, remove `getCart()` call |
-| `components/layout/navbar/index.tsx` | Remove `CartModal`, cart icon; replace `getMenu()` with static links (or keep as static config) |
-| `components/layout/footer.tsx` | Replace `getMenu()` with static nav config |
-| `components/product/product-description.tsx` | Remove `AddToCart` button and cart-related imports |
-| `components/grid/three-items.tsx` | Replace `getCollectionProducts("hidden-homepage-featured-items")` with `getCollectionProducts` from `lib/db/collections.ts` |
-| `app/product/[handle]/page.tsx` | Replace `getProduct`, `getProductRecommendations` imports from `lib/shopify` → `lib/db/products` |
-| `app/search/page.tsx` | Replace `getProducts` import |
-| `app/search/[collection]/page.tsx` | Replace `getCollection`, `getCollectionProducts` imports |
-| `components/layout/search/collections.tsx` | Replace `getCollections` import |
-| `lib/constants.ts` | Remove Shopify-specific TAGS and revalidation constants; keep `SORTING_OPTIONS`, `DEFAULT_OPTION` |
-| `.env.example` | Replace Shopify vars with new DB/Drive/Auth vars |
+| `next.config.ts` | Add `lh3.googleusercontent.com` to `remotePatterns` |
+| `components/grid/three-items.tsx` | Switch import from `lib/data/collections` → `lib/db/collections` |
+| `app/product/[handle]/page.tsx` | Switch imports to `lib/db/products` |
+| `app/search/page.tsx` | Switch import to `lib/db/products` |
+| `app/search/[collection]/page.tsx` | Switch imports to `lib/db/collections` |
+| `components/layout/search/collections.tsx` | Switch import to `lib/db/collections` |
+| `.env.example` | Add DB/Drive/Auth vars |
 
 ---
 
-## 5. Files/Directories to Delete
+### Google Drive Image Storage
 
-- `lib/shopify/` — entire directory
-- `components/cart/` — entire directory
-- `app/api/revalidate/route.ts`
-- `app/[page]/` — Shopify CMS pages route
-- `lib/type-guards.ts` — only used by Shopify fetch
+- Auth via Service Account (`GOOGLE_SERVICE_ACCOUNT_JSON` env — base64-encoded JSON)
+- Upload to folder (`GOOGLE_DRIVE_FOLDER_ID` env), set public readable
+- Public URL: `https://lh3.googleusercontent.com/d/{fileId}`
 
 ---
 
-## 6. Data Access Layer Function Signatures
+### Admin Auth
 
-Maintain the same signatures as current Shopify functions so page components need minimal changes:
-
-```typescript
-// lib/db/products.ts
-getProduct(handle: string): Promise<Product | undefined>
-getProducts({ query?, sortKey?, reverse? }): Promise<Product[]>
-getProductRecommendations(productId: string): Promise<Product[]>
-  // → finds products sharing tags with given product, excluding itself (limit 4)
-
-// lib/db/collections.ts
-getCollection(handle: string): Promise<Collection | undefined>
-getCollections(): Promise<Collection[]>
-getCollectionProducts({ collection, sortKey?, reverse? }): Promise<Product[]>
-```
-
-Each function uses `"use cache"` + `cacheTag` + `cacheLife` (same pattern as existing Shopify functions). Revalidation is triggered manually via `revalidateTag()` inside API route handlers on write operations.
-
-**`reshapeProduct()` logic (in `lib/db/products.ts`):**
-- `featuredImage` → `images.sort by position[0]`
-- `priceRange` → derived from `min/max` of `variants[].priceAmount`
-- `images` → sorted by `position`, shape `{ url, altText, width, height }`
-- `variants` → shape `{ id, title, availableForSale, selectedOptions, price: { amount, currencyCode } }`
+- NextAuth v4 CredentialsProvider
+- Validates `ADMIN_EMAIL` + `ADMIN_PASSWORD` env vars
+- JWT strategy, no DB sessions
+- Middleware protects `/admin/*`, redirects to `/admin/login`
 
 ---
 
-## 7. Google Drive Image Storage (`lib/google-drive.ts`)
+### Admin Panel
 
-- Authenticate using a **Service Account** (`GOOGLE_SERVICE_ACCOUNT_JSON` env — base64-encoded JSON)
-- Upload files to a specific folder (`GOOGLE_DRIVE_FOLDER_ID` env)
-- Make uploaded file publicly readable (`role: "reader"`, `type: "anyone"`)
-- Return public URL: `https://lh3.googleusercontent.com/d/{fileId}`
-- `uploadImage(buffer: Buffer, mimeType: string, filename: string): Promise<{ url: string, fileId: string }>`
-- `deleteImage(fileId: string): Promise<void>`
-
-Add to `next.config.ts` remotePatterns:
-```ts
-{ protocol: "https", hostname: "lh3.googleusercontent.com" }
-```
-
----
-
-## 8. Admin Auth (`lib/auth.ts`)
-
-```typescript
-// NextAuth v4 CredentialsProvider
-// Validates against ADMIN_EMAIL + ADMIN_PASSWORD env vars
-// JWT strategy (no DB sessions needed)
-// Session: { user: { email } }
-```
-
-Middleware (`middleware.ts`) redirects unauthenticated requests to `/admin/login`.
-
----
-
-## 9. Admin Panel Structure
-
-- `/admin` — product list table (title, handle, price, availability) with Edit / Delete buttons
-- `/admin/products/new` — form: title, handle (auto-generated), description (rich text or textarea), availableForSale, tags, options (dynamic add/remove), variants (auto-generated from options cartesian product with price/availability per variant), image upload (multiple, drag-reorder)
+- `/admin` — product list table with Edit / Delete
+- `/admin/products/new` — create form (title, handle, description, options, variants, image upload)
 - `/admin/products/[id]/edit` — same form pre-populated
-- `/admin/collections` — list collections, create/assign products to collection
-- `/admin/login` — email + password form → `signIn("credentials")`
-
-All admin pages: `export const dynamic = 'force-dynamic'` (never statically cached).
+- `/admin/collections` — list + assign products
+- `/admin/login` — credentials form
 
 ---
 
-## 10. Environment Variables
+### Environment Variables
 
 ```bash
 DATABASE_URL="postgresql://..."
@@ -237,32 +206,15 @@ COMPANY_NAME="Your Company"
 
 ---
 
-## 11. Implementation Sequence
+### Implementation Sequence
 
-1. Install dependencies
-2. Create `prisma/schema.prisma` → run `pnpm prisma migrate dev --name init`
-3. Create `lib/db/index.ts`, `lib/types.ts`
-4. Create `lib/db/products.ts`, `lib/db/collections.ts`
-5. Create `lib/google-drive.ts`, `app/api/upload/route.ts`
-6. Create `lib/auth.ts`, `app/api/auth/[...nextauth]/route.ts`, `middleware.ts`
-7. Create product/collection API routes (`app/api/products/`, `app/api/collections/`)
-8. Update `next.config.ts`
-9. Delete `lib/shopify/`, `components/cart/`, `app/api/revalidate/`, `app/[page]/`, `lib/type-guards.ts`
-10. Update `app/layout.tsx`, navbar, footer, product-description (remove cart)
-11. Update all page imports to use `lib/db/*` instead of `lib/shopify`
-12. Update `lib/constants.ts`, `.env.example`
-13. Build admin panel pages
-14. Seed DB with a `hidden-homepage-featured-items` collection + test products
-
----
-
-## 12. Verification
-
-- `prisma migrate dev` completes without errors
-- `GET /api/products` returns empty array (no data yet)
-- Create a product via `POST /api/products` or admin UI → shows on `/` and `/product/[handle]`
-- Upload image via admin → file appears in Google Drive folder, renders in product gallery
-- `/admin` redirects to `/admin/login` when unauthenticated
-- Search at `/search?q=<term>` returns matching products
-- Collection pages at `/search/[collection]` render products in that collection
-- No Shopify env vars needed for any of the above to work
+1. Create `prisma/schema.prisma` → run `pnpm prisma migrate dev --name init`
+2. Create `lib/db/index.ts`
+3. Create `lib/db/products.ts`, `lib/db/collections.ts` (same function signatures as `lib/data/*`)
+4. Create `lib/google-drive.ts`, `app/api/upload/route.ts`
+5. Create `lib/auth.ts`, `app/api/auth/[...nextauth]/route.ts`, `middleware.ts`
+6. Create product/collection API routes
+7. Swap page imports from `lib/data/*` → `lib/db/*`
+8. Build admin panel pages
+9. Seed DB with existing products from `lib/data/products.ts`
+10. Delete `lib/data/` once DB is verified
