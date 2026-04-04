@@ -23,14 +23,14 @@ export function HeroSection() {
           Công ty CP SX – TM – DV LBN · Khánh Hòa
         </span>
 
-        <h1 className="mb-4 max-w-2xl text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
-          Máy Rang Cà Phê <br className="hidden md:block" />
+        <h1 className="mb-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
+          Sản Xuất & Thương Mại <br className="hidden md:block" />
           <span className="text-blue-400">Chất Lượng Cao</span>
         </h1>
 
         <p className="mb-8 max-w-lg text-base text-white/70 md:text-lg">
-          Từ niềm đam mê với cà phê đến những chiếc máy rang chính xác —
-          đạt tiêu chuẩn quốc tế, sản xuất tại Khánh Hòa.
+          Máy rang cà phê, nội thất gỗ – thép & bếp công nghiệp —
+          sản xuất tại Khánh Hòa, đạt tiêu chuẩn quốc tế.
         </p>
 
         <div className="flex flex-wrap gap-4">
