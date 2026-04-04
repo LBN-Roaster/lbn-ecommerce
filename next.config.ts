@@ -11,6 +11,10 @@ export default {
         protocol: "https",
         hostname: "lbn.com.vn",
       },
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+      },
     ],
   },
 };

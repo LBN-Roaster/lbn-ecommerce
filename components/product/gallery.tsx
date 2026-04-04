@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import { GridTileImage } from "components/grid/tile";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -26,71 +25,75 @@ export function Gallery({
   const previousImageIndex =
     imageIndex === 0 ? images.length - 1 : imageIndex - 1;
 
-  const buttonClassName =
-    "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center";
-
   return (
     <form>
-      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
+      {/* Main image */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900">
         {images[imageIndex] && (
           <Image
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain p-6 transition duration-300"
             fill
-            sizes="(min-width: 1024px) 66vw, 100vw"
+            sizes="(min-width: 1024px) 50vw, 100vw"
             alt={images[imageIndex]?.altText as string}
             src={images[imageIndex]?.src as string}
             priority={true}
           />
         )}
 
-        {images.length > 1 ? (
-          <div className="absolute bottom-[15%] flex w-full justify-center">
-            <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur-sm dark:border-black dark:bg-neutral-900/80">
+        {/* Prev / Next arrows */}
+        {images.length > 1 && (
+          <div className="absolute inset-x-0 bottom-4 flex justify-center">
+            <div className="flex h-10 items-center gap-1 rounded-full border border-neutral-200 bg-white/90 px-2 shadow-sm backdrop-blur-sm dark:border-neutral-700 dark:bg-neutral-900/90">
               <button
                 formAction={() => updateImage(previousImageIndex.toString())}
                 aria-label="Previous product image"
-                className={buttonClassName}
+                className="flex h-8 w-8 items-center justify-center rounded-full transition hover:bg-neutral-100 dark:hover:bg-neutral-800"
               >
-                <ArrowLeftIcon className="h-5" />
+                <ArrowLeftIcon className="h-4 w-4" />
               </button>
-              <div className="mx-1 h-6 w-px bg-neutral-500"></div>
+              <span className="text-xs text-neutral-400">
+                {imageIndex + 1} / {images.length}
+              </span>
               <button
                 formAction={() => updateImage(nextImageIndex.toString())}
                 aria-label="Next product image"
-                className={buttonClassName}
+                className="flex h-8 w-8 items-center justify-center rounded-full transition hover:bg-neutral-100 dark:hover:bg-neutral-800"
               >
-                <ArrowRightIcon className="h-5" />
+                <ArrowRightIcon className="h-4 w-4" />
               </button>
             </div>
           </div>
-        ) : null}
+        )}
       </div>
 
-      {images.length > 1 ? (
-        <ul className="my-12 flex items-center flex-wrap justify-center gap-2 overflow-auto py-1 lg:mb-0">
+      {/* Thumbnail strip */}
+      {images.length > 1 && (
+        <ul className="mt-4 flex flex-wrap gap-2">
           {images.map((image, index) => {
             const isActive = index === imageIndex;
-
             return (
-              <li key={image.src} className="h-20 w-20">
+              <li key={image.src}>
                 <button
                   formAction={() => updateImage(index.toString())}
                   aria-label="Select product image"
-                  className="h-full w-full"
+                  className={`relative h-20 w-20 overflow-hidden rounded-xl border-2 bg-neutral-50 transition dark:bg-neutral-900 ${
+                    isActive
+                      ? "border-blue-600"
+                      : "border-neutral-200 hover:border-neutral-400 dark:border-neutral-700"
+                  }`}
                 >
-                  <GridTileImage
+                  <Image
                     alt={image.altText}
                     src={image.src}
-                    width={80}
-                    height={80}
-                    active={isActive}
+                    fill
+                    className="object-contain p-1.5"
                   />
                 </button>
               </li>
             );
           })}
         </ul>
-      ) : null}
+      )}
     </form>
   );
 }

@@ -112,6 +112,18 @@ export const products: Product[] = [
         width: 800,
         height: 800,
       },
+      {
+        url: "https://drive.google.com/uc?export=view&id=1VTh2kcHqZMQ0xvos8j8FF8LA_dZANsdf",
+        altText: "Máy Tách Đá",
+        width: 800,
+        height: 800,
+      },
+      {
+        url: "https://drive.google.com/uc?export=view&id=1CL0ejUdea-AE0hiQT0qDUGit5awh9cP5",
+        altText: "Máy Tách Đá",
+        width: 800,
+        height: 800,
+      },
     ],
     seo: { title: "Máy Tách Đá", description: "Máy tách đá, tạp chất." },
     tags: [],
