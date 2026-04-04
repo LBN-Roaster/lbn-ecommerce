@@ -3,18 +3,18 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-screen items-end overflow-hidden bg-neutral-900">
+    <section className="relative -mt-6 flex min-h-[70vh] items-end overflow-hidden bg-neutral-900">
       {/* Background image */}
       <Image
         src="https://lbn.com.vn/wp-content/uploads/2025/09/1-12-scaled.jpg"
         alt="LBN máy rang cà phê"
         fill
-        className="object-cover"
+        className="object-cover opacity-120"
         priority
       />
 
       {/* Gradient: transparent top → dark bottom so text pops */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
       {/* Content anchored to bottom-left */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:px-10">
@@ -28,7 +28,7 @@ export function HeroSection() {
           <span className="text-blue-400">Chất Lượng Cao</span>
         </h1>
 
-        <p className="mb-8 max-w-lg text-base text-white/70 md:text-lg">
+        <p className="mb-8 max-w-lg text-base text-white/100 md:text-lg">
           Máy rang cà phê, nội thất gỗ – thép & bếp công nghiệp —
           sản xuất tại Khánh Hòa, đạt tiêu chuẩn quốc tế.
         </p>
