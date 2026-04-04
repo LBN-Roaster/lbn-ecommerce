@@ -1,76 +1,118 @@
 import Link from "next/link";
-
-import FooterMenu from "components/layout/footer-menu";
 import LogoSquare from "components/logo-square";
-// import { getMenu } from "lib/shopify";
-import { Suspense } from "react";
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
 
-const menu = [{ title: "All", path: "/search" }];
+const navLinks = [
+  { title: "Trang chủ", path: "/" },
+  { title: "Sản phẩm", path: "/search" },
+];
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://facebook.com/lbn.com.vn",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+      </svg>
+    ),
+  },
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@lbnvietnam",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Zalo",
+    href: "https://zalo.me/0865112161",
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 16.158c-.34.479-.937.592-1.416.252l-2.379-1.687c-.269-.19-.618-.19-.886 0l-2.38 1.687c-.478.34-1.075.227-1.415-.252a1.01 1.01 0 0 1 .252-1.415l1.687-1.196c.269-.19.269-.575 0-.765L9.217 11.59a1.01 1.01 0 0 1-.252-1.415c.34-.479.937-.593 1.415-.252l2.38 1.687c.268.19.617.19.886 0l2.379-1.687c.479-.341 1.076-.227 1.416.252.34.478.226 1.075-.252 1.415l-1.687 1.197c-.269.19-.269.575 0 .765l1.687 1.196c.478.34.592.937.252 1.41z" />
+      </svg>
+    ),
+  },
+];
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
-  const skeleton =
-    "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
-  const copyrightName = COMPANY_NAME || SITE_NAME || "";
+  const copyrightName = COMPANY_NAME || SITE_NAME || "LBN";
 
   return (
     <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
-        <div>
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 border-t border-neutral-200 px-4 py-12 md:flex-row md:gap-16 min-[1320px]:px-0 dark:border-neutral-700">
+        {/* Brand */}
+        <div className="flex flex-col gap-4">
           <Link
-            className="flex items-center gap-2 text-black md:pt-1 dark:text-white"
+            className="flex items-center gap-2 text-black dark:text-white"
             href="/"
           >
             <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
+            <span className="font-semibold uppercase">{SITE_NAME}</span>
           </Link>
+          <p className="max-w-xs text-neutral-500 dark:text-neutral-400">
+            Công ty Cổ phần Sản xuất – Thương mại – Dịch vụ LBN.
+            Chuyên sản xuất máy rang cà phê và thiết bị công nghiệp tại Khánh Hòa.
+          </p>
+          <div className="flex gap-3">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                aria-label={s.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 text-neutral-500 transition hover:border-blue-600 hover:text-blue-600 dark:border-neutral-700 dark:hover:border-blue-500 dark:hover:text-blue-500"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
         </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-            </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
-        <div className="md:ml-auto">
+
+        {/* Nav */}
+        <div className="flex flex-col gap-3">
+          <p className="font-semibold text-black dark:text-white">Liên kết</p>
+          {navLinks.map((link) => (
+            <Link
+              key={link.title}
+              href={link.path}
+              className="hover:text-black dark:hover:text-white"
+            >
+              {link.title}
+            </Link>
+          ))}
+        </div>
+
+        {/* Contact */}
+        <div className="flex flex-col gap-3 md:ml-auto">
+          <p className="font-semibold text-black dark:text-white">Liên hệ</p>
+          <p>Lô 24 CCN Diên Phú, xã Diên Điền, Khánh Hòa</p>
           <a
-            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
+            href="tel:+84865112161"
+            className="hover:text-black dark:hover:text-white"
           >
-            <span className="px-3">▲</span>
-            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
+            (+84) 0865.112.161
+          </a>
+          <a
+            href="mailto:info@lbn.com.vn"
+            className="hover:text-black dark:hover:text-white"
+          >
+            info@lbn.com.vn
           </a>
         </div>
       </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
+
+      {/* Bottom bar */}
+      <div className="border-t border-neutral-200 py-6 dark:border-neutral-700">
+        <div className="mx-auto flex w-full max-w-7xl items-center px-4 min-[1320px]:px-0">
           <p>
-            &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith(".")
-              ? "."
-              : ""}{" "}
-            All rights reserved.
-          </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>
-            <a href="https://github.com/vercel/commerce">View the source</a>
-          </p>
-          <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              Created by ▲ Vercel
-            </a>
+            &copy; {copyrightDate} {copyrightName}. All rights reserved.
           </p>
         </div>
       </div>

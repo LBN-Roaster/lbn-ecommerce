@@ -42,7 +42,7 @@ export const products: Product[] = [
       },
     ],
     featuredImage: {
-      url: "/images/airlock.png",
+      url: "/images/airlock1.png",
       altText: "My Product",
       width: 800,
       height: 800,
@@ -77,7 +77,85 @@ export const products: Product[] = [
     tags: [],
     updatedAt: "2024-01-01T00:00:00Z",
   },
-  // TODO: Add more products here for testing purposes
+  {
+    id: "2",
+    handle: "separator",
+    availableForSale: true,
+    title: "Máy Tách Đá",
+    description: "Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox.",
+    descriptionHtml:
+      "<p>Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox.</p>",
+    options: [{ id: "o1", name: "Công Suất", values: ["6-15KG", "30-60KG"] }],
+    priceRange: {
+      minVariantPrice: { amount: "12000000", currencyCode: "VND" },
+      maxVariantPrice: { amount: "12000000", currencyCode: "VND" },
+    },
+    variants: [
+      {
+        id: "v2",
+        title: "6-15KG",
+        availableForSale: true,
+        selectedOptions: [{ name: "Công Suất", value: "6-15KG" }],
+        price: { amount: "12000000", currencyCode: "VND" },
+      },
+    ],
+    featuredImage: {
+      url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png",
+      altText: "Máy Tách Đá",
+      width: 800,
+      height: 800,
+    },
+    images: [
+      {
+        url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png",
+        altText: "Máy Tách Đá",
+        width: 800,
+        height: 800,
+      },
+    ],
+    seo: { title: "Máy Tách Đá", description: "Máy tách đá, tạp chất." },
+    tags: [],
+    updatedAt: "2024-01-01T00:00:00Z",
+  },
+  {
+    id: "3",
+    handle: "smoke-burner",
+    availableForSale: true,
+    title: "Máy Đốt Khói",
+    description: "Đốt cháy khói ở 600-800°C, tiết kiệm năng lượng.",
+    descriptionHtml: "<p>Đốt cháy khói ở 600-800°C, tiết kiệm năng lượng.</p>",
+    options: [{ id: "o1", name: "Công Suất", values: ["6-15KG", "30-60KG"] }],
+    priceRange: {
+      minVariantPrice: { amount: "18000000", currencyCode: "VND" },
+      maxVariantPrice: { amount: "18000000", currencyCode: "VND" },
+    },
+    variants: [
+      {
+        id: "v3",
+        title: "6-15KG",
+        availableForSale: true,
+        selectedOptions: [{ name: "Công Suất", value: "6-15KG" }],
+        price: { amount: "18000000", currencyCode: "VND" },
+      },
+    ],
+    featuredImage: {
+      url: "/images/airlock3.png",
+      altText: "Máy Đốt Khói",
+      width: 800,
+      height: 800,
+    },
+    images: [
+      {
+        url: "/images/airlock3.png",
+        altText: "Máy Đốt Khói",
+        width: 800,
+        height: 800,
+      },
+    ],
+    seo: { title: "Máy Đốt Khói", description: "Máy đốt khói công nghiệp." },
+    tags: [],
+    updatedAt: "2024-01-01T00:00:00Z",
+  },
 ];
 
 export async function getProducts({
