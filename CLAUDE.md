@@ -3,8 +3,8 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Collaboration Preferences
+
 - Before making any changes to the codebase, always propose a few plans, then implement the one I pick.
-- Since I want to write the code myself, provide the implementation but let me write it to the codebase.
 
 ## Commands
 
@@ -45,6 +45,7 @@ Uses Next.js 15 experimental `"use cache"` directive (enabled via `experimental.
 ### Cart Flow
 
 Cart state lives in two layers:
+
 1. **Server:** Cart ID stored in an HTTP-only cookie (`cartId`). All mutations go through Server Actions in `components/cart/actions.ts` → Shopify GraphQL mutations.
 2. **Client:** `CartProvider` (`components/cart/cart-context.tsx`) accepts a `Promise<Cart>` (not awaited, passed from root layout), exposes `useCart()` which uses `useOptimistic()` for instant UI updates before server response.
 
@@ -53,6 +54,7 @@ Root layout passes `getCart()` as an unawaited Promise to `CartProvider` — thi
 ### Special Collection Handles
 
 Certain Shopify collection handles have UI-specific meanings:
+
 - `hidden-homepage-featured-items` — drives the 3-item featured grid on the homepage (`components/grid/three-items.tsx`)
 - `hidden-homepage-carousel` — drives the carousel on the homepage
 - Collections prefixed with `hidden-` are filtered out of the public `/search` sidebar
@@ -66,6 +68,7 @@ Certain Shopify collection handles have UI-specific meanings:
 ### Experimental Next.js Features
 
 `next.config.ts` enables three canary features:
+
 - `ppr: true` — Partial Pre-rendering
 - `inlineCss: true` — Inline critical CSS
 - `useCache: true` — Required for the `"use cache"` directive in data functions

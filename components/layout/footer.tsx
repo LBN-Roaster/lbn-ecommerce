@@ -53,7 +53,7 @@ export default async function Footer() {
             href="/"
           >
             <LogoSquare size="sm" />
-            <span className="font-semibold uppercase">{SITE_NAME}</span>
+            {/* <span className="font-semibold uppercase">{SITE_NAME}</span> */}
           </Link>
           <p className="max-w-xs text-neutral-500 dark:text-neutral-400">
             Công ty Cổ phần Sản xuất – Thương mại – Dịch vụ LBN.

@@ -5,10 +5,9 @@ import { toast } from "sonner";
 
 export function WelcomeToast() {
   useEffect(() => {
-    // ignore if screen height is too small
     if (window.innerHeight < 650) return;
     if (!document.cookie.includes("welcome-toast=2")) {
-      toast("🛍️ Welcome to Next.js Commerce!", {
+      toast("Chào mừng đến với LBN!", {
         id: "welcome-toast",
         duration: Infinity,
         onDismiss: () => {
@@ -16,14 +15,14 @@ export function WelcomeToast() {
         },
         description: (
           <>
-            This is a high-performance, SSR storefront powered by Shopify,
-            Next.js, and Vercel.{" "}
+            Chuyên sản xuất máy rang cà phê & thiết bị công nghiệp chất lượng
+            cao tại Khánh Hòa.{" "}
             <a
-              href="https://vercel.com/templates/next.js/nextjs-commerce"
+              href="https://lbn.com.vn/"
               className="text-blue-600 hover:underline"
               target="_blank"
             >
-              Deploy your own
+              Tìm hiểu thêm
             </a>
             .
           </>
