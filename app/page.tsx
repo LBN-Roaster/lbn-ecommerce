@@ -25,7 +25,7 @@ export default async function HomePage({
       <Suspense fallback={null}>
         <BusinessAreas />
       </Suspense>
-      <JourneySection />
+      <JourneySection area={area} />
       <FeaturedProducts area={area} />
       <NewsSection />
       <GallerySection />
