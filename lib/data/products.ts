@@ -1,174 +1,64 @@
 import type { Product } from "@/lib/types";
 import fs from "fs";
+import matter from "gray-matter";
+import { marked } from "marked";
 import path from "path";
 
-function loadHtml(filename: string): string {
-  return fs.readFileSync(
-    path.join(process.cwd(), "lib/data/html", filename),
-    "utf-8",
-  );
+const productsDir = path.join(process.cwd(), "lib/data/product-posts");
+
+function readProduct(filename: string): Product {
+  const raw = fs.readFileSync(path.join(productsDir, filename), "utf-8");
+  const { data, content } = matter(raw);
+
+  return {
+    id: data.id,
+    handle: data.handle,
+    title: data.title,
+    availableForSale: data.availableForSale ?? true,
+    description: content.trim().split("\n")[0]?.replace(/^#+\s*/, "") ?? "",
+    descriptionHtml: marked(content) as string,
+    tags: data.tags ?? [],
+    options: data.options ?? [],
+    variants: (data.variants ?? []).map(
+      (v: {
+        id: string;
+        title: string;
+        availableForSale?: boolean;
+        price: string;
+        currencyCode: string;
+        selectedOptions: { name: string; value: string }[];
+      }) => ({
+        id: v.id,
+        title: v.title,
+        availableForSale: v.availableForSale ?? true,
+        selectedOptions: v.selectedOptions,
+        price: { amount: v.price, currencyCode: v.currencyCode },
+      }),
+    ),
+    featuredImage: data.featuredImage,
+    images: data.images ?? [],
+    priceRange: {
+      minVariantPrice: {
+        amount: data.minPrice,
+        currencyCode: data.currencyCode,
+      },
+      maxVariantPrice: {
+        amount: data.maxPrice,
+        currencyCode: data.currencyCode,
+      },
+    },
+    seo: {
+      title: data.seoTitle ?? data.title,
+      description: data.seoDescription ?? "",
+    },
+    updatedAt: data.updatedAt ?? new Date().toISOString(),
+  };
 }
 
-export const products: Product[] = [
-  {
-    id: "1",
-    handle: "my-product",
-    availableForSale: true,
-    title: "Airlock",
-    description: "A great product.",
-    descriptionHtml: loadHtml("airlock.html"),
-    options: [
-      { id: "o1", name: "Màu", values: ["Đen", "Trắng", "Xanh Nhăn"] },
-      {
-        id: "o2",
-        name: "Công Suất",
-        values: ["6-15KG", "30-60KG"],
-      },
-    ],
-    priceRange: {
-      minVariantPrice: { amount: "15000000", currencyCode: "VND" },
-      maxVariantPrice: { amount: "15000000", currencyCode: "VND" },
-    },
-    variants: [
-      {
-        id: "v1",
-        title: "Đen",
-        availableForSale: true,
-        selectedOptions: [
-          { name: "Màu", value: "Đen" },
-          { name: "Công Suất", value: "6-15KG" },
-        ],
-        price: { amount: "15000000 ", currencyCode: "VND" },
-      },
-    ],
-    featuredImage: {
-      url: "/images/airlock1.png",
-      altText: "My Product",
-      width: 800,
-      height: 800,
-    },
-    images: [
-      {
-        url: "/images/airlock1.png",
-        altText: "My Product",
-        width: 800,
-        height: 800,
-      },
-      {
-        url: "/images/airlock2.png",
-        altText: "View 1",
-        width: 800,
-        height: 800,
-      },
-      {
-        url: "/images/airlock3.png",
-        altText: "View 2",
-        width: 800,
-        height: 800,
-      },
-      {
-        url: "/images/airlock4.png",
-        altText: "View 3",
-        width: 800,
-        height: 800,
-      },
-    ],
-    seo: { title: "My Product", description: "A great product." },
-    tags: ["may-rang"],
-    updatedAt: "2024-01-01T00:00:00Z",
-  },
-  {
-    id: "2",
-    handle: "separator",
-    availableForSale: true,
-    title: "Máy Tách Đá",
-    description: "Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox.",
-    descriptionHtml:
-      "<p>Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox.</p>",
-    options: [{ id: "o1", name: "Công Suất", values: ["6-15KG", "30-60KG"] }],
-    priceRange: {
-      minVariantPrice: { amount: "12000000", currencyCode: "VND" },
-      maxVariantPrice: { amount: "12000000", currencyCode: "VND" },
-    },
-    variants: [
-      {
-        id: "v2",
-        title: "6-15KG",
-        availableForSale: true,
-        selectedOptions: [{ name: "Công Suất", value: "6-15KG" }],
-        price: { amount: "12000000", currencyCode: "VND" },
-      },
-    ],
-    featuredImage: {
-      url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png",
-      altText: "Máy Tách Đá",
-      width: 800,
-      height: 800,
-    },
-    images: [
-      {
-        url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png",
-        altText: "Máy Tách Đá",
-        width: 800,
-        height: 800,
-      },
-      {
-        url: "https://drive.google.com/uc?export=view&id=1VTh2kcHqZMQ0xvos8j8FF8LA_dZANsdf",
-        altText: "Máy Tách Đá",
-        width: 800,
-        height: 800,
-      },
-      {
-        url: "https://drive.google.com/uc?export=view&id=1CL0ejUdea-AE0hiQT0qDUGit5awh9cP5",
-        altText: "Máy Tách Đá",
-        width: 800,
-        height: 800,
-      },
-    ],
-    seo: { title: "Máy Tách Đá", description: "Máy tách đá, tạp chất." },
-    tags: ["may-rang"],
-    updatedAt: "2024-01-01T00:00:00Z",
-  },
-  {
-    id: "3",
-    handle: "smoke-burner",
-    availableForSale: true,
-    title: "Máy Đốt Khói",
-    description: "Đốt cháy khói ở 600-800°C, tiết kiệm năng lượng.",
-    descriptionHtml: "<p>Đốt cháy khói ở 600-800°C, tiết kiệm năng lượng.</p>",
-    options: [{ id: "o1", name: "Công Suất", values: ["6-15KG", "30-60KG"] }],
-    priceRange: {
-      minVariantPrice: { amount: "18000000", currencyCode: "VND" },
-      maxVariantPrice: { amount: "18000000", currencyCode: "VND" },
-    },
-    variants: [
-      {
-        id: "v3",
-        title: "6-15KG",
-        availableForSale: true,
-        selectedOptions: [{ name: "Công Suất", value: "6-15KG" }],
-        price: { amount: "18000000", currencyCode: "VND" },
-      },
-    ],
-    featuredImage: {
-      url: "/images/airlock3.png",
-      altText: "Máy Đốt Khói",
-      width: 800,
-      height: 800,
-    },
-    images: [
-      {
-        url: "/images/airlock3.png",
-        altText: "Máy Đốt Khói",
-        width: 800,
-        height: 800,
-      },
-    ],
-    seo: { title: "Máy Đốt Khói", description: "Máy đốt khói công nghiệp." },
-    tags: ["may-rang"],
-    updatedAt: "2024-01-01T00:00:00Z",
-  },
-];
+export const products: Product[] = fs
+  .readdirSync(productsDir)
+  .filter((f) => f.endsWith(".md"))
+  .map(readProduct);
 
 export async function getProducts({
   query,
@@ -188,7 +78,7 @@ export async function getProducts({
         p.description.toLowerCase().includes(q),
     );
   }
-  if (sortKey == "PRICE") {
+  if (sortKey === "PRICE") {
     result.sort((a, b) => {
       const diff =
         parseFloat(a.priceRange.minVariantPrice.amount) -
@@ -196,7 +86,6 @@ export async function getProducts({
       return reverse ? -diff : diff;
     });
   }
-
   return result;
 }
 
@@ -207,6 +96,5 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
 export async function getProductRecommendations(
   productId: string,
 ): Promise<Product[]> {
-  // For simplicity, just return the first 4 products that are not the current product
   return products.filter((p) => p.id !== productId).slice(0, 4);
 }
