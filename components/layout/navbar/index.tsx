@@ -10,7 +10,7 @@ const mobileMenu = [
   { title: "Máy rang cà phê", path: "/search" },
   { title: "Bếp công nghiệp", path: "/search" },
   { title: "Nội thất", path: "/search" },
-  { title: "Tin tức", path: "/search" },
+  { title: "Tin tức", path: "/news" },
   { title: "Liên hệ", path: "tel:+84865112161" },
 ];
 
@@ -91,7 +91,7 @@ export function Navbar() {
           <ProductDropdown />
           <li>
             <Link
-              href="/search"
+              href="/news"
               className="text-neutral-600 underline-offset-4 transition hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-white"
             >
               Tin tức
