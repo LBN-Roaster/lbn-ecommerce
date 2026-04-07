@@ -27,16 +27,33 @@ function readProduct(filename: string): Product {
         price: string;
         currencyCode: string;
         selectedOptions: { name: string; value: string }[];
+        images?: { url: string; altText?: string; width?: number; height?: number }[];
       }) => ({
         id: v.id,
         title: v.title,
         availableForSale: v.availableForSale ?? true,
         selectedOptions: v.selectedOptions,
         price: { amount: v.price, currencyCode: v.currencyCode },
+        images: v.images?.map((img) => ({
+          url: img.url,
+          altText: img.altText ?? "",
+          width: img.width ?? 800,
+          height: img.height ?? 800,
+        })),
       }),
     ),
-    featuredImage: data.featuredImage,
-    images: data.images ?? [],
+    featuredImage: {
+      url: data.featuredImage?.url ?? "",
+      altText: data.featuredImage?.altText ?? "",
+      width: data.featuredImage?.width ?? 800,
+      height: data.featuredImage?.height ?? 800,
+    },
+    images: (data.images ?? []).map((img: { url: string; altText?: string; width?: number; height?: number }) => ({
+      url: img.url,
+      altText: img.altText ?? "",
+      width: img.width ?? 800,
+      height: img.height ?? 800,
+    })),
     priceRange: {
       minVariantPrice: {
         amount: data.minPrice,

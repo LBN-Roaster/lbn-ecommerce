@@ -1,18 +1,47 @@
 "use client";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import type { ProductVariant } from "lib/types";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export function Gallery({
-  images,
+  images: productImages,
+  variants,
 }: {
   images: { src: string; altText: string }[];
+  variants: ProductVariant[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // Find the variant that matches all currently selected options
+  const selectedOptions: Record<string, string> = {};
+  searchParams.forEach((v, k) => {
+    if (k !== "image") selectedOptions[k] = v;
+  });
+
+  const matchingVariant =
+    Object.keys(selectedOptions).length > 0
+      ? variants.find((variant) =>
+          Object.entries(selectedOptions).every(([key, val]) =>
+            variant.selectedOptions.some(
+              (opt) => opt.name.toLowerCase() === key && opt.value === val,
+            ),
+          ),
+        )
+      : variants[0];
+
+  const images =
+    matchingVariant?.images?.length
+      ? matchingVariant.images.map((img) => ({
+          src: img.url,
+          altText: img.altText,
+        }))
+      : productImages;
+
   const imageIndex = searchParams.has("image")
-    ? parseInt(searchParams.get("image")!)
+    ? Math.min(parseInt(searchParams.get("image")!), images.length - 1)
     : 0;
 
   const updateImage = (index: string) => {

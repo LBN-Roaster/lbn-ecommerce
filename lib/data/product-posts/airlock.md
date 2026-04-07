@@ -8,25 +8,15 @@ tags:
 featuredImage:
   url: "/images/airlock1.png"
   altText: "Máy Rang Cà Phê Airlock"
-  width: 800
-  height: 800
 images:
   - url: "/images/airlock1.png"
     altText: "Máy Rang Cà Phê Airlock"
-    width: 800
-    height: 800
   - url: "/images/airlock2.png"
     altText: "Airlock - góc 2"
-    width: 800
-    height: 800
   - url: "/images/airlock3.png"
     altText: "Airlock - góc 3"
-    width: 800
-    height: 800
   - url: "/images/airlock4.png"
     altText: "Airlock - góc 4"
-    width: 800
-    height: 800
 options:
   - id: "o1"
     name: "Màu"

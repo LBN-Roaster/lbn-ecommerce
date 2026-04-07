@@ -1,8 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import { ProductOption, ProductVariant } from "lib/shopify/types";
+import type { ProductOption, ProductVariant } from "lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 type Combination = {
   id: string;
@@ -23,6 +24,23 @@ export function VariantSelector({
     !options.length ||
     (options.length === 1 && options[0]?.values.length === 1);
 
+  // Set default option params on first load if none are present
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    let changed = false;
+    for (const option of options) {
+      const key = option.name.toLowerCase();
+      if (!params.has(key) && option.values[0]) {
+        params.set(key, option.values[0]);
+        changed = true;
+      }
+    }
+    if (changed) {
+      params.set("image", "0");
+      router.replace(`?${params.toString()}`, { scroll: false });
+    }
+  }, []);
+
   if (hasNoOptionsOrJustOneOption) {
     return null;
   }
@@ -42,6 +60,8 @@ export function VariantSelector({
   const updateOption = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(name, value);
+    // Reset to first image whenever the variant selection changes
+    params.set("image", "0");
     router.replace(`?${params.toString()}`, { scroll: false });
   };
 
@@ -74,8 +94,10 @@ export function VariantSelector({
               ),
             );
 
-            // The option is active if it's in the selected options.
-            const isActive = searchParams.get(optionNameLowerCase) === value;
+            // The option is active if it's in the selected options, defaulting to the first value.
+            const isActive =
+              (searchParams.get(optionNameLowerCase) ?? option.values[0]) ===
+              value;
 
             return (
               <button
