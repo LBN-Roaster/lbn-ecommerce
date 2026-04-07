@@ -65,8 +65,8 @@ variants:
     images:
       - url: "https://drive.google.com/uc?export=view&id=17vrJz5sf8HfSETAQ0yF9dVtfqPL15pj8"
       - url: "https://drive.google.com/uc?export=view&id=137Ye2dfqAMlSoLjxozYS1O9wY80lrCTS"
-minPrice: "15000000"
-maxPrice: "15000000"
+minPrice: "0"
+maxPrice: "0"
 currencyCode: "VND"
 seoTitle: "Máy Rang Cà Phê LBN Classic 1.5KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."

@@ -9,12 +9,14 @@ export function ProductDescription({ product }: { product: Product }) {
       <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
         <h1 className="mb-2 text-4xl font-medium">{product.title}</h1>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <div className="rounded-full bg-blue-600 p-2 text-sm text-white">
-            <Price
-              amount={product.priceRange.maxVariantPrice.amount}
-              currencyCode={product.priceRange.maxVariantPrice.currencyCode}
-            />
-          </div>
+          {product.priceRange.maxVariantPrice.amount !== "0" && (
+            <div className="rounded-full bg-blue-600 p-2 text-sm text-white">
+              <Price
+                amount={product.priceRange.maxVariantPrice.amount}
+                currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+              />
+            </div>
+          )}
           <Link
             href="https://zalo.me/lbncompany"
             target="_blank"
