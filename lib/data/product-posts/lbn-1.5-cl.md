@@ -73,38 +73,38 @@ seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt đ
 updatedAt: "2024-01-01T00:00:00Z"
 ---
 
-## Giới thiệu
+### Giới thiệu
 
 Tự hào sản xuất tại Việt Nam, Classic Roaster là sản phẩm kết hợp giữa kỹ thuật chế tạo cơ khí và hiểu biết sâu về cà phê.
 LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn – chính xác. Một người thợ rang giỏi cần một "đối tác" đáng tin cậy. Classic Roaster chính là điều đó.
 
-## Ưu Điểm :
+### Ưu Điểm :
 
 - Kiểm soát nhiệt & khí lưu dễ dàng
 - Cảm biến độ chính xác cao
 - Trống rang tối ưu hoá trao đổi nhiệt
 - Phù hợp cho quán cà phê – workshop – xưởng rang chuyên nghiệp
 
-## Thông số kỹ thuật
+### Thông số kỹ thuật
 
-| Thông số | Giá trị |
-| --- | --- |
-| Khối lượng rang | 1.5 kg/mẻ |
-| Thời gian rang | 8 – 12 phút/mẻ |
-| Năng suất | 7.5 – 11 kg/h |
-| Kích thước (DxRxC) | ≈ 1566 x 800 x 1730 mm |
-| Trọng lượng | ~ 240 kg |
-| Chế độ điều khiển | Thủ công |
-| Loại gas | LPG / LNG / Tự nhiên |
-| Công suất điện | 420 W – 1 phase 220V 50/60Hz |
-| Chương trình rang | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…) |
-| Tự động hoàn toàn | Option: chạy 100% theo profile đã lưu |
-| Kết nối | Không dây, tương thích phần mềm Artisan |
-| Thời gian làm nguội | < 5 phút |
-| Hệ thống lọc | Cyclone cho trống rang |
-| Dự phòng mất điện | Quay trống bằng tay quay |
+| Thông số            | Giá trị                                              |
+| ------------------- | ---------------------------------------------------- |
+| Khối lượng rang     | 1.5 kg/mẻ                                            |
+| Thời gian rang      | 8 – 12 phút/mẻ                                       |
+| Năng suất           | 7.5 – 11 kg/h                                        |
+| Kích thước (DxRxC)  | ≈ 1566 x 800 x 1730 mm                               |
+| Trọng lượng         | ~ 240 kg                                             |
+| Chế độ điều khiển   | Thủ công                                             |
+| Loại gas            | LPG / LNG / Tự nhiên                                 |
+| Công suất điện      | 420 W – 1 phase 220V 50/60Hz                         |
+| Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…) |
+| Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                |
+| Kết nối             | Không dây, tương thích phần mềm Artisan              |
+| Thời gian làm nguội | < 5 phút                                             |
+| Hệ thống lọc        | Cyclone cho trống rang                               |
+| Dự phòng mất điện   | Quay trống bằng tay quay                             |
 
-## Linh kiện điều khiển & điện
+### Linh kiện điều khiển & điện
 
 - PLC Mitsubishi – Nhật Bản
 - Màn hình cảm ứng Mitsubishi – Nhật Bản
@@ -114,26 +114,26 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 - Cảm biến nhiệt độ Omron và Misumi – Nhật Bản
 - Đồng hồ chênh áp Magnehelic – China
 
-## Motor
+### Motor
 
 - Motor trống rang: 90W – Transtecno – Italy
 - Motor hút khói: 90W – Enertech – Australia
 - Motor làm nguội: 180W – Enertech – Australia
 - Motor đảo: 60W – Leonhard – Đài Loan
 
-## Hệ thống đốt
+### Hệ thống đốt
 
 - Bếp thanh
 - Điều khiển bằng van SIGMA – Italy
 - Đồng hồ áp đầu vào và đầu ra
 
-## Kết cấu & vật liệu
+### Kết cấu & vật liệu
 
 - Trống rang 2 lớp thép cường độ cao
 - Thân máy thép sơn tĩnh điện, có lớp bảo ôn cách nhiệt
 - Phễu nạp, mâm làm nguội và các linh kiện bằng inox
 - Kính quan sát hạt cà phê và lửa bằng kính chịu nhiệt cao
 
-## Bảo hành
+### Bảo hành
 
-12 tháng chính hãng, hỗ trợ kỹ thuật tận nơi tại khu vực miền Trung – Tây Nguyên.
+24 tháng chính hãng, hỗ trợ kỹ thuật tận nơi toàn quốc.
