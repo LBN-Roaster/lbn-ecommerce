@@ -31,6 +31,7 @@ export type Product = {
   title: string;
   description: string;
   descriptionHtml: string;
+  introHtml: string;
   availableForSale: boolean;
   tags: string[];
   options: ProductOption[];

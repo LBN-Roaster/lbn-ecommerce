@@ -10,13 +10,19 @@ function readProduct(filename: string): Product {
   const raw = fs.readFileSync(path.join(productsDir, filename), "utf-8");
   const { data, content } = matter(raw);
 
+  const SPLIT_MARKER = "<!-- split -->";
+  const splitIndex = content.indexOf(SPLIT_MARKER);
+  const introPart = splitIndex !== -1 ? content.slice(0, splitIndex).trim() : "";
+  const detailsPart = splitIndex !== -1 ? content.slice(splitIndex + SPLIT_MARKER.length).trim() : content.trim();
+
   return {
     id: data.id,
     handle: data.handle,
     title: data.title,
     availableForSale: data.availableForSale ?? true,
     description: content.trim().split("\n")[0]?.replace(/^#+\s*/, "") ?? "",
-    descriptionHtml: marked(content) as string,
+    introHtml: introPart ? (marked(introPart) as string) : "",
+    descriptionHtml: marked(detailsPart) as string,
     tags: data.tags ?? [],
     options: data.options ?? [],
     variants: (data.variants ?? []).map(

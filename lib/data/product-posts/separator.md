@@ -27,19 +27,36 @@ options:
   - id: "o1"
     name: "Công Suất"
     values:
-      - "6-15KG"
-      - "30-60KG"
+      - "6-20KG"
+      - "30KG"
+      - "60KG"
 variants:
   - id: "v2"
-    title: "6-15KG"
+    title: "6-20KG"
     availableForSale: true
-    price: "12000000"
+    price: "35000000"
     currencyCode: "VND"
     selectedOptions:
       - name: "Công Suất"
-        value: "6-15KG"
-minPrice: "12000000"
-maxPrice: "12000000"
+        value: "6-20KG"
+  - id: "v2"
+    title: "30KG"
+    availableForSale: true
+    price: "38000000"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Công Suất"
+        value: "30KG"
+  - id: "v3"
+    title: "60KG"
+    availableForSale: true
+    price: "49000000"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Công Suất"
+        value: "60KG"
+minPrice: "35000000"
+maxPrice: "49000000"
 currencyCode: "VND"
 seoTitle: "Máy Tách Đá – LBN"
 seoDescription: "Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox, sản xuất tại Khánh Hòa."
@@ -57,15 +74,22 @@ Máy tách đá LBN sử dụng luồng khí mạnh để loại bỏ đá, tạ
 - Thiết kế nhỏ gọn, dễ lắp đặt
 - Tiêu thụ điện năng thấp
 
-## Thông số kỹ thuật
-
-| Thông số | Giá trị |
-|---|---|
-| Công suất xử lý | 6–15kg / mẻ |
-| Nguồn điện | 220V / 50Hz |
-| Vật liệu | Inox 304 |
-| Xuất xứ | Khánh Hòa, Việt Nam |
-
 ## Bảo hành
 
-12 tháng chính hãng.
+24 tháng chính hãng.
+
+<!-- split -->
+
+## Thông số kỹ thuật
+
+| Thông số           | 6-20KG                   | 30KG                     | 60KG                     |
+| ------------------ | ------------------------ | ------------------------ | ------------------------ |
+| Công suất (mẻ)     | 20 kg/mẻ                 | 30 kg/mẻ                 | 60 kg/mẻ                 |
+| Thời gian tách     | 4 – 6 phút/mẻ            | 4 – 6 phút/mẻ            | 4 – 6 phút/mẻ            |
+| Năng suất          | 200 – 300 kg/h           | 300 – 450 kg/h           | 600 – 1200 kg/h          |
+| Kích thước (DxRxC) | ≈ 1290 x 666 x 2000 mm   | ≈ 1290 x 666 x 2280 mm   | ≈ 1290 x 666 x 2280 mm   |
+| Trọng lượng        | ~ 80 kg                  | ~ 90 kg                  | ~ 110 kg                 |
+| Công suất điện     | 0.37 KW; 3P 220V-50/60Hz | 0.37 KW; 3P 220V-50/60Hz | 0.75 KW; 3P 380V-50/60Hz |
+| Biến tần           | Nidec – Nhật             | Nidec – Nhật             | Nidec – Nhật             |
+| Vật liệu           | Thép tấm & inox 304      | Thép tấm & inox 304      | Thép tấm & inox 304      |
+| Bánh xe            | FootMaster GD-40         | FootMaster GD-60         | FootMaster GD-60         |

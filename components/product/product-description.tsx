@@ -1,6 +1,6 @@
-import Price from "components/price";
 import { Product } from "lib/types";
 import Link from "next/link";
+import { VariantPrice } from "./variant-price";
 import { VariantSelector } from "./variant-selector";
 
 export function ProductDescription({ product }: { product: Product }) {
@@ -9,14 +9,10 @@ export function ProductDescription({ product }: { product: Product }) {
       <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
         <h1 className="mb-2 text-4xl font-medium">{product.title}</h1>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          {product.priceRange.maxVariantPrice.amount !== "0" && (
-            <div className="rounded-full bg-blue-600 p-2 text-sm text-white">
-              <Price
-                amount={product.priceRange.maxVariantPrice.amount}
-                currencyCode={product.priceRange.maxVariantPrice.currencyCode}
-              />
-            </div>
-          )}
+          <VariantPrice
+            variants={product.variants}
+            currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+          />
           <Link
             href="https://zalo.me/lbncompany"
             target="_blank"
@@ -28,6 +24,15 @@ export function ProductDescription({ product }: { product: Product }) {
         </div>
       </div>
       <VariantSelector options={product.options} variants={product.variants} />
+      {product.introHtml && (
+        <>
+          <hr className="my-6 border-neutral-200 dark:border-neutral-700" />
+          <div
+            className="prose prose-sm dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: product.introHtml }}
+          />
+        </>
+      )}
       {/* <AddToCart product={product} /> */}
     </>
   );

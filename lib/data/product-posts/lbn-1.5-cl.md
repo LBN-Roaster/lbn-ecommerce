@@ -20,7 +20,7 @@ variants:
   - id: "v1"
     title: "Trắng Nâu"
     availableForSale: true
-    price: "15000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -34,7 +34,7 @@ variants:
   - id: "v2"
     title: "Trắng"
     availableForSale: true
-    price: "15000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -46,7 +46,7 @@ variants:
   - id: "v3"
     title: "Xám Chì"
     availableForSale: true
-    price: "15000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -57,7 +57,7 @@ variants:
   - id: "v4"
     title: "Xám Đen"
     availableForSale: true
-    price: "15000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -84,6 +84,12 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 - Cảm biến độ chính xác cao
 - Trống rang tối ưu hoá trao đổi nhiệt
 - Phù hợp cho quán cà phê – workshop – xưởng rang chuyên nghiệp
+
+### Bảo hành
+
+24 tháng chính hãng, hỗ trợ kỹ thuật tận nơi toàn quốc.
+
+<!-- split -->
 
 ### Thông số kỹ thuật
 
@@ -133,7 +139,3 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 - Thân máy thép sơn tĩnh điện, có lớp bảo ôn cách nhiệt
 - Phễu nạp, mâm làm nguội và các linh kiện bằng inox
 - Kính quan sát hạt cà phê và lửa bằng kính chịu nhiệt cao
-
-### Bảo hành
-
-24 tháng chính hãng, hỗ trợ kỹ thuật tận nơi toàn quốc.
