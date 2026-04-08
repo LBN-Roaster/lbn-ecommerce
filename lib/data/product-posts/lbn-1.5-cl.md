@@ -1,7 +1,7 @@
 ---
-id: "4"
-handle: "roaster"
-title: "Máy Rang Cà Phê LBN 1.5KG"
+id: "1"
+handle: "1.5-CL-roaster"
+title: "Máy Rang Cà Phê LBN Classic 1.5KG"
 availableForSale: true
 tags:
   - may-rang
@@ -29,8 +29,6 @@ variants:
       - url: "https://drive.google.com/uc?export=view&id=1uMIOKKJK60M6wabEPP5vzDRSdVrR-cUT"
       - url: "https://drive.google.com/uc?export=view&id=1bjhoQ-u5tZtcNuUZEyeC5pxGs-zj0wCi"
       - url: "https://drive.google.com/uc?export=view&id=1ZBwlMJO-OWqit-aKJzdkH23j7WXptJSM"
-      - url: "https://drive.google.com/uc?export=view&id=1-RgLyEittk8YkZe82QewlsJnT9mtWHBO"
-      - url: "https://drive.google.com/uc?export=view&id=1zx2xzHczCFpdHfqiDM0kidzNblX3rnjg"
   - id: "v2"
     title: "Trắng"
     availableForSale: true
