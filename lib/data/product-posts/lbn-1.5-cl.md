@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=1c40fC8eVB7vWLmF2Y-8tD9IgtPxEz2oN"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1775609422/download_m6tluz.jpg"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"

@@ -5,7 +5,7 @@ export default {
     useCache: true,
   },
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -14,6 +14,11 @@ export default {
       {
         protocol: "https",
         hostname: "drive.google.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/ddguya7ph/**",
       },
     ],
   },
