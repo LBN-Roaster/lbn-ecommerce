@@ -1,7 +1,7 @@
 ---
 id: "LBN-MD-HR15-D"
 handle: "15-MD-roaster"
-title: "Máy Rang Cà Phê LBN Classic 15KG"
+title: "Máy Rang Cà Phê LBN Modern 15KG"
 availableForSale: true
 tags:
   - may-rang
@@ -57,15 +57,15 @@ variants:
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Classic 15KG"
+seoTitle: "Máy Rang Cà Phê LBN Modern 15KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ### Giới thiệu
 
-Tự hào sản xuất tại Việt Nam, Classic Roaster là sản phẩm kết hợp giữa kỹ thuật chế tạo cơ khí và hiểu biết sâu về cà phê.
-LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn – chính xác. Một người thợ rang giỏi cần một "đối tác" đáng tin cậy. Classic Roaster chính là điều đó.
+Tự hào sản xuất tại Việt Nam, Modern Roaster là sản phẩm kết hợp giữa kỹ thuật chế tạo cơ khí và hiểu biết sâu về cà phê.
+LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn – chính xác. Một người thợ rang giỏi cần một "đối tác" đáng tin cậy. Modern Roaster chính là điều đó.
 
 ### Ưu Điểm :
 
