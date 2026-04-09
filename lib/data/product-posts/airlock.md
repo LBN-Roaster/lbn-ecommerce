@@ -1,7 +1,7 @@
 ---
-id: "2"
+id: "LBN-AL"
 handle: "airlock"
-title: "Máy Rang Cà Phê Airlock"
+title: "Airlock"
 availableForSale: true
 tags:
   - may-rang

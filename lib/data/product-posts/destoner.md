@@ -1,6 +1,6 @@
 ---
-id: "3"
-handle: "separator"
+id: "LBN-MPL"
+handle: "destoner"
 title: "Máy Tách Đá"
 availableForSale: true
 tags:

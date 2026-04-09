@@ -1,5 +1,5 @@
 ---
-id: "1"
+id: "LBN-CL-HR1.5-S"
 handle: "1.5-CL-roaster"
 title: "Máy Rang Cà Phê LBN Classic 1.5KG"
 availableForSale: true

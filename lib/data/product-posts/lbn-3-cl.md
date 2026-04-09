@@ -1,5 +1,5 @@
 ---
-id: "6"
+id: "LBN-CL-HR3.0-S"
 handle: "3-CL-roaster"
 title: "Máy Rang Cà Phê LBN Classic 3KG"
 availableForSale: true

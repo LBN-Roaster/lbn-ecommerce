@@ -1,12 +1,12 @@
 ---
-id: "4"
-handle: "smoke-burner"
+id: "LBN-DK"
+handle: "after-burner"
 title: "Máy Đốt Khói"
 availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "/images/airlock3.png"
+  # url: "/images/airlock3.png"
   altText: "Máy Đốt Khói"
   width: 800
   height: 800

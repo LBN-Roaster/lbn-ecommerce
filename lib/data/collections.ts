@@ -10,7 +10,7 @@ const collections: CollectionDef[] = [
     seo: { title: "Featured", description: "" },
     updatedAt: "2024-01-01T00:00:00Z",
     path: "/search/hidden-homepage-featured-items",
-    productHandles: ["1.5-CL-roaster", "6-CL-roaster", "separator"],
+    productHandles: ["1.5-CL-roaster", "3-CL-roaster", "6-CL-roaster"],
   },
 ];
 

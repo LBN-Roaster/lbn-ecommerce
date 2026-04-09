@@ -1,45 +1,33 @@
 ---
-id: "LBN-CL-HR6.0-S"
-handle: "6-CL-roaster"
-title: "Máy Rang Cà Phê LBN Classic 6KG"
+id: "LBN-MD-HR1.5-D"
+handle: "1.5-MD-roaster"
+title: "Máy Rang Cà Phê LBN Modern 1.5KG"
 availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=17qy3MJbxCc9BNY7Ows1ckifsQ4WtzwH5"
-  altText: "Máy Rang Cà Phê LBN 6KG"
+  url: "https://drive.google.com/uc?export=view&id=1V3bQ_AcavyCkP36IJBQ3lqAeflLY8Q8F"
+  altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Trắng Nâu"
-      - "Trắng"
+      - "Xanh Nhăn"
       - "Xám Chì"
-      # - "Xám Đen"
+      - "Xám Đen"
 variants:
   - id: "v1"
-    title: "Trắng Nâu"
+    title: "Xanh Nhăn"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng Nâu"
+        value: "Xanh Nhăn"
     images:
-      - url: "https://drive.google.com/uc?export=view&id=1Q7Lcw1lQliWW5LfmZdvKmFqyTm6v5RgT"
-      - url: "https://drive.google.com/uc?export=view&id=1PSDryPipCa1Y-MmOv_AzvFvOp622wQTe"
+      - url: "https://drive.google.com/uc?export=view&id=1in3jtWi4GXbVaKGDx95slK25ys2Ue-d-"
+      - url: "https://drive.google.com/uc?export=view&id=19WrKxrs6TOOS6cSCgenjQaI_4lPgCgie"
   - id: "v2"
-    title: "Trắng"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Trắng"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=1nJO6cfRNiXMPxFr52cm9ckU8hwrIOvGw"
-      - url: "https://drive.google.com/uc?export=view&id=1Cz4ypzjHlhIDIZ0HT-MwCgteVrPcp6IB"
-  - id: "v3"
     title: "Xám Chì"
     availableForSale: true
     price: "0"
@@ -48,24 +36,23 @@ variants:
       - name: "Màu"
         value: "Xám Chì"
     images:
-      - url: "https://drive.google.com/uc?export=view&id=1fAV_qxztbrw2jaivo0Z58udMjD1ia3Ve"
-      - url: "https://drive.google.com/uc?export=view&id=1uKUjjFwb8xIrlt3a37kUFCVI7xQbEYCR"
-      - url: "https://drive.google.com/uc?export=view&id=1OcgL7Oglk7VYJSPxGx17msY5ohwl98S8"
-  # - id: "v4"
-  #   title: "Xám Đen"
-  #   availableForSale: true
-  #   price: "0"
-  #   currencyCode: "VND"
-  #   selectedOptions:
-  #     - name: "Màu"
-  #       value: "Xám Đen"
-  #   images:
-  #     - url: "https://drive.google.com/uc?export=view&id=17vrJz5sf8HfSETAQ0yF9dVtfqPL15pj8"
-  #     - url: "https://drive.google.com/uc?export=view&id=137Ye2dfqAMlSoLjxozYS1O9wY80lrCTS"
+      - url: "https://drive.google.com/uc?export=view&id=1aIGgDELgeAXLX5FudIUfsb7IU5DFXccc"
+      - url: "https://drive.google.com/uc?export=view&id=1drD3RwxfpVIg3IS02f5B70EQqBEPj1Ic"
+  - id: "v3"
+    title: "Xám Đen"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Xám Đen"
+    images:
+      - url: "https://drive.google.com/uc?export=view&id=1OI_SEpEsoPwFKSdZwLkFKzk79REKy5d8"
+      - url: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Classic 6KG"
+seoTitle: "Máy Rang Cà Phê LBN Classic 1.5KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---
@@ -92,37 +79,36 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 | Thông số            | Giá trị                                               |
 | ------------------- | ----------------------------------------------------- |
-| Khối lượng rang     | 6 kg/mẻ                                               |
-| Thời gian rang      | 10 – 20 phút/mẻ                                       |
-| Năng suất           | 18 – 36 kg/h                                          |
-| Kích thước (DxRxC)  | ≈ 2034 x 1258 x 2128 mm                               |
-| Trọng lượng         | ~ 485 kg                                              |
+| Khối lượng rang     | 1.5 kg/mẻ                                             |
+| Thời gian rang      | 8 – 12 phút/mẻ                                        |
+| Năng suất           | 7.5 – 11 kg/h                                         |
+| Kích thước (DxRxC)  | ≈ 1540 x 1850 x 1810 mm                               |
+| Trọng lượng         | ~ 240 kg                                              |
 | Chế độ điều khiển   | Tự động / Thủ công                                    |
 | Loại gas            | LPG / LNG / Tự nhiên                                  |
-| Công suất điện      | 1.56 KW – 1 phase 220V 50/60Hz                        |
+| Công suất điện      | 420 W – 1 phase 220V 50/60Hz                          |
 | Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…)  |
 | Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                 |
 | Kết nối             | Không dây, tương thích phần mềm Artisan               |
 | Thời gian làm nguội | < 5 phút                                              |
-| Hệ thống lọc        | Cyclone + Airlock tự động xả vỏ trấu                  |
+| Hệ thống lọc        | Cyclone cho trống rang                                |
 
 ### Linh kiện điều khiển & điện
 
-- PLC Mitsubishi – Nhật Bản
-- Màn hình cảm ứng Mitsubishi – Nhật Bản
-- Biến tần Mitsubishi – Nhật Bản
+- PLC Delta – Đài Loan
+- Màn hình cảm ứng Delta – Đài Loan
+- Biến tần Delta, INVT, Wecon, Fecon
 - Module nhiệt độ Autonics – Hàn Quốc
-- Thiết bị đóng cắt & bảo vệ Schneider (Pháp), Siemens (Đức)
+- Thiết bị đóng cắt & bảo vệ Siemens – Đức
 - Cảm biến nhiệt độ Omron và Misumi – Nhật Bản
 - Hệ thống khí nén: xylanh, lọc khí… SMC – Nhật Bản
 
 ### Motor
 
-- Motor trống rang: 0.37 KW – Transtecno – Italy
-- Motor hút khói: 0.55 KW – Enertech – Australia
-- Motor làm nguội: 0.37 KW – Enertech – Australia
-- Motor đảo: 0.18 KW – Transtecno – Italy
-- Motor airlock: 0.09 KW – Transtecno – Italy
+- Motor trống rang: 90W – Transtecno – Italy
+- Motor hút khói: 90W – Enertech – Australia
+- Motor làm nguội: 180W – Enertech – Australia
+- Motor đảo: 60W – Leonhard – Đài Loan
 
 ### Hệ thống đốt
 
