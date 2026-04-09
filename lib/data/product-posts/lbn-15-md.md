@@ -2,7 +2,6 @@
 id: "LBN-MD-HR15-D"
 handle: "15-MD-roaster"
 title: "Máy Rang Cà Phê LBN Classic 15KG"
-draft: true
 availableForSale: true
 tags:
   - may-rang
@@ -83,29 +82,29 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 ### Thông số kỹ thuật
 
-| Thông số            | Giá trị                                              |
-| ------------------- | ---------------------------------------------------- |
-| Khối lượng rang     | 15 kg/mẻ                                             |
-| Thời gian rang      | 10 – 20 phút/mẻ                                      |
-| Năng suất           | 45 – 90 kg/h                                         |
-| Kích thước (DxRxC)  | ≈ 2395 x 870 x 2275 mm                               |
-| Trọng lượng         | ~ 800 kg                                             |
-| Chế độ điều khiển   | Tự động / Thủ công                                   |
-| Loại gas            | LPG / LNG / Tự nhiên                                 |
-| Công suất điện      | 2.12 KW – 3 phase 380V 50/60Hz                       |
-| Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…) |
-| Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                |
-| Kết nối             | Không dây, tương thích phần mềm Artisan              |
-| Thời gian làm nguội | < 5 phút                                             |
-| Hệ thống lọc        | Cyclone + Airlock tự động xả vỏ trấu                 |
+| Thông số            | Giá trị                                               |
+| ------------------- | ----------------------------------------------------- |
+| Khối lượng rang     | 15 kg/mẻ                                              |
+| Thời gian rang      | 10 – 20 phút/mẻ                                       |
+| Năng suất           | 45 – 90 kg/h                                          |
+| Kích thước (DxRxC)  | ≈ 2395 x 870 x 2275 mm                                |
+| Trọng lượng         | ~ 800 kg                                              |
+| Chế độ điều khiển   | Tự động / Thủ công                                    |
+| Loại gas            | LPG / LNG / Tự nhiên                                  |
+| Công suất điện      | 2.12 KW – 3 phase 380V 50/60Hz                        |
+| Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…)  |
+| Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                 |
+| Kết nối             | Không dây, tương thích phần mềm Artisan               |
+| Thời gian làm nguội | < 5 phút                                              |
+| Hệ thống lọc        | Cyclone + Airlock tự động xả vỏ trấu                  |
 
 ### Linh kiện điều khiển & điện
 
-- PLC Mitsubishi – Nhật Bản
-- Màn hình cảm ứng Mitsubishi – Nhật Bản
-- Biến tần Mitsubishi – Nhật Bản
-- Module nhiệt độ Omron (Nhật Bản), Autonics (Hàn Quốc)
-- Thiết bị đóng cắt & bảo vệ Schneider (Pháp), Siemens (Đức)
+- PLC Delta – Đài Loan
+- Màn hình cảm ứng Delta – Đài Loan
+- Biến tần Delta – Đài Loan hoặc tương đương
+- Module nhiệt độ Autonics – Hàn Quốc
+- Thiết bị đóng cắt & bảo vệ Siemens – Đức
 - Cảm biến nhiệt độ Omron và Misumi – Nhật Bản
 - Hệ thống khí nén: xylanh, lọc khí… SMC – Nhật Bản
 
@@ -125,7 +124,7 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 ### Kết cấu & vật liệu
 
-- Kết cấu trống rang được thiết kế với 2 lớp thép cường độ cao
+- Kết cấu trống rang 2 lớp thép cường độ cao
 - Thân máy thép sơn tĩnh điện, có lớp bảo ôn cách nhiệt
 - Phễu nạp, mâm làm nguội, lớp vỏ bọc bảo ôn cách nhiệt và các linh kiện khác bằng inox
-- Kính quan sát hạt cà phê và quan sát lửa được sử dụng bằng kính chịu nhiệt độ cao
+- Kính quan sát hạt cà phê và quan sát lửa bằng kính chịu nhiệt độ cao
