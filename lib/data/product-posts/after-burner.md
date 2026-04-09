@@ -2,7 +2,8 @@
 id: "LBN-DK"
 handle: "after-burner"
 title: "Máy Đốt Khói"
-availableForSale: true
+draft: true
+availableForSale: false
 tags:
   - may-rang
 featuredImage:

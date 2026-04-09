@@ -81,6 +81,11 @@ function readProduct(filename: string): Product {
 export const products: Product[] = fs
   .readdirSync(productsDir)
   .filter((f) => f.endsWith(".md"))
+  .filter((f) => {
+    const raw = fs.readFileSync(path.join(productsDir, f), "utf-8");
+    const { data } = matter(raw);
+    return !data.draft;
+  })
   .map(readProduct);
 
 export async function getProducts({
