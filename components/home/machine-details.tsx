@@ -116,10 +116,10 @@ const content: Record<
     label: "Đặc điểm nổi bật",
     title: "Giải pháp bếp hoàn chỉnh",
     images: [
-      "/images/airlock1.png",
-      "/images/airlock2.png",
-      "/images/airlock3.png",
-      "/images/airlock4.png",
+      "/images/kitchen_4.jpg",
+      "/images/kitchen_1.jpg",
+      "/images/kitchen_3.jpg",
+      "/images/kitchen_2.jpg",
     ],
     features: [
       {
@@ -208,14 +208,14 @@ const content: Record<
     label: "Đặc điểm nổi bật",
     title: "Nội thất tinh xảo, bền theo năm tháng",
     images: [
-      "/images/airlock1.png",
-      "/images/airlock2.png",
-      "/images/airlock3.png",
-      "/images/airlock4.png",
+      "/images/fur3.jpg",
+      "/images/fur6.jpg",
+      "/images/fur8.jpg",
+      "/images/fur7.jpg",
     ],
     features: [
       {
-        title: "Vật liệu kép Gỗ – Thép",
+        title: "Vật liệu kép Gỗ – Thép - Inox",
         description:
           "Kết hợp độ bền vượt trội của thép hộp với vẻ đẹp ấm áp của gỗ tự nhiên — sản phẩm chắc chắn, có chiều sâu thẩm mỹ cao.",
         icon: (
@@ -350,7 +350,7 @@ export function MachineDetails({ area }: { area?: string }) {
               src={c.images[0]!}
               alt=""
               fill
-              sizes="15vw"
+              sizes="100vw"
               className="object-cover"
               style={{ objectPosition: "70% center" }}
             />
@@ -364,7 +364,7 @@ export function MachineDetails({ area }: { area?: string }) {
               src={c.images[1]!}
               alt=""
               fill
-              sizes="22vw"
+              sizes="100vw"
               className="object-cover"
               style={{ objectPosition: "40% center" }}
             />
@@ -378,6 +378,7 @@ export function MachineDetails({ area }: { area?: string }) {
               src={c.images[2]!}
               alt=""
               fill
+              sizes="100vw"
               className="object-cover"
               style={{ objectPosition: "70% center" }}
             />
@@ -391,7 +392,7 @@ export function MachineDetails({ area }: { area?: string }) {
               src={c.images[3]!}
               alt=""
               fill
-              sizes="37vw"
+              sizes="100vw"
               className="object-cover"
             />
           </div>
