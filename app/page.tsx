@@ -3,6 +3,7 @@ import { FeaturedProducts } from "components/home/featured-products";
 import { GallerySection } from "components/home/gallery";
 import { HeroSection } from "components/home/hero";
 import { JourneySection } from "components/home/journey";
+import { MachineDetails } from "components/home/machine-details";
 import { NewsSection } from "components/home/news";
 import Footer from "components/layout/footer";
 import { Suspense } from "react";
@@ -26,6 +27,7 @@ export default async function HomePage({
         <BusinessAreas />
       </Suspense>
       <JourneySection area={area} />
+      <MachineDetails area={area} />
       <FeaturedProducts area={area} />
       <NewsSection />
       <GallerySection />
