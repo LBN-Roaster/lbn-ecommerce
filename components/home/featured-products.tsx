@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function formatPrice(amount: string, currencyCode: string) {
+  if (Number(amount) === 0) return "Liên Hệ";
   return new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: currencyCode,
