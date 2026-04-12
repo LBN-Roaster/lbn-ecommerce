@@ -14,7 +14,7 @@ export function HeroSection() {
       />
 
       {/* Gradient: transparent top → dark bottom so text pops */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
 
       {/* Content anchored to bottom-left */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 md:px-10">
