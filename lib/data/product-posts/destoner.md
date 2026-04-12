@@ -34,7 +34,7 @@ variants:
   - id: "v2"
     title: "6-20KG"
     availableForSale: true
-    price: "35000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Công Suất"
@@ -42,7 +42,7 @@ variants:
   - id: "v2"
     title: "30KG"
     availableForSale: true
-    price: "38000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Công Suất"
@@ -50,13 +50,13 @@ variants:
   - id: "v3"
     title: "60KG"
     availableForSale: true
-    price: "49000000"
+    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Công Suất"
         value: "60KG"
-minPrice: "35000000"
-maxPrice: "49000000"
+minPrice: "0"
+maxPrice: "0"
 currencyCode: "VND"
 seoTitle: "Máy Tách Đá – LBN"
 seoDescription: "Máy tách đá, tạp chất dùng luồng khí mạnh, vỏ inox, sản xuất tại Khánh Hòa."
