@@ -1,16 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative -mt-6 flex min-h-[70vh] items-end overflow-hidden bg-neutral-900">
-      {/* Background image */}
-      <Image
-        src="https://lbn.com.vn/wp-content/uploads/2025/09/1-12-scaled.jpg"
-        alt="LBN máy rang cà phê"
-        fill
-        className="object-cover opacity-120"
-        priority
+    <section className="relative -mt-6 flex min-h-screen items-end overflow-hidden bg-neutral-900">
+      {/* Background video */}
+      <video
+        src="https://res.cloudinary.com/ddguya7ph/video/upload/v1775962865/roaster_jiwkau.mov"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       {/* Gradient: transparent top → dark bottom so text pops */}
@@ -29,8 +29,8 @@ export function HeroSection() {
         </h1>
 
         <p className="mb-8 max-w-lg text-base text-white/100 md:text-lg">
-          Máy rang cà phê, nội thất gỗ – thép & bếp công nghiệp —
-          sản xuất tại Khánh Hòa, đạt tiêu chuẩn quốc tế.
+          Máy rang cà phê, nội thất gỗ – thép & bếp công nghiệp — sản xuất tại
+          Khánh Hòa, đạt tiêu chuẩn quốc tế.
         </p>
 
         <div className="flex flex-wrap gap-4">
