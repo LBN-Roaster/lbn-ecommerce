@@ -2,7 +2,8 @@
 id: "Cozy Collection"
 handle: "cozy-collection"
 title: "Cozy Collection"
-availableForSale: false
+draft: true
+availableForSale: true
 tags:
   - noi-that
 featuredImage:

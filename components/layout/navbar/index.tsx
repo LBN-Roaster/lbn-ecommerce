@@ -104,7 +104,7 @@ export function Navbar() {
           href="tel:+84865112161"
           className="hidden rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 md:block"
         >
-          (+84) 0865.112.161
+          (+84) 903596900 
         </a>
       </div>
     </nav>

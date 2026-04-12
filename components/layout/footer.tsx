@@ -97,7 +97,7 @@ export default async function Footer() {
             href="tel:+84865112161"
             className="hover:text-black dark:hover:text-white"
           >
-            (+84) 0865.112.161
+            (+84) 903596900 
           </a>
           <a
             href="mailto:info@lbn.com.vn"

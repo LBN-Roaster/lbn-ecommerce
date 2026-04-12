@@ -2,6 +2,7 @@
 id: "LBN-AL"
 handle: "airlock"
 title: "Airlock"
+draft: true
 availableForSale: true
 tags:
   - may-rang
@@ -64,12 +65,12 @@ Máy rang cà phê **Airlock** của LBN được thiết kế cho các nhà ran
 
 ## Thông số kỹ thuật
 
-| Thông số        | Giá trị             |
-| --------------- | ------------------- |
-| Công suất       | 6–15kg / mẻ         |
-| Nhiệt độ tối đa | 240°C               |
-| Nguồn điện      | 220V / 50Hz         |
-| Xuất xứ         | Khánh Hòa, Việt Nam |
+| Thông số        | Giá trị     |
+| --------------- | ----------- |
+| Công suất       | 6–15kg / mẻ |
+| Nhiệt độ tối đa | 240°C       |
+| Nguồn điện      | 220V / 50Hz |
+| Xuất xứ         | Việt Nam    |
 
 ## Bảo hành
 

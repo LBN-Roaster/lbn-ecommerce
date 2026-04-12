@@ -44,7 +44,7 @@ export function HeroSection() {
             href="tel:+84865112161"
             className="rounded-lg border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
           >
-            (+84) 0865.112.161
+            (+84) 903596900 
           </a>
         </div>
       </div>
