@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const images = [
   {
-    src: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_06_28_1103-scaled.png",
+    src: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk",
     alt: "Máy rang cà phê LBN",
   },
   { src: "/images/1.5KG.png", alt: "Máy rang cà phê LBN" },
@@ -15,7 +15,9 @@ const images = [
 ];
 
 export function GallerySection() {
-  const [active, setActive] = useState<{ src: string; alt: string } | null>(null);
+  const [active, setActive] = useState<{ src: string; alt: string } | null>(
+    null,
+  );
 
   return (
     <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
@@ -68,8 +70,18 @@ export function GallerySection() {
               className="absolute -right-3 -top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:bg-neutral-200"
               aria-label="Đóng"
             >
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
