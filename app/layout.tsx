@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "components/layout/navbar";
 import { GeistSans } from "geist/font/sans";
 import { ReactNode } from "react";
@@ -28,6 +29,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           {children}
           <Toaster closeButton />
         </main>
+        <Analytics />
       </body>
     </html>
   );
