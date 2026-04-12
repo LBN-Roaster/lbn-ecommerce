@@ -9,7 +9,7 @@ featuredImage:
   url: "https://drive.google.com/uc?export=view&id=1fc2htRcSTgPLtwsdYJUzrzz2Gp3c5sQw"
   altText: "Cozy Collection"
 images:
-  - url: "https://drive.google.com/uc?export=view?id=1-mJ9Gg97rLDs_PxU0eAMdmV6_-buLTf2"
+  - url: "https://drive.google.com/uc?export=view?id=1qmcNwzzTCI1vkp-KIrsWRNPogfCWNG5W"
   - url: "https://drive.google.com/uc?export=view?id=1xDhJToOmgr-e1W0F6931Yqlcl9fd-Msm"
   - url: "https://drive.google.com/uc?export=view?id=1qmcNwzzTCI1vkp-KIrsWRNPogfCWNG5W"
   - url: "https://drive.google.com/uc?export=view?id=1XBLzto7at4lRiNIN_6m88nmRpe0iACA4"
