@@ -76,7 +76,7 @@ export async function FeaturedProducts({ area }: { area?: string }) {
 
         <div className="mt-10 text-center">
           <Link
-            href={area ? `/search?area=${area}` : "/search"}
+            href={`/search?area=${area ?? "may-rang"}`}
             className="inline-block rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
           >
             Xem tất cả sản phẩm
