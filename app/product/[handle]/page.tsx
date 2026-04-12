@@ -112,21 +112,21 @@ export default async function ProductPage(props: {
           </div>
         )}
 
-        <RelatedProducts id={product.id} />
+        <RelatedProducts id={product.id} tags={product.tags} />
       </div>
       <Footer />
     </>
   );
 }
 
-async function RelatedProducts({ id }: { id: string }) {
-  const relatedProducts = await getProductRecommendations(id);
+async function RelatedProducts({ id, tags }: { id: string; tags: string[] }) {
+  const relatedProducts = await getProductRecommendations(id, tags);
 
   if (!relatedProducts.length) return null;
 
   return (
     <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
+      <h2 className="mb-4 text-2xl font-bold">Sản Phẩm Liên Quan</h2>
       <ul className="flex w-full gap-4 overflow-x-auto pt-1">
         {relatedProducts.map((product) => (
           <li

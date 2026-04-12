@@ -92,12 +92,17 @@ export async function getProducts({
   query,
   sortKey,
   reverse,
+  tag,
 }: {
   query?: string;
   sortKey?: string;
   reverse?: boolean;
+  tag?: string;
 } = {}): Promise<Product[]> {
   let result = [...products];
+  if (tag) {
+    result = result.filter((p) => p.tags.includes(tag));
+  }
   if (query) {
     const q = query.toLowerCase();
     result = result.filter(
@@ -123,6 +128,10 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
 
 export async function getProductRecommendations(
   productId: string,
+  tags?: string[],
 ): Promise<Product[]> {
-  return products.filter((p) => p.id !== productId).slice(0, 4);
+  return products
+    .filter((p) => p.id !== productId)
+    .filter((p) => !tags?.length || p.tags.some((t) => tags.includes(t)))
+    .slice(0, 4);
 }

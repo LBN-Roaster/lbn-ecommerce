@@ -7,9 +7,11 @@ import { useSearchParams } from "next/navigation";
 export function VariantPrice({
   variants,
   currencyCode,
+  fallbackAmount,
 }: {
   variants: ProductVariant[];
   currencyCode: string;
+  fallbackAmount?: string;
 }) {
   const searchParams = useSearchParams();
 
@@ -20,9 +22,8 @@ export function VariantPrice({
     ),
   );
 
-  const price = activeVariant?.price.amount ?? variants[0]?.price.amount;
-  const currency =
-    activeVariant?.price.currencyCode ?? currencyCode;
+  const price = activeVariant?.price.amount ?? variants[0]?.price.amount ?? fallbackAmount;
+  const currency = activeVariant?.price.currencyCode ?? currencyCode;
 
   if (!price || price === "0") return null;
 

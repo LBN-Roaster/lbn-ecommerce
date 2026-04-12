@@ -11,7 +11,8 @@ export function ProductDescription({ product }: { product: Product }) {
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <VariantPrice
             variants={product.variants}
-            currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            currencyCode={product.priceRange.minVariantPrice.currencyCode}
+            fallbackAmount={product.priceRange.minVariantPrice.amount}
           />
           <Link
             href="https://zalo.me/lbncompany"

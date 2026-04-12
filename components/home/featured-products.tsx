@@ -1,4 +1,5 @@
 import { getCollectionProducts } from "lib/data/collections";
+import { getProducts } from "lib/data/products";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,13 +12,11 @@ function formatPrice(amount: string, currencyCode: string) {
 }
 
 export async function FeaturedProducts({ area }: { area?: string }) {
-  const allProducts = await getCollectionProducts({
-    collection: "hidden-homepage-featured-items",
-  });
-
-  const products = area
-    ? allProducts.filter((p) => p.tags.includes(area))
-    : allProducts;
+  const products = (
+    !area || area === "may-rang"
+      ? await getCollectionProducts({ collection: "hidden-homepage-featured-items" })
+      : await getProducts({ tag: area })
+  ).slice(0, 3);
 
   if (!products.length) return null;
 
@@ -77,7 +76,7 @@ export async function FeaturedProducts({ area }: { area?: string }) {
 
         <div className="mt-10 text-center">
           <Link
-            href="/search"
+            href={area ? `/search?area=${area}` : "/search"}
             className="inline-block rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
           >
             Xem tất cả sản phẩm

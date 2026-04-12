@@ -6,7 +6,7 @@ export type SortFilterItem = {
 };
 
 export const defaultSort: SortFilterItem = {
-  title: "Relevance",
+  title: "Liên quan",
   slug: null,
   sortKey: "RELEVANCE",
   reverse: false,
@@ -15,25 +15,25 @@ export const defaultSort: SortFilterItem = {
 export const sorting: SortFilterItem[] = [
   defaultSort,
   {
-    title: "Trending",
+    title: "Phổ biến",
     slug: "trending-desc",
     sortKey: "BEST_SELLING",
     reverse: false,
-  }, // asc
+  },
   {
-    title: "Latest arrivals",
+    title: "Mới nhất",
     slug: "latest-desc",
     sortKey: "CREATED_AT",
     reverse: true,
   },
   {
-    title: "Price: Low to high",
+    title: "Giá tăng dần",
     slug: "price-asc",
     sortKey: "PRICE",
     reverse: false,
-  }, // asc
+  },
   {
-    title: "Price: High to low",
+    title: "Giá giảm dần",
     slug: "price-desc",
     sortKey: "PRICE",
     reverse: true,
@@ -41,7 +41,7 @@ export const sorting: SortFilterItem[] = [
 ];
 
 export const TAGS = {
-  collections: "collections",
+  collections: "Bộ sưu tập",
   products: "products",
   cart: "cart",
 };

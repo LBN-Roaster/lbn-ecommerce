@@ -7,17 +7,17 @@ import MobileMenu from "./mobile-menu";
 
 const mobileMenu = [
   { title: "Trang chủ", path: "/" },
-  { title: "Máy rang cà phê", path: "/search" },
-  { title: "Bếp công nghiệp", path: "/search" },
-  { title: "Nội thất", path: "/search" },
+  { title: "Máy rang cà phê", path: "/search?area=may-rang" },
+  { title: "Bếp công nghiệp", path: "/search?area=bep-cong-nghiep" },
+  { title: "Nội thất", path: "/search?area=noi-that" },
   { title: "Tin tức", path: "/news" },
   { title: "Liên hệ", path: "tel:+84865112161" },
 ];
 
 const productItems = [
-  { title: "Máy rang cà phê", path: "/search" },
-  { title: "Bếp công nghiệp", path: "/search" },
-  { title: "Nội thất gỗ – thép", path: "/search" },
+  { title: "Máy rang cà phê", path: "/search?area=may-rang" },
+  { title: "Bếp công nghiệp", path: "/search?area=bep-cong-nghiep" },
+  { title: "Nội thất gỗ – thép", path: "/search?area=noi-that" },
 ];
 
 function ProductDropdown() {
