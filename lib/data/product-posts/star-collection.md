@@ -6,17 +6,16 @@ availableForSale: true
 tags:
   - noi-that
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=1Ohv03q707PjlIzni54XM4vLId7FPafyO"
-  altText: "Star Collection"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163286/i25_05_13_0845_jg1xux.jpg"
 images:
-  - url: "https://drive.google.com/uc?export=view&id=1O-SRnGhB7VhE59AyqxLcjXeG2ZRNXtFl"
-  - url: "https://drive.google.com/uc?export=view&id=1d0MaguBjB1Wi3qmuJYayk8fhJ5CxCIEh"
-  - url: "https://drive.google.com/uc?export=view&id=1mrY1DmWU0jtdel8wU2Ppqj5tqDS1euKi"
-  # - url: "https://drive.google.com/uc?export=view&id=1R3M5_efM87Dco4NXrDrvlvX1o0wKGBtC"
-  # - url: "https://drive.google.com/uc?export=view&id=1HnGB8M6H6MWujZqVIUMR8uMhhZ3TXpV6"
-price: "7630000"
-minPrice: "7630000"
-maxPrice: "7630000"
+  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163283/i25_05_13_0842_dnyjqn.jpg"
+  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163280/i25_05_13_0843_hu4bw4.jpg"
+  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163281/i25_05_13_0844_gqyszf.jpg"
+  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163274/i25_05_13_0840_wt7cqe.jpg"
+  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163272/i25_05_13_0841_rh85jn.jpg"
+price: "0"
+minPrice: "0"
+maxPrice: "0"
 currencyCode: "VND"
 seoTitle: "Star Collection"
 seoDescription: "Bàn nội thất cao cấp, thiết kế hiện đại, sản xuất tại Việt Nam."
@@ -24,8 +23,7 @@ updatedAt: "2024-01-01T00:00:00Z"
 ---
 
 ### Giới Thiệu
-
-Nằm trong bộ sưu tập nội thất Star Collection
+Bàn Star
 
 ### Thông số kỹ thuật
 
