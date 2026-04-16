@@ -1,17 +1,30 @@
 import clsx from "clsx";
 import Price from "./price";
 
+function formatAmount(amount: string, currencyCode: string) {
+  return new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: currencyCode,
+    currencyDisplay: "narrowSymbol",
+  }).format(parseFloat(amount));
+}
+
 const Label = ({
   title,
   amount,
+  minAmount,
   currencyCode,
   position = "bottom",
 }: {
   title: string;
   amount: string;
+  minAmount?: string;
   currencyCode: string;
   position?: "bottom" | "center";
 }) => {
+  const hasRange =
+    minAmount && minAmount !== "0" && amount !== "0" && minAmount !== amount;
+
   return (
     <div
       className={clsx(
@@ -28,6 +41,11 @@ const Label = ({
         {amount === "0" ? (
           <span className="flex-none rounded-full bg-blue-600 p-2 text-white">
             Liên hệ
+          </span>
+        ) : hasRange ? (
+          <span className="flex-none rounded-full bg-blue-600 p-2 text-white">
+            {formatAmount(minAmount, currencyCode)} –{" "}
+            {formatAmount(amount, currencyCode)}
           </span>
         ) : (
           <Price

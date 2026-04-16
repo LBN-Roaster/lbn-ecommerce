@@ -15,7 +15,7 @@ images:
   - url: "https://drive.google.com/uc?export=view&id=1u7JK7_-8Fej_V55yvZ8gG6oqAq0QZF17"
   - url: "https://drive.google.com/uc?export=view&id=1ncKxkaSTG5fBEhWzCM1ou2qAT3V9DwGE"
 price: "10190000"
-minPrice: "10190000"
+minPrice: "8200000"
 maxPrice: "10190000"
 currencyCode: "VND"
 seoTitle: "Life Collection"

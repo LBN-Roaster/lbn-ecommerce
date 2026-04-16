@@ -4,14 +4,24 @@ import Price from "components/price";
 import type { ProductVariant } from "lib/types";
 import { useSearchParams } from "next/navigation";
 
+function formatAmount(amount: string, currencyCode: string) {
+  return new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: currencyCode,
+    currencyDisplay: "narrowSymbol",
+  }).format(parseFloat(amount));
+}
+
 export function VariantPrice({
   variants,
   currencyCode,
   fallbackAmount,
+  maxAmount,
 }: {
   variants: ProductVariant[];
   currencyCode: string;
   fallbackAmount?: string;
+  maxAmount?: string;
 }) {
   const searchParams = useSearchParams();
 
@@ -27,9 +37,21 @@ export function VariantPrice({
 
   if (!price || price === "0") return null;
 
+  const showRange =
+    !activeVariant &&
+    maxAmount &&
+    maxAmount !== "0" &&
+    maxAmount !== price;
+
   return (
     <div className="rounded-full bg-blue-600 p-2 text-sm text-white">
-      <Price amount={price} currencyCode={currency} />
+      {showRange ? (
+        <span>
+          {formatAmount(price, currency)} – {formatAmount(maxAmount, currency)}
+        </span>
+      ) : (
+        <Price amount={price} currencyCode={currency} />
+      )}
     </div>
   );
 }

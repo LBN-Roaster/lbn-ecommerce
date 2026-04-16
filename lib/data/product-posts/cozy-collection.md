@@ -15,8 +15,8 @@ images:
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161992/i25_09_03_1305_bdqkab.jpg"
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161980/i25_09_03_1306_rvifiz.jpg"
 
-minPrice: "0"
-maxPrice: "0"
+minPrice: "4600000"
+maxPrice: "5670000"
 currencyCode: "VND"
 seoTitle: "Cozy Collection"
 seoDescription: "Bàn và ghế nội thất cao cấp, thiết kế hiện đại, sản xuất tại Việt Nam."

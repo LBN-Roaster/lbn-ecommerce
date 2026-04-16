@@ -13,6 +13,7 @@ export function ProductDescription({ product }: { product: Product }) {
             variants={product.variants}
             currencyCode={product.priceRange.minVariantPrice.currencyCode}
             fallbackAmount={product.priceRange.minVariantPrice.amount}
+            maxAmount={product.priceRange.maxVariantPrice.amount}
           />
           <Link
             href="https://zalo.me/lbncompany"

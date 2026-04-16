@@ -16,8 +16,8 @@ images:
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163545/i25_05_06_0913_grwvwg.jpg"
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163540/i25_05_06_0914_kjodl5.jpg"
 
-minPrice: "0"
-maxPrice: "0"
+minPrice: "4700000"
+maxPrice: "5860000"
 currencyCode: "VND"
 seoTitle: "News Collection"
 seoDescription: "Bàn và ghế nội thất cao cấp, thiết kế hiện đại, sản xuất tại Việt Nam."

@@ -17,7 +17,6 @@ variants:
   - id: "v1"
     title: "Trắng Nâu"
     availableForSale: true
-    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -33,7 +32,6 @@ variants:
   - id: "v2"
     title: "Nâu sẫm"
     availableForSale: true
-    price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
@@ -46,8 +44,8 @@ variants:
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776318875/i24_09_24_0733_kknejo.png"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776318876/i24_09_24_0735_rnztc2.png"
 
-minPrice: "0"
-maxPrice: "0"
+minPrice: "4100000"
+maxPrice: "4100000"
 currencyCode: "VND"
 seoTitle: "Patio Collection"
 seoDescription: "Bàn và ghế nội thất cao cấp, thiết kế hiện đại, sản xuất tại Việt Nam."
@@ -56,6 +54,6 @@ updatedAt: "2024-01-01T00:00:00Z"
 
 ### Giới Thiệu
 
-Bộ sưu tập nội thất Patio Collection bao gồm bàn và ghế được thiết kế hiện đại, phù hợp cho không gian sống.
+Bộ sưu tập nội thất Patio Collection bao gồm 1 bàn và 2 ghế được thiết kế hiện đại, phù hợp cho không gian sống.
 
 <!-- split -->

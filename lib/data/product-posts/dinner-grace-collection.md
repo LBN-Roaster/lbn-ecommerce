@@ -16,8 +16,8 @@ images:
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163011/i25_09_03_1604_gthddv.jpg"
   - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163012/i25_09_03_1606_wo5zal.jpg"
 
-minPrice: "0"
-maxPrice: "0"
+minPrice: "4200000"
+maxPrice: "5230000"
 currencyCode: "VND"
 seoTitle: "Dinner Collection: Grace"
 seoDescription: "Bàn và ghế nội thất cao cấp, thiết kế hiện đại, sản xuất tại Việt Nam."
