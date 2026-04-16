@@ -9,11 +9,11 @@ featuredImage:
   url: "https://drive.google.com/uc?export=view&id=1fPfNB4-Evuuf6HAH0baqHNEULGU14Ila"
   altText: "Life Collection"
 images:
+  - url: "https://drive.google.com/uc?export=view&id=1fPfNB4-Evuuf6HAH0baqHNEULGU14Ila"
   - url: "https://drive.google.com/uc?export=view&id=182uhf3PYaDX85T_wk-4ASi4p0auC48I3"
   - url: "https://drive.google.com/uc?export=view&id=1FfqOcOw3df65pLSENcPDB5Sc2QXdLAXS"
   - url: "https://drive.google.com/uc?export=view&id=1u7JK7_-8Fej_V55yvZ8gG6oqAq0QZF17"
   - url: "https://drive.google.com/uc?export=view&id=1ncKxkaSTG5fBEhWzCM1ou2qAT3V9DwGE"
-  - url: "https://drive.google.com/uc?export=view&id=1fPfNB4-Evuuf6HAH0baqHNEULGU14Ila"
 price: "10190000"
 minPrice: "10190000"
 maxPrice: "10190000"
