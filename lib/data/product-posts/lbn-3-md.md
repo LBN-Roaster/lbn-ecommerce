@@ -12,10 +12,10 @@ options:
   - id: "o1"
     name: "Màu"
     values:
+      - "Xanh Nhăn"
       - "Trắng"
       - "Trắng Nâu"
       - "Xám Chì"
-      - "Xanh Nhăn"
 variants:
   - id: "v1"
     title: "Xanh Nhăn"
