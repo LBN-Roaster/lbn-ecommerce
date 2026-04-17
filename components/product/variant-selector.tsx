@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { getColor } from "lib/color-map";
 import type { ProductOption, ProductVariant } from "lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -99,25 +100,32 @@ export function VariantSelector({
               (searchParams.get(optionNameLowerCase) ?? option.values[0]) ===
               value;
 
+            const cssColor = getColor(value);
+            const isColorSwatch = !!cssColor;
+
             return (
               <button
                 formAction={() => updateOption(optionNameLowerCase, value)}
                 key={value}
                 aria-disabled={!isAvailableForSale}
                 disabled={!isAvailableForSale}
-                title={`${option.name} ${value}${!isAvailableForSale ? " (Out of Stock)" : ""}`}
+                title={value}
                 className={clsx(
-                  "flex min-w-[48px] items-center justify-center rounded-full border bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900",
+                  "flex items-center justify-center rounded-full border transition duration-300 ease-in-out",
+                  isColorSwatch
+                    ? "h-8 w-8"
+                    : "min-w-[48px] bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900",
                   {
                     "cursor-default ring-2 ring-blue-600": isActive,
-                    "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":
+                    "ring-1 ring-transparent hover:ring-blue-600":
                       !isActive && isAvailableForSale,
-                    "relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 dark:before:bg-neutral-700":
-                      !isAvailableForSale,
+                    "relative z-10 cursor-not-allowed overflow-hidden text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:text-neutral-400 dark:ring-neutral-700 dark:before:bg-neutral-700":
+                      !isAvailableForSale && !isColorSwatch,
                   },
                 )}
+                style={isColorSwatch ? { backgroundColor: cssColor } : undefined}
               >
-                {value}
+                {!isColorSwatch && value}
               </button>
             );
           })}

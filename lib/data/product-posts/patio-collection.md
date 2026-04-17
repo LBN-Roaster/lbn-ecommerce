@@ -12,7 +12,7 @@ options:
     name: "Màu"
     values:
       - "Nâu"
-      - "Nâu sẫm"
+      - "Nâu Sẫm"
 variants:
   - id: "v1"
     title: "Trắng Nâu"
@@ -35,7 +35,7 @@ variants:
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Nâu sẫm"
+        value: "Nâu Sẫm"
     images:
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776318874/i24_09_24_0730_tnqjof.png"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776318875/i24_09_24_0731_qsmkvg.png"
