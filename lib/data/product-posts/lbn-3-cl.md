@@ -6,28 +6,18 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=1tpZiLhK_FocgPg2lpo_Iyrz8XwW0eKWx"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398414/i26_04_04_1254_y3prlh.jpg"
   altText: "Máy Rang Cà Phê LBN 3KG"
 options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Trắng Nâu"
       - "Trắng"
+      - "Trắng Nâu"
       - "Xám Chì"
+      - "Xanh Nhăn"
 variants:
   - id: "v1"
-    title: "Trắng Nâu"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Trắng Nâu"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=1Q7Lcw1lQliWW5LfmZdvKmFqyTm6v5RgT"
-      - url: "https://drive.google.com/uc?export=view&id=1PSDryPipCa1Y-MmOv_AzvFvOp622wQTe"
-  - id: "v2"
     title: "Trắng"
     availableForSale: true
     price: "0"
@@ -36,20 +26,13 @@ variants:
       - name: "Màu"
         value: "Trắng"
     images:
-      - url: "https://drive.google.com/uc?export=view&id=1nJO6cfRNiXMPxFr52cm9ckU8hwrIOvGw"
-      - url: "https://drive.google.com/uc?export=view&id=1Cz4ypzjHlhIDIZ0HT-MwCgteVrPcp6IB"
-  - id: "v3"
-    title: "Xám Chì"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Xám Chì"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=1fAV_qxztbrw2jaivo0Z58udMjD1ia3Ve"
-      - url: "https://drive.google.com/uc?export=view&id=1uKUjjFwb8xIrlt3a37kUFCVI7xQbEYCR"
-      - url: "https://drive.google.com/uc?export=view&id=1OcgL7Oglk7VYJSPxGx17msY5ohwl98S8"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398402/i26_01_12_1544_pmdxhl.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398414/i26_01_12_1543_f2ghj8.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398412/i26_04_04_1255_hbgvwj.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398408/i26_01_12_1546_ii70ak.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398408/i26_01_12_1547_xjpsgi.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398406/i26_01_12_1545_bakzaf.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398408/i26_01_12_1542_kraedy.jpg"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
