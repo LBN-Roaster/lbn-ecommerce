@@ -1,7 +1,7 @@
 ---
 id: "LBN-CL-HR3.0-S"
 handle: "3-CL-roaster"
-title: "Máy Rang Cà Phê LBN Classic 3KG"
+title: "Máy Rang Cà Phê LBN CLASSIC 3KG"
 availableForSale: true
 tags:
   - may-rang
@@ -12,19 +12,21 @@ options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Trắng"
-      - "Trắng Nâu"
-      - "Xám Chì"
-      - "Xanh Nhăn"
+      - "Sand White"
+      - "White Brown"
+      - "Xingfa Grey"
+      - "Wrinkled Blue"
+      - "Charcoal Grey"
+      - "Dark Grey"
 variants:
   - id: "v1"
-    title: "Trắng"
+    title: "Sand White"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng"
+        value: "Sand White"
     images:
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398402/i26_01_12_1544_pmdxhl.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398414/i26_01_12_1543_f2ghj8.jpg"
@@ -36,7 +38,7 @@ variants:
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Classic 3KG"
+seoTitle: "Máy Rang Cà Phê LBN CLASSIC 3KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---

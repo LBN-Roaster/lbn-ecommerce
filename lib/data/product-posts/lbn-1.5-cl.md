@@ -1,7 +1,7 @@
 ---
 id: "LBN-CL-HR1.5-S"
 handle: "1.5-CL-roaster"
-title: "Máy Rang Cà Phê LBN Classic 1.5KG"
+title: "Máy Rang Cà Phê LBN CLASSIC 1.5KG"
 availableForSale: true
 tags:
   - may-rang
@@ -12,61 +12,63 @@ options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Trắng Nâu"
-      - "Trắng"
-      - "Xám Chì"
-      - "Xám Đen"
+      - "White Brown"
+      - "Sand White"
+      - "Xingfa Grey"
+      - "Charcoal Grey"
+      - "Wrinkled Blue"
+      - "Dark Grey"
 variants:
   - id: "v1"
-    title: "Trắng Nâu"
+    title: "White Brown"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng Nâu"
+        value: "White Brown"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1uMIOKKJK60M6wabEPP5vzDRSdVrR-cUT"
       - url: "https://drive.google.com/uc?export=view&id=1bjhoQ-u5tZtcNuUZEyeC5pxGs-zj0wCi"
       - url: "https://drive.google.com/uc?export=view&id=1ZBwlMJO-OWqit-aKJzdkH23j7WXptJSM"
   - id: "v2"
-    title: "Trắng"
+    title: "Sand White"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng"
+        value: "Sand White"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1VaVQDQYSfDBy9fF7FpfnHi6NMABvJHZC"
       - url: "https://drive.google.com/uc?export=view&id=1u45wy1MuTbX9KlbCrYpLSl5T8PdHvgPZ"
       - url: "https://drive.google.com/uc?export=view&id=1rAOcvLUilKTEcGqt-aY8yEcbF14TEYG1"
   - id: "v3"
-    title: "Xám Chì"
+    title: "Xingfa Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xám Chì"
+        value: "Xingfa Grey"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1bEChFpHHNsPZMKBpu-PMQwcHpmSBBMFh"
       - url: "https://drive.google.com/uc?export=view&id=1Lc4mIidtkRhIN-p7vTv7PdgZVr8AJt0Z"
   - id: "v4"
-    title: "Xám Đen"
+    title: "Charcoal Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xám Đen"
+        value: "Charcoal Grey"
     images:
       - url: "https://drive.google.com/uc?export=view&id=17vrJz5sf8HfSETAQ0yF9dVtfqPL15pj8"
       - url: "https://drive.google.com/uc?export=view&id=137Ye2dfqAMlSoLjxozYS1O9wY80lrCTS"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Classic 1.5KG"
+seoTitle: "Máy Rang Cà Phê LBN CLASSIC 1.5KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---

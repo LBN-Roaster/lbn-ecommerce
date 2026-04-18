@@ -1,7 +1,7 @@
 ---
 id: "LBN-MD-HR15-D"
 handle: "15-MD-roaster"
-title: "Máy Rang Cà Phê LBN Classic 15KG"
+title: "Máy Rang Cà Phê LBN CLASSIC 15KG"
 draft: true
 availableForSale: true
 tags:
@@ -17,40 +17,43 @@ options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Trắng Nâu"
-      - "Trắng"
-      - "Xám Chì"
+      - "White Brown"
+      - "Sand White"
+      - "Xingfa Grey"
+      - "Wrinkled Blue"
+      - "Charcoal Grey"
+      - "Dark Grey"
 variants:
   - id: "v1"
-    title: "Trắng Nâu"
+    title: "White Brown"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng Nâu"
+        value: "White Brown"
     # images:
       # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
       # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
   - id: "v2"
-    title: "Trắng"
+    title: "Sand White"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Trắng"
+        value: "Sand White"
     # images:
       # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
       # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
   - id: "v3"
-    title: "Xám Chì"
+    title: "Xingfa Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xám Chì"
+        value: "Xingfa Grey"
     # images:
       # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
       # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
@@ -58,7 +61,7 @@ variants:
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Classic 15KG"
+seoTitle: "Máy Rang Cà Phê LBN CLASSIC 15KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---

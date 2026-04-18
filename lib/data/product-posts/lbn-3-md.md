@@ -12,19 +12,21 @@ options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Xanh Nhăn"
-      - "Trắng"
-      - "Trắng Nâu"
-      - "Xám Chì"
+      - "Wrinkled Blue"
+      - "Sand White"
+      - "White Brown"
+      - "Xingfa Grey"
+      - "Charcoal Grey"
+      - "Dark Grey"
 variants:
   - id: "v1"
-    title: "Xanh Nhăn"
+    title: "Wrinkled Blue"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xanh Nhăn"
+        value: "Wrinkled Blue"
     images:
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398703/i26_03_23_1116_fydbf5.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398701/i26_03_23_1117_wpiwcw.jpg"

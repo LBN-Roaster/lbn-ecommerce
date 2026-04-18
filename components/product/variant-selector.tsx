@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { getColor } from "lib/color-map";
+import { colorToStyle, getColor } from "lib/color-map";
 import type { ProductOption, ProductVariant } from "lib/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -123,7 +123,7 @@ export function VariantSelector({
                       !isAvailableForSale && !isColorSwatch,
                   },
                 )}
-                style={isColorSwatch ? { backgroundColor: cssColor } : undefined}
+                style={isColorSwatch ? colorToStyle(cssColor) : undefined}
               >
                 {!isColorSwatch && value}
               </button>

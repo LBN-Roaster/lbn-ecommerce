@@ -5,7 +5,7 @@ export default function LogoSquare({ size }: { size?: "sm" | undefined }) {
 
   return (
     <Image
-      src="https://lbn.com.vn/wp-content/uploads/2025/07/logo-lbn-orgina-1l.png"
+      src="/images/logo-lbn.png"
       alt="LBN logo"
       width={dimension}
       height={dimension}

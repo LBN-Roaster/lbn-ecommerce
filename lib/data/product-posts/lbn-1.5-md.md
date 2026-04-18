@@ -1,7 +1,7 @@
 ---
 id: "LBN-MD-HR1.5-D"
 handle: "1.5-MD-roaster"
-title: "Máy Rang Cà Phê LBN Modern 1.5KG"
+title: "Máy Rang Cà Phê LBN MODERN 1.5KG"
 availableForSale: true
 tags:
   - may-rang
@@ -12,47 +12,50 @@ options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Xanh Nhăn"
-      - "Xám Chì"
-      - "Xám Đen"
+      - "Wrinkled Blue"
+      - "Xingfa Grey"
+      - "Charcoal Grey"
+      - "Sand White"
+      - "White Brown"
+      - "Dark Grey"
 variants:
   - id: "v1"
-    title: "Xanh Nhăn"
+    title: "Wrinkled Blue"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xanh Nhăn"
+        value: "Wrinkled Blue"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1in3jtWi4GXbVaKGDx95slK25ys2Ue-d-"
       - url: "https://drive.google.com/uc?export=view&id=19WrKxrs6TOOS6cSCgenjQaI_4lPgCgie"
   - id: "v2"
-    title: "Xám Chì"
+    title: "Xingfa Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xám Chì"
+        value: "Xingfa Grey"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1aIGgDELgeAXLX5FudIUfsb7IU5DFXccc"
       - url: "https://drive.google.com/uc?export=view&id=1drD3RwxfpVIg3IS02f5B70EQqBEPj1Ic"
   - id: "v3"
-    title: "Xám Đen"
+    title: "Charcoal Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
     selectedOptions:
       - name: "Màu"
-        value: "Xám Đen"
+        value: "Charcoal Grey"
     images:
       - url: "https://drive.google.com/uc?export=view&id=1OI_SEpEsoPwFKSdZwLkFKzk79REKy5d8"
       - url: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
-seoTitle: "Máy Rang Cà Phê LBN Modern 1.5KG"
+seoTitle: "Máy Rang Cà Phê LBN MODERN 1.5KG"
 seoDescription: "Máy rang cà phê chuyên nghiệp, điều khiển nhiệt độ chính xác, sản xuất tại Khánh Hòa."
 updatedAt: "2024-01-01T00:00:00Z"
 ---
