@@ -1,6 +1,6 @@
 ---
-id: "LBN-MD-HR15-D"
-handle: "15-MD-roaster"
+id: "LBN-CL-HR15-D"
+handle: "15-CL-roaster"
 title: "Máy Rang Cà Phê LBN CLASSIC 15KG"
 draft: true
 availableForSale: true

@@ -19,9 +19,11 @@ function FilterItemList({ list }: { list: ListItem[] }) {
 export default function FilterList({
   list,
   title,
+  defaultTitle,
 }: {
   list: ListItem[];
   title?: string;
+  defaultTitle?: string;
 }) {
   return (
     <>
@@ -38,7 +40,7 @@ export default function FilterList({
         </ul>
         <ul className="md:hidden">
           <Suspense fallback={null}>
-            <FilterItemDropdown list={list} />
+            <FilterItemDropdown list={list} defaultTitle={defaultTitle} />
           </Suspense>
         </ul>
       </nav>

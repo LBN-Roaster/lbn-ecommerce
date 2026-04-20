@@ -50,6 +50,7 @@ export type Collection = {
   seo: { title: string; description: string };
   updatedAt: string;
   path: string;
+  area?: string;
 };
 
 export type SortFilterItem = {

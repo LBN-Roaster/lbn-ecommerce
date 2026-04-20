@@ -2,11 +2,11 @@ import clsx from "clsx";
 import { Suspense } from "react";
 
 import { getCollections } from "lib/data/collections";
-import FilterList from "./filter";
+import CollectionListClient from "./collection-list-client";
 
 async function CollectionList() {
   const collections = await getCollections();
-  return <FilterList list={collections} title="Bộ sưu tập" />;
+  return <CollectionListClient collections={collections} />;
 }
 
 const skeleton = "mb-3 h-4 w-5/6 animate-pulse rounded-sm";

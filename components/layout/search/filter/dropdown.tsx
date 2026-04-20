@@ -7,10 +7,16 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import type { ListItem } from ".";
 import { FilterItem } from "./item";
 
-export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
+export default function FilterItemDropdown({
+  list,
+  defaultTitle,
+}: {
+  list: ListItem[];
+  defaultTitle?: string;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState(defaultTitle ?? "");
   const [openSelect, setOpenSelect] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -26,15 +32,18 @@ export default function FilterItemDropdown({ list }: { list: ListItem[] }) {
   }, []);
 
   useEffect(() => {
+    let matched = false;
     list.forEach((listItem: ListItem) => {
       if (
         ("path" in listItem && pathname === listItem.path) ||
         ("slug" in listItem && searchParams.get("sort") === listItem.slug)
       ) {
         setActive(listItem.title);
+        matched = true;
       }
     });
-  }, [pathname, list, searchParams]);
+    if (!matched && defaultTitle) setActive(defaultTitle);
+  }, [pathname, list, searchParams, defaultTitle]);
 
   return (
     <div className="relative" ref={ref}>
