@@ -7,7 +7,7 @@ import MobileMenu from "./mobile-menu";
 
 const mobileMenu = [
   { title: "Trang chủ", path: "/" },
-  { title: "Máy rang cà phê", path: "/search?area=may-rang" },
+  { title: "Máy rang cà phê", path: "/search/may-rang-ca-phe" },
   { title: "Nội thất", path: "/search?area=noi-that" },
   { title: "Bếp công nghiệp", path: "/search?area=bep-cong-nghiep" },
   { title: "Tin tức", path: "/news" },
@@ -15,7 +15,7 @@ const mobileMenu = [
 ];
 
 const productItems = [
-  { title: "Máy rang cà phê", path: "/search?area=may-rang" },
+  { title: "Máy rang cà phê", path: "/search/may-rang-ca-phe" },
   { title: "Nội thất gỗ – thép", path: "/search?area=noi-that" },
   { title: "Bếp công nghiệp", path: "/search?area=bep-cong-nghiep" },
 ];
