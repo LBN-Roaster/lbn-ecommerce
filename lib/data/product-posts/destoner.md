@@ -6,55 +6,44 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png"
-  altText: "Máy Tách Đá"
-  width: 800
-  height: 800
-images:
-  - url: "https://lbn.com.vn/wp-content/uploads/2025/06/i25_07_27_1641-scaled.png"
-    altText: "Máy Tách Đá"
-    width: 800
-    height: 800
-  - url: "https://drive.google.com/uc?export=view&id=1VTh2kcHqZMQ0xvos8j8FF8LA_dZANsdf"
-    altText: "Máy Tách Đá - góc 2"
-    width: 800
-    height: 800
-  - url: "https://drive.google.com/uc?export=view&id=1CL0ejUdea-AE0hiQT0qDUGit5awh9cP5"
-    altText: "Máy Tách Đá - góc 3"
-    width: 800
-    height: 800
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776665103/i26_01_09_0853_fj4zov.png"
 options:
   - id: "o1"
-    name: "Công Suất"
+    name: "Màu"
     values:
-      - "6-20KG"
-      - "30KG"
-      - "60KG"
+      - "Wrinkled Blue"
+      - "Dark Grey"
+      - "Sand White"
+      - "White Brown"
+      - "Xingfa Grey"
+      - "Charcoal Grey"
 variants:
+  - id: "v1"
+    title: "Wrinkled Blue"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776665105/i26_01_09_0850_vodocm.png"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776665105/i26_01_09_0848_wqlzct.png"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776665103/i26_01_09_0851_qemtcr.png"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776665103/i26_01_09_0857_ebp1qt.png"
+    selectedOptions:
+      - name: "Màu"
+        value: "Wrinkled Blue"
+
   - id: "v2"
-    title: "6-20KG"
+    title: "Dark Grey"
     availableForSale: true
     price: "0"
     currencyCode: "VND"
+    images:
+      - url: "https://drive.google.com/uc?export=view&id=1VTh2kcHqZMQ0xvos8j8FF8LA_dZANsdf"
+      - url: "https://drive.google.com/uc?export=view&id=1CL0ejUdea-AE0hiQT0qDUGit5awh9cP5"
     selectedOptions:
-      - name: "Công Suất"
-        value: "6-20KG"
-  - id: "v2"
-    title: "30KG"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Công Suất"
-        value: "30KG"
-  - id: "v3"
-    title: "60KG"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Công Suất"
-        value: "60KG"
+      - name: "Màu"
+        value: "Dark Grey"
+
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"

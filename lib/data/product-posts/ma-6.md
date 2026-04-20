@@ -30,7 +30,6 @@ variants:
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664613/IMG_0382_mjqsrj.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0384_cewjki.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0391_psgggu.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663789/i26_03_13_1037_oymfz4.png"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663795/i26_03_13_1337_aishqy.png"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0411_yysnlm.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664613/IMG_0397_tgndmw.jpg"
