@@ -6,8 +6,16 @@ import path from "path";
 
 const productsDir = path.join(process.cwd(), "lib/data/product-posts");
 
+function getMdFiles(dir: string): string[] {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) return getMdFiles(full);
+    return entry.name.endsWith(".md") ? [full] : [];
+  });
+}
+
 function readProduct(filename: string): Product {
-  const raw = fs.readFileSync(path.join(productsDir, filename), "utf-8");
+  const raw = fs.readFileSync(filename, "utf-8");
   const { data, content } = matter(raw);
 
   const SPLIT_MARKER = "<!-- split -->";
@@ -78,11 +86,9 @@ function readProduct(filename: string): Product {
   };
 }
 
-export const products: Product[] = fs
-  .readdirSync(productsDir)
-  .filter((f) => f.endsWith(".md"))
+export const products: Product[] = getMdFiles(productsDir)
   .filter((f) => {
-    const raw = fs.readFileSync(path.join(productsDir, f), "utf-8");
+    const raw = fs.readFileSync(f, "utf-8");
     const { data } = matter(raw);
     return !data.draft;
   })

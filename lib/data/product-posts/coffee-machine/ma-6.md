@@ -1,7 +1,7 @@
 ---
 id: "MA-HR6.0-BT"
 handle: "MA-HR6.0-BT"
-title: "Máy Rang Cà Phê MAROSA 3KG"
+title: "Máy Rang Cà Phê MAROSA 6KG"
 availableForSale: true
 tags:
   - may-rang
