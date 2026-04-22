@@ -1,7 +1,7 @@
 ---
 id: "donghai-kitchen"
 handle: "donghai-kitchen"
-title: "Bếp Đông Hải"
+title: "Bếp ĐÔNG HẢI"
 availableForSale: false
 tags:
   - bep-cong-nghiep
