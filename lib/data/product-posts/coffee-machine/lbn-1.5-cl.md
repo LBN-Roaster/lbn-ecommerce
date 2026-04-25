@@ -6,18 +6,18 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1775609422/download_m6tluz.jpg"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0902_lejhxm.jpg"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
     name: "Màu"
     values:
       - "White Brown"
-      - "Sand White"
+      - "Dark Grey"
+      - "Wrinkled Blue"
       - "Xingfa Grey"
       - "Charcoal Grey"
-      - "Wrinkled Blue"
-      - "Dark Grey"
+      - "Sand White"
 variants:
   - id: "v1"
     title: "White Brown"
@@ -28,10 +28,73 @@ variants:
       - name: "Màu"
         value: "White Brown"
     images:
-      - url: "https://drive.google.com/uc?export=view&id=1uMIOKKJK60M6wabEPP5vzDRSdVrR-cUT"
-      - url: "https://drive.google.com/uc?export=view&id=1bjhoQ-u5tZtcNuUZEyeC5pxGs-zj0wCi"
-      - url: "https://drive.google.com/uc?export=view&id=1ZBwlMJO-OWqit-aKJzdkH23j7WXptJSM"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0900_we9gh2.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1775609422/download_m6tluz.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0904_jdekyy.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0903_f7en81.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0901_tvvvz6.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0906_peoh5c.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0905_jwxre2.jpg"
   - id: "v2"
+    title: "Dark Grey"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Dark Grey"
+    images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1000_qsllnu.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1002_ppuqpu.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1006_hkfljl.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1005_hbgkpy.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160802/i26_01_14_1004_orp8aw.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1003_xg7zam.jpg"
+  - id: "v3"
+    title: "Wrinkled Blue"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Wrinkled Blue"
+    images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160930/i25_09_09_1500_ucxvia.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160931/i25_09_09_1506_gce7hc.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160931/i25_09_09_1501_jgkblz.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160932/i25_09_09_1502_a3ha6r.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160932/i25_09_09_1503_rytg9s.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160931/i25_09_09_1505_tsby1s.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160930/i25_09_09_1504_zz10m5.jpg"
+  - id: "v4"
+    title: "Xingfa Grey"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Xingfa Grey"
+    images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160753/i26_04_04_1253_xeeg8k.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160755/i26_04_04_1256_rwceqe.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160754/i26_04_04_1257_ryn6ju.jpg"
+  - id: "v5"
+    title: "Charcoal Grey"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Charcoal Grey"
+    images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160647/i25_09_22_0920_mqxol1.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160648/i25_09_22_0925_nsv7rw.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160648/i25_09_22_0926_zapvg6.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160647/i25_09_22_0922_a4gsyw.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160648/i25_09_22_0928_wkhczx.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160647/i25_09_22_0924_c6vmpn.jpg"
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160647/i25_09_22_0923_d3djid.jpg"
+  - id: "v6"
     title: "Sand White"
     availableForSale: true
     price: "0"
@@ -43,28 +106,6 @@ variants:
       - url: "https://drive.google.com/uc?export=view&id=1VaVQDQYSfDBy9fF7FpfnHi6NMABvJHZC"
       - url: "https://drive.google.com/uc?export=view&id=1u45wy1MuTbX9KlbCrYpLSl5T8PdHvgPZ"
       - url: "https://drive.google.com/uc?export=view&id=1rAOcvLUilKTEcGqt-aY8yEcbF14TEYG1"
-  - id: "v3"
-    title: "Xingfa Grey"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Xingfa Grey"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=1bEChFpHHNsPZMKBpu-PMQwcHpmSBBMFh"
-      - url: "https://drive.google.com/uc?export=view&id=1Lc4mIidtkRhIN-p7vTv7PdgZVr8AJt0Z"
-  - id: "v4"
-    title: "Charcoal Grey"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Charcoal Grey"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=17vrJz5sf8HfSETAQ0yF9dVtfqPL15pj8"
-      - url: "https://drive.google.com/uc?export=view&id=137Ye2dfqAMlSoLjxozYS1O9wY80lrCTS"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
