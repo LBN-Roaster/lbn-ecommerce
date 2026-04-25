@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0902_lejhxm.jpg"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0900_we9gh2.jpg"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
@@ -28,6 +28,7 @@ variants:
       - name: "Màu"
         value: "White Brown"
     images:
+      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0902_lejhxm.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0900_we9gh2.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1775609422/download_m6tluz.jpg"
       - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0904_jdekyy.jpg"
