@@ -7,7 +7,7 @@ tags:
   - may-rang
 
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428610/i26_01_09_1240_klqw5a.jpg"
+  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0832_xz8lgo.jpg"
   altText: "Máy Rang Cà Phê LBN 30KG"
 
 options:
@@ -136,14 +136,3 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 - Thân máy thép sơn tĩnh điện, có lớp bảo ôn cách nhiệt
 - Phễu nạp, mâm làm nguội, lớp vỏ bọc bảo ôn cách nhiệt và các linh kiện khác bằng inox
 - Kính quan sát hạt cà phê và quan sát lửa được sử dụng bằng kính chịu nhiệt độ cao
-
-### Máy Cấp Liệu LBN-CL30
-
-| Thông số           | Giá trị             |
-| ------------------ | ------------------- |
-| Công suất          | 30 kg/mẻ            |
-| Thời gian cấp liệu | 4 – 6 phút/mẻ       |
-| Kích thước (DxR)   | ≈ 840 x 603 mm      |
-| Công suất quạt     | 2.2 KW – Trung Quốc |
-| Phễu nạp liệu      | Inox 304            |
-| Ống thổi liệu      | Thép sơn tĩnh điện  |

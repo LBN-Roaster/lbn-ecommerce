@@ -23,10 +23,12 @@ const collections: CollectionDef[] = [
     productHandles: [
       "1.5-CL-roaster",
       "1.5-MD-roaster",
-      "15-MD-roaster",
       "3-CL-roaster",
       "3-MD-roaster",
       "6-CL-roaster",
+      "15-CL-roaster",
+      "15-MD-roaster",
+      "30-CL-roaster",
       "MA-HR3.0-BT",
       "MA-HR6.0-BT",
     ],
