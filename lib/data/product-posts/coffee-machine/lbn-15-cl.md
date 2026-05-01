@@ -33,8 +33,8 @@ variants:
       - name: "Màu"
         value: "White Brown"
     # images:
-      # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
-      # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
+    # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
+    # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
   - id: "v2"
     title: "Sand White"
     availableForSale: true
@@ -44,8 +44,8 @@ variants:
       - name: "Màu"
         value: "Sand White"
     # images:
-      # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
-      # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
+    # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
+    # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
   - id: "v3"
     title: "Xingfa Grey"
     availableForSale: true
@@ -55,9 +55,9 @@ variants:
       - name: "Màu"
         value: "Xingfa Grey"
     # images:
-      # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
-      # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
-      # - url: "https://drive.google.com/uc?export=view&id=16__xfjXW6MasrOPWuDvFP1RT7g-aM5k7"
+    # - url: "https://drive.google.com/uc?export=view&id=1X7xuEs3-4qjt9caYO29qbZNhed2A-ruy"
+    # - url: "https://drive.google.com/uc?export=view&id=1Qpl2m6MujKY7RN5T9qSTz2BBe9F7r83Y"
+    # - url: "https://drive.google.com/uc?export=view&id=16__xfjXW6MasrOPWuDvFP1RT7g-aM5k7"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"

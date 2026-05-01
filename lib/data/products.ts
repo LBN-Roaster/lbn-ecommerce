@@ -20,15 +20,23 @@ function readProduct(filename: string): Product {
 
   const SPLIT_MARKER = "<!-- split -->";
   const splitIndex = content.indexOf(SPLIT_MARKER);
-  const introPart = splitIndex !== -1 ? content.slice(0, splitIndex).trim() : "";
-  const detailsPart = splitIndex !== -1 ? content.slice(splitIndex + SPLIT_MARKER.length).trim() : content.trim();
+  const introPart =
+    splitIndex !== -1 ? content.slice(0, splitIndex).trim() : "";
+  const detailsPart =
+    splitIndex !== -1
+      ? content.slice(splitIndex + SPLIT_MARKER.length).trim()
+      : content.trim();
 
   return {
     id: data.id,
     handle: data.handle,
     title: data.title,
     availableForSale: data.availableForSale ?? true,
-    description: content.trim().split("\n")[0]?.replace(/^#+\s*/, "") ?? "",
+    description:
+      content
+        .trim()
+        .split("\n")[0]
+        ?.replace(/^#+\s*/, "") ?? "",
     introHtml: introPart ? (marked(introPart) as string) : "",
     descriptionHtml: marked(detailsPart) as string,
     tags: data.tags ?? [],
@@ -41,7 +49,12 @@ function readProduct(filename: string): Product {
         price: string;
         currencyCode: string;
         selectedOptions: { name: string; value: string }[];
-        images?: { url: string; altText?: string; width?: number; height?: number }[];
+        images?: {
+          url: string;
+          altText?: string;
+          width?: number;
+          height?: number;
+        }[];
       }) => ({
         id: v.id,
         title: v.title,
@@ -62,12 +75,19 @@ function readProduct(filename: string): Product {
       width: data.featuredImage?.width ?? 800,
       height: data.featuredImage?.height ?? 800,
     },
-    images: (data.images ?? []).map((img: { url: string; altText?: string; width?: number; height?: number }) => ({
-      url: img.url,
-      altText: img.altText ?? "",
-      width: img.width ?? 800,
-      height: img.height ?? 800,
-    })),
+    images: (data.images ?? []).map(
+      (img: {
+        url: string;
+        altText?: string;
+        width?: number;
+        height?: number;
+      }) => ({
+        url: img.url,
+        altText: img.altText ?? "",
+        width: img.width ?? 800,
+        height: img.height ?? 800,
+      }),
+    ),
     priceRange: {
       minVariantPrice: {
         amount: data.minPrice,

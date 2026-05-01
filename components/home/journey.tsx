@@ -43,7 +43,7 @@ const content: Record<
 
 export function JourneySection({ area }: { area?: string }) {
   const key = area && content[area] ? area : "may-rang";
-  const c = content[key] ?? content["may-rang"]!
+  const c = content[key] ?? content["may-rang"]!;
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">

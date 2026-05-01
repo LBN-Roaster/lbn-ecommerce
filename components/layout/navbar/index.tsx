@@ -38,7 +38,11 @@ function ProductDropdown() {
           strokeWidth={2.5}
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19 9-7 7-7-7"
+          />
         </svg>
       </button>
 
@@ -104,7 +108,7 @@ export function Navbar() {
           href="tel:+84865112161"
           className="hidden rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 md:block"
         >
-          (+84) 903596900 
+          (+84) 903596900
         </a>
       </div>
     </nav>

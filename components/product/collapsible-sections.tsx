@@ -22,13 +22,7 @@ function parseHtmlSections(html: string): { title: string; content: string }[] {
   return sections;
 }
 
-function AccordionItem({
-  title,
-  content,
-}: {
-  title: string;
-  content: string;
-}) {
+function AccordionItem({ title, content }: { title: string; content: string }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -64,7 +58,11 @@ export function CollapsibleSections({ html }: { html: string }) {
   return (
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
       {sections.map((section) => (
-        <AccordionItem key={section.title} title={section.title} content={section.content} />
+        <AccordionItem
+          key={section.title}
+          title={section.title}
+          content={section.content}
+        />
       ))}
     </div>
   );

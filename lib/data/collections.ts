@@ -16,7 +16,10 @@ const collections: CollectionDef[] = [
     handle: "may-rang-ca-phe",
     title: "Máy rang cà phê",
     description: "Các dòng máy rang cà phê chuyên nghiệp",
-    seo: { title: "Máy rang cà phê", description: "Các dòng máy rang cà phê chuyên nghiệp" },
+    seo: {
+      title: "Máy rang cà phê",
+      description: "Các dòng máy rang cà phê chuyên nghiệp",
+    },
     updatedAt: "2024-01-01T00:00:00Z",
     path: "/search/may-rang-ca-phe",
     area: "may-rang",
@@ -37,7 +40,10 @@ const collections: CollectionDef[] = [
     handle: "may-va-dung-cu-lien-quan",
     title: "Máy & dụng cụ liên quan",
     description: "Các máy và dụng cụ hỗ trợ rang cà phê",
-    seo: { title: "Máy & dụng cụ liên quan", description: "Các máy và dụng cụ hỗ trợ rang cà phê" },
+    seo: {
+      title: "Máy & dụng cụ liên quan",
+      description: "Các máy và dụng cụ hỗ trợ rang cà phê",
+    },
     updatedAt: "2024-01-01T00:00:00Z",
     path: "/search/may-va-dung-cu-lien-quan",
     area: "may-rang",

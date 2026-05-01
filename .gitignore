@@ -39,3 +39,12 @@ next-env.d.ts
 .env*.local
 ScreenShot*
 Screenshot*
+
+.claude
+_design/
+prd/*
+
+# sensitive data & internal docs
+data/sales.json
+ideas.md
+plan.md

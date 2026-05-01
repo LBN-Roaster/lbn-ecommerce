@@ -14,7 +14,9 @@ function formatPrice(amount: string, currencyCode: string) {
 export async function FeaturedProducts({ area }: { area?: string }) {
   const products = (
     !area || area === "may-rang"
-      ? await getCollectionProducts({ collection: "hidden-homepage-featured-items" })
+      ? await getCollectionProducts({
+          collection: "hidden-homepage-featured-items",
+        })
       : await getProducts({ tag: area })
   ).slice(0, 3);
 

@@ -56,8 +56,8 @@ export default async function Footer() {
             {/* <span className="font-semibold uppercase">{SITE_NAME}</span> */}
           </Link>
           <p className="max-w-xs text-neutral-500 dark:text-neutral-400">
-            Công ty Cổ phần Sản xuất – Thương mại – Dịch vụ LBN.
-            Chuyên sản xuất máy rang cà phê và thiết bị công nghiệp tại Khánh Hòa.
+            Công ty Cổ phần Sản xuất – Thương mại – Dịch vụ LBN. Chuyên sản xuất
+            máy rang cà phê và thiết bị công nghiệp tại Khánh Hòa.
           </p>
           <div className="flex gap-3">
             {socialLinks.map((s) => (
@@ -97,7 +97,7 @@ export default async function Footer() {
             href="tel:+84865112161"
             className="hover:text-black dark:hover:text-white"
           >
-            (+84) 903596900 
+            (+84) 903596900
           </a>
           <a
             href="mailto:info@lbn.com.vn"

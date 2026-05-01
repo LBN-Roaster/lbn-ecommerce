@@ -40,7 +40,7 @@ export const COLOR_MAP: Record<string, ColorValue> = {
   // Roaster colors
   "Wrinkled Blue": "#121469",
   "Sand White": "#F3F3F3",
-  "White Brown":  ["#ffffff", "#8b5e3c"],
+  "White Brown": ["#ffffff", "#8b5e3c"],
   "Xingfa Grey": "#5B5B5B",
   "Charcoal Grey": "#6E6D6A",
   "Dark Grey": "#2E2E2E",
@@ -52,7 +52,10 @@ export function getColor(name: string): ColorValue | undefined {
 }
 
 /** Returns the CSS background style for a color value. */
-export function colorToStyle(color: ColorValue): { background?: string; backgroundColor?: string } {
+export function colorToStyle(color: ColorValue): {
+  background?: string;
+  backgroundColor?: string;
+} {
   if (Array.isArray(color)) {
     return {
       background: `linear-gradient(135deg, ${color[0]} 50%, ${color[1]} 50%)`,

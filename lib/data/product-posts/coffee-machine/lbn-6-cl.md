@@ -92,21 +92,21 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 ### Thông số kỹ thuật
 
-| Thông số            | Giá trị                                               |
-| ------------------- | ----------------------------------------------------- |
-| Khối lượng rang     | 6 kg/mẻ                                               |
-| Thời gian rang      | 10 – 20 phút/mẻ                                       |
-| Năng suất           | 18 – 36 kg/h                                          |
-| Kích thước (DxRxC)  | ≈ 2034 x 1258 x 2128 mm                               |
-| Trọng lượng         | ~ 485 kg                                              |
-| Chế độ điều khiển   | Tự động / Thủ công                                    |
-| Loại gas            | LPG / LNG / Tự nhiên                                  |
-| Công suất điện      | 1.56 KW – 1 phase 220V 50/60Hz                        |
-| Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…)  |
-| Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                 |
-| Kết nối             | Không dây, tương thích phần mềm Artisan               |
-| Thời gian làm nguội | < 5 phút                                              |
-| Hệ thống lọc        | Cyclone + Airlock tự động xả vỏ trấu                  |
+| Thông số            | Giá trị                                              |
+| ------------------- | ---------------------------------------------------- |
+| Khối lượng rang     | 6 kg/mẻ                                              |
+| Thời gian rang      | 10 – 20 phút/mẻ                                      |
+| Năng suất           | 18 – 36 kg/h                                         |
+| Kích thước (DxRxC)  | ≈ 2034 x 1258 x 2128 mm                              |
+| Trọng lượng         | ~ 485 kg                                             |
+| Chế độ điều khiển   | Tự động / Thủ công                                   |
+| Loại gas            | LPG / LNG / Tự nhiên                                 |
+| Công suất điện      | 1.56 KW – 1 phase 220V 50/60Hz                       |
+| Chương trình rang   | Lưu 20 profile (nhiệt độ, tốc độ trống, tốc độ gió…) |
+| Tự động hoàn toàn   | Option: chạy 100% theo profile đã lưu                |
+| Kết nối             | Không dây, tương thích phần mềm Artisan              |
+| Thời gian làm nguội | < 5 phút                                             |
+| Hệ thống lọc        | Cyclone + Airlock tự động xả vỏ trấu                 |
 
 ### Linh kiện điều khiển & điện
 

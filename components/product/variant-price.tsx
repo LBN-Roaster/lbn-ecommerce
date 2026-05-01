@@ -27,21 +27,18 @@ export function VariantPrice({
 
   const activeVariant = variants.find((variant) =>
     variant.selectedOptions.every(
-      (option) =>
-        searchParams.get(option.name.toLowerCase()) === option.value,
+      (option) => searchParams.get(option.name.toLowerCase()) === option.value,
     ),
   );
 
-  const price = activeVariant?.price.amount ?? variants[0]?.price.amount ?? fallbackAmount;
+  const price =
+    activeVariant?.price.amount ?? variants[0]?.price.amount ?? fallbackAmount;
   const currency = activeVariant?.price.currencyCode ?? currencyCode;
 
   if (!price || price === "0") return null;
 
   const showRange =
-    !activeVariant &&
-    maxAmount &&
-    maxAmount !== "0" &&
-    maxAmount !== price;
+    !activeVariant && maxAmount && maxAmount !== "0" && maxAmount !== price;
 
   return (
     <div className="rounded-full bg-blue-600 p-2 text-sm text-white">

@@ -34,6 +34,10 @@ export default function CollectionListClient({
   if (filtered.length === 0) return null;
 
   return (
-    <FilterList list={filtered} title="Bộ sưu tập" defaultTitle={defaultTitle} />
+    <FilterList
+      list={filtered}
+      title="Bộ sưu tập"
+      defaultTitle={defaultTitle}
+    />
   );
 }

@@ -32,13 +32,12 @@ export function Gallery({
         )
       : variants[0];
 
-  const images =
-    matchingVariant?.images?.length
-      ? matchingVariant.images.map((img) => ({
-          src: img.url,
-          altText: img.altText,
-        }))
-      : productImages;
+  const images = matchingVariant?.images?.length
+    ? matchingVariant.images.map((img) => ({
+        src: img.url,
+        altText: img.altText,
+      }))
+    : productImages;
 
   const imageIndex = searchParams.has("image")
     ? Math.min(parseInt(searchParams.get("image")!), images.length - 1)
