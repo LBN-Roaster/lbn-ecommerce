@@ -1,7 +1,9 @@
-import salesData from "@/data/sales.json";
+import { get } from "@vercel/edge-config";
 import type { LocationEntry, MonthBucket, Sale, Totals } from "./types";
 
-const SALES = salesData as Sale[];
+async function loadSales(): Promise<Sale[]> {
+  return (((await get("data")) ?? []) as Sale[]);
+}
 
 function ymKey(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
@@ -11,14 +13,16 @@ function locationKey(loc: { lat: number; lng: number }): string {
   return `${loc.lat.toFixed(4)},${loc.lng.toFixed(4)}`;
 }
 
-export function getSales(sales: Sale[] = SALES): Sale[] {
-  return [...sales].sort((a, b) => (a.date < b.date ? 1 : -1));
+export async function getSales(sales?: Sale[]): Promise<Sale[]> {
+  const data = sales ?? (await loadSales());
+  return [...data].sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function getTotals(
-  sales: Sale[] = SALES,
+export async function getTotals(
+  sales?: Sale[],
   now: Date = new Date(),
-): Totals {
+): Promise<Totals> {
+  const data = sales ?? (await loadSales());
   const ymNow = ymKey(now);
   const ymLast = ymKey(new Date(now.getFullYear(), now.getMonth() - 1, 1));
 
@@ -29,7 +33,7 @@ export function getTotals(
   let lastMonthRevenue = 0;
   let lastMonthUnits = 0;
 
-  for (const s of sales) {
+  for (const s of data) {
     allRevenue += s.price;
     allUnits += 1;
     const ym = s.date.slice(0, 7);
@@ -52,11 +56,12 @@ export function getTotals(
   };
 }
 
-export function getSalesByMonth(
+export async function getSalesByMonth(
   window = 12,
-  sales: Sale[] = SALES,
+  sales?: Sale[],
   now: Date = new Date(),
-): MonthBucket[] {
+): Promise<MonthBucket[]> {
+  const data = sales ?? (await loadSales());
   const buckets: MonthBucket[] = [];
   const index = new Map<string, MonthBucket>();
   for (let i = window - 1; i >= 0; i--) {
@@ -70,7 +75,7 @@ export function getSalesByMonth(
     buckets.push(bucket);
     index.set(bucket.ym, bucket);
   }
-  for (const s of sales) {
+  for (const s of data) {
     const bucket = index.get(s.date.slice(0, 7));
     if (bucket) {
       bucket.revenue += s.price;
@@ -80,9 +85,12 @@ export function getSalesByMonth(
   return buckets;
 }
 
-export function getSalesByLocation(sales: Sale[] = SALES): LocationEntry[] {
+export async function getSalesByLocation(
+  sales?: Sale[],
+): Promise<LocationEntry[]> {
+  const data = sales ?? (await loadSales());
   const map = new Map<string, LocationEntry>();
-  for (const s of sales) {
+  for (const s of data) {
     const key = locationKey(s.location);
     let entry = map.get(key);
     if (!entry) {

@@ -1,8 +1,8 @@
 import { RecentSalesTable } from "components/admin/recent-sales-table";
 import { getSales } from "lib/sales";
 
-export default function AdminSalesPage() {
-  const sales = getSales();
+export default async function AdminSalesPage() {
+  const sales = await getSales();
   return (
     <div className="page">
       <div className="page-head">

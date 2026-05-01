@@ -16,10 +16,10 @@ function deltaPct(current: number, previous: number): number | null {
 
 const RECENT_LIMIT = 8;
 
-export default function AdminOverviewPage() {
-  const sales = getSales();
-  const totals = getTotals();
-  const monthly = getSalesByMonth(12);
+export default async function AdminOverviewPage() {
+  const sales = await getSales();
+  const totals = await getTotals();
+  const monthly = await getSalesByMonth(12);
 
   const chartData = monthly.map((m) => ({
     ym: m.ym,
