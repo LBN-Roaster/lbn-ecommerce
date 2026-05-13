@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0900_we9gh2.jpg"
+  url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
@@ -28,14 +28,11 @@ variants:
       - name: "Màu"
         value: "White Brown"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0900_we9gh2.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0902_lejhxm.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1775609422/download_m6tluz.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0904_jdekyy.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0903_f7en81.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160521/i26_03_06_0901_tvvvz6.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0906_peoh5c.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160522/i26_03_06_0905_jwxre2.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0901.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0902.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0903.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0904.jpg"
   - id: "v2"
     title: "Dark Grey"
     availableForSale: true
@@ -45,12 +42,9 @@ variants:
       - name: "Màu"
         value: "Dark Grey"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1000_qsllnu.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1002_ppuqpu.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1006_hkfljl.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1005_hbgkpy.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160802/i26_01_14_1004_orp8aw.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777160803/i26_01_14_1003_xg7zam.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1000.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1001.jpg"
+      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1002.jpg"
   - id: "v3"
     title: "Wrinkled Blue"
     availableForSale: true

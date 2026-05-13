@@ -20,6 +20,11 @@ export default {
         hostname: "res.cloudinary.com",
         pathname: "/ddguya7ph/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+        pathname: "/**",
+      },
     ],
   },
 };
