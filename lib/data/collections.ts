@@ -29,6 +29,7 @@ const collections: CollectionDef[] = [
       "3-CL-roaster",
       "3-MD-roaster",
       "6-CL-roaster",
+      "6-MD-roaster",
       "15-CL-roaster",
       "15-MD-roaster",
       "30-CL-roaster",

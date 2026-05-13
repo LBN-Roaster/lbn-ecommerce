@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663794/i26_03_13_1342_ekqrjl.png"
+  url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1342.png"
 options:
   - id: "o1"
     name: "Màu"
@@ -27,14 +27,15 @@ variants:
       - name: "Màu"
         value: "Xingfa Grey"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663790/i26_03_13_1049_cpwwee.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663789/i26_03_13_1104_wh5xgs.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663787/i26_03_13_1033_wsh51a.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663789/i26_03_13_1037_oymfz4.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663795/i26_03_13_1337_aishqy.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663794/i26_03_13_1338_ljqwet.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663792/i26_03_13_1105_dqttvq.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663791/i26_03_13_1336_wqle78.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1033.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1037.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1041.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1049.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1104.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1336.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1337.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1338.png"
+      - url: "/images/machine/MAROSA/3.0 KG/XÁM CHÌ/i26_03_13_1342.png"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"

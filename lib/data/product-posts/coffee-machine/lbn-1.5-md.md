@@ -6,20 +6,35 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=1V3bQ_AcavyCkP36IJBQ3lqAeflLY8Q8F"
+  url: "/images/machine/MODERN/1.5 KG/IMG_1881.JPG"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
     name: "Màu"
     values:
-      - "Wrinkled Blue"
       - "Xingfa Grey"
+      - "Wrinkled Blue"
       - "Charcoal Grey"
       - "Sand White"
       - "White Brown"
       - "Dark Grey"
 variants:
   - id: "v1"
+    title: "Xingfa Grey"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "Xingfa Grey"
+    images:
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1868.JPG"
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1869.JPG"
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1873.JPG"
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1880.JPG"
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1881.JPG"
+      - url: "/images/machine/MODERN/1.5 KG/IMG_1882.JPG"
+  - id: "v2"
     title: "Wrinkled Blue"
     availableForSale: true
     price: "0"
@@ -30,17 +45,6 @@ variants:
     images:
       - url: "https://drive.google.com/uc?export=view&id=1in3jtWi4GXbVaKGDx95slK25ys2Ue-d-"
       - url: "https://drive.google.com/uc?export=view&id=19WrKxrs6TOOS6cSCgenjQaI_4lPgCgie"
-  - id: "v2"
-    title: "Xingfa Grey"
-    availableForSale: true
-    price: "0"
-    currencyCode: "VND"
-    selectedOptions:
-      - name: "Màu"
-        value: "Xingfa Grey"
-    images:
-      - url: "https://drive.google.com/uc?export=view&id=1aIGgDELgeAXLX5FudIUfsb7IU5DFXccc"
-      - url: "https://drive.google.com/uc?export=view&id=1drD3RwxfpVIg3IS02f5B70EQqBEPj1Ic"
   - id: "v3"
     title: "Charcoal Grey"
     availableForSale: true

@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0418_gn05oo.jpg"
+  url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0418.JPG"
 options:
   - id: "o1"
     name: "Màu"
@@ -27,13 +27,13 @@ variants:
       - name: "Màu"
         value: "Dark Grey"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664613/IMG_0382_mjqsrj.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0384_cewjki.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0391_psgggu.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776663795/i26_03_13_1337_aishqy.png"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0411_yysnlm.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664613/IMG_0397_tgndmw.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776664614/IMG_0394_zzxpoe.jpg"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0418.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0411.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0382.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0384.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0391.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0394.JPG"
+      - url: "/images/machine/MAROSA/6.0 KG/XÁM ĐEN/IMG_0397.JPG"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"

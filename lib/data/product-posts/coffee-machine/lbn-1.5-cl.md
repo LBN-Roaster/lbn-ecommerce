@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images@main/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
+  url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
   altText: "Máy Rang Cà Phê LBN 1.5KG"
 options:
   - id: "o1"
@@ -28,11 +28,11 @@ variants:
       - name: "Màu"
         value: "White Brown"
     images:
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0901.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0902.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0903.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0904.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0900.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0901.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0902.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0903.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/TR%E1%BA%AENG%20C%C3%81T/i26_03_06_0904.jpg"
   - id: "v2"
     title: "Dark Grey"
     availableForSale: true
@@ -42,9 +42,9 @@ variants:
       - name: "Màu"
         value: "Dark Grey"
     images:
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1000.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1001.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1002.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1000.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1001.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20%C4%90EN/i26_01_14_1002.jpg"
   - id: "v3"
     title: "Wrinkled Blue"
     availableForSale: true
@@ -54,12 +54,12 @@ variants:
       - name: "Màu"
         value: "Wrinkled Blue"
     images:
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1500.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1501.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1503.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1504.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1505.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1506.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1500.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1501.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1503.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1504.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1505.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/XANH%20NH%C4%82N/i25_09_09_1506.jpg"
 
   - id: "v4"
     title: "Xingfa Grey"
@@ -70,8 +70,8 @@ variants:
       - name: "Màu"
         value: "Xingfa Grey"
     images:
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20XINGFA/i26_04_04_1253.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20XINGFA/i26_04_04_1256.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20XINGFA/i26_04_04_1253.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20XINGFA/i26_04_04_1256.jpg"
   - id: "v5"
     title: "Charcoal Grey"
     availableForSale: true
@@ -81,12 +81,12 @@ variants:
       - name: "Màu"
         value: "Charcoal Grey"
     images:
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0920.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0921.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0922.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0923.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0924.jpg"
-      - url: "https://cdn.jsdelivr.net/gh/LBN-Roaster/lbn-images/M%C3%81Y%20RANG%20CAFE/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0925.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0920.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0921.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0922.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0923.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0924.jpg"
+      - url: "/images/machine/CLASSIC/1.5%20KG/X%C3%81M%20CH%C3%8C/i25_09_22_0925.jpg"
   - id: "v6"
     title: "Sand White"
     availableForSale: true

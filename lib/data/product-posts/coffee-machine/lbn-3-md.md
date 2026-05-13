@@ -6,15 +6,15 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398710/i26_03_23_1115_nyql9n.jpg"
+  url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1115.jpg"
   altText: "Máy Rang Cà Phê LBN 3KG"
 options:
   - id: "o1"
     name: "Màu"
     values:
       - "Wrinkled Blue"
-      - "Sand White"
       - "White Brown"
+      - "Sand White"
       - "Xingfa Grey"
       - "Charcoal Grey"
       - "Dark Grey"
@@ -28,11 +28,25 @@ variants:
       - name: "Màu"
         value: "Wrinkled Blue"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398703/i26_03_23_1116_fydbf5.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398701/i26_03_23_1117_wpiwcw.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398698/i26_03_23_1119_px0hgv.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398408/i26_01_12_1546_ii70ak.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776398701/i26_03_23_1118_f7jvrh.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1115.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1116.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1117.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1118.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/XANH NHĂN/i26_03_23_1119.jpg"
+
+  - id: "v2"
+    title: "White Brown"
+    availableForSale: true
+    price: "0"
+    currencyCode: "VND"
+    selectedOptions:
+      - name: "Màu"
+        value: "White Brown"
+    images:
+      - url: "/images/machine/MODERN/3.0 KG/TRẮNG CÁT/1.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/TRẮNG CÁT/2.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/TRẮNG CÁT/3.jpg"
+      - url: "/images/machine/MODERN/3.0 KG/TRẮNG CÁT/4.jpg"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
@@ -79,7 +93,7 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 ### Linh kiện điều khiển & điện
 
-- PLC Delta - Đài Loan
+- PLC Delta - Đài Loan 
 - Màn hình cảm ứng Delta - Đài loan
 - Biến tần Delta - Đài Loan hoặc tương đương
 - Module nhiệt độ Autonics - Hàn Quốc

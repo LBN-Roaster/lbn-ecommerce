@@ -6,7 +6,7 @@ availableForSale: true
 tags:
   - may-rang
 featuredImage:
-  url: "https://drive.google.com/uc?export=view&id=17qy3MJbxCc9BNY7Ows1ckifsQ4WtzwH5"
+  url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1001.jpg"
   altText: "Máy Rang Cà Phê LBN 6KG"
 options:
   - id: "o1"
@@ -28,8 +28,15 @@ variants:
       - name: "Màu"
         value: "White Brown"
     images:
-      - url: "https://drive.google.com/uc?export=view&id=1Q7Lcw1lQliWW5LfmZdvKmFqyTm6v5RgT"
-      - url: "https://drive.google.com/uc?export=view&id=1PSDryPipCa1Y-MmOv_AzvFvOp622wQTe"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1000.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1001.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1002.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1003.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1004.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1005.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1006.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1007.jpg"
+      - url: "/images/machine/CLASSIC/6.0 KG/TRẮNG CÁT/i25_10_31_1008.jpg"
   - id: "v2"
     title: "Sand White"
     availableForSale: true

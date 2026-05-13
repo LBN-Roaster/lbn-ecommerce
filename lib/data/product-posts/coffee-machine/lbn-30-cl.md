@@ -7,7 +7,7 @@ tags:
   - may-rang
 
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0832_xz8lgo.jpg"
+  url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0834.jpg"
   altText: "Máy Rang Cà Phê LBN 30KG"
 
 options:
@@ -31,13 +31,15 @@ variants:
       - name: "Màu"
         value: "Dark Grey"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0832_xz8lgo.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0830_ucrvcv.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0834_evpdll.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0833_vapcui.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428580/i25_08_19_0835_rwa4t7.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428581/i25_08_19_0836_evwy2y.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428581/i25_08_19_0839_gicndb.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0830.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0831.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0832.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0833.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0834.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0835.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0836.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0839.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XÁM ĐEN/I/i25_08_19_0841.jpg"
 
   - id: "v2"
     title: "Wrinkled Blue"
@@ -48,11 +50,11 @@ variants:
       - name: "Màu"
         value: "Wrinkled Blue"
     images:
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428610/i26_01_09_1240_klqw5a.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428615/i26_01_09_1243_xqckxl.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428626/i26_01_09_1242_duyiy3.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428625/i26_01_09_1245_x251y8.jpg"
-      - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777428623/i26_01_09_1241_c2t82w.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XANH NHĂN/i26_01_09_1240.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XANH NHĂN/i26_01_09_1241.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XANH NHĂN/i26_01_09_1242.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XANH NHĂN/i26_01_09_1243.jpg"
+      - url: "/images/machine/CLASSIC/30 KG/XANH NHĂN/i26_01_09_1245.jpg"
 minPrice: "0"
 maxPrice: "0"
 currencyCode: "VND"
