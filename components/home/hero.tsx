@@ -5,7 +5,7 @@ export function HeroSection() {
     <section className="relative -mt-6 flex min-h-screen items-end overflow-hidden bg-neutral-900">
       {/* Background video */}
       <video
-        src="https://res.cloudinary.com/ddguya7ph/video/upload/v1775962865/roaster_jiwkau.mov"
+        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4/ik-video.mp4?updatedAt=1778716261191"
         autoPlay
         muted
         loop
