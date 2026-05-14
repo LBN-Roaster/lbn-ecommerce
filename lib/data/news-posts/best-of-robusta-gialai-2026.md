@@ -1,9 +1,9 @@
 ---
 title: "03/2026 – BEST OF ROBUSTA GIA LAI"
-date: "2026-04-02"
+date: "2026-03-22"
 tag: "Sự kiện"
 excerpt: "LBN tự hào góp mặt tại cupping Best of Robusta Gia Lai 2026 tại Stone Village Lab – nơi hội tụ những mẫu Robusta chất lượng cao hàng đầu."
-image: "https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_143750.jpg"
+image: "https://ik.imagekit.io/kdm4xasw6/News/bestofgl1.webp"
 ---
 
 LBN tự hào góp mặt tại sự kiện cupping **Best of Robusta Gia Lai 2026** diễn ra tại Stone Village Lab — nơi hội tụ những mẫu Robusta chất lượng cao hàng đầu từ các nhà sản xuất uy tín.
@@ -20,15 +20,15 @@ Với vai trò là nhà sản xuất máy rang cà phê chuyên nghiệp, LBN lu
 
 ## Hình ảnh sự kiện
 
-![Cupping session](https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_144023.jpg)
+![Cupping session](https://ik.imagekit.io/kdm4xasw6/News/bestofgl2.webp)
 
-![Đánh giá mẫu cà phê](https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_144045.jpg)
+![Đánh giá mẫu cà phê](https://ik.imagekit.io/kdm4xasw6/News/bestofgl3.webp)
 
-![Các chuyên gia tham dự](https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_144118.jpg)
+![Các chuyên gia tham dự](https://ik.imagekit.io/kdm4xasw6/News/bestofgl4.webp)
 
-![Stone Village Lab](https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_144137.jpg)
+![Stone Village Lab](https://ik.imagekit.io/kdm4xasw6/News/bestofgl5.webp)
 
-![Kết nối cộng đồng cà phê](https://lbn.com.vn/wp-content/uploads/2026/04/IMG_20260322_144219.jpg)
+![Kết nối cộng đồng cà phê](https://ik.imagekit.io/kdm4xasw6/News/bestofgl6.webp)
 
 ## Kết
 
