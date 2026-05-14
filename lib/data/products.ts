@@ -18,6 +18,10 @@ function readProduct(filename: string): Product {
   const raw = fs.readFileSync(filename, "utf-8");
   const { data, content } = matter(raw);
 
+  const imagePrefix: string = data.imagePrefix ?? "";
+  const withPrefix = (url: string) =>
+    /^https?:\/\//.test(url) ? url : `${imagePrefix}${url}`;
+
   const SPLIT_MARKER = "<!-- split -->";
   const splitIndex = content.indexOf(SPLIT_MARKER);
   const introPart =
@@ -62,7 +66,7 @@ function readProduct(filename: string): Product {
         selectedOptions: v.selectedOptions,
         price: { amount: v.price, currencyCode: v.currencyCode },
         images: v.images?.map((img) => ({
-          url: img.url,
+          url: withPrefix(img.url),
           altText: img.altText ?? "",
           width: img.width ?? 800,
           height: img.height ?? 800,
@@ -70,7 +74,7 @@ function readProduct(filename: string): Product {
       }),
     ),
     featuredImage: {
-      url: data.featuredImage?.url ?? "",
+      url: data.featuredImage?.url ? withPrefix(data.featuredImage.url) : "",
       altText: data.featuredImage?.altText ?? "",
       width: data.featuredImage?.width ?? 800,
       height: data.featuredImage?.height ?? 800,
@@ -82,7 +86,7 @@ function readProduct(filename: string): Product {
         width?: number;
         height?: number;
       }) => ({
-        url: img.url,
+        url: withPrefix(img.url),
         altText: img.altText ?? "",
         width: img.width ?? 800,
         height: img.height ?? 800,

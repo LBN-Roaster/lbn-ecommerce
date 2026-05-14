@@ -5,13 +5,14 @@ title: "Coffe Table: Danny"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777717861/i26_04_27_1500_mr6whu.jpg"
+  url: "/i26_04_27_1500.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777717861/i26_04_27_1500_mr6whu.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777717861/i26_04_27_1503_xfgjzt.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777717861/i26_04_27_1502_atjghe.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777717861/i26_04_27_1501_jdlp0t.jpg"
+  - url: "/i26_04_27_1500.webp"
+  - url: "/i26_04_27_1501.webp"
+  - url: "/i26_04_27_1502.webp"
+  - url: "/i26_04_27_1503.webp"
 minPrice: "2387000"
 maxPrice: "3000000"
 currencyCode: "VND"

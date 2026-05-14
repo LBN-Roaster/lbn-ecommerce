@@ -5,13 +5,14 @@ title: "Collection: Fly"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777719159/i26_04_27_1300_knj0rs.jpg"
+  url: "/i26_04_27_1300.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777719159/i26_04_27_1300_knj0rs.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777719159/i26_04_27_1302_vg0wrp.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777719159/i26_04_27_1303_qfkcxc.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777719160/i26_04_27_1304_ubbsty.jpg"
+  - url: "/i26_04_27_1300.webp"
+  - url: "/i26_04_27_1302.webp"
+  - url: "/i26_04_27_1303.webp"
+  - url: "/i26_04_27_1304.webp"
 
 minPrice: "5215000"
 maxPrice: "7450000"

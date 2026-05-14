@@ -5,17 +5,18 @@ title: "News Collection: Office"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163787/i25_05_06_0910_ayr4ng.jpg"
+  url: "/i25_05_06_0910.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163787/i25_05_06_0910_ayr4ng.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163765/i25_05_06_0900_yy1zln.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163771/i25_05_06_0906_jxb4sb.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163775/i25_05_06_0904_o0dlzs.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163783/i25_05_06_0909_rfltoe.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163788/i25_05_06_0908_ngvli5.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163784/i25_05_06_0903_ijl81h.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163766/i25_05_06_0902_qfo0qy.jpg"
+  - url: "/i25_05_06_0900.webp"
+  - url: "/i25_05_06_0902.webp"
+  - url: "/i25_05_06_0903.webp"
+  - url: "/i25_05_06_0904.webp"
+  - url: "/i25_05_06_0906.webp"
+  - url: "/i25_05_06_0908.webp"
+  - url: "/i25_05_06_0909.webp"
+  - url: "/i25_05_06_0910.webp"
 
 minPrice: "3300000"
 maxPrice: "3800000"

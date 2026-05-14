@@ -5,13 +5,14 @@ title: "Coffee Table: Fly"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718646/i26_04_27_1306_c0uf6h.jpg"
+  url: "/i26_04_27_1306.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718646/i26_04_27_1306_c0uf6h.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718646/i26_04_27_1309_agfo5r.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718646/i26_04_27_1307_jzijvc.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718646/i26_04_27_1308_vwol9s.jpg"
+  - url: "/i26_04_27_1306.webp"
+  - url: "/i26_04_27_1307.webp"
+  - url: "/i26_04_27_1308.webp"
+  - url: "/i26_04_27_1309.webp"
 minPrice: "2387000"
 maxPrice: "3000000"
 currencyCode: "VND"

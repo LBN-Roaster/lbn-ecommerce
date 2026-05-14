@@ -5,13 +5,14 @@ title: "Bếp LALA SEAFOOD"
 availableForSale: false
 tags:
   - bep-cong-nghiep
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Project"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843820/IMG_20240708_141833_vlh95f.jpg"
+  url: "/IMG_20240708_141833.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843820/IMG_20240708_141030_brxus9.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843820/IMG_20240708_141018_qifv9r.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843819/IMG_20240708_135216_nnkbbd.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843819/FB_IMG_1720401424606_blmy45.jpg"
+  - url: "/IMG_20240708_135216.webp"
+  - url: "/IMG_20240708_141018.webp"
+  - url: "/IMG_20240708_141030.webp"
+  - url: "/FB_IMG_1720401424606.webp"
 minPrice: "0"
 maxPrice: "0"
 seoTitle: "Bếp LALA SEAFOOD – Dự án bếp công nghiệp tại Nha Trang"

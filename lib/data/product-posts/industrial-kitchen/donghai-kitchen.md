@@ -5,13 +5,14 @@ title: "Bếp ĐÔNG HẢI"
 availableForSale: false
 tags:
   - bep-cong-nghiep
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Project"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776842765/IMG_20250727_110246_sfzwlx.jpg"
+  url: "/IMG_20250727_110246.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776842765/IMG_20250727_101629_tjuvco.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776842765/IMG_20250727_095953_jhleuy.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776842765/IMG_20250727_100644_gsxb6e.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776842765/IMG_20250727_110533_t8dday.jpg"
+  - url: "/IMG_20250727_095953.webp"
+  - url: "/IMG_20250727_100644.webp"
+  - url: "/IMG_20250727_101629.webp"
+  - url: "/IMG_20250727_110533.webp"
 minPrice: "0"
 maxPrice: "0"
 seoTitle: "Bếp Đông Hải – Dự án bếp công nghiệp tại Nha Trang"

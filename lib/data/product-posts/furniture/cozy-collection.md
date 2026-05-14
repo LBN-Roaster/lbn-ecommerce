@@ -5,15 +5,17 @@ title: "Cozy Collection"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161979/i25_09_03_1301_k8o4pu.jpg"
+  url: "/i25_09_03_1301.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161970/i25_09_03_1300_jtyogz.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161979/i25_09_03_1303_fr98vk.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161991/i25_09_03_1307_lw4wso.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161972/i25_09_03_1304_nc4wi2.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161992/i25_09_03_1305_bdqkab.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161980/i25_09_03_1306_rvifiz.jpg"
+  - url: "/i25_09_03_1300.webp"
+  - url: "/i25_09_03_1301.webp"
+  - url: "/i25_09_03_1303.webp"
+  - url: "/i25_09_03_1304.webp"
+  - url: "/i25_09_03_1305.webp"
+  - url: "/i25_09_03_1306.webp"
+  - url: "/i25_09_03_1307.webp"
 
 minPrice: "4600000"
 maxPrice: "5670000"

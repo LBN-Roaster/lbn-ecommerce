@@ -5,15 +5,16 @@ title: "Bar Collection: Grace"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161475/i25_09_03_0730_dndi8g.jpg"
+  url: "/i25_09_03_0730.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161475/i25_09_03_0730_dndi8g.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161480/i25_09_03_0732_ixhwnz.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161466/i25_09_03_0731_qx4kue.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161478/i25_09_03_0733_mf6pcr.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161472/i25_09_03_0735_vi8lrh.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776161475/i25_09_03_0734_aiyigl.jpg"
+  - url: "/i25_09_03_0730.webp"
+  - url: "/i25_09_03_0731.webp"
+  - url: "/i25_09_03_0732.webp"
+  - url: "/i25_09_03_0733.webp"
+  - url: "/i25_09_03_0734.webp"
+  - url: "/i25_09_03_0735.webp"
 price: "0"
 minPrice: "3700000"
 maxPrice: "4640000"

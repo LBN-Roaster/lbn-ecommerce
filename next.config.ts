@@ -22,8 +22,8 @@ export default {
       },
       {
         protocol: "https",
-        hostname: "cdn.jsdelivr.net",
-        pathname: "/**",
+        hostname: "ik.imagekit.io",
+        pathname: "/kdm4xasw6/**",
       },
     ],
   },

@@ -5,16 +5,17 @@ title: "Dinner Collection: Grace"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163019/i25_09_03_1600_cy76zt.jpg"
+  url: "/i25_09_03_1600.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163019/i25_09_03_1600_cy76zt.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163008/i25_09_03_1602_lv3lgv.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163019/i25_09_03_1605_werkot.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163005/i25_09_03_1601_x5puww.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163013/i25_09_03_1603_odp3np.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163011/i25_09_03_1604_gthddv.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776163012/i25_09_03_1606_wo5zal.jpg"
+  - url: "/i25_09_03_1600.webp"
+  - url: "/i25_09_03_1601.webp"
+  - url: "/i25_09_03_1602.webp"
+  - url: "/i25_09_03_1603.webp"
+  - url: "/i25_09_03_1604.webp"
+  - url: "/i25_09_03_1605.webp"
+  - url: "/i25_09_03_1606.webp"
 
 minPrice: "4200000"
 maxPrice: "5230000"

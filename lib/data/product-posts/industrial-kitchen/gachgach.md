@@ -5,13 +5,14 @@ title: "Bếp GẠCH GẠCH"
 availableForSale: false
 tags:
   - bep-cong-nghiep
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Project"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776844069/GOPR8501_a3q4ht.jpg"
+  url: "/GOPR8501.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776844067/IMG_5331_cwevsy.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776844067/IMG_5334_i0mlke.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776844067/IMG_5336_esgroz.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776844067/IMG_5328_bm2bai.jpg"
+  - url: "/IMG_5328.webp"
+  - url: "/IMG_5331.webp"
+  - url: "/IMG_5334.webp"
+  - url: "/IMG_5336.webp"
 minPrice: "0"
 maxPrice: "0"
 seoTitle: "Bếp GẠCH GẠCH – Dự án bếp công nghiệp tại Nha Trang"

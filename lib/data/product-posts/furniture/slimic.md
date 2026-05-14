@@ -5,14 +5,15 @@ title: "Coffee Table: Slimic"
 availableForSale: true
 tags:
   - noi-that
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Furniture"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718467/i26_04_27_1046_fu0x2v.jpg"
+  url: "/i26_04_27_1046.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718467/i26_04_27_1046_fu0x2v.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718468/i26_04_27_1050_bblgtv.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718467/i26_04_27_1049_inisyk.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718467/i26_04_27_1047_bcnygc.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1777718467/i26_04_27_1048_kyqwcx.jpg"
+  - url: "/i26_04_27_1046.webp"
+  - url: "/i26_04_27_1047.webp"
+  - url: "/i26_04_27_1048.webp"
+  - url: "/i26_04_27_1049.webp"
+  - url: "/i26_04_27_1050.webp"
 minPrice: "2387000"
 maxPrice: "3000000"
 currencyCode: "VND"

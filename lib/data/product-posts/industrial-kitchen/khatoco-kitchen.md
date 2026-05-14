@@ -5,16 +5,17 @@ title: "Bếp KHATOCO"
 availableForSale: false
 tags:
   - bep-cong-nghiep
+imagePrefix: "https://ik.imagekit.io/kdm4xasw6/Project"
 featuredImage:
-  url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0700_gyc5k0.jpg"
+  url: "/i26_01_15_0700.webp"
 images:
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0708_us9fvl.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0709_q7ss0q.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0706_jh7hvj.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0707_ekquxe.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0705_nceaow.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843523/i26_01_15_0704_xhcjeh.jpg"
-  - url: "https://res.cloudinary.com/ddguya7ph/image/upload/v1776843522/i26_01_15_0701_gxbpk5.jpg"
+  - url: "/i26_01_15_0701.webp"
+  - url: "/i26_01_15_0704.webp"
+  - url: "/i26_01_15_0705.webp"
+  - url: "/i26_01_15_0706.webp"
+  - url: "/i26_01_15_0707.webp"
+  - url: "/i26_01_15_0708.webp"
+  - url: "/i26_01_15_0709.webp"
 minPrice: "0"
 maxPrice: "0"
 seoTitle: "Bếp KHATOCO – Dự án bếp công nghiệp tại Nha Trang"
