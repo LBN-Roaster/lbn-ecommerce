@@ -1,16 +1,28 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function HeroSection() {
   return (
     <section className="relative -mt-6 flex min-h-screen items-end overflow-hidden bg-neutral-900">
-      {/* Background video */}
+
+      <Image
+        src="/images/3KG.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover md:hidden"
+      />
+
       <video
-        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4/ik-video.mp4?updatedAt=1778716261191"
+        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4/ik-video.mp4?tr=f-webm,q-60"
+        poster="/images/3KG.jpg"
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover"
+        preload="none"
+        className="absolute inset-0 hidden h-full w-full object-cover md:block"
       />
 
       {/* Gradient: transparent top → dark bottom so text pops */}
