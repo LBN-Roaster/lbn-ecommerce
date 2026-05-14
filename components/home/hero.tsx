@@ -4,7 +4,6 @@ import Link from "next/link";
 export function HeroSection() {
   return (
     <section className="relative -mt-6 flex min-h-screen items-end overflow-hidden bg-neutral-900">
-
       <Image
         src="/images/3KG.jpg"
         alt=""
@@ -15,7 +14,7 @@ export function HeroSection() {
       />
 
       <video
-        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4/ik-video.mp4?tr=f-webm,q-60"
+        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4?tr=w-1280,q-60,f-mp4"
         poster="/images/3KG.jpg"
         autoPlay
         muted
