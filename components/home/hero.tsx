@@ -14,7 +14,7 @@ export function HeroSection() {
       />
 
       <video
-        src="https://ik.imagekit.io/kdm4xasw6/roaster.mp4?tr=w-1280,q-60,f-mp4"
+        src="https://ik.imagekit.io/kdm4xasw6/hero-compressed.mp4?tr=w-1280,q-60,f-mp4"
         poster="/images/3KG.jpg"
         autoPlay
         muted
