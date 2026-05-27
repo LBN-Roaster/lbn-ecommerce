@@ -72,8 +72,17 @@ function formatCurrency(value: string): string {
   return new Intl.NumberFormat("vi-VN").format(num);
 }
 
+function roundUp(n: number): number {
+  return Math.ceil(n / 1_000_000) * 1_000_000;
+}
+
+function roundDown(n: number): number {
+  return Math.floor(n / 1_000_000) * 1_000_000;
+}
+
+
 function computeSellingPrice(cost: number, revPct: number): number {
-  return cost * (1 + revPct / 100);
+  return roundUp(cost * (1 + revPct / 100));
 }
 
 function computeListedPrice(
@@ -82,7 +91,7 @@ function computeListedPrice(
   distPct: number,
 ): number {
   const selling = computeSellingPrice(cost, revPct);
-  return selling * (1 + distPct / 100);
+  return roundDown(selling / ((100 - distPct) / 100));
 }
 
 export function ProductForm({
@@ -381,13 +390,13 @@ export function ProductForm({
                       Selling Price
                     </span>
                     <span className="pricing-computed-value">
-                      {formatCurrency(String(Math.ceil(sellingPrice)))} ₫
+                      {formatCurrency(String(sellingPrice))} ₫
                     </span>
                   </div>
                   <div className="pricing-computed-row">
                     <span className="pricing-computed-label">Listed Price</span>
                     <span className="pricing-computed-value">
-                      {formatCurrency(String(Math.ceil(listedPrice)))} ₫
+                      {formatCurrency(String(listedPrice))} ₫
                     </span>
                   </div>
                 </div>

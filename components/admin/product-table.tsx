@@ -25,6 +25,27 @@ function formatPrice(n: number) {
   return new Intl.NumberFormat("vi-VN").format(n);
 }
 
+function roundUp(n: number): number {
+  return Math.ceil(n / 1_000_000) * 1_000_000;
+}
+
+function roundDown(n: number): number {
+  return Math.floor(n / 1_000_000) * 1_000_000;
+}
+
+function computeSellingPrice(cost: number, revPct: number): number {
+  return roundUp(cost * (1 + revPct / 100));
+}
+
+function computeListedPrice(
+  cost: number,
+  revPct: number,
+  distPct: number,
+): number {
+  const selling = computeSellingPrice(cost, revPct);
+  return roundDown(selling / ((100 - distPct) / 100));
+}
+
 function DeleteButton({
   id,
   onDeleted,
@@ -269,13 +290,13 @@ export function ProductTable() {
                   </td>
                   <td className="num">
                     <span className="price-line">
-                      {formatPrice(Math.ceil(p.sellingPrice))} ₫ /{" "}
+                      {formatPrice(computeSellingPrice(p.costPrice, p.revenuePercent))} ₫ /{" "}
                       {p.revenuePercent}%
                     </span>
                   </td>
                   <td className="num">
                     <span className="price-line">
-                      {formatPrice(Math.ceil(p.listedPrice))} ₫ /{" "}
+                      {formatPrice(computeListedPrice(p.costPrice, p.revenuePercent, p.distributorPercent))} ₫ /{" "}
                       {p.distributorPercent}%
                     </span>
                   </td>

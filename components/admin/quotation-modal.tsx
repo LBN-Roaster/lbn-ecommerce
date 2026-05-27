@@ -23,17 +23,39 @@ function formatPrice(n: number) {
   return new Intl.NumberFormat("vi-VN").format(n);
 }
 
+function roundUp(n: number): number {
+  return Math.ceil(n / 1_000_000) * 1_000_000;
+}
+
+function roundDown(n: number): number {
+  return Math.floor(n / 1_000_000) * 1_000_000;
+}
+
+function computeSellingPrice(cost: number, revPct: number): number {
+  return roundUp(cost * (1 + revPct / 100));
+}
+
+function computeListedPrice(
+  cost: number,
+  revPct: number,
+  distPct: number,
+): number {
+  const selling = computeSellingPrice(cost, revPct);
+  return roundDown(selling / ((100 - distPct) / 100));
+}
+
 function getVariantPrice(
   variant: ProductVariant,
+  product: Product,
   priceType: "COST" | "SELLING" | "LISTED",
 ): number {
   switch (priceType) {
     case "COST":
       return variant.costPrice;
     case "SELLING":
-      return variant.sellingPrice;
+      return computeSellingPrice(variant.costPrice, product.revenuePercent);
     case "LISTED":
-      return variant.listedPrice;
+      return computeListedPrice(variant.costPrice, product.revenuePercent, product.distributorPercent);
   }
 }
 
@@ -200,7 +222,7 @@ export function QuotationModal({
                   (v) => v.id === line.variantId,
                 );
                 const basePrice = selectedVariant
-                  ? getVariantPrice(selectedVariant, line.priceType)
+                  ? getVariantPrice(selectedVariant, line.product, line.priceType)
                   : 0;
                 const overrideNum = line.priceOverride
                   ? Number(line.priceOverride)
@@ -231,7 +253,7 @@ export function QuotationModal({
                         </span>
                         {selectedVariant && (
                           <span className="quotation-item-price">
-                            {formatPrice(Math.ceil(basePrice))} ₫
+                            {formatPrice(roundUp(basePrice))} ₫
                           </span>
                         )}
                       </div>
@@ -350,25 +372,25 @@ export function QuotationModal({
                         {hasDiscount ? (
                           <>
                             <span className="quotation-price-original">
-                              {formatPrice(Math.ceil(basePrice))} ₫
+                              {formatPrice(roundUp(basePrice))} ₫
                             </span>
                             <span className="quotation-price-arrow">→</span>
                             <span className="quotation-price-final">
-                              {formatPrice(Math.ceil(finalUnit))} ₫
+                              {formatPrice(roundUp(finalUnit))} ₫
                             </span>
                             <span className="quotation-price-total">
                               × {line.quantity} ={" "}
                               {formatPrice(
-                                Math.ceil(finalUnit * line.quantity),
+                                roundUp(finalUnit * line.quantity),
                               )}{" "}
                               ₫
                             </span>
                           </>
                         ) : (
                           <span className="quotation-price-total">
-                            {formatPrice(Math.ceil(basePrice))} ₫ ×{" "}
+                            {formatPrice(roundUp(basePrice))} ₫ ×{" "}
                             {line.quantity} ={" "}
-                            {formatPrice(Math.ceil(basePrice * line.quantity))}{" "}
+                            {formatPrice(roundUp(basePrice * line.quantity))}{" "}
                             ₫
                           </span>
                         )}
