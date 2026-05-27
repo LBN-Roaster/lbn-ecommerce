@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-
-const API_BASE = process.env.BACKEND_API_URL || "http://localhost:8080";
+import { API_BASE, backendHeaders } from "../../backend";
 
 export async function POST(request: Request) {
   const body = await request.json();
   const res = await fetch(`${API_BASE}/api/quotations/generate`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: await backendHeaders(),
     body: JSON.stringify(body),
   });
 

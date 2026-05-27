@@ -57,6 +57,8 @@ export function QuotationModal({
   const [recipientName, setRecipientName] = useState("");
   const [recipientAddress, setRecipientAddress] = useState("");
   const [recipientCompany, setRecipientCompany] = useState("");
+  const [senderName, setSenderName] = useState("");
+  const [senderPhone, setSenderPhone] = useState("");
   const [language, setLanguage] = useState("vi");
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -85,6 +87,8 @@ export function QuotationModal({
         recipientName: recipientName || undefined,
         recipientAddress: recipientAddress || undefined,
         recipientCompany: recipientCompany || undefined,
+        senderName: senderName || undefined,
+        senderPhone: senderPhone || undefined,
         language,
         items: validLines.map((l) => ({
           productVariantId: l.variantId,
@@ -152,6 +156,24 @@ export function QuotationModal({
                   value={recipientAddress}
                   onChange={(e) => setRecipientAddress(e.target.value)}
                   placeholder="Delivery address"
+                />
+              </label>
+              <label className="form-field">
+                <span className="form-label">Sender Name</span>
+                <input
+                  className="form-input"
+                  value={senderName}
+                  onChange={(e) => setSenderName(e.target.value)}
+                  placeholder="Your name"
+                />
+              </label>
+              <label className="form-field">
+                <span className="form-label">Sender Phone</span>
+                <input
+                  className="form-input"
+                  value={senderPhone}
+                  onChange={(e) => setSenderPhone(e.target.value)}
+                  placeholder="Phone number"
                 />
               </label>
               <label className="form-field">

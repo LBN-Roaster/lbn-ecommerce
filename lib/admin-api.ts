@@ -59,6 +59,8 @@ export interface QuotationRequest {
   recipientName?: string;
   recipientAddress?: string;
   recipientCompany?: string;
+  senderName?: string;
+  senderPhone?: string;
   language?: string;
   items: QuotationItem[];
 }

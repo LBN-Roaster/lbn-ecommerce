@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-
-const API_BASE = process.env.BACKEND_API_URL || "http://localhost:8080";
+import { API_BASE, backendHeaders } from "../../backend";
 
 export async function GET(
   _request: Request,
@@ -8,6 +7,7 @@ export async function GET(
 ) {
   const { id } = await params;
   const res = await fetch(`${API_BASE}/api/products/${id}`, {
+    headers: await backendHeaders(),
     cache: "no-store",
   });
   if (!res.ok) {
@@ -28,7 +28,7 @@ export async function PUT(
   const body = await request.json();
   const res = await fetch(`${API_BASE}/api/products/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: await backendHeaders(),
     body: JSON.stringify(body),
   });
   const data = await res.json();
@@ -42,6 +42,7 @@ export async function DELETE(
   const { id } = await params;
   const res = await fetch(`${API_BASE}/api/products/${id}`, {
     method: "DELETE",
+    headers: await backendHeaders(),
   });
   if (res.status === 204) {
     return new NextResponse(null, { status: 204 });
