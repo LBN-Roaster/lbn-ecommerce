@@ -381,13 +381,13 @@ export function ProductForm({
                       Selling Price
                     </span>
                     <span className="pricing-computed-value">
-                      {formatCurrency(String(Math.round(sellingPrice)))} ₫
+                      {formatCurrency(String(Math.ceil(sellingPrice)))} ₫
                     </span>
                   </div>
                   <div className="pricing-computed-row">
                     <span className="pricing-computed-label">Listed Price</span>
                     <span className="pricing-computed-value">
-                      {formatCurrency(String(Math.round(listedPrice)))} ₫
+                      {formatCurrency(String(Math.ceil(listedPrice)))} ₫
                     </span>
                   </div>
                 </div>

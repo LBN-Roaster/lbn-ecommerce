@@ -269,13 +269,13 @@ export function ProductTable() {
                   </td>
                   <td className="num">
                     <span className="price-line">
-                      {formatPrice(Math.round(p.sellingPrice))} ₫ /{" "}
+                      {formatPrice(Math.ceil(p.sellingPrice))} ₫ /{" "}
                       {p.revenuePercent}%
                     </span>
                   </td>
                   <td className="num">
                     <span className="price-line">
-                      {formatPrice(Math.round(p.listedPrice))} ₫ /{" "}
+                      {formatPrice(Math.ceil(p.listedPrice))} ₫ /{" "}
                       {p.distributorPercent}%
                     </span>
                   </td>

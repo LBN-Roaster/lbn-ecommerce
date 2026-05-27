@@ -231,7 +231,7 @@ export function QuotationModal({
                         </span>
                         {selectedVariant && (
                           <span className="quotation-item-price">
-                            {formatPrice(Math.round(basePrice))} ₫
+                            {formatPrice(Math.ceil(basePrice))} ₫
                           </span>
                         )}
                       </div>
@@ -350,25 +350,25 @@ export function QuotationModal({
                         {hasDiscount ? (
                           <>
                             <span className="quotation-price-original">
-                              {formatPrice(Math.round(basePrice))} ₫
+                              {formatPrice(Math.ceil(basePrice))} ₫
                             </span>
                             <span className="quotation-price-arrow">→</span>
                             <span className="quotation-price-final">
-                              {formatPrice(Math.round(finalUnit))} ₫
+                              {formatPrice(Math.ceil(finalUnit))} ₫
                             </span>
                             <span className="quotation-price-total">
                               × {line.quantity} ={" "}
                               {formatPrice(
-                                Math.round(finalUnit * line.quantity),
+                                Math.ceil(finalUnit * line.quantity),
                               )}{" "}
                               ₫
                             </span>
                           </>
                         ) : (
                           <span className="quotation-price-total">
-                            {formatPrice(Math.round(basePrice))} ₫ ×{" "}
+                            {formatPrice(Math.ceil(basePrice))} ₫ ×{" "}
                             {line.quantity} ={" "}
-                            {formatPrice(Math.round(basePrice * line.quantity))}{" "}
+                            {formatPrice(Math.ceil(basePrice * line.quantity))}{" "}
                             ₫
                           </span>
                         )}
