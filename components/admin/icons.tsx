@@ -47,6 +47,14 @@ export const CogIcon = (
   </NavIcon>
 );
 
+export const ProductsIcon = (
+  <NavIcon>
+    <rect x="2" y="3" width="12" height="10" rx="1.5" />
+    <line x1="5" y1="6" x2="11" y2="6" />
+    <line x1="5" y1="9" x2="9" y2="9" />
+  </NavIcon>
+);
+
 export const DownloadIcon = (
   <NavIcon>
     <path d="M8 2v8 M4 7l4 4 4-4 M2 13h12" />

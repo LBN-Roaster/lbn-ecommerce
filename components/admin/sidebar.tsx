@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CogIcon, MapIcon, OverviewIcon, SalesIcon } from "./icons";
+import {
+  CogIcon,
+  MapIcon,
+  OverviewIcon,
+  ProductsIcon,
+  SalesIcon,
+} from "./icons";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Overview", icon: OverviewIcon },
@@ -43,6 +49,15 @@ export function Sidebar() {
       <div>
         <div className="nav-label">Data</div>
         <nav className="nav">
+          <Link
+            href="/admin/products"
+            className={
+              "nav-item" +
+              (pathname.startsWith("/admin/products") ? " active" : "")
+            }
+          >
+            {ProductsIcon} Products
+          </Link>
           <Link
             href="/admin/sales"
             className={
