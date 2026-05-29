@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import type {
   Product,
   CreateProductPayload,
@@ -9,6 +10,10 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
     ...init,
     headers: { "Content-Type": "application/json", ...init?.headers },
   });
+  if (res.status === 401 || res.status === 403) {
+    await signOut({ callbackUrl: "/login" });
+    throw new Error("Session expired");
+  }
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(`API ${res.status}: ${text}`);
@@ -73,6 +78,10 @@ export async function generateQuotation(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(request),
   });
+  if (res.status === 401 || res.status === 403) {
+    await signOut({ callbackUrl: "/login" });
+    throw new Error("Session expired");
+  }
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(`Failed to generate quotation: ${text}`);
