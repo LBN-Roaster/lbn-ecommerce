@@ -3,11 +3,19 @@
 import { useEffect } from "react";
 import { toast } from "sonner";
 
-export function WelcomeToast() {
+export function WelcomeToast({
+  title,
+  description,
+  learnMore,
+}: {
+  title: string;
+  description: string;
+  learnMore: string;
+}) {
   useEffect(() => {
     if (window.innerHeight < 650) return;
     if (!document.cookie.includes("welcome-toast=2")) {
-      toast("Chào mừng đến với LBN!", {
+      toast(title, {
         id: "welcome-toast",
         duration: Infinity,
         onDismiss: () => {
@@ -15,21 +23,20 @@ export function WelcomeToast() {
         },
         description: (
           <>
-            Chuyên sản xuất máy rang cà phê & thiết bị công nghiệp chất lượng
-            cao tại Khánh Hòa.{" "}
+            {description}{" "}
             <a
               href="https://lbn.com.vn/"
               className="text-blue-600 hover:underline"
               target="_blank"
             >
-              Tìm hiểu thêm
+              {learnMore}
             </a>
             .
           </>
         ),
       });
     }
-  }, []);
+  }, [title, description, learnMore]);
 
   return null;
 }

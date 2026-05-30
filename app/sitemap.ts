@@ -1,5 +1,6 @@
 import { getCollections } from "lib/data/collections";
 import { getProducts } from "lib/data/products";
+import { locales } from "lib/i18n";
 import { baseUrl, validateEnvironmentVariables } from "lib/utils";
 import { MetadataRoute } from "next";
 
@@ -13,31 +14,34 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   validateEnvironmentVariables();
 
-  const routesMap = [""].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-  }));
+  const routesMap = locales.flatMap((locale) => [
+    {
+      url: `${baseUrl}/${locale}`,
+      lastModified: new Date().toISOString(),
+    },
+  ]);
 
-  const collectionsPromise = getCollections().then((collections) =>
-    collections.map((collection) => ({
-      url: `${baseUrl}${collection.path}`,
-      lastModified: collection.updatedAt,
-    })),
-  );
+  const collectionsPromise = Promise.all(
+    locales.map((locale) =>
+      getCollections(locale).then((collections) =>
+        collections.map((collection) => ({
+          url: `${baseUrl}/${locale}${collection.path}`,
+          lastModified: collection.updatedAt,
+        })),
+      ),
+    ),
+  ).then((r) => r.flat());
 
-  const productsPromise = getProducts({}).then((products) =>
-    products.map((product) => ({
-      url: `${baseUrl}/product/${product.handle}`,
-      lastModified: product.updatedAt,
-    })),
-  );
-
-  // const pagesPromise = getPages().then((pages) =>
-  //   pages.map((page) => ({
-  //     url: `${baseUrl}/${page.handle}`,
-  //     lastModified: page.updatedAt,
-  //   })),
-  // );
+  const productsPromise = Promise.all(
+    locales.map((locale) =>
+      getProducts({ locale }).then((products) =>
+        products.map((product) => ({
+          url: `${baseUrl}/${locale}/product/${product.handle}`,
+          lastModified: product.updatedAt,
+        })),
+      ),
+    ),
+  ).then((r) => r.flat());
 
   let fetchedRoutes: Route[] = [];
 

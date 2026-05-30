@@ -1,33 +1,29 @@
 "use client";
 
+import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import Image from "next/image";
 import { useState } from "react";
 
 const images = [
-  {
-    src: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk",
-    alt: "Máy rang cà phê LBN",
-  },
-  { src: "/images/1.5KG.png", alt: "Máy rang cà phê LBN" },
-  { src: "/images/6KG.png", alt: "Máy rang cà phê LBN" },
-  { src: "/images/3KG.jpg", alt: "Máy rang cà phê LBN" },
-  { src: "/images/1.5KG.jpg", alt: "Máy rang cà phê LBN" },
+  { src: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk" },
+  { src: "/images/1.5KG.png" },
+  { src: "/images/6KG.png" },
+  { src: "/images/3KG.jpg" },
+  { src: "/images/1.5KG.jpg" },
 ];
 
-export function GallerySection() {
-  const [active, setActive] = useState<{ src: string; alt: string } | null>(
-    null,
-  );
+export function GallerySection({ dict }: { dict: Dictionary }) {
+  const [active, setActive] = useState<{ src: string } | null>(null);
 
   return (
     <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-            Thư viện ảnh
+            {dict.gallery.label}
           </p>
           <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
-            Hình ảnh sản phẩm
+            {dict.gallery.heading}
           </h2>
         </div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
@@ -39,7 +35,7 @@ export function GallerySection() {
             >
               <Image
                 src={img.src}
-                alt={img.alt}
+                alt={dict.gallery.imageAlt}
                 fill
                 className="object-cover transition duration-300 hover:scale-105"
               />
@@ -48,7 +44,6 @@ export function GallerySection() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {active && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
@@ -60,7 +55,7 @@ export function GallerySection() {
           >
             <Image
               src={active.src}
-              alt={active.alt}
+              alt={dict.gallery.imageAlt}
               width={1200}
               height={900}
               className="max-h-[90vh] w-auto rounded-xl object-contain shadow-2xl"
@@ -68,7 +63,7 @@ export function GallerySection() {
             <button
               onClick={() => setActive(null)}
               className="absolute -right-3 -top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:bg-neutral-200"
-              aria-label="Đóng"
+              aria-label={dict.gallery.close}
             >
               <svg
                 className="h-4 w-4"

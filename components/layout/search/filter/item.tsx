@@ -10,7 +10,7 @@ import type { ListItem, PathFilterItem } from ".";
 function PathFilterItem({ item }: { item: PathFilterItem }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const active = pathname === item.path;
+  const active = pathname.endsWith(item.path);
   const newParams = new URLSearchParams(searchParams.toString());
   const DynamicTag = active ? "p" : Link;
 

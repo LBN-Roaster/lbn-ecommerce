@@ -1,9 +1,10 @@
+import { defaultLocale, type Locale } from "lib/i18n";
 import fs from "fs";
 import matter from "gray-matter";
 import { marked } from "marked";
 import path from "path";
 
-const newsDir = path.join(process.cwd(), "lib/data/news-posts");
+const newsBaseDir = path.join(process.cwd(), "lib/data/news-posts");
 
 export type NewsPost = {
   slug: string;
@@ -12,13 +13,19 @@ export type NewsPost = {
   tag: string;
   excerpt: string;
   image: string;
-  content: string; // rendered HTML
+  content: string;
 };
 
 export type NewsPostMeta = Omit<NewsPost, "content">;
 
-function readPost(slug: string): NewsPost {
-  const filePath = path.join(newsDir, `${slug}.md`);
+function newsDir(locale: Locale): string {
+  const dir = path.join(newsBaseDir, locale);
+  if (fs.existsSync(dir)) return dir;
+  return path.join(newsBaseDir, defaultLocale);
+}
+
+function readPost(slug: string, locale: Locale): NewsPost {
+  const filePath = path.join(newsDir(locale), `${slug}.md`);
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return {
@@ -32,14 +39,13 @@ function readPost(slug: string): NewsPost {
   };
 }
 
-export function getAllNewsPosts(): NewsPostMeta[] {
-  const files = fs.readdirSync(newsDir).filter((f) => f.endsWith(".md"));
+export function getAllNewsPosts(locale: Locale = defaultLocale): NewsPostMeta[] {
+  const dir = newsDir(locale);
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
   return files
     .map((file) => {
       const slug = file.replace(/\.md$/, "");
-      const { data } = matter(
-        fs.readFileSync(path.join(newsDir, file), "utf-8"),
-      );
+      const { data } = matter(fs.readFileSync(path.join(dir, file), "utf-8"));
       return {
         slug,
         title: data.title,
@@ -52,13 +58,16 @@ export function getAllNewsPosts(): NewsPostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getNewsPost(slug: string): NewsPost {
-  return readPost(slug);
+export function getNewsPost(
+  slug: string,
+  locale: Locale = defaultLocale,
+): NewsPost {
+  return readPost(slug, locale);
 }
 
-export function getAllNewsSlugs(): string[] {
+export function getAllNewsSlugs(locale: Locale = defaultLocale): string[] {
   return fs
-    .readdirSync(newsDir)
+    .readdirSync(newsDir(locale))
     .filter((f) => f.endsWith(".md"))
     .map((f) => f.replace(/\.md$/, ""));
 }

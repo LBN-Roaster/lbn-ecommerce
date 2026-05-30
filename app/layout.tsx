@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import { cookies } from "next/headers";
 import { ReactNode } from "react";
 import "./globals.css";
 import { baseUrl } from "lib/utils";
@@ -24,8 +25,11 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get("locale")?.value || "vi";
+
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang={lang} className={GeistSans.variable}>
       <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
         {children}
         <Analytics />

@@ -1,12 +1,9 @@
 import Link from "next/link";
 import LogoSquare from "components/logo-square";
+import type { Dictionary } from "lib/i18n/dictionaries/vi";
+import type { Locale } from "lib/i18n";
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
-
-const navLinks = [
-  { title: "Trang chủ", path: "/" },
-  { title: "Sản phẩm", path: "/search" },
-];
 
 const socialLinks = [
   {
@@ -38,26 +35,34 @@ const socialLinks = [
   },
 ];
 
-export default async function Footer() {
+export default function Footer({
+  dict,
+  locale,
+}: {
+  dict: Dictionary;
+  locale: Locale;
+}) {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : "");
   const copyrightName = COMPANY_NAME || SITE_NAME || "LBN";
 
+  const navLinks = [
+    { title: dict.nav.home, path: `/${locale}` },
+    { title: dict.nav.products, path: `/${locale}/search` },
+  ];
+
   return (
     <footer className="text-sm text-neutral-500 dark:text-neutral-400">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 border-t border-neutral-200 px-4 py-12 md:flex-row md:gap-16 min-[1320px]:px-0 dark:border-neutral-700">
-        {/* Brand */}
         <div className="flex flex-col gap-4">
           <Link
             className="flex items-center gap-2 text-black dark:text-white"
-            href="/"
+            href={`/${locale}`}
           >
             <LogoSquare size="sm" />
-            {/* <span className="font-semibold uppercase">{SITE_NAME}</span> */}
           </Link>
           <p className="max-w-xs text-neutral-500 dark:text-neutral-400">
-            Công ty Cổ phần Sản xuất – Thương mại – Dịch vụ LBN. Chuyên sản xuất
-            máy rang cà phê và thiết bị công nghiệp tại Khánh Hòa.
+            {dict.footer.companyDescription}
           </p>
           <div className="flex gap-3">
             {socialLinks.map((s) => (
@@ -75,9 +80,8 @@ export default async function Footer() {
           </div>
         </div>
 
-        {/* Nav */}
         <div className="flex flex-col gap-3">
-          <p className="font-semibold text-black dark:text-white">Liên kết</p>
+          <p className="font-semibold text-black dark:text-white">{dict.footer.links}</p>
           {navLinks.map((link) => (
             <Link
               key={link.title}
@@ -89,10 +93,9 @@ export default async function Footer() {
           ))}
         </div>
 
-        {/* Contact */}
         <div className="flex flex-col gap-3 md:ml-auto">
-          <p className="font-semibold text-black dark:text-white">Liên hệ</p>
-          <p>Lô 24 CCN Diên Phú, xã Diên Điền, Khánh Hòa</p>
+          <p className="font-semibold text-black dark:text-white">{dict.footer.contact}</p>
+          <p>{dict.footer.address}</p>
           <a
             href="tel:+84865112161"
             className="hover:text-black dark:hover:text-white"
@@ -108,7 +111,6 @@ export default async function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-neutral-200 py-6 dark:border-neutral-700">
         <div className="mx-auto flex w-full max-w-7xl items-center px-4 min-[1320px]:px-0">
           <p>

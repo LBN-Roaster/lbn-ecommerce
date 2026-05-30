@@ -10,16 +10,19 @@ const DEFAULT_HANDLE_BY_AREA: Record<string, string> = {
 
 export default function CollectionListClient({
   collections,
+  collectionsLabel,
 }: {
   collections: Collection[];
+  collectionsLabel: string;
 }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
   const areaParam = searchParams.get("area");
 
-  // When on a /search/[collection] page, infer area from that collection
-  const pathCollection = collections.find((c) => c.path === pathname);
+  const pathCollection = collections.find((c) =>
+    pathname.endsWith(c.path),
+  );
   const effectiveArea = areaParam ?? pathCollection?.area;
 
   const filtered = effectiveArea
@@ -36,7 +39,7 @@ export default function CollectionListClient({
   return (
     <FilterList
       list={filtered}
-      title="Bộ sưu tập"
+      title={collectionsLabel}
       defaultTitle={defaultTitle}
     />
   );

@@ -1,23 +1,34 @@
 import { getCollectionProducts } from "lib/data/collections";
 import { getProducts } from "lib/data/products";
+import type { Dictionary } from "lib/i18n/dictionaries/vi";
+import type { Locale } from "lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 
-function formatPrice(amount: string, currencyCode: string) {
-  if (Number(amount) === 0) return "Liên Hệ";
+function formatPrice(amount: string, currencyCode: string, contactLabel: string) {
+  if (Number(amount) === 0) return contactLabel;
   return new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: currencyCode,
   }).format(Number(amount));
 }
 
-export async function FeaturedProducts({ area }: { area?: string }) {
+export async function FeaturedProducts({
+  area,
+  dict,
+  locale,
+}: {
+  area?: string;
+  dict: Dictionary;
+  locale: Locale;
+}) {
   const products = (
     !area || area === "may-rang"
       ? await getCollectionProducts({
           collection: "hidden-homepage-featured-items",
+          locale,
         })
-      : await getProducts({ tag: area })
+      : await getProducts({ tag: area, locale })
   ).slice(0, 3);
 
   if (!products.length) return null;
@@ -27,10 +38,10 @@ export async function FeaturedProducts({ area }: { area?: string }) {
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-            Sản phẩm
+            {dict.featuredProducts.label}
           </p>
           <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
-            Dòng sản phẩm nổi bật
+            {dict.featuredProducts.heading}
           </h2>
         </div>
 
@@ -38,10 +49,9 @@ export async function FeaturedProducts({ area }: { area?: string }) {
           {products.map((product) => (
             <Link
               key={product.handle}
-              href={`/product/${product.handle}`}
+              href={`/${locale}/product/${product.handle}`}
               className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white transition hover:border-blue-600 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
             >
-              {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                 <Image
                   src={product.featuredImage?.url}
@@ -52,7 +62,6 @@ export async function FeaturedProducts({ area }: { area?: string }) {
                 />
               </div>
 
-              {/* Info */}
               <div className="p-5">
                 <h3 className="mb-1 font-semibold text-black dark:text-white">
                   {product.title}
@@ -65,10 +74,11 @@ export async function FeaturedProducts({ area }: { area?: string }) {
                     {formatPrice(
                       product.priceRange.minVariantPrice.amount,
                       product.priceRange.minVariantPrice.currencyCode,
+                      dict.featuredProducts.contactPrice,
                     )}
                   </span>
                   <span className="text-xs font-medium text-neutral-400 transition group-hover:text-blue-600">
-                    Xem chi tiết →
+                    {dict.featuredProducts.viewDetails}
                   </span>
                 </div>
               </div>
@@ -78,10 +88,10 @@ export async function FeaturedProducts({ area }: { area?: string }) {
 
         <div className="mt-10 text-center">
           <Link
-            href={`/search?area=${area ?? "may-rang"}`}
+            href={`/${locale}/search?area=${area ?? "may-rang"}`}
             className="inline-block rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
           >
-            Xem tất cả sản phẩm
+            {dict.featuredProducts.viewAll}
           </Link>
         </div>
       </div>

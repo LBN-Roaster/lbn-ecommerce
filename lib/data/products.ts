@@ -1,10 +1,11 @@
 import type { Product } from "@/lib/types";
+import { defaultLocale, type Locale } from "lib/i18n";
 import fs from "fs";
 import matter from "gray-matter";
 import { marked } from "marked";
 import path from "path";
 
-const productsDir = path.join(process.cwd(), "lib/data/product-posts");
+const productsBaseDir = path.join(process.cwd(), "lib/data/product-posts");
 
 function getMdFiles(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -110,26 +111,41 @@ function readProduct(filename: string): Product {
   };
 }
 
-export const products: Product[] = getMdFiles(productsDir)
-  .filter((f) => {
-    const raw = fs.readFileSync(f, "utf-8");
-    const { data } = matter(raw);
-    return !data.draft;
-  })
-  .map(readProduct);
+function loadProducts(locale: Locale): Product[] {
+  const dir = path.join(productsBaseDir, locale);
+  if (!fs.existsSync(dir)) return loadProducts(defaultLocale);
+  return getMdFiles(dir)
+    .filter((f) => {
+      const raw = fs.readFileSync(f, "utf-8");
+      const { data } = matter(raw);
+      return !data.draft;
+    })
+    .map(readProduct);
+}
+
+const productCache = new Map<Locale, Product[]>();
+
+export function getProductsForLocale(locale: Locale): Product[] {
+  if (!productCache.has(locale)) {
+    productCache.set(locale, loadProducts(locale));
+  }
+  return productCache.get(locale)!;
+}
 
 export async function getProducts({
   query,
   sortKey,
   reverse,
   tag,
+  locale = defaultLocale,
 }: {
   query?: string;
   sortKey?: string;
   reverse?: boolean;
   tag?: string;
+  locale?: Locale;
 } = {}): Promise<Product[]> {
-  let result = [...products];
+  let result = [...getProductsForLocale(locale)];
   if (tag) {
     result = result.filter((p) => p.tags.includes(tag));
   }
@@ -152,15 +168,19 @@ export async function getProducts({
   return result;
 }
 
-export async function getProduct(handle: string): Promise<Product | undefined> {
-  return products.find((p) => p.handle === handle);
+export async function getProduct(
+  handle: string,
+  locale: Locale = defaultLocale,
+): Promise<Product | undefined> {
+  return getProductsForLocale(locale).find((p) => p.handle === handle);
 }
 
 export async function getProductRecommendations(
   productId: string,
   tags?: string[],
+  locale: Locale = defaultLocale,
 ): Promise<Product[]> {
-  return products
+  return getProductsForLocale(locale)
     .filter((p) => p.id !== productId)
     .filter((p) => !tags?.length || p.tags.some((t) => tags.includes(t)))
     .slice(0, 4);

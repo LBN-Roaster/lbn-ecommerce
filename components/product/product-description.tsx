@@ -1,9 +1,16 @@
+import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import { Product } from "lib/types";
 import Link from "next/link";
 import { VariantPrice } from "./variant-price";
 import { VariantSelector } from "./variant-selector";
 
-export function ProductDescription({ product }: { product: Product }) {
+export function ProductDescription({
+  product,
+  dict,
+}: {
+  product: Product;
+  dict: Dictionary;
+}) {
   return (
     <>
       <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
@@ -21,7 +28,7 @@ export function ProductDescription({ product }: { product: Product }) {
             rel="noopener noreferrer"
             className="rounded-full border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-black"
           >
-            Liên hệ / Báo giá
+            {dict.product.contactQuote}
           </Link>
         </div>
       </div>
@@ -35,7 +42,6 @@ export function ProductDescription({ product }: { product: Product }) {
           />
         </>
       )}
-      {/* <AddToCart product={product} /> */}
     </>
   );
 }

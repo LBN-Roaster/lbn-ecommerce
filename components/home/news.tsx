@@ -1,25 +1,27 @@
 import { getAllNewsPosts } from "lib/data/news";
+import type { Dictionary } from "lib/i18n/dictionaries/vi";
+import type { Locale } from "lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 
-export function NewsSection() {
-  const posts = getAllNewsPosts().slice(0, 3);
+export function NewsSection({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+  const posts = getAllNewsPosts(locale).slice(0, 3);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">
       <div className="mb-10 text-center">
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
-          Tin tức & Sự kiện
+          {dict.newsSection.label}
         </p>
         <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
-          Cập nhật mới nhất
+          {dict.newsSection.heading}
         </h2>
       </div>
       <div className="grid gap-6 md:grid-cols-3">
         {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/news/${post.slug}`}
+            href={`/${locale}/news/${post.slug}`}
             className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white transition hover:border-blue-600 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900"
           >
             <div className="relative aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
@@ -49,10 +51,10 @@ export function NewsSection() {
       </div>
       <div className="mt-10 text-center">
         <Link
-          href="/news"
+          href={`/${locale}/news`}
           className="inline-block rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
         >
-          Xem tất cả tin tức
+          {dict.newsSection.viewAll}
         </Link>
       </div>
     </section>

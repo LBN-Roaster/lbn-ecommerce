@@ -1,4 +1,3 @@
-import { Navbar } from "components/layout/navbar";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
@@ -9,8 +8,7 @@ export default function StorefrontLayout({
 }) {
   return (
     <>
-      <Navbar />
-      <main className="pt-6">
+      <main className="pt-0">
         {children}
         <Toaster closeButton />
       </main>
