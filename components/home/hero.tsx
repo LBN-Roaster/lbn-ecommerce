@@ -45,15 +45,17 @@ export function HeroSection({ dict, locale }: { dict: Dictionary; locale: Locale
         <div className="flex flex-wrap gap-4">
           <Link
             href={`/${locale}/search`}
-            className="rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="group relative overflow-hidden rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white"
           >
-            {dict.hero.cta}
+            <span className="absolute -inset-x-2 -bottom-2 -top-12 translate-y-full rounded-t-[50%] bg-blue-800 transition-transform duration-500 ease-out group-hover:translate-y-0" />
+            <span className="relative">{dict.hero.cta}</span>
           </Link>
           <a
             href="tel:+84865112161"
-            className="rounded-lg border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+            className="group relative overflow-hidden rounded-lg border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm"
           >
-            (+84) 903596900
+            <span className="absolute -inset-x-2 -bottom-2 -top-12 translate-y-full rounded-t-[50%] bg-white/20 transition-transform duration-500 ease-out group-hover:translate-y-0" />
+            <span className="relative">(+84) 903596900</span>
           </a>
         </div>
       </div>

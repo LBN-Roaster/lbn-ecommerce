@@ -26,9 +26,12 @@ export function ProductDescription({
             href="https://zalo.me/lbncompany"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 transition hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-black"
+            className="group relative overflow-hidden rounded-full border border-blue-600 px-4 py-2 text-sm font-medium text-blue-600 dark:border-blue-400 dark:text-blue-400"
           >
-            {dict.product.contactQuote}
+            <span className="absolute -inset-x-2 -bottom-2 -top-12 translate-y-full rounded-t-[50%] bg-blue-600 transition-transform duration-500 ease-out group-hover:translate-y-0 dark:bg-blue-400" />
+            <span className="relative group-hover:text-white dark:group-hover:text-black">
+              {dict.product.contactQuote}
+            </span>
           </Link>
         </div>
       </div>

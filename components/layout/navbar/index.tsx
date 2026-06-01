@@ -64,9 +64,10 @@ export function Navbar({ dict, locale }: { dict: Dictionary; locale: Locale }) {
           <LanguageSwitcher locale={locale} />
           <a
             href="tel:+84865112161"
-            className="hidden rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 md:block"
+            className="group relative hidden overflow-hidden rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white md:block"
           >
-            (+84) 903596900
+            <span className="absolute -inset-x-2 -bottom-2 -top-12 translate-y-full rounded-t-[50%] bg-blue-800 transition-transform duration-500 ease-out group-hover:translate-y-0" />
+            <span className="relative">(+84) 903596900</span>
           </a>
         </div>
       </div>

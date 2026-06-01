@@ -58,7 +58,7 @@ export async function FeaturedProducts({
                   alt={product.title}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition duration-300 group-hover:scale-105"
+                  className="object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
 
@@ -89,9 +89,12 @@ export async function FeaturedProducts({
         <div className="mt-10 text-center">
           <Link
             href={`/${locale}/search?area=${area ?? "may-rang"}`}
-            className="inline-block rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold transition hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
+            className="group relative inline-block overflow-hidden rounded-lg border border-neutral-300 px-8 py-3 text-sm font-semibold dark:border-neutral-700"
           >
-            {dict.featuredProducts.viewAll}
+            <span className="absolute -inset-x-2 -bottom-2 -top-12 translate-y-full rounded-t-[50%] bg-neutral-900 transition-transform duration-500 ease-out group-hover:translate-y-0 dark:bg-neutral-100" />
+            <span className="relative group-hover:text-white dark:group-hover:text-black">
+              {dict.featuredProducts.viewAll}
+            </span>
           </Link>
         </div>
       </div>
