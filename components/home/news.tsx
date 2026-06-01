@@ -1,3 +1,4 @@
+import { FadeUp } from "components/fade-up";
 import { getAllNewsPosts } from "lib/data/news";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import type { Locale } from "lib/i18n";
@@ -9,14 +10,14 @@ export function NewsSection({ dict, locale }: { dict: Dictionary; locale: Locale
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">
-      <div className="mb-10 text-center">
+      <FadeUp className="mb-10 text-center">
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
           {dict.newsSection.label}
         </p>
         <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
           {dict.newsSection.heading}
         </h2>
-      </div>
+      </FadeUp>
       <div className="grid gap-6 md:grid-cols-3">
         {posts.map((post) => (
           <Link

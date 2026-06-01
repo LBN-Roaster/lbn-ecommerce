@@ -1,5 +1,6 @@
 "use client";
 
+import { FadeUp } from "components/fade-up";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import Image from "next/image";
 import { useState } from "react";
@@ -18,14 +19,14 @@ export function GallerySection({ dict }: { dict: Dictionary }) {
   return (
     <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-10 text-center">
+        <FadeUp className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
             {dict.gallery.label}
           </p>
           <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
             {dict.gallery.heading}
           </h2>
-        </div>
+        </FadeUp>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {images.map((img) => (
             <button

@@ -1,3 +1,4 @@
+import { FadeUp } from "components/fade-up";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
 
 const videoIds: Record<string, string> = {
@@ -14,7 +15,7 @@ export function JourneySection({ area, dict }: { area?: string; dict: Dictionary
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">
       <div className="grid items-center gap-12 md:grid-cols-2">
-        <div>
+        <FadeUp>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
             {c.label}
           </p>
@@ -25,18 +26,20 @@ export function JourneySection({ area, dict }: { area?: string; dict: Dictionary
             {c.body1}
           </p>
           <p className="text-neutral-600 dark:text-neutral-400">{c.body2}</p>
-        </div>
-        <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
-          <div className="relative aspect-video w-full">
-            <iframe
-              src={`https://www.youtube.com/embed/${videoId}`}
-              title={c.videoTitle}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 h-full w-full"
-            />
+        </FadeUp>
+        <FadeUp delay={0.15}>
+          <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900">
+            <div className="relative aspect-video w-full">
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title={c.videoTitle}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
           </div>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );

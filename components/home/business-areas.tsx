@@ -1,5 +1,6 @@
 "use client";
 
+import { FadeUp } from "components/fade-up";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -37,14 +38,14 @@ export function BusinessAreas({ dict }: { dict: Dictionary }) {
   return (
     <section className="border-y border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
       <div className="mx-auto max-w-7xl px-4 py-16">
-        <div className="mb-10 text-center">
+        <FadeUp className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
             {dict.businessAreas.label}
           </p>
           <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
             {dict.businessAreas.heading}
           </h2>
-        </div>
+        </FadeUp>
         <div className="grid gap-6 md:grid-cols-3">
           {areaKeys.map((key) => {
             const area = dict.businessAreas.areas[key];

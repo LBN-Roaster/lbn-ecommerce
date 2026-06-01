@@ -1,3 +1,4 @@
+import { FadeUp } from "components/fade-up";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
 import Image from "next/image";
 
@@ -22,7 +23,7 @@ export function MachineDetails({ area, dict }: { area?: string; dict: Dictionary
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">
       <div className="grid items-center gap-12 lg:grid-cols-2">
-        <div>
+        <FadeUp>
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
             {c.label}
           </p>
@@ -46,29 +47,31 @@ export function MachineDetails({ area, dict }: { area?: string; dict: Dictionary
               </li>
             ))}
           </ul>
-        </div>
+        </FadeUp>
 
-        <div
-          className="grid h-[480px] gap-2"
-          style={{
-            gridTemplateAreas: `"a b c" "d d c"`,
-            gridTemplateColumns: "1fr 1.5fr 1.2fr",
-            gridTemplateRows: "1.1fr 1fr",
-          }}
-        >
-          <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "a" }}>
-            <Image src={images[0]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "70% center" }} />
+        <FadeUp delay={0.15}>
+          <div
+            className="grid h-[480px] gap-2"
+            style={{
+              gridTemplateAreas: `"a b c" "d d c"`,
+              gridTemplateColumns: "1fr 1.5fr 1.2fr",
+              gridTemplateRows: "1.1fr 1fr",
+            }}
+          >
+            <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "a" }}>
+              <Image src={images[0]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "70% center" }} />
+            </div>
+            <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "b" }}>
+              <Image src={images[1]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "40% center" }} />
+            </div>
+            <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "c" }}>
+              <Image src={images[2]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "70% center" }} />
+            </div>
+            <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "d" }}>
+              <Image src={images[3]} alt="" fill sizes="100vw" className="object-cover" />
+            </div>
           </div>
-          <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "b" }}>
-            <Image src={images[1]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "40% center" }} />
-          </div>
-          <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "c" }}>
-            <Image src={images[2]} alt="" fill sizes="100vw" className="object-cover" style={{ objectPosition: "70% center" }} />
-          </div>
-          <div className="relative overflow-hidden rounded-xl" style={{ gridArea: "d" }}>
-            <Image src={images[3]} alt="" fill sizes="100vw" className="object-cover" />
-          </div>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );

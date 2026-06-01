@@ -1,3 +1,4 @@
+import { FadeUp } from "components/fade-up";
 import { getCollectionProducts } from "lib/data/collections";
 import { getProducts } from "lib/data/products";
 import type { Dictionary } from "lib/i18n/dictionaries/vi";
@@ -36,14 +37,14 @@ export async function FeaturedProducts({
   return (
     <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mb-10 text-center">
+        <FadeUp className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">
             {dict.featuredProducts.label}
           </p>
           <h2 className="text-3xl font-bold text-black md:text-4xl dark:text-white">
             {dict.featuredProducts.heading}
           </h2>
-        </div>
+        </FadeUp>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
