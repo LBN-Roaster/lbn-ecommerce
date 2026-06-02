@@ -400,6 +400,71 @@ export function QuotationModal({
                 );
               })}
             </div>
+            {lines.length > 0 &&
+              (() => {
+                let totalPrice = 0;
+                let totalCost = 0;
+                for (const line of lines) {
+                  const variant = line.product.variants.find(
+                    (v) => v.id === line.variantId,
+                  );
+                  if (!variant) continue;
+                  const base = getVariantPrice(
+                    variant,
+                    line.product,
+                    line.priceType,
+                  );
+                  const override = line.priceOverride
+                    ? Number(line.priceOverride)
+                    : 0;
+                  const unit = override
+                    ? override
+                    : base * (1 - (line.discountPercent || 0) / 100);
+                  totalPrice += roundUp(unit * line.quantity);
+                  totalCost += variant.costPrice * line.quantity;
+                }
+                const profitPct =
+                  totalCost > 0
+                    ? ((totalPrice - totalCost) / totalCost) * 100
+                    : 0;
+                return (
+                  <div className="quotation-grand-total">
+                    <div className="quotation-grand-total-row">
+                      <span className="quotation-grand-total-label">
+                        Total Cost
+                      </span>
+                      <span className="quotation-grand-total-cost">
+                        {formatPrice(totalCost)} ₫
+                      </span>
+                    </div>
+                    <div className="quotation-grand-total-row">
+                      <span className="quotation-grand-total-label">
+                        Total Price
+                      </span>
+                      <span className="quotation-grand-total-value">
+                        {formatPrice(totalPrice)} ₫
+                      </span>
+                    </div>
+                    <div className="quotation-grand-total-row">
+                      <span className="quotation-grand-total-label">
+                        Profit
+                      </span>
+                      <span
+                        className={
+                          profitPct >= 0
+                            ? "quotation-grand-total-profit"
+                            : "quotation-grand-total-loss"
+                        }
+                      >
+                        {profitPct >= 0 ? "+" : ""}
+                        {profitPct.toFixed(1)}%
+                        {" · "}
+                        {formatPrice(totalPrice - totalCost)} ₫
+                      </span>
+                    </div>
+                  </div>
+                );
+              })()}
           </div>
         </div>
 

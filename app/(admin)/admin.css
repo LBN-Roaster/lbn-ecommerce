@@ -2067,3 +2067,40 @@
   color: var(--ink-2);
   font-weight: 500;
 }
+.admin-app .quotation-grand-total {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-top: 2px solid var(--line);
+  font-size: 13px;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  font-feature-settings: "tnum" 1;
+}
+.admin-app .quotation-grand-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-app .quotation-grand-total-label {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.admin-app .quotation-grand-total-cost {
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.admin-app .quotation-grand-total-value {
+  font-weight: 700;
+  color: var(--ink-1);
+  font-size: 14px;
+}
+.admin-app .quotation-grand-total-profit {
+  font-weight: 600;
+  color: var(--green, #16a34a);
+}
+.admin-app .quotation-grand-total-loss {
+  font-weight: 600;
+  color: var(--red, #dc2626);
+}
