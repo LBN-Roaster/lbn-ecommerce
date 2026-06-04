@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import {
   LayoutGrid,
   Map,
+  MessageSquareText,
   Package,
   TrendingUp,
   Settings,
@@ -106,6 +107,22 @@ export function Sidebar() {
             <span className="ml-auto text-[10px] text-muted-foreground">
               JSON
             </span>
+          </Link>
+          <Link
+            href="/admin/feedback"
+            className={cn(
+              "flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13.5px] text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground",
+              pathname === "/admin/feedback" &&
+                "bg-background text-foreground shadow-sm font-medium",
+            )}
+          >
+            <MessageSquareText
+              className={cn(
+                "h-4 w-4 text-muted-foreground",
+                pathname === "/admin/feedback" && "text-primary",
+              )}
+            />
+            Feedback
           </Link>
           <button
             className="flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13.5px] text-muted-foreground opacity-50 cursor-not-allowed"
