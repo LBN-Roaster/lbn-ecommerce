@@ -15,10 +15,11 @@ export function Sparkline({ values, width = 56, height = 18 }: Props) {
     )
     .join(" ");
   return (
-    <svg width={width} height={height} style={{ display: "block" }}>
+    <svg width={width} height={height} className="block">
       <polyline
         fill="none"
-        stroke="var(--accent)"
+        stroke="currentColor"
+        className="text-primary"
         strokeWidth="1.4"
         strokeLinecap="round"
         strokeLinejoin="round"

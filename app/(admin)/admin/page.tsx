@@ -1,6 +1,14 @@
 import { MonthlyRevenueChart } from "components/admin/monthly-revenue-chart";
 import { RecentSalesTable } from "components/admin/recent-sales-table";
 import { StatCard } from "components/admin/stat-card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
   formatVNDCompact,
@@ -52,15 +60,17 @@ export default async function AdminOverviewPage() {
     : "";
 
   return (
-    <div className="page">
-      <div className="page-head">
+    <div className="max-w-[1480px] p-7 pb-12">
+      <div className="mb-5 flex items-end justify-between gap-6">
         <div>
-          <h1 className="page-title">Overview</h1>
-          <div className="page-sub">Business health at a glance</div>
+          <h1 className="text-2xl font-semibold tracking-tight">Overview</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Business health at a glance
+          </p>
         </div>
       </div>
 
-      <div className="stats">
+      <div className="mb-4 grid grid-cols-4 gap-3.5">
         <StatCard
           label="All-time revenue"
           value={allRevenueCompact}
@@ -89,57 +99,47 @@ export default async function AdminOverviewPage() {
         />
       </div>
 
-      <div className="row">
-        <div className="card">
-          <div className="card-head">
-            <div>
-              <div className="card-title">Monthly revenue</div>
-              <div className="card-sub">
-                Rolling 12-month window · ending {currentMonthLabel}
-              </div>
-            </div>
-            <div className="chart-legend">
-              <span>
-                <span
-                  className="legend-swatch"
-                  style={{ background: "var(--accent)" }}
-                />
-                Closed
-              </span>
-              <span>
-                <span
-                  className="legend-swatch"
-                  style={{ background: "var(--ink)" }}
-                />
-                Current month
-              </span>
-            </div>
-          </div>
-          <div className="chart-wrap">
-            <MonthlyRevenueChart data={chartData} />
-          </div>
-        </div>
-      </div>
-
-      <div className="card" style={{ marginTop: 14 }}>
-        <div className="card-head">
+      <Card>
+        <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
           <div>
-            <div className="card-title">Recent sales</div>
-            <div className="card-sub">
+            <CardTitle className="text-[13.5px]">Monthly revenue</CardTitle>
+            <CardDescription>
+              Rolling 12-month window · ending {currentMonthLabel}
+            </CardDescription>
+          </div>
+          <div className="flex items-center gap-3.5 text-[11.5px] text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block h-2.5 w-2.5 rounded-sm bg-muted-foreground" />
+              Closed
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block h-2.5 w-2.5 rounded-sm bg-foreground" />
+              Current month
+            </span>
+          </div>
+        </CardHeader>
+        <CardContent className="px-4 pb-2">
+          <MonthlyRevenueChart data={chartData} />
+        </CardContent>
+      </Card>
+
+      <Card className="mt-3.5">
+        <CardHeader className="flex-row items-center justify-between space-y-0">
+          <div>
+            <CardTitle className="text-[13.5px]">Recent sales</CardTitle>
+            <CardDescription>
               Latest {Math.min(RECENT_LIMIT, sales.length)} of {sales.length}{" "}
               transactions
-            </div>
+            </CardDescription>
           </div>
-          <Link
-            href="/admin/sales"
-            className="btn btn-ghost"
-            style={{ fontSize: 12 }}
-          >
-            View all →
-          </Link>
-        </div>
-        <RecentSalesTable sales={sales} limit={RECENT_LIMIT} />
-      </div>
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/admin/sales">View all →</Link>
+          </Button>
+        </CardHeader>
+        <CardContent className="p-0">
+          <RecentSalesTable sales={sales} limit={RECENT_LIMIT} />
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { getSalesByLocation } from "lib/sales";
 export default async function AdminMapPage() {
   const locations = await getSalesByLocation();
   return (
-    <div className="page" style={{ paddingBottom: 28 }}>
+    <div className="max-w-[1480px] p-7 pb-7">
       <SalesMap locations={locations} />
     </div>
   );

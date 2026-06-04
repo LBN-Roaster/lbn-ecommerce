@@ -1,7 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { DownloadIcon } from "./icons";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 const CRUMB_LABELS: Record<string, string> = {
   "/admin": "Overview",
@@ -14,27 +15,27 @@ export function Topbar() {
   const crumb = CRUMB_LABELS[pathname] ?? "Admin";
 
   return (
-    <div className="topbar">
-      <div className="crumbs">
+    <div className="sticky top-0 z-10 flex h-14 items-center gap-3.5 border-b border-border bg-background px-7">
+      <div className="text-[12.5px] text-muted-foreground">
         admin{" "}
-        <span style={{ margin: "0 6px", color: "var(--line-strong)" }}>/</span>{" "}
-        <strong>{crumb}</strong>
+        <span className="mx-1.5 text-border">/</span>{" "}
+        <span className="font-medium text-foreground">{crumb}</span>
       </div>
-      <div className="topbar-right">
-        <span className="pill">
-          <span className="pill-dot" /> Synced from{" "}
-          <span className="mono" style={{ marginLeft: 2 }}>
-            data/sales.json
-          </span>
+      <div className="ml-auto flex items-center gap-2.5">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2.5 py-1 text-[11.5px] text-muted-foreground">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          Synced from{" "}
+          <span className="ml-0.5 font-mono text-[11px]">data/sales.json</span>
         </span>
-        <button
-          className="btn btn-ghost"
-          title="Export CSV"
+        <Button
+          variant="ghost"
+          size="sm"
           disabled
-          style={{ opacity: 0.6, cursor: "not-allowed" }}
+          className="opacity-60"
         >
-          {DownloadIcon} Export
-        </button>
+          <Download className="h-4 w-4" />
+          Export
+        </Button>
       </div>
     </div>
   );

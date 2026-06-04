@@ -1,4 +1,12 @@
 import { formatDate, formatVND, type Sale } from "lib/sales";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 type Props = {
   sales: Sale[];
@@ -10,9 +18,9 @@ export function RecentSalesTable({ sales, limit }: Props) {
 
   if (rows.length === 0) {
     return (
-      <div className="empty-state">
-        <div className="empty-state-title">No sales yet</div>
-        <div className="empty-state-hint">
+      <div className="py-10 text-center text-sm text-muted-foreground">
+        <div className="font-medium">No sales yet</div>
+        <div className="mt-1 text-xs">
           Sales will appear here once data/sales.json has entries.
         </div>
       </div>
@@ -20,34 +28,44 @@ export function RecentSalesTable({ sales, limit }: Props) {
   }
 
   return (
-    <table className="tbl">
-      <thead>
-        <tr>
-          <th style={{ width: 110 }}>Date</th>
-          <th>Product</th>
-          <th>Buyer</th>
-          <th>Location</th>
-          <th className="num">Price</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[110px]">Date</TableHead>
+          <TableHead>Product</TableHead>
+          <TableHead>Buyer</TableHead>
+          <TableHead>Location</TableHead>
+          <TableHead className="text-right">Price</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
         {rows.map((s) => (
-          <tr key={s.id}>
-            <td className="date-cell">{formatDate(s.date)}</td>
-            <td>
-              <span className="product-tag">{s.productHandle}</span>
-            </td>
-            <td>
-              <div className="buyer">{s.buyer.name}</div>
+          <TableRow key={s.id}>
+            <TableCell className="font-mono text-muted-foreground">
+              {formatDate(s.date)}
+            </TableCell>
+            <TableCell>
+              <span className="inline-flex items-center rounded border border-border bg-muted px-2 py-0.5 font-mono text-[11.5px] text-muted-foreground">
+                {s.productHandle}
+              </span>
+            </TableCell>
+            <TableCell>
+              <div className="font-medium">{s.buyer.name}</div>
               {s.buyer.contact && (
-                <div className="buyer-contact">{s.buyer.contact}</div>
+                <div className="mt-0.5 text-[11.5px] text-muted-foreground">
+                  {s.buyer.contact}
+                </div>
               )}
-            </td>
-            <td className="location-cell">{s.location.label}</td>
-            <td className="num">{formatVND(s.price)}</td>
-          </tr>
+            </TableCell>
+            <TableCell className="text-muted-foreground">
+              {s.location.label}
+            </TableCell>
+            <TableCell className="text-right font-mono">
+              {formatVND(s.price)}
+            </TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 }

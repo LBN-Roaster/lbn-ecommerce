@@ -5,6 +5,21 @@ import { getProducts, deleteProduct } from "lib/admin-api";
 import { QuotationModal } from "./quotation-modal";
 import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Card } from "@/components/ui/card";
+import { Search, ImageIcon } from "lucide-react";
 
 type FilterTab = "all" | "VISIBLE" | "HIDDEN" | "CONTACT_US";
 
@@ -15,10 +30,10 @@ const TABS: { value: FilterTab; label: string }[] = [
   { value: "CONTACT_US", label: "Contact Us" },
 ];
 
-const STATUS_CONFIG: Record<string, { label: string; className: string }> = {
-  VISIBLE: { label: "Active", className: "status-badge status-active" },
-  HIDDEN: { label: "Draft", className: "status-badge status-draft" },
-  CONTACT_US: { label: "Contact Us", className: "status-badge status-contact" },
+const STATUS_VARIANT: Record<string, { label: string; variant: "success" | "secondary" | "info" }> = {
+  VISIBLE: { label: "Active", variant: "success" },
+  HIDDEN: { label: "Draft", variant: "secondary" },
+  CONTACT_US: { label: "Contact Us", variant: "info" },
 };
 
 function formatPrice(n: number) {
@@ -57,7 +72,7 @@ function DeleteButton({
 
   return (
     <button
-      className="action-link danger"
+      className="text-xs text-muted-foreground hover:text-destructive hover:underline disabled:opacity-50"
       disabled={pending}
       onClick={() => {
         if (!confirm("Delete this product?")) return;
@@ -130,81 +145,84 @@ export function ProductTable() {
 
   if (loading) {
     return (
-      <div className="empty-state">
-        <div className="empty-state-title">Loading products...</div>
+      <div className="py-10 text-center text-sm text-muted-foreground">
+        Loading products...
       </div>
     );
   }
 
   return (
-    <div className="product-list">
-      <div className="product-list-toolbar">
-        <div className="search-box">
-          <svg
-            className="search-icon"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <circle cx="9" cy="9" r="6" />
-            <path d="M13.5 13.5L17 17" strokeLinecap="round" />
-          </svg>
-          <input
-            type="text"
-            className="search-input"
+    <Card>
+      <div className="border-b border-border p-3.5">
+        <div className="relative max-w-[400px]">
+          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            className="pl-8"
           />
         </div>
       </div>
 
-      <div className="filter-tabs">
+      <div className="flex border-b border-border px-4">
         {TABS.map((tab) => (
           <button
             key={tab.value}
-            className={
-              "filter-tab" + (activeTab === tab.value ? " active" : "")
-            }
+            className={cn(
+              "-mb-px inline-flex items-center gap-1.5 border-b-2 border-transparent px-3.5 py-2.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground",
+              activeTab === tab.value &&
+                "border-foreground text-foreground",
+            )}
             onClick={() => setActiveTab(tab.value)}
           >
             {tab.label}
-            <span className="filter-tab-count">{tabCounts[tab.value]}</span>
+            <span
+              className={cn(
+                "rounded-full border border-border bg-muted px-1.5 py-px text-[11px] font-medium text-muted-foreground",
+                activeTab === tab.value &&
+                  "border-foreground bg-foreground text-background",
+              )}
+            >
+              {tabCounts[tab.value]}
+            </span>
           </button>
         ))}
       </div>
 
       {filtered.length === 0 ? (
-        <div className="empty-state">
-          <div className="empty-state-title">
+        <div className="py-10 text-center text-sm text-muted-foreground">
+          <div className="font-medium">
             {search ? "No products match your search" : "No products yet"}
           </div>
-          <div className="empty-state-hint">
+          <div className="mt-1 text-xs">
             {search
               ? "Try a different search term"
               : "Add your first product to get started"}
           </div>
         </div>
       ) : (
-        <div className="product-table-wrap">
+        <div className="overflow-x-auto">
           {selected.size > 0 && (
-            <div className="bulk-bar">
-              <span className="bulk-count">{selected.size} selected</span>
-              <button
-                className="btn btn-primary"
-                style={{ fontSize: 12 }}
+            <div className="flex items-center gap-3 border-b border-border bg-muted px-4 py-2">
+              <span className="text-[12.5px] font-medium">
+                {selected.size} selected
+              </span>
+              <Button
+                size="sm"
+                className="text-xs"
                 onClick={() => setShowQuotation(true)}
               >
                 Generate Quotation
-              </button>
-              <button
-                className="btn btn-ghost"
-                style={{ fontSize: 12 }}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs"
                 onClick={() => setSelected(new Set())}
               >
                 Deselect all
-              </button>
+              </Button>
             </div>
           )}
           {showQuotation && (
@@ -213,110 +231,90 @@ export function ProductTable() {
               onClose={() => setShowQuotation(false)}
             />
           )}
-          <table className="tbl product-tbl">
-            <thead>
-              <tr>
-                <th style={{ width: 40 }}>
-                  <input
-                    type="checkbox"
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-10">
+                  <Checkbox
                     checked={allSelected}
-                    onChange={toggleAll}
-                    className="checkbox"
+                    onCheckedChange={toggleAll}
                   />
-                </th>
-                <th style={{ width: 60 }}></th>
-                <th>Product</th>
-                <th>Status</th>
-                <th className="num">Cost</th>
-                <th className="num">Selling / %Rev</th>
-                <th className="num">Listed / %Dist</th>
-                <th style={{ width: 100 }}></th>
-              </tr>
-            </thead>
-            <tbody>
+                </TableHead>
+                <TableHead className="w-[60px]" />
+                <TableHead>Product</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="text-right">Cost</TableHead>
+                <TableHead className="text-right">Selling / %Rev</TableHead>
+                <TableHead className="text-right">Listed / %Dist</TableHead>
+                <TableHead className="w-[100px]" />
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {filtered.map((p) => (
-                <tr key={p.id} className={selected.has(p.id) ? "selected" : ""}>
-                  <td>
-                    <input
-                      type="checkbox"
+                <TableRow
+                  key={p.id}
+                  data-state={selected.has(p.id) ? "selected" : undefined}
+                >
+                  <TableCell>
+                    <Checkbox
                       checked={selected.has(p.id)}
-                      onChange={() => toggleOne(p.id)}
-                      className="checkbox"
+                      onCheckedChange={() => toggleOne(p.id)}
                     />
-                  </td>
-                  <td>
-                    <div className="product-thumb">
+                  </TableCell>
+                  <TableCell>
+                    <div className="grid h-10 w-10 place-items-center overflow-hidden rounded border border-border bg-muted">
                       {p.images && p.images.length > 0 ? (
-                        <img src={p.images[0]} alt={p.model} />
+                        <img
+                          src={p.images[0]}
+                          alt={p.model}
+                          className="h-full w-full object-cover"
+                        />
                       ) : (
-                        <div className="product-thumb-placeholder">
-                          <svg
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.2"
-                          >
-                            <rect x="2" y="2" width="16" height="16" rx="2" />
-                            <circle cx="7" cy="7" r="1.5" />
-                            <path d="M2 14l5-5 3 3 4-4 4 4v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-2z" />
-                          </svg>
-                        </div>
+                        <ImageIcon className="h-5 w-5 text-muted-foreground" />
                       )}
                     </div>
-                  </td>
-                  <td>
+                  </TableCell>
+                  <TableCell>
                     <Link
                       href={`/admin/products/${p.id}/edit`}
-                      className="product-cell-link"
+                      className="text-[13px] font-medium hover:text-primary hover:underline"
                     >
                       {p.model}
                     </Link>
-                  </td>
-                  <td>
-                    <span
-                      className={
-                        STATUS_CONFIG[p.priceVisibility]?.className ||
-                        "status-badge"
-                      }
-                    >
-                      {STATUS_CONFIG[p.priceVisibility]?.label ||
-                        p.priceVisibility}
-                    </span>
-                  </td>
-                  <td className="num">
-                    <span className="price-line">
-                      {formatPrice(p.costPrice)} ₫
-                    </span>
-                  </td>
-                  <td className="num">
-                    <span className="price-line">
-                      {formatPrice(computeSellingPrice(p.costPrice, p.revenuePercent))} ₫ /{" "}
-                      {p.revenuePercent}%
-                    </span>
-                  </td>
-                  <td className="num">
-                    <span className="price-line">
-                      {formatPrice(computeListedPrice(p.costPrice, p.revenuePercent, p.distributorPercent))} ₫ /{" "}
-                      {p.distributorPercent}%
-                    </span>
-                  </td>
-                  <td>
-                    <div className="product-actions">
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={STATUS_VARIANT[p.priceVisibility]?.variant ?? "secondary"}>
+                      {STATUS_VARIANT[p.priceVisibility]?.label ?? p.priceVisibility}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-[12.5px]">
+                    {formatPrice(p.costPrice)} ₫
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-[12.5px]">
+                    {formatPrice(computeSellingPrice(p.costPrice, p.revenuePercent))} ₫ /{" "}
+                    {p.revenuePercent}%
+                  </TableCell>
+                  <TableCell className="text-right font-mono text-[12.5px]">
+                    {formatPrice(computeListedPrice(p.costPrice, p.revenuePercent, p.distributorPercent))} ₫ /{" "}
+                    {p.distributorPercent}%
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex justify-end gap-2">
                       <Link
                         href={`/admin/products/${p.id}/edit`}
-                        className="action-link"
+                        className="text-xs text-muted-foreground hover:text-foreground hover:underline"
                       >
                         Edit
                       </Link>
                       <DeleteButton id={p.id} onDeleted={refresh} />
                     </div>
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       )}
-    </div>
+    </Card>
   );
 }

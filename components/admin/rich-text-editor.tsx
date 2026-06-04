@@ -5,6 +5,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
+import { cn } from "@/lib/utils";
 
 interface RichTextEditorProps {
   name: string;
@@ -26,7 +27,10 @@ function ToolbarButton({
   return (
     <button
       type="button"
-      className={"rte-btn" + (active ? " active" : "")}
+      className={cn(
+        "inline-grid h-7 w-7 place-items-center rounded text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+        active && "bg-foreground text-background",
+      )}
       onClick={onClick}
       title={title}
     >
@@ -50,7 +54,8 @@ export function RichTextEditor({
     content: defaultValue,
     editorProps: {
       attributes: {
-        class: "rte-content",
+        class:
+          "rte-content px-3 py-2.5 min-h-[120px] text-[13.5px] leading-relaxed outline-none text-foreground",
       },
     },
     onUpdate: ({ editor: e }) => {
@@ -66,8 +71,8 @@ export function RichTextEditor({
   }
 
   return (
-    <div className="rte">
-      <div className="rte-toolbar">
+    <div className="overflow-hidden rounded-md border border-input shadow-sm transition-colors focus-within:ring-1 focus-within:ring-ring">
+      <div className="flex items-center gap-0.5 border-b border-border bg-muted px-1.5 py-1">
         <ToolbarButton
           active={editor?.isActive("bold")}
           onClick={() => editor?.chain().focus().toggleBold().run()}
@@ -82,7 +87,7 @@ export function RichTextEditor({
         >
           <em>I</em>
         </ToolbarButton>
-        <div className="rte-sep" />
+        <div className="mx-1 h-[18px] w-px bg-border" />
         <ToolbarButton
           active={editor?.isActive("bulletList")}
           onClick={() => editor?.chain().focus().toggleBulletList().run()}
@@ -117,7 +122,7 @@ export function RichTextEditor({
             <rect x="5" y="11" width="10" height="2" rx="0.5" />
           </svg>
         </ToolbarButton>
-        <div className="rte-sep" />
+        <div className="mx-1 h-[18px] w-px bg-border" />
         <ToolbarButton
           active={editor?.isActive("link")}
           onClick={addLink}
@@ -141,7 +146,7 @@ export function RichTextEditor({
             />
           </svg>
         </ToolbarButton>
-        <div className="rte-sep" />
+        <div className="mx-1 h-[18px] w-px bg-border" />
         <ToolbarButton
           active={editor?.isActive("heading", { level: 2 })}
           onClick={() =>

@@ -1,6 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { X, GripVertical, ImagePlus } from "lucide-react";
 
 interface ImageManagerProps {
   name: string;
@@ -44,87 +47,62 @@ export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
   }
 
   return (
-    <div className="img-manager">
+    <div className="flex flex-col gap-3">
       <input type="hidden" name={name} value={images.join("\n")} />
 
-      {images.length > 0 ? (
-        <div className="img-grid">
+      {images.length > 0 && (
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2">
           {images.map((url, i) => (
             <div
               key={`${url}-${i}`}
-              className={"img-grid-item" + (i === 0 ? " featured" : "")}
+              className={`group relative overflow-hidden rounded-md border border-border bg-muted ${i === 0 ? "col-span-2 row-span-2" : ""} aspect-square cursor-grab active:cursor-grabbing`}
               draggable
               onDragStart={() => handleDragStart(i)}
               onDragOver={(e) => handleDragOver(e, i)}
               onDragEnd={handleDragEnd}
             >
-              <img src={url} alt={`Product image ${i + 1}`} />
-              <div className="img-grid-overlay">
+              <img
+                src={url}
+                alt={`Product image ${i + 1}`}
+                className="block h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-start justify-end bg-black/0 p-1.5 transition-colors group-hover:bg-black/15">
                 <button
                   type="button"
-                  className="img-remove-btn"
+                  className="grid h-6 w-6 place-items-center rounded-full bg-white/90 text-muted-foreground opacity-0 shadow-sm transition-opacity hover:text-destructive group-hover:opacity-100"
                   onClick={() => remove(i)}
                   title="Remove image"
                 >
-                  <svg
-                    viewBox="0 0 16 16"
-                    width="14"
-                    height="14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                  </svg>
+                  <X className="h-3.5 w-3.5" />
                 </button>
                 {i === 0 && (
-                  <span className="img-featured-badge">Featured</span>
+                  <span className="absolute bottom-1.5 left-1.5 rounded bg-white/90 px-1.5 py-px text-[10px] font-semibold uppercase text-muted-foreground shadow-sm">
+                    Featured
+                  </span>
                 )}
               </div>
-              <div className="img-drag-handle">
-                <svg
-                  viewBox="0 0 16 16"
-                  width="12"
-                  height="12"
-                  fill="currentColor"
-                >
-                  <circle cx="5" cy="4" r="1" />
-                  <circle cx="11" cy="4" r="1" />
-                  <circle cx="5" cy="8" r="1" />
-                  <circle cx="11" cy="8" r="1" />
-                  <circle cx="5" cy="12" r="1" />
-                  <circle cx="11" cy="12" r="1" />
-                </svg>
+              <div className="absolute left-1.5 top-1.5 grid h-5 w-5 place-items-center rounded bg-white/90 text-muted-foreground opacity-0 shadow-sm transition-opacity group-hover:opacity-100">
+                <GripVertical className="h-3 w-3" />
               </div>
             </div>
           ))}
         </div>
-      ) : null}
+      )}
 
-      <div className="img-add-area">
-        <div className="img-add-zone">
-          <svg
-            className="img-add-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="3" />
-            <circle cx="9" cy="9" r="2" />
-            <path d="M3 16l5-5 4 4 3-3 6 6v2a3 3 0 01-3 3H6a3 3 0 01-3-3v-4z" />
-          </svg>
-          <div className="img-add-text">
-            <span className="img-add-title">Add image URL</span>
-            <span className="img-add-hint">
+      <div className="flex flex-col items-center gap-3 rounded-md border-2 border-dashed border-border p-5 transition-colors hover:border-primary/50">
+        <div className="flex flex-col items-center gap-2 text-center">
+          <ImagePlus className="h-8 w-8 text-muted-foreground" />
+          <div className="flex flex-col gap-0.5">
+            <span className="text-sm font-medium text-muted-foreground">
+              Add image URL
+            </span>
+            <span className="text-[11.5px] text-muted-foreground">
               Paste a URL and press Enter or click Add
             </span>
           </div>
         </div>
-        <div className="img-url-row">
-          <input
-            type="text"
-            className="form-input"
+        <div className="flex w-full max-w-[420px] gap-2">
+          <Input
             placeholder="https://example.com/image.jpg"
             value={inputUrl}
             onChange={(e) => setInputUrl(e.target.value)}
@@ -134,15 +112,16 @@ export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
                 addUrl();
               }
             }}
+            className="text-[12.5px]"
           />
-          <button
+          <Button
             type="button"
-            className="btn"
+            variant="outline"
             onClick={addUrl}
             disabled={!inputUrl.trim()}
           >
             Add
-          </button>
+          </Button>
         </div>
       </div>
     </div>

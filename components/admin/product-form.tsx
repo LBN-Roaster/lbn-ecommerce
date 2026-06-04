@@ -9,6 +9,17 @@ import {
   type VariantOption,
   type VariantData,
 } from "./variant-builder";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 type ViewMode = "form" | "json";
 
@@ -79,7 +90,6 @@ function roundUp(n: number): number {
 function roundDown(n: number): number {
   return Math.floor(n / 1_000_000) * 1_000_000;
 }
-
 
 function computeSellingPrice(cost: number, revPct: number): number {
   return roundUp(cost * (1 + revPct / 100));
@@ -247,20 +257,30 @@ export function ProductForm({
   );
 
   return (
-    <form ref={formRef} action={formAction} className="shopify-form">
-      {error && <div className="form-error">{error}</div>}
+    <form ref={formRef} action={formAction} className="flex flex-col gap-4">
+      {error && (
+        <div className="rounded-md border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-destructive">
+          {error}
+        </div>
+      )}
 
-      <div className="view-toggle">
+      <div className="inline-flex self-start overflow-hidden rounded-md border border-border">
         <button
           type="button"
-          className={"view-toggle-btn" + (viewMode === "form" ? " active" : "")}
+          className={cn(
+            "border-r border-border bg-background px-4 py-1.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground",
+            viewMode === "form" && "bg-foreground text-background",
+          )}
           onClick={() => viewMode === "json" && switchToForm()}
         >
           Form
         </button>
         <button
           type="button"
-          className={"view-toggle-btn" + (viewMode === "json" ? " active" : "")}
+          className={cn(
+            "bg-background px-4 py-1.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground",
+            viewMode === "json" && "bg-foreground text-background",
+          )}
           onClick={() => viewMode === "form" && switchToJson()}
         >
           JSON
@@ -268,74 +288,72 @@ export function ProductForm({
       </div>
 
       {viewMode === "json" ? (
-        <div className="form-card">
-          <div className="form-card-header">
-            <h2 className="form-card-title">JSON Payload</h2>
-            <p className="form-card-desc">Paste AI-generated JSON here</p>
-          </div>
-          <div className="form-card-body">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-sm">JSON Payload</CardTitle>
+            <CardDescription>Paste AI-generated JSON here</CardDescription>
+          </CardHeader>
+          <CardContent>
             <textarea
               name="jsonPayload"
               value={jsonText}
               onChange={(e) => setJsonText(e.target.value)}
               rows={24}
-              className="form-input mono"
+              className="w-full rounded-md border border-input bg-transparent px-3 py-2 font-mono text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               spellCheck={false}
             />
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       ) : (
-        <div key={formKey} className="shopify-form-layout">
-          <div className="shopify-form-main">
-            {/* Title & Description */}
-            <div className="form-card">
-              <div className="form-card-header">
-                <h2 className="form-card-title">Product information</h2>
-              </div>
-              <div className="form-card-body">
-                <label className="form-field">
-                  <span className="form-label">Title</span>
-                  <input
+        <div key={formKey} className="grid grid-cols-[1fr_320px] items-start gap-5">
+          <div className="flex min-w-0 flex-col gap-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Product information</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3.5">
+                <div className="flex flex-col gap-1.5">
+                  <Label>Title</Label>
+                  <Input
                     name="model"
                     defaultValue={snapshot.model}
                     required
-                    className="form-input"
                     placeholder="Short sleeves t-shirt"
                   />
-                </label>
-                <div className="form-field">
-                  <span className="form-label">Description</span>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label>Description</Label>
                   <RichTextEditor
                     name="generalInformation"
                     defaultValue={snapshot.generalInformation}
                     placeholder="Write a description for your product..."
                   />
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            {/* Media */}
-            <div className="form-card">
-              <div className="form-card-header">
-                <h2 className="form-card-title">Media</h2>
-              </div>
-              <div className="form-card-body">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Media</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <ImageManager name="images" defaultValue={snapshot.images} />
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            {/* Pricing */}
-            <div className="form-card">
-              <div className="form-card-header">
-                <h2 className="form-card-title">Pricing</h2>
-              </div>
-              <div className="form-card-body">
-                <div className="pricing-grid">
-                  <label className="form-field">
-                    <span className="form-label">Cost Price</span>
-                    <div className="price-input-wrap">
-                      <span className="price-currency">₫</span>
-                      <input
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Pricing</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3.5">
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="flex flex-col gap-1.5">
+                    <Label>Cost Price</Label>
+                    <div className="relative">
+                      <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+                        ₫
+                      </span>
+                      <Input
                         name="costPrice"
                         type="text"
                         inputMode="numeric"
@@ -344,15 +362,15 @@ export function ProductForm({
                           setCostDisplay(formatCurrency(e.target.value))
                         }
                         required
-                        className="form-input price-input"
+                        className="pl-7 font-mono"
                         placeholder="0"
                       />
                     </div>
-                  </label>
-                  <label className="form-field">
-                    <span className="form-label">Revenue %</span>
-                    <div className="price-input-wrap">
-                      <input
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <Label>Revenue %</Label>
+                    <div className="relative">
+                      <Input
                         name="revenuePercent"
                         type="number"
                         step="0.01"
@@ -360,16 +378,18 @@ export function ProductForm({
                         onChange={(e) =>
                           setRevenuePercent(Number(e.target.value) || 0)
                         }
-                        className="form-input price-input"
+                        className="pr-7 font-mono"
                         placeholder="0"
                       />
-                      <span className="price-currency">%</span>
+                      <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+                        %
+                      </span>
                     </div>
-                  </label>
-                  <label className="form-field">
-                    <span className="form-label">Distributor %</span>
-                    <div className="price-input-wrap">
-                      <input
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <Label>Distributor %</Label>
+                    <div className="relative">
+                      <Input
                         name="distributorPercent"
                         type="number"
                         step="0.01"
@@ -377,33 +397,36 @@ export function ProductForm({
                         onChange={(e) =>
                           setDistributorPercent(Number(e.target.value) || 0)
                         }
-                        className="form-input price-input"
+                        className="pr-7 font-mono"
                         placeholder="0"
                       />
-                      <span className="price-currency">%</span>
+                      <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
+                        %
+                      </span>
                     </div>
-                  </label>
+                  </div>
                 </div>
-                <div className="pricing-computed">
-                  <div className="pricing-computed-row">
-                    <span className="pricing-computed-label">
+                <div className="mt-3.5 flex flex-col gap-2 border-t border-border pt-3.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">
                       Selling Price
                     </span>
-                    <span className="pricing-computed-value">
+                    <span className="font-mono text-sm font-semibold">
                       {formatCurrency(String(sellingPrice))} ₫
                     </span>
                   </div>
-                  <div className="pricing-computed-row">
-                    <span className="pricing-computed-label">Listed Price</span>
-                    <span className="pricing-computed-value">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">
+                      Listed Price
+                    </span>
+                    <span className="font-mono text-sm font-semibold">
                       {formatCurrency(String(listedPrice))} ₫
                     </span>
                   </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            {/* Options & Variants */}
             <VariantBuilder
               name="variantOptions"
               defaultOptions={defaultVariantOptions}
@@ -411,44 +434,42 @@ export function ProductForm({
             />
           </div>
 
-          {/* Right Sidebar */}
-          <div className="shopify-form-sidebar">
-            {/* Status */}
-            <div className="form-card">
-              <div className="form-card-header">
-                <h2 className="form-card-title">Status</h2>
-              </div>
-              <div className="form-card-body">
-                <label className="form-field">
-                  <select
-                    name="priceVisibility"
-                    defaultValue={snapshot.priceVisibility}
-                    className="form-input"
-                    onChange={(e) => {
-                      const opt = VISIBILITY_OPTIONS.find(
-                        (o) => o.value === e.target.value,
-                      );
-                      setVisibilityDesc(opt?.description ?? "");
-                    }}
-                  >
-                    {VISIBILITY_OPTIONS.map((o) => (
-                      <option key={o.value} value={o.value}>
-                        {o.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <p className="form-hint">{visibilityDesc}</p>
-              </div>
-            </div>
+          <div className="sticky top-[76px] flex flex-col gap-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-sm">Status</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-2">
+                <select
+                  name="priceVisibility"
+                  defaultValue={snapshot.priceVisibility}
+                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  onChange={(e) => {
+                    const opt = VISIBILITY_OPTIONS.find(
+                      (o) => o.value === e.target.value,
+                    );
+                    setVisibilityDesc(opt?.description ?? "");
+                  }}
+                >
+                  {VISIBILITY_OPTIONS.map((o) => (
+                    <option key={o.value} value={o.value}>
+                      {o.label}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-muted-foreground">
+                  {visibilityDesc}
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       )}
 
-      <div className="form-actions-bar">
-        <button type="submit" className="btn btn-primary" disabled={isPending}>
+      <div className="flex justify-end pt-2">
+        <Button type="submit" disabled={isPending}>
           {isPending ? "Saving..." : product ? "Save" : "Save product"}
-        </button>
+        </Button>
       </div>
     </form>
   );

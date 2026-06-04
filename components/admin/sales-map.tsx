@@ -10,6 +10,9 @@ import {
   type Sale,
 } from "lib/sales";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 type Props = {
   locations: LocationEntry[];
@@ -112,41 +115,53 @@ export function SalesMap({ locations }: Props) {
 
   return (
     <>
-      <div className="page-head">
+      <div className="mb-5 flex items-end justify-between gap-6">
         <div>
-          <h1 className="page-title">Installations Map</h1>
-          <div className="page-sub">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Installations Map
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
             Where LBN machines are roasting · {locations.length} locations ·{" "}
             {totalUnits} machines
-          </div>
+          </p>
         </div>
-        <div style={{ display: "flex", gap: 8 }}>
-          <button className="btn btn-ghost" onClick={resetView}>
-            Reset view
-          </button>
-        </div>
+        <Button variant="ghost" onClick={resetView}>
+          Reset view
+        </Button>
       </div>
 
-      <div className="map-shell">
-        <div className="map-card">
-          <div ref={containerRef} className="map-canvas" />
-          <div className="map-overlay-stats">
+      <div className="grid min-h-[600px] grid-cols-[1fr_360px] gap-3.5" style={{ height: "calc(100vh - 56px - 56px - 36px)" }}>
+        <Card className="relative overflow-hidden">
+          <div ref={containerRef} className="absolute inset-0" />
+          <div className="absolute right-3.5 top-3.5 z-[500] flex gap-5 rounded-lg border border-border bg-white/95 px-3.5 py-2.5 text-xs shadow-md backdrop-blur-sm">
             <div>
-              <div className="k">Locations</div>
-              <div className="v mono">{locations.length}</div>
+              <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
+                Locations
+              </div>
+              <div className="mt-0.5 font-mono text-sm font-semibold">
+                {locations.length}
+              </div>
             </div>
             <div>
-              <div className="k">Machines</div>
-              <div className="v mono">{totalUnits}</div>
+              <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
+                Machines
+              </div>
+              <div className="mt-0.5 font-mono text-sm font-semibold">
+                {totalUnits}
+              </div>
             </div>
             <div>
-              <div className="k">Revenue</div>
-              <div className="v mono">{formatVNDCompact(totalRevenue)}</div>
+              <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
+                Revenue
+              </div>
+              <div className="mt-0.5 font-mono text-sm font-medium">
+                {formatVNDCompact(totalRevenue)}
+              </div>
             </div>
           </div>
-        </div>
+        </Card>
 
-        <div className="side-panel">
+        <Card className="flex flex-col overflow-hidden">
           {selectedLoc ? (
             <LocationDetail
               loc={selectedLoc}
@@ -159,7 +174,7 @@ export function SalesMap({ locations }: Props) {
               onSelect={setSelected}
             />
           )}
-        </div>
+        </Card>
       </div>
     </>
   );
@@ -176,31 +191,38 @@ function LocationList({
 }) {
   return (
     <>
-      <div className="side-panel-head">
-        <h3>Locations</h3>
-        <p>Click a pin or row to drill in</p>
+      <div className="border-b border-border px-4 py-4">
+        <h3 className="text-sm font-semibold">Locations</h3>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Click a pin or row to drill in
+        </p>
       </div>
-      <div className="loc-list">
+      <div className="flex-1 overflow-y-auto">
         {locations.map((loc) => (
           <div
             key={loc.key}
-            className={"loc-row" + (selected === loc.key ? " active" : "")}
+            className={cn(
+              "grid cursor-pointer grid-cols-[1fr_auto] items-center gap-x-2.5 gap-y-1 border-b border-border px-4 py-3 transition-colors hover:bg-muted",
+              selected === loc.key && "bg-secondary",
+            )}
             onClick={() => onSelect(loc.key)}
           >
             <div>
-              <div className="loc-name">{loc.label}</div>
-              <div className="loc-meta mono">
+              <div className="text-[13.5px] font-medium">{loc.label}</div>
+              <div className="font-mono text-[11.5px] text-muted-foreground">
                 {loc.lat.toFixed(3)}, {loc.lng.toFixed(3)}
               </div>
             </div>
-            <span className="loc-count">{loc.count}</span>
-            <div className="loc-rev" style={{ gridColumn: "1 / -1" }}>
+            <span className="inline-grid min-w-[22px] place-items-center rounded-full bg-foreground px-[7px] py-0 font-mono text-[11px] font-semibold text-background">
+              {loc.count}
+            </span>
+            <div className="col-span-full font-mono text-[12.5px] text-muted-foreground">
               {formatVND(loc.revenue)}
             </div>
           </div>
         ))}
       </div>
-      <div className="legend-foot">
+      <div className="border-t border-border px-4 py-2.5 text-[11.5px] text-muted-foreground">
         Pins aggregate sales by lat/lng · Number shows machines installed
       </div>
     </>
@@ -215,28 +237,41 @@ function LocationDetail({
   onBack: () => void;
 }) {
   return (
-    <div className="loc-detail">
-      <button className="back-btn" onClick={onBack}>
+    <div className="flex-1 overflow-y-auto p-4">
+      <button
+        className="mb-3.5 inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+        onClick={onBack}
+      >
         ← All locations
       </button>
-      <h3>{loc.label}</h3>
-      <div className="loc-coords mono">
+      <h3 className="text-base font-semibold tracking-tight">{loc.label}</h3>
+      <div className="mt-1 font-mono text-[11px] text-muted-foreground">
         {loc.lat.toFixed(4)}, {loc.lng.toFixed(4)}
       </div>
 
-      <div className="loc-stat-row">
-        <div className="loc-stat">
-          <div className="k">Machines</div>
-          <div className="v mono">{loc.count}</div>
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="rounded-md border border-border bg-muted p-2.5">
+          <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
+            Machines
+          </div>
+          <div className="mt-1 font-mono text-base font-semibold">
+            {loc.count}
+          </div>
         </div>
-        <div className="loc-stat">
-          <div className="k">Revenue</div>
-          <div className="v mono">{formatVNDCompact(loc.revenue)}</div>
+        <div className="rounded-md border border-border bg-muted p-2.5">
+          <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
+            Revenue
+          </div>
+          <div className="mt-1 font-mono text-base font-semibold">
+            {formatVNDCompact(loc.revenue)}
+          </div>
         </div>
       </div>
 
-      <div className="loc-detail-section-label">Sales at this location</div>
-      <div className="sales-list">
+      <div className="mb-2 mt-4 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+        Sales at this location
+      </div>
+      <div className="flex flex-col gap-2.5">
         {loc.sales.map((s) => (
           <SaleItem key={s.id} sale={s} />
         ))}
@@ -247,21 +282,21 @@ function LocationDetail({
 
 function SaleItem({ sale }: { sale: Sale }) {
   return (
-    <div className="sale-item">
-      <div className="sale-item-head">
-        <div className="sale-item-prod">{sale.productName}</div>
-        <div className="sale-item-price mono">{formatVND(sale.price)}</div>
+    <div className="grid gap-1.5 rounded-md border border-border p-3">
+      <div className="flex items-center justify-between gap-3">
+        <div className="text-sm font-medium">{sale.productName}</div>
+        <div className="font-mono text-sm font-medium">
+          {formatVND(sale.price)}
+        </div>
       </div>
-      <div className="sale-item-meta">
-        <span className="mono">{formatDate(sale.date)}</span>
+      <div className="flex flex-wrap gap-2.5 text-[11.5px] text-muted-foreground">
+        <span className="font-mono">{formatDate(sale.date)}</span>
         <span>·</span>
         <span>{sale.buyer.name}</span>
       </div>
       {sale.buyer.contact && (
-        <div className="sale-item-meta">
-          <span className="mono" style={{ color: "var(--ink-2)" }}>
-            {sale.buyer.contact}
-          </span>
+        <div className="font-mono text-[11.5px] text-muted-foreground">
+          {sale.buyer.contact}
         </div>
       )}
     </div>

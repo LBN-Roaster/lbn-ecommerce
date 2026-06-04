@@ -3,9 +3,11 @@
 import { ProductForm } from "components/admin/product-form";
 import { getProduct, updateProduct } from "lib/admin-api";
 import { parseProductFormData, type Product } from "lib/backend-api";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ChevronLeft } from "lucide-react";
 
 export default function EditProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -21,9 +23,9 @@ export default function EditProductPage() {
 
   if (error) {
     return (
-      <div className="page">
-        <div className="empty-state">
-          <div className="empty-state-title">{error}</div>
+      <div className="max-w-[1480px] p-7 pb-12">
+        <div className="py-10 text-center text-sm font-medium text-muted-foreground">
+          {error}
         </div>
       </div>
     );
@@ -31,9 +33,9 @@ export default function EditProductPage() {
 
   if (!product) {
     return (
-      <div className="page">
-        <div className="empty-state">
-          <div className="empty-state-title">Loading...</div>
+      <div className="max-w-[1480px] p-7 pb-12">
+        <div className="py-10 text-center text-sm text-muted-foreground">
+          Loading...
         </div>
       </div>
     );
@@ -46,29 +48,16 @@ export default function EditProductPage() {
   }
 
   return (
-    <div className="page">
-      <div className="page-head">
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link href="/admin/products" className="back-arrow">
-            <svg
-              viewBox="0 0 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              width="20"
-              height="20"
-            >
-              <path
-                d="M13 4l-6 6 6 6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+    <div className="max-w-[1480px] p-7 pb-12">
+      <div className="mb-5 flex items-center gap-3">
+        <Button variant="ghost" size="icon" asChild>
+          <Link href="/admin/products">
+            <ChevronLeft className="h-5 w-5" />
           </Link>
-          <div>
-            <h1 className="page-title">{product.model}</h1>
-          </div>
-        </div>
+        </Button>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          {product.model}
+        </h1>
       </div>
 
       <ProductForm product={product} action={handleSubmit} />

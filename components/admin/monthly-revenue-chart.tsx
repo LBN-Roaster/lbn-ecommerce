@@ -1,6 +1,6 @@
 "use client";
 
-import { formatVND, formatVNDCompact, type MonthBucket } from "lib/sales";
+import { formatVND, formatVNDCompact } from "lib/sales";
 import { useState } from "react";
 
 const W = 800;
@@ -55,20 +55,27 @@ export function MonthlyRevenueChart({ data }: Props) {
   const lastIndex = data.length - 1;
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <svg
-        className="chart-svg"
+        className="block w-full"
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        <g className="chart-grid">
+        <g>
           {tickValues.map((v, i) => {
             const y = PAD_T + INNER_H - (v / yMax) * INNER_H;
             return (
               <g key={i}>
-                <line x1={PAD_L} y1={y} x2={W - PAD_R} y2={y} />
+                <line
+                  x1={PAD_L}
+                  y1={y}
+                  x2={W - PAD_R}
+                  y2={y}
+                  className="stroke-border"
+                  strokeDasharray="2 3"
+                />
                 <text
-                  className="chart-axis-label"
+                  className="fill-muted-foreground font-mono text-[10.5px]"
                   x={PAD_L - 8}
                   y={y + 3.5}
                   textAnchor="end"
@@ -101,12 +108,12 @@ export function MonthlyRevenueChart({ data }: Props) {
               />
               {h > 0 ? (
                 <rect
-                  className="chart-bar"
+                  className="transition-opacity duration-150 cursor-pointer"
                   x={x}
                   y={y}
                   width={barWidth}
                   height={h}
-                  fill={isCurrent ? "var(--ink)" : "var(--accent)"}
+                  fill={isCurrent ? "hsl(220 9% 12%)" : "hsl(220 9% 46%)"}
                   opacity={opacity}
                   rx="2"
                   pointerEvents="none"
@@ -117,21 +124,21 @@ export function MonthlyRevenueChart({ data }: Props) {
                   y={PAD_T + INNER_H - 1}
                   width={barWidth}
                   height={1.5}
-                  fill="var(--line-strong)"
+                  className="fill-border"
                   pointerEvents="none"
                 />
               )}
               <text
-                className="chart-axis-label"
+                className="font-mono text-[10.5px]"
                 x={PAD_L + i * colWidth + colWidth / 2}
                 y={H - PAD_B + 16}
                 textAnchor="middle"
                 fill={
                   isHover
-                    ? "var(--ink)"
+                    ? "hsl(224 71% 4%)"
                     : isCurrent
-                      ? "var(--ink-2)"
-                      : "var(--ink-3)"
+                      ? "hsl(220 9% 35%)"
+                      : "hsl(220 9% 46%)"
                 }
               >
                 {shortMonth(d.date)}
@@ -150,14 +157,16 @@ export function MonthlyRevenueChart({ data }: Props) {
           const yPct = ((PAD_T + INNER_H - h) / H) * 100;
           return (
             <div
-              className="chart-tooltip"
+              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full -mt-1.5 rounded-md bg-foreground px-2.5 py-2 text-[11.5px] text-background shadow-lg whitespace-nowrap"
               style={{ left: `${xPct}%`, top: `${yPct}%` }}
             >
               <div>{longMonth(d.date)}</div>
-              <div style={{ marginTop: 4 }}>
-                <strong>{formatVND(d.revenue)}</strong>
+              <div className="mt-1">
+                <strong className="font-mono font-medium">
+                  {formatVND(d.revenue)}
+                </strong>
               </div>
-              <div className="chart-tooltip-sub">
+              <div className="mt-0.5 text-[10.5px] opacity-70">
                 {d.units} unit{d.units === 1 ? "" : "s"}
               </div>
             </div>

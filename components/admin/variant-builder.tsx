@@ -1,6 +1,26 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { cn } from "@/lib/utils";
+import { GripVertical, Trash2, Plus, X, ImageIcon } from "lucide-react";
 
 export interface VariantOption {
   name: string;
@@ -23,43 +43,9 @@ const PRESET_OPTIONS = ["Color", "Size", "Material", "Style"];
 
 function DragHandle() {
   return (
-    <div className="option-drag-handle">
-      <svg viewBox="0 0 12 12" width="12" height="12" fill="currentColor">
-        <circle cx="3.5" cy="2" r="1" />
-        <circle cx="8.5" cy="2" r="1" />
-        <circle cx="3.5" cy="6" r="1" />
-        <circle cx="8.5" cy="6" r="1" />
-        <circle cx="3.5" cy="10" r="1" />
-        <circle cx="8.5" cy="10" r="1" />
-      </svg>
+    <div className="grid h-5 w-5 flex-none cursor-grab place-items-center text-muted-foreground active:cursor-grabbing">
+      <GripVertical className="h-3 w-3" />
     </div>
-  );
-}
-
-function DeleteIcon({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      className="option-delete-btn"
-      onClick={onClick}
-      title="Delete"
-    >
-      <svg
-        viewBox="0 0 16 16"
-        width="16"
-        height="16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.3"
-      >
-        <path
-          d="M5.5 2.5h5M3 4h10M4.5 4v8.5a1 1 0 001 1h5a1 1 0 001-1V4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path d="M6.5 6.5v4M9.5 6.5v4" strokeLinecap="round" />
-      </svg>
-    </button>
   );
 }
 
@@ -99,43 +85,56 @@ function OptionRowEditing({
   }
 
   return (
-    <div className="option-editing">
-      <div className="option-editing-inner">
-        <div className="option-name-row">
+    <div className="border-b border-border py-4">
+      <div className="flex flex-col gap-3.5 rounded-md bg-muted p-4">
+        <div className="flex items-end gap-2.5">
           <DragHandle />
-          <label className="form-field" style={{ flex: 1 }}>
-            <span className="form-label">Option name</span>
-            <input
-              className="form-input"
+          <div className="flex flex-1 flex-col gap-1.5">
+            <Label>Option name</Label>
+            <Input
               value={option.name}
               onChange={(e) => onChange({ ...option, name: e.target.value })}
               placeholder="e.g. Size"
             />
-          </label>
-          <DeleteIcon onClick={onRemove} />
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 text-muted-foreground hover:text-destructive"
+            onClick={onRemove}
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
         </div>
 
-        <div className="option-values-section">
-          <span className="form-label">Option values</span>
-          <div className="option-values-list">
+        <div className="flex flex-col gap-1.5">
+          <Label>Option values</Label>
+          <div className="flex flex-col gap-1.5">
             {option.values.map((v, i) => (
-              <div key={i} className="option-value-row">
+              <div key={i} className="flex items-center gap-2.5">
                 <DragHandle />
-                <input
-                  className="form-input"
-                  style={{ flex: 1 }}
+                <Input
+                  className="flex-1"
                   value={v}
                   onChange={(e) => updateValue(i, e.target.value)}
                 />
-                <DeleteIcon onClick={() => removeValue(i)} />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 text-muted-foreground hover:text-destructive"
+                  onClick={() => removeValue(i)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
               </div>
             ))}
-            <div className="option-value-row">
+            <div className="flex items-center gap-2.5">
               <DragHandle />
-              <input
+              <Input
                 ref={addRef}
-                className="form-input option-add-value-input"
-                style={{ flex: 1 }}
+                className="flex-1"
                 placeholder="Add another value"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -150,9 +149,9 @@ function OptionRowEditing({
         </div>
 
         <div>
-          <button type="button" className="btn" onClick={onDone}>
+          <Button type="button" variant="outline" onClick={onDone}>
             Done
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -167,21 +166,24 @@ function OptionRowCollapsed({
   onEdit: () => void;
 }) {
   return (
-    <div className="option-collapsed">
+    <div className="flex items-center gap-3 border-b border-border py-3.5">
       <DragHandle />
-      <div className="option-collapsed-content">
-        <span className="option-collapsed-name">{option.name}</span>
-        <div className="option-collapsed-values">
+      <div className="min-w-0 flex-1">
+        <span className="block text-[13.5px] font-medium">{option.name}</span>
+        <div className="mt-1 flex flex-wrap gap-1">
           {option.values.map((v, i) => (
-            <span key={i} className="option-value-pill">
+            <span
+              key={i}
+              className="inline-block rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground"
+            >
               {v}
             </span>
           ))}
         </div>
       </div>
-      <button type="button" className="btn" onClick={onEdit}>
+      <Button type="button" variant="outline" size="sm" onClick={onEdit}>
         Edit
-      </button>
+      </Button>
     </div>
   );
 }
@@ -201,58 +203,58 @@ function VariantEditModal({
   const [quantity, setQuantity] = useState(data.quantity);
 
   return (
-    <div className="variant-modal-backdrop" onClick={onClose}>
-      <div className="variant-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="variant-modal-header">
-          <h3 className="variant-modal-title">{combo.join(" / ")}</h3>
-          <button type="button" className="option-delete-btn" onClick={onClose}>
-            <svg
-              viewBox="0 0 16 16"
-              width="14"
-              height="14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-            </svg>
-          </button>
+    <div
+      className="fixed inset-0 z-50 grid place-items-center bg-black/35"
+      onClick={onClose}
+    >
+      <div
+        className="w-[400px] max-w-[90vw] rounded-lg border border-border bg-background shadow-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between border-b border-border px-5 py-4">
+          <h3 className="text-[15px] font-semibold">{combo.join(" / ")}</h3>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-7 w-7"
+            onClick={onClose}
+          >
+            <X className="h-3.5 w-3.5" />
+          </Button>
         </div>
-        <div className="variant-modal-body">
-          <label className="form-field">
-            <span className="form-label">Price (₫)</span>
-            <input
-              className="form-input"
+        <div className="flex flex-col gap-3.5 px-5 py-4">
+          <div className="flex flex-col gap-1.5">
+            <Label>Price (₫)</Label>
+            <Input
               type="text"
               inputMode="numeric"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
-          </label>
-          <label className="form-field">
-            <span className="form-label">Quantity</span>
-            <input
-              className="form-input"
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label>Quantity</Label>
+            <Input
               type="number"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
-          </label>
+          </div>
         </div>
-        <div className="variant-modal-footer">
-          <button type="button" className="btn" onClick={onClose}>
+        <div className="flex justify-end gap-2 border-t border-border px-5 py-3">
+          <Button type="button" variant="outline" onClick={onClose}>
             Cancel
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className="btn btn-primary"
             onClick={() => {
               onSave({ combination: combo, price, quantity });
               onClose();
             }}
           >
             Done
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -370,81 +372,75 @@ export function VariantBuilder({
   const allVariantData = combinations.map((combo) => getVariantData(combo));
 
   const optionsCard = (
-    <div className="form-card">
-      <div className="form-card-header">
-        <h2 className="form-card-title">Options</h2>
-      </div>
-      <div className="form-card-body">
-        <div className="variant-builder">
-          <input type="hidden" name={name} value={JSON.stringify(options)} />
-          <input
-            type="hidden"
-            name="variantData"
-            value={JSON.stringify(allVariantData)}
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-sm">Options</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <input type="hidden" name={name} value={JSON.stringify(options)} />
+        <input
+          type="hidden"
+          name="variantData"
+          value={JSON.stringify(allVariantData)}
+        />
+
+        <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <Checkbox
+            checked={hasVariants}
+            onCheckedChange={toggleVariants}
           />
+          <span>This product has options, like size or color</span>
+        </label>
 
-          <div className="variant-toggle-row">
-            <label className="variant-toggle-label">
-              <input
-                type="checkbox"
-                checked={hasVariants}
-                onChange={toggleVariants}
-                className="checkbox"
-              />
-              <span>This product has options, like size or color</span>
-            </label>
+        {hasVariants && (
+          <div className="mt-3.5 border-t border-border">
+            {options.map((opt, i) =>
+              editingSet.has(i) ? (
+                <OptionRowEditing
+                  key={i}
+                  option={opt}
+                  onChange={(updated) => updateOption(i, updated)}
+                  onRemove={() => removeOption(i)}
+                  onDone={() => stopEditing(i)}
+                />
+              ) : (
+                <OptionRowCollapsed
+                  key={i}
+                  option={opt}
+                  onEdit={() => startEditing(i)}
+                />
+              ),
+            )}
+
+            {options.length < 3 && (
+              <div className="border-b border-border py-3.5">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                  onClick={addOption}
+                >
+                  <Plus className="h-4 w-4" />
+                  Add another option
+                </button>
+              </div>
+            )}
           </div>
-
-          {hasVariants && (
-            <div className="option-list">
-              {options.map((opt, i) =>
-                editingSet.has(i) ? (
-                  <OptionRowEditing
-                    key={i}
-                    option={opt}
-                    onChange={(updated) => updateOption(i, updated)}
-                    onRemove={() => removeOption(i)}
-                    onDone={() => stopEditing(i)}
-                  />
-                ) : (
-                  <OptionRowCollapsed
-                    key={i}
-                    option={opt}
-                    onEdit={() => startEditing(i)}
-                  />
-                ),
-              )}
-
-              {options.length < 3 && (
-                <div className="option-add-row">
-                  <button
-                    type="button"
-                    className="option-add-btn"
-                    onClick={addOption}
-                  >
-                    <span className="option-add-plus">+</span>
-                    Add another option
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+        )}
+      </CardContent>
+    </Card>
   );
 
   const variantsTable =
     combinations.length > 0 ? (
       <>
-        <div className="form-card variant-table-section">
-          <div className="variant-table-header">
-            <span className="variant-table-title">Variants</span>
-            <div className="variant-select-actions">
-              <span className="variant-select-label">Select</span>
+        <Card>
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-background px-4 py-3">
+            <span className="text-sm font-semibold">Variants</span>
+            <div className="flex items-center gap-2 text-[12.5px]">
+              <span className="text-muted-foreground">Select</span>
               <button
                 type="button"
-                className="variant-select-link"
+                className="font-medium text-primary hover:underline"
                 onClick={() => {
                   if (allSelected) {
                     setSelectedVariants(new Set());
@@ -461,7 +457,7 @@ export function VariantBuilder({
                   <button
                     key={opt.name}
                     type="button"
-                    className="variant-select-link"
+                    className="font-medium text-primary hover:underline"
                     onClick={() => {
                       const keys = new Set(
                         combinations
@@ -482,78 +478,56 @@ export function VariantBuilder({
             </div>
           </div>
 
-          <table className="variant-table">
-            <thead>
-              <tr>
-                <th style={{ width: 36 }}>
-                  <input
-                    type="checkbox"
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-9">
+                  <Checkbox
                     checked={allSelected}
-                    onChange={toggleSelectAll}
-                    className="checkbox"
+                    onCheckedChange={toggleSelectAll}
                   />
-                </th>
-                <th style={{ width: 56 }}></th>
-                <th>Variant</th>
-                <th style={{ width: 140 }}>Price</th>
-                <th style={{ width: 80 }}>Quantity</th>
-                <th style={{ width: 60 }}></th>
-              </tr>
-            </thead>
-            <tbody>
+                </TableHead>
+                <TableHead className="w-14" />
+                <TableHead>Variant</TableHead>
+                <TableHead className="w-[140px]">Price</TableHead>
+                <TableHead className="w-20">Quantity</TableHead>
+                <TableHead className="w-[60px]" />
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {combinations.map((combo) => {
                 const key = combo.join(" / ");
                 const data = getVariantData(combo);
                 return (
-                  <tr
+                  <TableRow
                     key={key}
-                    className={selectedVariants.has(key) ? "selected" : ""}
+                    data-state={
+                      selectedVariants.has(key) ? "selected" : undefined
+                    }
                   >
-                    <td>
-                      <input
-                        type="checkbox"
+                    <TableCell>
+                      <Checkbox
                         checked={selectedVariants.has(key)}
-                        onChange={() => toggleSelectOne(key)}
-                        className="checkbox"
+                        onCheckedChange={() => toggleSelectOne(key)}
                       />
-                    </td>
-                    <td>
-                      <div className="variant-img-placeholder">
-                        <svg
-                          viewBox="0 0 20 20"
-                          width="20"
-                          height="20"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                        >
-                          <rect
-                            x="2"
-                            y="2"
-                            width="16"
-                            height="16"
-                            rx="2"
-                            strokeDasharray="3 2"
-                          />
-                          <path
-                            d="M8 13l2-2 2 2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <circle cx="8" cy="8" r="1.5" />
-                        </svg>
+                    </TableCell>
+                    <TableCell>
+                      <div className="grid h-11 w-11 place-items-center rounded-md border-2 border-dashed border-border bg-background text-muted-foreground">
+                        <ImageIcon className="h-5 w-5" />
                       </div>
-                    </td>
-                    <td>
-                      <span className="variant-combo-name">{key}</span>
-                    </td>
-                    <td>
-                      <div className="variant-cell-input-wrap">
-                        <span className="variant-cell-currency">₫</span>
-                        <input
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm font-medium">{key}</span>
+                    </TableCell>
+                    <TableCell>
+                      <div className="relative flex items-center">
+                        <span className="pointer-events-none absolute left-2 text-xs text-muted-foreground">
+                          ₫
+                        </span>
+                        <Input
                           type="text"
                           inputMode="numeric"
-                          className="variant-cell-input"
+                          className="h-8 pl-5 text-[12.5px]"
                           value={data.price}
                           onChange={(e) =>
                             setVariantData(combo, {
@@ -564,11 +538,11 @@ export function VariantBuilder({
                           placeholder="0"
                         />
                       </div>
-                    </td>
-                    <td>
-                      <input
+                    </TableCell>
+                    <TableCell>
+                      <Input
                         type="number"
-                        className="variant-cell-input"
+                        className="h-8 text-[12.5px]"
                         value={data.quantity}
                         onChange={(e) =>
                           setVariantData(combo, {
@@ -578,23 +552,24 @@ export function VariantBuilder({
                         }
                         placeholder="0"
                       />
-                    </td>
-                    <td>
-                      <button
+                    </TableCell>
+                    <TableCell>
+                      <Button
                         type="button"
-                        className="btn"
-                        style={{ fontSize: 12, padding: "4px 10px" }}
+                        variant="outline"
+                        size="sm"
+                        className="h-7 text-xs"
                         onClick={() => setEditingCombo(combo)}
                       >
                         Edit
-                      </button>
-                    </td>
-                  </tr>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
                 );
               })}
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
+        </Card>
 
         {editingCombo && (
           <VariantEditModal

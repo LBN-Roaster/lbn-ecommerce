@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { type Product, type ProductVariant } from "lib/backend-api";
 import { generateQuotation } from "lib/admin-api";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 
 interface QuotationLine {
   product: Product;
@@ -129,94 +134,89 @@ export function QuotationModal({
   }
 
   return (
-    <div className="quotation-modal-backdrop" onClick={onClose}>
-      <div className="quotation-modal" onClick={(e) => e.stopPropagation()}>
-        <div className="quotation-modal-header">
-          <h2 className="quotation-modal-title">Generate Quotation</h2>
-          <button type="button" className="modal-close-btn" onClick={onClose}>
-            <svg
-              viewBox="0 0 20 20"
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
-            </svg>
-          </button>
+    <div className="fixed inset-0 z-50 grid place-items-center bg-black/35" onClick={onClose}>
+      <div
+        className="flex max-h-[85vh] w-[640px] max-w-[90vw] flex-col rounded-lg border border-border bg-background shadow-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-4">
+          <h2 className="text-base font-semibold">Generate Quotation</h2>
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onClose}>
+            <X className="h-4 w-4" />
+          </Button>
         </div>
 
-        <div className="quotation-modal-body">
-          {error && <div className="form-error">{error}</div>}
+        <div className="flex flex-col gap-5 overflow-y-auto p-5">
+          {error && (
+            <div className="rounded-md border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-destructive">
+              {error}
+            </div>
+          )}
 
-          <div className="quotation-section">
-            <div className="quotation-section-title">Quotation settings</div>
-            <div className="quotation-recipient-fields">
-              <label className="form-field">
-                <span className="form-label">Name</span>
-                <input
-                  className="form-input"
+          <div>
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Quotation settings
+            </div>
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className="flex flex-col gap-1">
+                <Label className="text-xs">Name</Label>
+                <Input
                   value={recipientName}
                   onChange={(e) => setRecipientName(e.target.value)}
                   placeholder="Customer name"
                 />
-              </label>
-              <label className="form-field">
-                <span className="form-label">Company</span>
-                <input
-                  className="form-input"
+              </div>
+              <div className="flex flex-col gap-1">
+                <Label className="text-xs">Company</Label>
+                <Input
                   value={recipientCompany}
                   onChange={(e) => setRecipientCompany(e.target.value)}
                   placeholder="Company name"
                 />
-              </label>
-              <label className="form-field">
-                <span className="form-label">Address</span>
-                <input
-                  className="form-input"
+              </div>
+              <div className="col-span-2 flex flex-col gap-1">
+                <Label className="text-xs">Address</Label>
+                <Input
                   value={recipientAddress}
                   onChange={(e) => setRecipientAddress(e.target.value)}
                   placeholder="Delivery address"
                 />
-              </label>
-              <label className="form-field">
-                <span className="form-label">Sender Name</span>
-                <input
-                  className="form-input"
+              </div>
+              <div className="flex flex-col gap-1">
+                <Label className="text-xs">Sender Name</Label>
+                <Input
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
                   placeholder="Your name"
                 />
-              </label>
-              <label className="form-field">
-                <span className="form-label">Sender Phone</span>
-                <input
-                  className="form-input"
+              </div>
+              <div className="flex flex-col gap-1">
+                <Label className="text-xs">Sender Phone</Label>
+                <Input
                   value={senderPhone}
                   onChange={(e) => setSenderPhone(e.target.value)}
                   placeholder="Phone number"
                 />
-              </label>
-              <label className="form-field">
-                <span className="form-label">Language</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <Label className="text-xs">Language</Label>
                 <select
-                  className="form-input"
+                  className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                 >
                   <option value="vi">Vietnamese</option>
                   <option value="en">English</option>
                 </select>
-              </label>
+              </div>
             </div>
           </div>
 
-          <div className="quotation-section">
-            <div className="quotation-section-title">
+          <div>
+            <div className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
               Items ({lines.length})
             </div>
-            <div className="quotation-items">
+            <div className="flex flex-col gap-3">
               {lines.map((line, idx) => {
                 const selectedVariant = line.product.variants.find(
                   (v) => v.id === line.variantId,
@@ -234,53 +234,46 @@ export function QuotationModal({
                   (line.discountPercent > 0 || overrideNum > 0) &&
                   finalUnit !== basePrice;
                 return (
-                  <div key={line.product.id} className="quotation-item">
-                    <div className="quotation-item-header">
-                      <div className="quotation-item-thumb">
+                  <div key={line.product.id} className="rounded-md border border-border p-3">
+                    <div className="mb-2.5 flex items-center gap-2.5">
+                      <div className="h-10 w-10 shrink-0 overflow-hidden rounded bg-muted">
                         {line.product.images &&
                         line.product.images.length > 0 ? (
                           <img
                             src={line.product.images[0]}
                             alt={line.product.model}
+                            className="h-full w-full object-cover"
                           />
                         ) : (
-                          <div className="quotation-item-thumb-placeholder" />
+                          <div className="h-full w-full bg-muted" />
                         )}
                       </div>
-                      <div className="quotation-item-info">
-                        <span className="quotation-item-name">
+                      <div className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-semibold">
                           {line.product.model}
                         </span>
                         {selectedVariant && (
-                          <span className="quotation-item-price">
+                          <span className="block text-xs text-muted-foreground">
                             {formatPrice(roundUp(basePrice))} ₫
                           </span>
                         )}
                       </div>
-                      <button
+                      <Button
                         type="button"
-                        className="quotation-item-remove"
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7 shrink-0 text-muted-foreground hover:text-destructive"
                         onClick={() => removeLine(idx)}
-                        title="Remove"
                       >
-                        <svg
-                          viewBox="0 0 16 16"
-                          width="14"
-                          height="14"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        >
-                          <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                        </svg>
-                      </button>
+                        <X className="h-3.5 w-3.5" />
+                      </Button>
                     </div>
-                    <div className="quotation-item-grid">
+                    <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] items-end gap-2.5">
                       {line.product.variants.length > 1 && (
-                        <label className="form-field quotation-item-variant">
-                          <span className="form-label">Variant</span>
+                        <div className="col-span-full flex flex-col gap-1">
+                          <Label className="text-xs">Variant</Label>
                           <select
-                            className="form-input"
+                            className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             value={line.variantId}
                             onChange={(e) =>
                               updateLine(idx, { variantId: e.target.value })
@@ -292,17 +285,17 @@ export function QuotationModal({
                               </option>
                             ))}
                           </select>
-                        </label>
+                        </div>
                       )}
                       {line.product.variants.length === 0 && (
-                        <div className="quotation-item-no-variant">
+                        <div className="col-span-full py-1.5 text-xs italic text-muted-foreground">
                           No variants available
                         </div>
                       )}
-                      <label className="form-field">
-                        <span className="form-label">Price Type</span>
+                      <div className="flex flex-col gap-1">
+                        <Label className="text-xs">Price Type</Label>
                         <select
-                          className="form-input"
+                          className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                           value={line.priceType}
                           onChange={(e) =>
                             updateLine(idx, {
@@ -317,12 +310,11 @@ export function QuotationModal({
                           <option value="SELLING">Selling</option>
                           <option value="LISTED">Listed</option>
                         </select>
-                      </label>
-                      <label className="form-field">
-                        <span className="form-label">Qty</span>
-                        <input
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <Label className="text-xs">Qty</Label>
+                        <Input
                           type="number"
-                          className="form-input"
                           min={1}
                           value={line.quantity}
                           onChange={(e) =>
@@ -334,12 +326,11 @@ export function QuotationModal({
                             })
                           }
                         />
-                      </label>
-                      <label className="form-field">
-                        <span className="form-label">Discount %</span>
-                        <input
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <Label className="text-xs">Discount %</Label>
+                        <Input
                           type="number"
-                          className="form-input"
                           min={0}
                           max={100}
                           step="0.01"
@@ -351,12 +342,11 @@ export function QuotationModal({
                           }
                           placeholder="0"
                         />
-                      </label>
-                      <label className="form-field">
-                        <span className="form-label">Price Override</span>
-                        <input
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <Label className="text-xs">Price Override</Label>
+                        <Input
                           type="text"
-                          className="form-input"
                           value={line.priceOverride}
                           onChange={(e) =>
                             updateLine(idx, {
@@ -365,20 +355,20 @@ export function QuotationModal({
                           }
                           placeholder="Optional"
                         />
-                      </label>
+                      </div>
                     </div>
                     {selectedVariant && (
-                      <div className="quotation-item-summary">
+                      <div className="mt-2 flex items-center gap-1.5 border-t border-dashed border-border pt-2 font-mono text-sm">
                         {hasDiscount ? (
                           <>
-                            <span className="quotation-price-original">
+                            <span className="text-muted-foreground line-through">
                               {formatPrice(roundUp(basePrice))} ₫
                             </span>
-                            <span className="quotation-price-arrow">→</span>
-                            <span className="quotation-price-final">
+                            <span className="text-muted-foreground">→</span>
+                            <span className="font-semibold text-emerald-600">
                               {formatPrice(roundUp(finalUnit))} ₫
                             </span>
-                            <span className="quotation-price-total">
+                            <span className="ml-auto font-medium text-muted-foreground">
                               × {line.quantity} ={" "}
                               {formatPrice(
                                 roundUp(finalUnit * line.quantity),
@@ -387,7 +377,7 @@ export function QuotationModal({
                             </span>
                           </>
                         ) : (
-                          <span className="quotation-price-total">
+                          <span className="ml-auto font-medium text-muted-foreground">
                             {formatPrice(roundUp(basePrice))} ₫ ×{" "}
                             {line.quantity} ={" "}
                             {formatPrice(roundUp(basePrice * line.quantity))}{" "}
@@ -428,33 +418,34 @@ export function QuotationModal({
                     ? ((totalPrice - totalCost) / totalCost) * 100
                     : 0;
                 return (
-                  <div className="quotation-grand-total">
-                    <div className="quotation-grand-total-row">
-                      <span className="quotation-grand-total-label">
+                  <div className="mt-3 flex flex-col gap-1.5 border-t-2 border-border px-3 pt-2.5 font-mono text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-muted-foreground">
                         Total Cost
                       </span>
-                      <span className="quotation-grand-total-cost">
+                      <span className="font-medium text-muted-foreground">
                         {formatPrice(totalCost)} ₫
                       </span>
                     </div>
-                    <div className="quotation-grand-total-row">
-                      <span className="quotation-grand-total-label">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-muted-foreground">
                         Total Price
                       </span>
-                      <span className="quotation-grand-total-value">
+                      <span className="text-sm font-bold">
                         {formatPrice(totalPrice)} ₫
                       </span>
                     </div>
-                    <div className="quotation-grand-total-row">
-                      <span className="quotation-grand-total-label">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-muted-foreground">
                         Profit
                       </span>
                       <span
-                        className={
+                        className={cn(
+                          "font-semibold",
                           profitPct >= 0
-                            ? "quotation-grand-total-profit"
-                            : "quotation-grand-total-loss"
-                        }
+                            ? "text-emerald-600"
+                            : "text-destructive",
+                        )}
                       >
                         {profitPct >= 0 ? "+" : ""}
                         {profitPct.toFixed(1)}%
@@ -468,18 +459,16 @@ export function QuotationModal({
           </div>
         </div>
 
-        <div className="quotation-modal-footer">
-          <button type="button" className="btn" onClick={onClose}>
+        <div className="flex shrink-0 justify-end gap-2 border-t border-border px-5 py-3">
+          <Button variant="outline" onClick={onClose}>
             Cancel
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
+          </Button>
+          <Button
             disabled={generating || lines.every((l) => !l.variantId)}
             onClick={handleGenerate}
           >
             {generating ? "Generating..." : "Generate PDF"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

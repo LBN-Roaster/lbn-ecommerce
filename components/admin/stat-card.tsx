@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Sparkline } from "./sparkline";
+import { cn } from "@/lib/utils";
 
 type Props = {
   label: string;
@@ -37,24 +39,37 @@ export function StatCard({
 }: Props) {
   const isUp = deltaPct != null && deltaPct >= 0;
   return (
-    <div className="stat">
-      <div className="stat-head">
-        <div className="stat-label">{label}</div>
-        {spark && <Sparkline values={spark} />}
-      </div>
-      <div className="stat-value">
-        {value}
-        {suffix && <span className="currency-suffix">{suffix}</span>}
-      </div>
-      <div className="stat-foot">
-        {deltaPct != null && (
-          <span className={"delta " + (isUp ? "up" : "down")}>
-            <DeltaArrow up={isUp} />
-            {Math.abs(deltaPct).toFixed(1)}%
-          </span>
-        )}
-        {foot && <span>{foot}</span>}
-      </div>
-    </div>
+    <Card>
+      <CardContent className="p-4">
+        <div className="flex items-start justify-between">
+          <div className="text-[11.5px] font-medium uppercase tracking-wider text-muted-foreground">
+            {label}
+          </div>
+          {spark && <Sparkline values={spark} />}
+        </div>
+        <div className="mt-2 font-mono text-2xl font-semibold tracking-tight">
+          {value}
+          {suffix && (
+            <span className="ml-1 text-lg font-medium text-muted-foreground">
+              {suffix}
+            </span>
+          )}
+        </div>
+        <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
+          {deltaPct != null && (
+            <span
+              className={cn(
+                "inline-flex items-center gap-0.5 font-medium",
+                isUp ? "text-emerald-600" : "text-red-500",
+              )}
+            >
+              <DeltaArrow up={isUp} />
+              {Math.abs(deltaPct).toFixed(1)}%
+            </span>
+          )}
+          {foot && <span>{foot}</span>}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
