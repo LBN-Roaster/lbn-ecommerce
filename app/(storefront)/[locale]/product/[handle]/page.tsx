@@ -144,7 +144,9 @@ async function RelatedProducts({
 
   return (
     <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">{dict.product.relatedProducts}</h2>
+      <h2 className="mb-4 text-2xl font-bold">
+        {dict.product.relatedProducts}
+      </h2>
       <ul className="flex w-full gap-4 overflow-x-auto pt-1">
         {relatedProducts.map((product) => (
           <li

@@ -6,7 +6,11 @@ import type { Locale } from "lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 
-function formatPrice(amount: string, currencyCode: string, contactLabel: string) {
+function formatPrice(
+  amount: string,
+  currencyCode: string,
+  contactLabel: string,
+) {
   if (Number(amount) === 0) return contactLabel;
   return new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -35,7 +39,7 @@ export async function FeaturedProducts({
   if (!products.length) return null;
 
   return (
-    <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
+    <section className="bg-white py-20 dark:bg-neutral-900">
       <div className="mx-auto max-w-7xl px-4">
         <FadeUp className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">

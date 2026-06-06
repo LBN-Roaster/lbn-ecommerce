@@ -38,7 +38,7 @@ export default async function HomePage({
       <Suspense fallback={null}>
         <BusinessAreas dict={dict} />
       </Suspense>
-      <JourneySection area={area} dict={dict} />
+      <JourneySection area={area} dict={dict} locale={locale as Locale} />
       <MachineDetails area={area} dict={dict} />
       <FeaturedProducts area={area} dict={dict} locale={locale as Locale} />
       <NewsSection dict={dict} locale={locale as Locale} />

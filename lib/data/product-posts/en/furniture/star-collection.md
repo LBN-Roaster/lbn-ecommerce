@@ -29,8 +29,8 @@ Star Table
 
 ### Technical Specifications
 
-| Product | Dimensions (LxWxH)    |
-| ------- | --------------------- |
+| Product | Dimensions (LxWxH)   |
+| ------- | -------------------- |
 | Table   | 2000 x 1000 x 780 mm |
 
 <!-- split -->

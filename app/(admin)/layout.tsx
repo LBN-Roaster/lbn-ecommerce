@@ -1,5 +1,6 @@
 import { Sidebar } from "components/admin/sidebar";
 import { Topbar } from "components/admin/topbar";
+import { AdminLocaleProvider } from "components/admin/admin-locale-context";
 import { ReactNode } from "react";
 import "./admin.css";
 
@@ -10,12 +11,14 @@ export const metadata = {
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="grid min-h-screen grid-cols-[240px_1fr] bg-background text-foreground antialiased">
-      <Sidebar />
-      <div className="flex min-w-0 flex-col">
-        <Topbar />
-        {children}
+    <AdminLocaleProvider>
+      <div className="grid min-h-screen grid-cols-[240px_1fr] bg-background text-foreground antialiased">
+        <Sidebar />
+        <div className="flex min-w-0 flex-col">
+          <Topbar />
+          {children}
+        </div>
       </div>
-    </div>
+    </AdminLocaleProvider>
   );
 }

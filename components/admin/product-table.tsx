@@ -20,21 +20,9 @@ import {
 } from "@/components/ui/table";
 import { Card } from "@/components/ui/card";
 import { Search, ImageIcon } from "lucide-react";
+import { useAdminLocale } from "./admin-locale-context";
 
 type FilterTab = "all" | "VISIBLE" | "HIDDEN" | "CONTACT_US";
-
-const TABS: { value: FilterTab; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "VISIBLE", label: "Active" },
-  { value: "HIDDEN", label: "Draft" },
-  { value: "CONTACT_US", label: "Contact Us" },
-];
-
-const STATUS_VARIANT: Record<string, { label: string; variant: "success" | "secondary" | "info" }> = {
-  VISIBLE: { label: "Active", variant: "success" },
-  HIDDEN: { label: "Draft", variant: "secondary" },
-  CONTACT_US: { label: "Contact Us", variant: "info" },
-};
 
 function formatPrice(n: number) {
   return new Intl.NumberFormat("vi-VN").format(n);
@@ -64,9 +52,11 @@ function computeListedPrice(
 function DeleteButton({
   id,
   onDeleted,
+  labels,
 }: {
   id: string;
   onDeleted: () => void;
+  labels: { delete: string; deleteConfirm: string };
 }) {
   const [pending, startTransition] = useTransition();
 
@@ -75,25 +65,42 @@ function DeleteButton({
       className="text-xs text-muted-foreground hover:text-destructive hover:underline disabled:opacity-50"
       disabled={pending}
       onClick={() => {
-        if (!confirm("Delete this product?")) return;
+        if (!confirm(labels.deleteConfirm)) return;
         startTransition(async () => {
           await deleteProduct(id);
           onDeleted();
         });
       }}
     >
-      {pending ? "..." : "Delete"}
+      {pending ? "..." : labels.delete}
     </button>
   );
 }
 
 export function ProductTable() {
+  const { t } = useAdminLocale();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState<FilterTab>("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [showQuotation, setShowQuotation] = useState(false);
+
+  const tabs: { value: FilterTab; label: string }[] = [
+    { value: "all", label: t.productTable.all },
+    { value: "VISIBLE", label: t.productTable.active },
+    { value: "HIDDEN", label: t.productTable.draft },
+    { value: "CONTACT_US", label: t.productTable.contactUs },
+  ];
+
+  const statusVariant: Record<
+    string,
+    { label: string; variant: "success" | "secondary" | "info" }
+  > = {
+    VISIBLE: { label: t.productTable.active, variant: "success" },
+    HIDDEN: { label: t.productTable.draft, variant: "secondary" },
+    CONTACT_US: { label: t.productTable.contactUs, variant: "info" },
+  };
 
   function refresh() {
     getProducts()
@@ -146,7 +153,7 @@ export function ProductTable() {
   if (loading) {
     return (
       <div className="py-10 text-center text-sm text-muted-foreground">
-        Loading products...
+        {t.productTable.loadingProducts}
       </div>
     );
   }
@@ -157,7 +164,7 @@ export function ProductTable() {
         <div className="relative max-w-[400px]">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search products..."
+            placeholder={t.productTable.searchPlaceholder}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-8"
@@ -166,13 +173,12 @@ export function ProductTable() {
       </div>
 
       <div className="flex border-b border-border px-4">
-        {TABS.map((tab) => (
+        {tabs.map((tab) => (
           <button
             key={tab.value}
             className={cn(
               "-mb-px inline-flex items-center gap-1.5 border-b-2 border-transparent px-3.5 py-2.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground",
-              activeTab === tab.value &&
-                "border-foreground text-foreground",
+              activeTab === tab.value && "border-foreground text-foreground",
             )}
             onClick={() => setActiveTab(tab.value)}
           >
@@ -193,12 +199,10 @@ export function ProductTable() {
       {filtered.length === 0 ? (
         <div className="py-10 text-center text-sm text-muted-foreground">
           <div className="font-medium">
-            {search ? "No products match your search" : "No products yet"}
+            {search ? t.productTable.noMatch : t.productTable.noProducts}
           </div>
           <div className="mt-1 text-xs">
-            {search
-              ? "Try a different search term"
-              : "Add your first product to get started"}
+            {search ? t.productTable.tryDifferent : t.productTable.addFirst}
           </div>
         </div>
       ) : (
@@ -206,14 +210,14 @@ export function ProductTable() {
           {selected.size > 0 && (
             <div className="flex items-center gap-3 border-b border-border bg-muted px-4 py-2">
               <span className="text-[12.5px] font-medium">
-                {selected.size} selected
+                {selected.size} {t.productTable.selected}
               </span>
               <Button
                 size="sm"
                 className="text-xs"
                 onClick={() => setShowQuotation(true)}
               >
-                Generate Quotation
+                {t.productTable.generateQuotation}
               </Button>
               <Button
                 variant="ghost"
@@ -221,7 +225,7 @@ export function ProductTable() {
                 className="text-xs"
                 onClick={() => setSelected(new Set())}
               >
-                Deselect all
+                {t.productTable.deselectAll}
               </Button>
             </div>
           )}
@@ -235,17 +239,20 @@ export function ProductTable() {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-10">
-                  <Checkbox
-                    checked={allSelected}
-                    onCheckedChange={toggleAll}
-                  />
+                  <Checkbox checked={allSelected} onCheckedChange={toggleAll} />
                 </TableHead>
                 <TableHead className="w-[60px]" />
-                <TableHead>Product</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Cost</TableHead>
-                <TableHead className="text-right">Selling / %Rev</TableHead>
-                <TableHead className="text-right">Listed / %Dist</TableHead>
+                <TableHead>{t.productTable.product}</TableHead>
+                <TableHead>{t.productTable.status}</TableHead>
+                <TableHead className="text-right">
+                  {t.productTable.cost}
+                </TableHead>
+                <TableHead className="text-right">
+                  {t.productTable.sellingRev}
+                </TableHead>
+                <TableHead className="text-right">
+                  {t.productTable.listedDist}
+                </TableHead>
                 <TableHead className="w-[100px]" />
               </TableRow>
             </TableHeader>
@@ -283,20 +290,33 @@ export function ProductTable() {
                     </Link>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={STATUS_VARIANT[p.priceVisibility]?.variant ?? "secondary"}>
-                      {STATUS_VARIANT[p.priceVisibility]?.label ?? p.priceVisibility}
+                    <Badge
+                      variant={
+                        statusVariant[p.priceVisibility]?.variant ?? "secondary"
+                      }
+                    >
+                      {statusVariant[p.priceVisibility]?.label ??
+                        p.priceVisibility}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right font-mono text-[12.5px]">
                     {formatPrice(p.costPrice)} ₫
                   </TableCell>
                   <TableCell className="text-right font-mono text-[12.5px]">
-                    {formatPrice(computeSellingPrice(p.costPrice, p.revenuePercent))} ₫ /{" "}
-                    {p.revenuePercent}%
+                    {formatPrice(
+                      computeSellingPrice(p.costPrice, p.revenuePercent),
+                    )}{" "}
+                    ₫ / {p.revenuePercent}%
                   </TableCell>
                   <TableCell className="text-right font-mono text-[12.5px]">
-                    {formatPrice(computeListedPrice(p.costPrice, p.revenuePercent, p.distributorPercent))} ₫ /{" "}
-                    {p.distributorPercent}%
+                    {formatPrice(
+                      computeListedPrice(
+                        p.costPrice,
+                        p.revenuePercent,
+                        p.distributorPercent,
+                      ),
+                    )}{" "}
+                    ₫ / {p.distributorPercent}%
                   </TableCell>
                   <TableCell>
                     <div className="flex justify-end gap-2">
@@ -304,9 +324,16 @@ export function ProductTable() {
                         href={`/admin/products/${p.id}/edit`}
                         className="text-xs text-muted-foreground hover:text-foreground hover:underline"
                       >
-                        Edit
+                        {t.productTable.edit}
                       </Link>
-                      <DeleteButton id={p.id} onDeleted={refresh} />
+                      <DeleteButton
+                        id={p.id}
+                        onDeleted={refresh}
+                        labels={{
+                          delete: t.productTable.delete,
+                          deleteConfirm: t.productTable.deleteConfirm,
+                        }}
+                      />
                     </div>
                   </TableCell>
                 </TableRow>

@@ -2,6 +2,7 @@
 
 import { formatVND, formatVNDCompact } from "lib/sales";
 import { useState } from "react";
+import { useAdminLocale } from "./admin-locale-context";
 
 const W = 800;
 const H = 220;
@@ -41,6 +42,7 @@ function niceMax(maxValue: number): number {
 }
 
 export function MonthlyRevenueChart({ data }: Props) {
+  const { t } = useAdminLocale();
   const [hover, setHover] = useState<number | null>(null);
 
   const rawMax = data.reduce((m, d) => Math.max(m, d.revenue), 0);
@@ -167,7 +169,7 @@ export function MonthlyRevenueChart({ data }: Props) {
                 </strong>
               </div>
               <div className="mt-0.5 text-[10.5px] opacity-70">
-                {d.units} unit{d.units === 1 ? "" : "s"}
+                {d.units} {d.units === 1 ? t.chart.unit : t.chart.units}
               </div>
             </div>
           );

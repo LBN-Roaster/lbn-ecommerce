@@ -4,9 +4,15 @@ import type { Locale } from "lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 
-export function HeroSection({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export function HeroSection({
+  dict,
+  locale,
+}: {
+  dict: Dictionary;
+  locale: Locale;
+}) {
   return (
-    <section className="relative -mt-6 flex min-h-screen items-end overflow-hidden bg-neutral-900">
+    <section className="relative -mt-6 flex aspect-[18/9] items-end overflow-hidden bg-neutral-900">
       <Image
         src="/images/3KG.jpg"
         alt=""
@@ -36,8 +42,7 @@ export function HeroSection({ dict, locale }: { dict: Dictionary; locale: Locale
           </span>
 
           <h1 className="mb-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
-            {dict.hero.heading1} <br className="hidden md:block" />
-            <span className="text-blue-400">{dict.hero.heading2}</span>
+            {dict.hero.heading1} {dict.hero.heading2}
           </h1>
 
           <p className="mb-8 max-w-lg text-base text-white/100 md:text-lg">

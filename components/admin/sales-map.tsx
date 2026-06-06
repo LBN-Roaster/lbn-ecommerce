@@ -13,12 +13,14 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useAdminLocale } from "./admin-locale-context";
 
 type Props = {
   locations: LocationEntry[];
 };
 
 export function SalesMap({ locations }: Props) {
+  const { t } = useAdminLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Leaflet.Map | null>(null);
   const markersRef = useRef<Record<string, Leaflet.Marker>>({});
@@ -118,25 +120,28 @@ export function SalesMap({ locations }: Props) {
       <div className="mb-5 flex items-end justify-between gap-6">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
-            Installations Map
+            {t.map.title}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Where LBN machines are roasting · {locations.length} locations ·{" "}
-            {totalUnits} machines
+            {t.map.subtitle} · {locations.length} {t.map.locations} ·{" "}
+            {totalUnits} {t.map.machines}
           </p>
         </div>
         <Button variant="ghost" onClick={resetView}>
-          Reset view
+          {t.map.resetView}
         </Button>
       </div>
 
-      <div className="grid min-h-[600px] grid-cols-[1fr_360px] gap-3.5" style={{ height: "calc(100vh - 56px - 56px - 36px)" }}>
+      <div
+        className="grid min-h-[600px] grid-cols-[1fr_360px] gap-3.5"
+        style={{ height: "calc(100vh - 56px - 56px - 36px)" }}
+      >
         <Card className="relative overflow-hidden">
           <div ref={containerRef} className="absolute inset-0" />
           <div className="absolute right-3.5 top-3.5 z-[500] flex gap-5 rounded-lg border border-border bg-white/95 px-3.5 py-2.5 text-xs shadow-md backdrop-blur-sm">
             <div>
               <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
-                Locations
+                {t.map.locations}
               </div>
               <div className="mt-0.5 font-mono text-sm font-semibold">
                 {locations.length}
@@ -144,7 +149,7 @@ export function SalesMap({ locations }: Props) {
             </div>
             <div>
               <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
-                Machines
+                {t.map.machines}
               </div>
               <div className="mt-0.5 font-mono text-sm font-semibold">
                 {totalUnits}
@@ -152,7 +157,7 @@ export function SalesMap({ locations }: Props) {
             </div>
             <div>
               <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
-                Revenue
+                {t.map.revenue}
               </div>
               <div className="mt-0.5 font-mono text-sm font-medium">
                 {formatVNDCompact(totalRevenue)}
@@ -166,12 +171,14 @@ export function SalesMap({ locations }: Props) {
             <LocationDetail
               loc={selectedLoc}
               onBack={() => setSelected(null)}
+              t={t}
             />
           ) : (
             <LocationList
               locations={locations}
               selected={selected}
               onSelect={setSelected}
+              t={t}
             />
           )}
         </Card>
@@ -184,17 +191,19 @@ function LocationList({
   locations,
   selected,
   onSelect,
+  t,
 }: {
   locations: LocationEntry[];
   selected: string | null;
   onSelect: (key: string) => void;
+  t: ReturnType<typeof useAdminLocale>["t"];
 }) {
   return (
     <>
       <div className="border-b border-border px-4 py-4">
-        <h3 className="text-sm font-semibold">Locations</h3>
+        <h3 className="text-sm font-semibold">{t.map.locations}</h3>
         <p className="mt-1 text-xs text-muted-foreground">
-          Click a pin or row to drill in
+          {t.map.clickToDrill}
         </p>
       </div>
       <div className="flex-1 overflow-y-auto">
@@ -223,7 +232,7 @@ function LocationList({
         ))}
       </div>
       <div className="border-t border-border px-4 py-2.5 text-[11.5px] text-muted-foreground">
-        Pins aggregate sales by lat/lng · Number shows machines installed
+        {t.map.pinsNote}
       </div>
     </>
   );
@@ -232,9 +241,11 @@ function LocationList({
 function LocationDetail({
   loc,
   onBack,
+  t,
 }: {
   loc: LocationEntry;
   onBack: () => void;
+  t: ReturnType<typeof useAdminLocale>["t"];
 }) {
   return (
     <div className="flex-1 overflow-y-auto p-4">
@@ -242,7 +253,7 @@ function LocationDetail({
         className="mb-3.5 inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
         onClick={onBack}
       >
-        ← All locations
+        {t.map.allLocations}
       </button>
       <h3 className="text-base font-semibold tracking-tight">{loc.label}</h3>
       <div className="mt-1 font-mono text-[11px] text-muted-foreground">
@@ -252,7 +263,7 @@ function LocationDetail({
       <div className="mt-4 grid grid-cols-2 gap-3">
         <div className="rounded-md border border-border bg-muted p-2.5">
           <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
-            Machines
+            {t.map.machines}
           </div>
           <div className="mt-1 font-mono text-base font-semibold">
             {loc.count}
@@ -260,7 +271,7 @@ function LocationDetail({
         </div>
         <div className="rounded-md border border-border bg-muted p-2.5">
           <div className="text-[10.5px] font-medium uppercase tracking-wider text-muted-foreground">
-            Revenue
+            {t.map.revenue}
           </div>
           <div className="mt-1 font-mono text-base font-semibold">
             {formatVNDCompact(loc.revenue)}
@@ -269,7 +280,7 @@ function LocationDetail({
       </div>
 
       <div className="mb-2 mt-4 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-        Sales at this location
+        {t.map.salesAtLocation}
       </div>
       <div className="flex flex-col gap-2.5">
         {loc.sales.map((s) => (

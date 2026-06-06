@@ -4,7 +4,16 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
 import { FeedbackItem } from "lib/feedback/types";
-import { Calendar, CheckCircle2, CircleDashed, Clock, GripVertical, Pencil, Trash2 } from "lucide-react";
+import {
+  Calendar,
+  CheckCircle2,
+  CircleDashed,
+  Clock,
+  GripVertical,
+  Pencil,
+  Trash2,
+} from "lucide-react";
+import { useAdminLocale } from "../admin-locale-context";
 
 interface FeedbackCardProps {
   item: FeedbackItem;
@@ -13,6 +22,7 @@ interface FeedbackCardProps {
 }
 
 export function FeedbackCard({ item, onEdit, onDelete }: FeedbackCardProps) {
+  const { t } = useAdminLocale();
   const {
     attributes,
     listeners,
@@ -89,12 +99,12 @@ export function FeedbackCard({ item, onEdit, onDelete }: FeedbackCardProps) {
         {hasSolution ? (
           <span className="flex items-center gap-1 text-[10.5px] font-medium text-emerald-600">
             <CheckCircle2 className="h-3.5 w-3.5" />
-            Solution added
+            {t.feedbackCard.solutionAdded}
           </span>
         ) : (
           <span className="flex items-center gap-1 text-[10.5px] text-muted-foreground">
             <CircleDashed className="h-3.5 w-3.5" />
-            No solution
+            {t.feedbackCard.noSolution}
           </span>
         )}
       </div>

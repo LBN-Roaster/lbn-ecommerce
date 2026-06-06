@@ -39,7 +39,9 @@ function readPost(slug: string, locale: Locale): NewsPost {
   };
 }
 
-export function getAllNewsPosts(locale: Locale = defaultLocale): NewsPostMeta[] {
+export function getAllNewsPosts(
+  locale: Locale = defaultLocale,
+): NewsPostMeta[] {
   const dir = newsDir(locale);
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
   return files

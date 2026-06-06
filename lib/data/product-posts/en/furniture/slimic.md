@@ -29,7 +29,7 @@ Slimic Coffee Table
 ### Technical Specifications
 
 | Product | Dimensions (LxWxH)  |
-| ------- | -------------------- |
+| ------- | ------------------- |
 | Table   | 1100 x 600 x 450 mm |
 
 <!-- split -->

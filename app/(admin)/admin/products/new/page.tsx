@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
+import { useAdminLocale } from "components/admin/admin-locale-context";
 
 export default function NewProductPage() {
   const router = useRouter();
+  const { t } = useAdminLocale();
 
   async function handleSubmit(formData: FormData) {
     const payload = { ...parseProductFormData(formData), variants: [] };
@@ -25,7 +27,9 @@ export default function NewProductPage() {
             <ChevronLeft className="h-5 w-5" />
           </Link>
         </Button>
-        <h1 className="text-2xl font-semibold tracking-tight">Add product</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">
+          {t.productsPage.addProduct}
+        </h1>
       </div>
 
       <ProductForm action={handleSubmit} />

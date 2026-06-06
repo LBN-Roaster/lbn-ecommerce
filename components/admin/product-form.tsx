@@ -20,6 +20,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { useAdminLocale } from "./admin-locale-context";
 
 type ViewMode = "form" | "json";
 
@@ -34,27 +35,26 @@ interface ProductPayload {
   images: string[];
 }
 
-const VISIBILITY_OPTIONS: {
-  value: PriceVisibility;
-  label: string;
-  description: string;
-}[] = [
-  {
-    value: "VISIBLE",
-    label: "Active",
-    description: "Product is visible to customers",
-  },
-  {
-    value: "HIDDEN",
-    label: "Draft",
-    description: "Product is hidden from storefront",
-  },
-  {
-    value: "CONTACT_US",
-    label: "Contact Us",
-    description: "Price shown as 'Contact Us'",
-  },
-];
+function useVisibilityOptions() {
+  const { t } = useAdminLocale();
+  return [
+    {
+      value: "VISIBLE" as PriceVisibility,
+      label: t.productForm.activeLabel,
+      description: t.productForm.activeDesc,
+    },
+    {
+      value: "HIDDEN" as PriceVisibility,
+      label: t.productForm.draftLabel,
+      description: t.productForm.draftDesc,
+    },
+    {
+      value: "CONTACT_US" as PriceVisibility,
+      label: t.productForm.contactUsLabel,
+      description: t.productForm.contactUsDesc,
+    },
+  ];
+}
 
 function productToPayload(product?: Product): ProductPayload {
   return {
@@ -111,6 +111,8 @@ export function ProductForm({
   product?: Product;
   action: (formData: FormData) => Promise<void>;
 }) {
+  const { t } = useAdminLocale();
+  const VISIBILITY_OPTIONS = useVisibilityOptions();
   const [viewMode, setViewMode] = useState<ViewMode>("form");
   const [snapshot, setSnapshot] = useState<ProductPayload>(() =>
     productToPayload(product),
@@ -192,7 +194,7 @@ export function ProductForm({
           try {
             parsed = JSON.parse(raw);
           } catch {
-            return "Invalid JSON";
+            return t.productForm.invalidJson;
           }
           formData.set("model", parsed.model ?? "");
           formData.set("generalInformation", parsed.generalInformation ?? "");
@@ -246,7 +248,7 @@ export function ProductForm({
         await action(formData);
         return null;
       } catch (e) {
-        return e instanceof Error ? e.message : "Something went wrong";
+        return e instanceof Error ? e.message : t.productForm.somethingWrong;
       }
     },
     null,
@@ -273,7 +275,7 @@ export function ProductForm({
           )}
           onClick={() => viewMode === "json" && switchToForm()}
         >
-          Form
+          {t.productForm.form}
         </button>
         <button
           type="button"
@@ -283,15 +285,17 @@ export function ProductForm({
           )}
           onClick={() => viewMode === "form" && switchToJson()}
         >
-          JSON
+          {t.productForm.json}
         </button>
       </div>
 
       {viewMode === "json" ? (
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">JSON Payload</CardTitle>
-            <CardDescription>Paste AI-generated JSON here</CardDescription>
+            <CardTitle className="text-sm">
+              {t.productForm.jsonPayload}
+            </CardTitle>
+            <CardDescription>{t.productForm.pasteJson}</CardDescription>
           </CardHeader>
           <CardContent>
             <textarea
@@ -305,28 +309,33 @@ export function ProductForm({
           </CardContent>
         </Card>
       ) : (
-        <div key={formKey} className="grid grid-cols-[1fr_320px] items-start gap-5">
+        <div
+          key={formKey}
+          className="grid grid-cols-[1fr_320px] items-start gap-5"
+        >
           <div className="flex min-w-0 flex-col gap-4">
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Product information</CardTitle>
+                <CardTitle className="text-sm">
+                  {t.productForm.productInfo}
+                </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-3.5">
                 <div className="flex flex-col gap-1.5">
-                  <Label>Title</Label>
+                  <Label>{t.productForm.titleLabel}</Label>
                   <Input
                     name="model"
                     defaultValue={snapshot.model}
                     required
-                    placeholder="Short sleeves t-shirt"
+                    placeholder={t.productForm.titlePlaceholder}
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <Label>Description</Label>
+                  <Label>{t.productForm.description}</Label>
                   <RichTextEditor
                     name="generalInformation"
                     defaultValue={snapshot.generalInformation}
-                    placeholder="Write a description for your product..."
+                    placeholder={t.productForm.descriptionPlaceholder}
                   />
                 </div>
               </CardContent>
@@ -334,7 +343,7 @@ export function ProductForm({
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Media</CardTitle>
+                <CardTitle className="text-sm">{t.productForm.media}</CardTitle>
               </CardHeader>
               <CardContent>
                 <ImageManager name="images" defaultValue={snapshot.images} />
@@ -343,12 +352,14 @@ export function ProductForm({
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Pricing</CardTitle>
+                <CardTitle className="text-sm">
+                  {t.productForm.pricing}
+                </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-3.5">
                 <div className="grid grid-cols-3 gap-3">
                   <div className="flex flex-col gap-1.5">
-                    <Label>Cost Price</Label>
+                    <Label>{t.productForm.costPrice}</Label>
                     <div className="relative">
                       <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
                         ₫
@@ -368,7 +379,7 @@ export function ProductForm({
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <Label>Revenue %</Label>
+                    <Label>{t.productForm.revenuePercent}</Label>
                     <div className="relative">
                       <Input
                         name="revenuePercent"
@@ -387,7 +398,7 @@ export function ProductForm({
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <Label>Distributor %</Label>
+                    <Label>{t.productForm.distributorPercent}</Label>
                     <div className="relative">
                       <Input
                         name="distributorPercent"
@@ -409,7 +420,7 @@ export function ProductForm({
                 <div className="mt-3.5 flex flex-col gap-2 border-t border-border pt-3.5">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">
-                      Selling Price
+                      {t.productForm.sellingPrice}
                     </span>
                     <span className="font-mono text-sm font-semibold">
                       {formatCurrency(String(sellingPrice))} ₫
@@ -417,7 +428,7 @@ export function ProductForm({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">
-                      Listed Price
+                      {t.productForm.listedPrice}
                     </span>
                     <span className="font-mono text-sm font-semibold">
                       {formatCurrency(String(listedPrice))} ₫
@@ -437,7 +448,9 @@ export function ProductForm({
           <div className="sticky top-[76px] flex flex-col gap-4">
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Status</CardTitle>
+                <CardTitle className="text-sm">
+                  {t.productForm.statusLabel}
+                </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
                 <select
@@ -468,7 +481,11 @@ export function ProductForm({
 
       <div className="flex justify-end pt-2">
         <Button type="submit" disabled={isPending}>
-          {isPending ? "Saving..." : product ? "Save" : "Save product"}
+          {isPending
+            ? t.productForm.saving
+            : product
+              ? t.productForm.save
+              : t.productForm.saveProduct}
         </Button>
       </div>
     </form>

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, GripVertical, ImagePlus } from "lucide-react";
+import { useAdminLocale } from "./admin-locale-context";
 
 interface ImageManagerProps {
   name: string;
@@ -11,6 +12,7 @@ interface ImageManagerProps {
 }
 
 export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
+  const { t } = useAdminLocale();
   const [images, setImages] = useState<string[]>(defaultValue);
   const [inputUrl, setInputUrl] = useState("");
   const dragIdx = useRef<number | null>(null);
@@ -71,13 +73,13 @@ export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
                   type="button"
                   className="grid h-6 w-6 place-items-center rounded-full bg-white/90 text-muted-foreground opacity-0 shadow-sm transition-opacity hover:text-destructive group-hover:opacity-100"
                   onClick={() => remove(i)}
-                  title="Remove image"
+                  title={t.imageManager.removeImage}
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
                 {i === 0 && (
                   <span className="absolute bottom-1.5 left-1.5 rounded bg-white/90 px-1.5 py-px text-[10px] font-semibold uppercase text-muted-foreground shadow-sm">
-                    Featured
+                    {t.imageManager.featured}
                   </span>
                 )}
               </div>
@@ -94,10 +96,10 @@ export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
           <ImagePlus className="h-8 w-8 text-muted-foreground" />
           <div className="flex flex-col gap-0.5">
             <span className="text-sm font-medium text-muted-foreground">
-              Add image URL
+              {t.imageManager.addImageUrl}
             </span>
             <span className="text-[11.5px] text-muted-foreground">
-              Paste a URL and press Enter or click Add
+              {t.imageManager.pasteUrl}
             </span>
           </div>
         </div>
@@ -120,7 +122,7 @@ export function ImageManager({ name, defaultValue = [] }: ImageManagerProps) {
             onClick={addUrl}
             disabled={!inputUrl.trim()}
           >
-            Add
+            {t.imageManager.add}
           </Button>
         </div>
       </div>

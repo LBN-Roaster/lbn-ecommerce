@@ -6,6 +6,242 @@ export type AreaContent<T> = {
   "noi-that": T;
 };
 
+export interface AdminDictionary {
+  sidebar: {
+    title: string;
+    subtitle: string;
+    dashboard: string;
+    overview: string;
+    installationsMap: string;
+    data: string;
+    products: string;
+    sales: string;
+    feedback: string;
+    settings: string;
+  };
+  topbar: {
+    admin: string;
+    overview: string;
+    installationsMap: string;
+    sales: string;
+    syncedFrom: string;
+    export: string;
+  };
+  overview: {
+    title: string;
+    subtitle: string;
+    allTimeRevenue: string;
+    machinesSold: string;
+    allTimeUnits: string;
+    acrossAllLocations: string;
+    thisMonthRevenue: string;
+    thisMonthUnits: string;
+    vsPreviousMonth: string;
+    monthlyRevenue: string;
+    rollingWindow: string;
+    closed: string;
+    currentMonth: string;
+    recentSales: string;
+    latestTransactions: string;
+    viewAll: string;
+  };
+  productsPage: {
+    title: string;
+    subtitle: string;
+    addProduct: string;
+  };
+  productTable: {
+    searchPlaceholder: string;
+    all: string;
+    active: string;
+    draft: string;
+    contactUs: string;
+    loadingProducts: string;
+    noMatch: string;
+    noProducts: string;
+    tryDifferent: string;
+    addFirst: string;
+    selected: string;
+    generateQuotation: string;
+    deselectAll: string;
+    product: string;
+    status: string;
+    cost: string;
+    sellingRev: string;
+    listedDist: string;
+    edit: string;
+    delete: string;
+    deleteConfirm: string;
+  };
+  productForm: {
+    form: string;
+    json: string;
+    jsonPayload: string;
+    pasteJson: string;
+    productInfo: string;
+    titleLabel: string;
+    titlePlaceholder: string;
+    description: string;
+    descriptionPlaceholder: string;
+    media: string;
+    pricing: string;
+    costPrice: string;
+    revenuePercent: string;
+    distributorPercent: string;
+    sellingPrice: string;
+    listedPrice: string;
+    statusLabel: string;
+    activeLabel: string;
+    activeDesc: string;
+    draftLabel: string;
+    draftDesc: string;
+    contactUsLabel: string;
+    contactUsDesc: string;
+    saving: string;
+    save: string;
+    saveProduct: string;
+    somethingWrong: string;
+    invalidJson: string;
+  };
+  salesPage: {
+    title: string;
+    subtitle: string;
+  };
+  salesTable: {
+    noSales: string;
+    noSalesHint: string;
+    date: string;
+    product: string;
+    buyer: string;
+    location: string;
+    price: string;
+  };
+  quotation: {
+    title: string;
+    settings: string;
+    name: string;
+    customerName: string;
+    company: string;
+    companyName: string;
+    address: string;
+    deliveryAddress: string;
+    senderName: string;
+    yourName: string;
+    senderPhone: string;
+    phoneNumber: string;
+    language: string;
+    vietnamese: string;
+    english: string;
+    items: string;
+    variant: string;
+    noVariants: string;
+    priceType: string;
+    costType: string;
+    sellingType: string;
+    listedType: string;
+    qty: string;
+    discountPercent: string;
+    priceOverride: string;
+    optional: string;
+    totalCost: string;
+    totalPrice: string;
+    profit: string;
+    cancel: string;
+    generating: string;
+    generatePdf: string;
+    addAtLeastOne: string;
+    failedGenerate: string;
+  };
+  chart: {
+    unit: string;
+    units: string;
+  };
+  map: {
+    title: string;
+    subtitle: string;
+    resetView: string;
+    locations: string;
+    machines: string;
+    revenue: string;
+    clickToDrill: string;
+    pinsNote: string;
+    allLocations: string;
+    salesAtLocation: string;
+  };
+  imageManager: {
+    featured: string;
+    addImageUrl: string;
+    pasteUrl: string;
+    add: string;
+    removeImage: string;
+  };
+  variantBuilder: {
+    options: string;
+    hasOptions: string;
+    optionName: string;
+    optionValues: string;
+    addValue: string;
+    addOption: string;
+    done: string;
+    variants: string;
+    select: string;
+    none: string;
+    allLabel: string;
+    variant: string;
+    priceLabel: string;
+    quantity: string;
+    edit: string;
+    cancel: string;
+    priceCurrency: string;
+  };
+  feedbackPage: {
+    title: string;
+    subtitle: string;
+    addFeedback: string;
+  };
+  feedbackColumn: {
+    dropHere: string;
+  };
+  feedbackCard: {
+    solutionAdded: string;
+    noSolution: string;
+  };
+  feedbackDialog: {
+    editTitle: string;
+    newTitle: string;
+    title: string;
+    titlePlaceholder: string;
+    description: string;
+    descriptionPlaceholder: string;
+    category: string;
+    bug: string;
+    feature: string;
+    improvement: string;
+    priority: string;
+    low: string;
+    medium: string;
+    high: string;
+    statusLabel: string;
+    backlog: string;
+    inProgress: string;
+    doneStatus: string;
+    doneDate: string;
+    submittedBy: string;
+    submittedByPlaceholder: string;
+    inCharge: string;
+    inChargePlaceholder: string;
+    solution: string;
+    solutionPlaceholder: string;
+    cancel: string;
+    saveChanges: string;
+    addFeedback: string;
+  };
+  editProduct: {
+    notFound: string;
+    loading: string;
+  };
+}
+
 export interface Dictionary {
   nav: {
     home: string;
@@ -41,7 +277,7 @@ export interface Dictionary {
     body1: string;
     body2: string;
     videoTitle: string;
-  }>;
+  }> & { viewProducts: string };
   machineDetails: AreaContent<{
     label: string;
     title: string;
@@ -105,6 +341,242 @@ export interface Dictionary {
     homeDescription: string;
   };
 }
+
+export const viAdmin: AdminDictionary = {
+  sidebar: {
+    title: "LBN Admin",
+    subtitle: "Khánh Hòa · VN",
+    dashboard: "Bảng điều khiển",
+    overview: "Tổng quan",
+    installationsMap: "Bản đồ lắp đặt",
+    data: "Dữ liệu",
+    products: "Sản phẩm",
+    sales: "Doanh số",
+    feedback: "Phản hồi",
+    settings: "Cài đặt",
+  },
+  topbar: {
+    admin: "Quản trị",
+    overview: "Tổng quan",
+    installationsMap: "Bản đồ lắp đặt",
+    sales: "Doanh số",
+    syncedFrom: "Đồng bộ từ",
+    export: "Xuất",
+  },
+  overview: {
+    title: "Tổng quan",
+    subtitle: "Tình hình kinh doanh tổng thể",
+    allTimeRevenue: "Tổng doanh thu",
+    machinesSold: "máy đã bán từ khi ra mắt",
+    allTimeUnits: "Tổng số máy",
+    acrossAllLocations: "trên tất cả địa điểm",
+    thisMonthRevenue: "Tháng này · doanh thu",
+    thisMonthUnits: "Tháng này · số máy",
+    vsPreviousMonth: "so với tháng trước",
+    monthlyRevenue: "Doanh thu theo tháng",
+    rollingWindow: "Cửa sổ 12 tháng · kết thúc",
+    closed: "Đã đóng",
+    currentMonth: "Tháng hiện tại",
+    recentSales: "Bán hàng gần đây",
+    latestTransactions: "giao dịch gần nhất",
+    viewAll: "Xem tất cả →",
+  },
+  productsPage: {
+    title: "Sản phẩm",
+    subtitle: "Quản lý danh mục sản phẩm",
+    addProduct: "Thêm sản phẩm",
+  },
+  productTable: {
+    searchPlaceholder: "Tìm kiếm sản phẩm...",
+    all: "Tất cả",
+    active: "Hiển thị",
+    draft: "Nháp",
+    contactUs: "Liên hệ",
+    loadingProducts: "Đang tải sản phẩm...",
+    noMatch: "Không có sản phẩm phù hợp",
+    noProducts: "Chưa có sản phẩm",
+    tryDifferent: "Thử từ khóa khác",
+    addFirst: "Thêm sản phẩm đầu tiên để bắt đầu",
+    selected: "đã chọn",
+    generateQuotation: "Tạo báo giá",
+    deselectAll: "Bỏ chọn tất cả",
+    product: "Sản phẩm",
+    status: "Trạng thái",
+    cost: "Giá vốn",
+    sellingRev: "Giá bán / %LN",
+    listedDist: "Giá niêm yết / %PP",
+    edit: "Sửa",
+    delete: "Xóa",
+    deleteConfirm: "Xóa sản phẩm này?",
+  },
+  productForm: {
+    form: "Biểu mẫu",
+    json: "JSON",
+    jsonPayload: "Dữ liệu JSON",
+    pasteJson: "Dán JSON do AI tạo tại đây",
+    productInfo: "Thông tin sản phẩm",
+    titleLabel: "Tên sản phẩm",
+    titlePlaceholder: "Áo thun tay ngắn",
+    description: "Mô tả",
+    descriptionPlaceholder: "Viết mô tả cho sản phẩm...",
+    media: "Hình ảnh",
+    pricing: "Giá cả",
+    costPrice: "Giá vốn",
+    revenuePercent: "% Lợi nhuận",
+    distributorPercent: "% Phân phối",
+    sellingPrice: "Giá bán",
+    listedPrice: "Giá niêm yết",
+    statusLabel: "Trạng thái",
+    activeLabel: "Hiển thị",
+    activeDesc: "Sản phẩm hiển thị cho khách hàng",
+    draftLabel: "Nháp",
+    draftDesc: "Sản phẩm ẩn khỏi cửa hàng",
+    contactUsLabel: "Liên hệ",
+    contactUsDesc: "Giá hiển thị là 'Liên hệ'",
+    saving: "Đang lưu...",
+    save: "Lưu",
+    saveProduct: "Lưu sản phẩm",
+    somethingWrong: "Đã xảy ra lỗi",
+    invalidJson: "JSON không hợp lệ",
+  },
+  salesPage: {
+    title: "Doanh số",
+    subtitle: "giao dịch · sắp xếp theo mới nhất",
+  },
+  salesTable: {
+    noSales: "Chưa có doanh số",
+    noSalesHint: "Doanh số sẽ xuất hiện khi data/sales.json có dữ liệu.",
+    date: "Ngày",
+    product: "Sản phẩm",
+    buyer: "Người mua",
+    location: "Địa điểm",
+    price: "Giá",
+  },
+  quotation: {
+    title: "Tạo báo giá",
+    settings: "Cài đặt báo giá",
+    name: "Tên",
+    customerName: "Tên khách hàng",
+    company: "Công ty",
+    companyName: "Tên công ty",
+    address: "Địa chỉ",
+    deliveryAddress: "Địa chỉ giao hàng",
+    senderName: "Người gửi",
+    yourName: "Tên của bạn",
+    senderPhone: "SĐT người gửi",
+    phoneNumber: "Số điện thoại",
+    language: "Ngôn ngữ",
+    vietnamese: "Tiếng Việt",
+    english: "Tiếng Anh",
+    items: "Sản phẩm",
+    variant: "Phiên bản",
+    noVariants: "Không có phiên bản",
+    priceType: "Loại giá",
+    costType: "Giá vốn",
+    sellingType: "Giá bán",
+    listedType: "Niêm yết",
+    qty: "SL",
+    discountPercent: "Giảm giá %",
+    priceOverride: "Giá tùy chỉnh",
+    optional: "Tùy chọn",
+    totalCost: "Tổng giá vốn",
+    totalPrice: "Tổng giá",
+    profit: "Lợi nhuận",
+    cancel: "Hủy",
+    generating: "Đang tạo...",
+    generatePdf: "Tạo PDF",
+    addAtLeastOne: "Thêm ít nhất một sản phẩm có phiên bản",
+    failedGenerate: "Không thể tạo báo giá",
+  },
+  chart: {
+    unit: "máy",
+    units: "máy",
+  },
+  map: {
+    title: "Bản đồ lắp đặt",
+    subtitle: "Nơi máy LBN đang hoạt động",
+    resetView: "Đặt lại",
+    locations: "Địa điểm",
+    machines: "Máy",
+    revenue: "Doanh thu",
+    clickToDrill: "Nhấn vào ghim hoặc hàng để xem chi tiết",
+    pinsNote: "Ghim gộp doanh số theo tọa độ · Số hiển thị số máy đã lắp",
+    allLocations: "← Tất cả địa điểm",
+    salesAtLocation: "Doanh số tại địa điểm",
+  },
+  imageManager: {
+    featured: "Nổi bật",
+    addImageUrl: "Thêm URL hình ảnh",
+    pasteUrl: "Dán URL rồi nhấn Enter hoặc nhấn Thêm",
+    add: "Thêm",
+    removeImage: "Xóa hình ảnh",
+  },
+  variantBuilder: {
+    options: "Tùy chọn",
+    hasOptions: "Sản phẩm có tùy chọn, như kích thước hoặc màu sắc",
+    optionName: "Tên tùy chọn",
+    optionValues: "Giá trị tùy chọn",
+    addValue: "Thêm giá trị khác",
+    addOption: "Thêm tùy chọn khác",
+    done: "Xong",
+    variants: "Phiên bản",
+    select: "Chọn",
+    none: "Bỏ chọn",
+    allLabel: "Tất cả",
+    variant: "Phiên bản",
+    priceLabel: "Giá",
+    quantity: "Số lượng",
+    edit: "Sửa",
+    cancel: "Hủy",
+    priceCurrency: "Giá (₫)",
+  },
+  feedbackPage: {
+    title: "Phản hồi",
+    subtitle: "Theo dõi và ưu tiên phản hồi",
+    addFeedback: "Thêm phản hồi",
+  },
+  feedbackColumn: {
+    dropHere: "Kéo thả vào đây",
+  },
+  feedbackCard: {
+    solutionAdded: "Đã có giải pháp",
+    noSolution: "Chưa có giải pháp",
+  },
+  feedbackDialog: {
+    editTitle: "Sửa phản hồi",
+    newTitle: "Phản hồi mới",
+    title: "Tiêu đề",
+    titlePlaceholder: "Tóm tắt ngắn gọn phản hồi",
+    description: "Mô tả",
+    descriptionPlaceholder: "Chi tiết về phản hồi này…",
+    category: "Danh mục",
+    bug: "Lỗi",
+    feature: "Tính năng",
+    improvement: "Cải thiện",
+    priority: "Ưu tiên",
+    low: "Thấp",
+    medium: "Trung bình",
+    high: "Cao",
+    statusLabel: "Trạng thái",
+    backlog: "Chờ xử lý",
+    inProgress: "Đang xử lý",
+    doneStatus: "Hoàn thành",
+    doneDate: "Ngày hoàn thành",
+    submittedBy: "Người gửi",
+    submittedByPlaceholder: "Tên hoặc nhóm",
+    inCharge: "Phụ trách",
+    inChargePlaceholder: "Người chịu trách nhiệm",
+    solution: "Giải pháp",
+    solutionPlaceholder: "Mô tả giải pháp hoặc cách giải quyết…",
+    cancel: "Hủy",
+    saveChanges: "Lưu thay đổi",
+    addFeedback: "Thêm phản hồi",
+  },
+  editProduct: {
+    notFound: "Không tìm thấy sản phẩm",
+    loading: "Đang tải...",
+  },
+};
 
 const vi: Dictionary = {
   nav: {
@@ -181,6 +653,7 @@ const vi: Dictionary = {
         "Mỗi sản phẩm được gia công tỉ mỉ tại xưởng Khánh Hòa, kiểm tra chất lượng nghiêm ngặt trước khi bàn giao — đảm bảo độ bền và tính thẩm mỹ lâu dài.",
       videoTitle: "LBN nội thất gỗ thép",
     },
+    viewProducts: "Xem sản phẩm",
   },
   machineDetails: {
     "may-rang": {

@@ -81,7 +81,9 @@ export default function Footer({
         </div>
 
         <div className="flex flex-col gap-3">
-          <p className="font-semibold text-black dark:text-white">{dict.footer.links}</p>
+          <p className="font-semibold text-black dark:text-white">
+            {dict.footer.links}
+          </p>
           {navLinks.map((link) => (
             <Link
               key={link.title}
@@ -94,7 +96,9 @@ export default function Footer({
         </div>
 
         <div className="flex flex-col gap-3 md:ml-auto">
-          <p className="font-semibold text-black dark:text-white">{dict.footer.contact}</p>
+          <p className="font-semibold text-black dark:text-white">
+            {dict.footer.contact}
+          </p>
           <p>{dict.footer.address}</p>
           <a
             href="tel:+84865112161"

@@ -75,21 +75,21 @@ LBN creates machines that are not only beautiful but also durable, precise, and 
 
 ### Technical Specifications
 
-| Specification       | Value                                                |
-| ------------------- | ---------------------------------------------------- |
-| Roasting capacity   | 3 kg/batch                                           |
-| Roasting time       | 9 - 14 min/batch                                     |
-| Throughput          | 12 - 20 kg/h                                        |
-| Dimensions (LxWxH)  | ≈ 1596 x 897 x 1792 mm                               |
-| Weight              | ~ 485 kg                                            |
-| Control mode        | Automatic/Manual                                     |
-| Gas type            | LPG / LNG / Natural                                  |
-| Electrical power    | 0.8 KW – 1 phase 220V 50/60Hz                        |
-| Roasting profiles   | Save 20 profiles (temperature, drum speed, airflow…)  |
-| Fully automatic     | Option: runs 100% according to saved profile          |
-| Connectivity        | Wireless, compatible with Artisan software            |
-| Cooling time        | < 5 min                                              |
-| Filtration system   | Cyclone for roasting drum                             |
+| Specification      | Value                                                |
+| ------------------ | ---------------------------------------------------- |
+| Roasting capacity  | 3 kg/batch                                           |
+| Roasting time      | 9 - 14 min/batch                                     |
+| Throughput         | 12 - 20 kg/h                                         |
+| Dimensions (LxWxH) | ≈ 1596 x 897 x 1792 mm                               |
+| Weight             | ~ 485 kg                                             |
+| Control mode       | Automatic/Manual                                     |
+| Gas type           | LPG / LNG / Natural                                  |
+| Electrical power   | 0.8 KW – 1 phase 220V 50/60Hz                        |
+| Roasting profiles  | Save 20 profiles (temperature, drum speed, airflow…) |
+| Fully automatic    | Option: runs 100% according to saved profile         |
+| Connectivity       | Wireless, compatible with Artisan software           |
+| Cooling time       | < 5 min                                              |
+| Filtration system  | Cyclone for roasting drum                            |
 
 ### Control & Electrical Components
 

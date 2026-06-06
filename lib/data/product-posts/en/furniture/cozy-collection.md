@@ -32,7 +32,7 @@ The Cozy Collection furniture set includes tables and chairs with modern design,
 ### Technical Specifications
 
 | Product | Dimensions (LxWxH) |
-| ------- | ------------------- |
+| ------- | ------------------ |
 | Table   | 800 x 800 x 750 mm |
 | Chair   | 540 x 550 x 890 mm |
 

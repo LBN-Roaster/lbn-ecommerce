@@ -2,7 +2,7 @@ import { get } from "@vercel/edge-config";
 import type { LocationEntry, MonthBucket, Sale, Totals } from "./types";
 
 async function loadSales(): Promise<Sale[]> {
-  return (((await get("data")) ?? []) as Sale[]);
+  return ((await get("data")) ?? []) as Sale[];
 }
 
 function ymKey(d: Date): string {

@@ -65,12 +65,12 @@ The LBN **Airlock** coffee roaster is designed for professional roasters, featur
 
 ## Technical Specifications
 
-| Specification    | Value       |
-| ---------------- | ----------- |
-| Capacity         | 6–15kg / batch |
-| Max Temperature  | 240°C       |
-| Power Supply     | 220V / 50Hz |
-| Origin           | Vietnam     |
+| Specification   | Value          |
+| --------------- | -------------- |
+| Capacity        | 6–15kg / batch |
+| Max Temperature | 240°C          |
+| Power Supply    | 220V / 50Hz    |
+| Origin          | Vietnam        |
 
 ## Warranty
 

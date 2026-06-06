@@ -5,7 +5,13 @@ import type { Locale } from "lib/i18n";
 import Image from "next/image";
 import Link from "next/link";
 
-export function NewsSection({ dict, locale }: { dict: Dictionary; locale: Locale }) {
+export function NewsSection({
+  dict,
+  locale,
+}: {
+  dict: Dictionary;
+  locale: Locale;
+}) {
   const posts = getAllNewsPosts(locale).slice(0, 3);
 
   return (

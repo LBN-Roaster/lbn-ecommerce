@@ -17,6 +17,7 @@ interface KanbanColumnProps {
   onAdd: (status: FeedbackStatus) => void;
   onEdit: (item: FeedbackItem) => void;
   onDelete: (id: string) => void;
+  dropLabel?: string;
 }
 
 export function KanbanColumn({
@@ -26,6 +27,7 @@ export function KanbanColumn({
   onAdd,
   onEdit,
   onDelete,
+  dropLabel = "Drop items here",
 }: KanbanColumnProps) {
   const { setNodeRef, isOver } = useDroppable({ id });
 
@@ -71,7 +73,7 @@ export function KanbanColumn({
 
         {items.length === 0 && (
           <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed border-border/60 py-8 text-[12px] text-muted-foreground">
-            Drop items here
+            {dropLabel}
           </div>
         )}
       </div>

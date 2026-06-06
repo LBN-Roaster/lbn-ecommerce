@@ -37,5 +37,8 @@ export const CATEGORY_CONFIG: Record<
 > = {
   bug: { label: "Bug", color: "bg-red-50 text-red-600" },
   feature: { label: "Feature", color: "bg-blue-50 text-blue-600" },
-  improvement: { label: "Improvement", color: "bg-emerald-50 text-emerald-600" },
+  improvement: {
+    label: "Improvement",
+    color: "bg-emerald-50 text-emerald-600",
+  },
 };

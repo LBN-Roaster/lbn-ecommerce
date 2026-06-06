@@ -144,9 +144,7 @@ describe("getSalesByMonth", () => {
   });
 
   it("places a single sale into its correct bucket", async () => {
-    const fixture = [
-      sale({ id: "x", date: "2026-03-12", price: 200_000_000 }),
-    ];
+    const fixture = [sale({ id: "x", date: "2026-03-12", price: 200_000_000 })];
     const buckets = await getSalesByMonth(12, fixture, NOW);
     const target = buckets.find((b) => b.ym === "2026-03");
     expect(target).toMatchObject({ revenue: 200_000_000, units: 1 });

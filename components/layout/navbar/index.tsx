@@ -11,17 +11,29 @@ import { LanguageSwitcher } from "../language-switcher";
 export function Navbar({ dict, locale }: { dict: Dictionary; locale: Locale }) {
   const mobileMenu = [
     { title: dict.nav.home, path: `/${locale}` },
-    { title: dict.nav.coffeeRoasters, path: `/${locale}/search/may-rang-ca-phe` },
+    {
+      title: dict.nav.coffeeRoasters,
+      path: `/${locale}/search/may-rang-ca-phe`,
+    },
     { title: dict.nav.furniture, path: `/${locale}/search?area=noi-that` },
-    { title: dict.nav.industrialKitchen, path: `/${locale}/search?area=bep-cong-nghiep` },
+    {
+      title: dict.nav.industrialKitchen,
+      path: `/${locale}/search?area=bep-cong-nghiep`,
+    },
     { title: dict.nav.news, path: `/${locale}/news` },
     { title: dict.nav.contact, path: "tel:+84865112161" },
   ];
 
   const productItems = [
-    { title: dict.nav.coffeeRoasters, path: `/${locale}/search/may-rang-ca-phe` },
+    {
+      title: dict.nav.coffeeRoasters,
+      path: `/${locale}/search/may-rang-ca-phe`,
+    },
     { title: dict.nav.furnitureFull, path: `/${locale}/search?area=noi-that` },
-    { title: dict.nav.industrialKitchen, path: `/${locale}/search?area=bep-cong-nghiep` },
+    {
+      title: dict.nav.industrialKitchen,
+      path: `/${locale}/search?area=bep-cong-nghiep`,
+    },
   ];
 
   return (
@@ -46,10 +58,7 @@ export function Navbar({ dict, locale }: { dict: Dictionary; locale: Locale }) {
               {dict.nav.home}
             </Link>
           </li>
-          <ProductDropdown
-            label={dict.nav.products}
-            items={productItems}
-          />
+          <ProductDropdown label={dict.nav.products} items={productItems} />
           <li>
             <Link
               href={`/${locale}/news`}

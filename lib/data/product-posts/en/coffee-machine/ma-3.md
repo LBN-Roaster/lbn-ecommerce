@@ -64,19 +64,19 @@ LBN creates machines that are not only beautiful but also durable, precise, and 
 
 ### Technical Specifications
 
-| Specification       | Value                                                                                                 |
-| ------------------- | ----------------------------------------------------------------------------------------------------- |
-| Roasting capacity   | 3 kg/batch                                                                                            |
-| Roasting time       | 9 - 14 min/batch                                                                                      |
-| Throughput          | 12 - 20 kg/h                                                                                          |
-| Dimensions (LxWxH)  | ≈ 1596 x 897 x 1792 mm                                                                                |
-| Control mode        | Automatic / Manual                                                                                    |
-| Gas type            | LPG / LNG / Natural                                                                                   |
-| Electrical power    | 0.8 KW – 1 phase 220V-50/60HZ                                                                         |
-| Roasting profiles   | Save 20 profiles (temperature, drum speed, airflow). Runs fully automatic 100% according to saved profiles. |
-| Connectivity        | Wireless, compatible with Artisan software                                                             |
-| Cooling time        | < 5 min                                                                                               |
-| Filtration system   | Cyclone for roasting drum                                                                              |
+| Specification      | Value                                                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------------------- |
+| Roasting capacity  | 3 kg/batch                                                                                                  |
+| Roasting time      | 9 - 14 min/batch                                                                                            |
+| Throughput         | 12 - 20 kg/h                                                                                                |
+| Dimensions (LxWxH) | ≈ 1596 x 897 x 1792 mm                                                                                      |
+| Control mode       | Automatic / Manual                                                                                          |
+| Gas type           | LPG / LNG / Natural                                                                                         |
+| Electrical power   | 0.8 KW – 1 phase 220V-50/60HZ                                                                               |
+| Roasting profiles  | Save 20 profiles (temperature, drum speed, airflow). Runs fully automatic 100% according to saved profiles. |
+| Connectivity       | Wireless, compatible with Artisan software                                                                  |
+| Cooling time       | < 5 min                                                                                                     |
+| Filtration system  | Cyclone for roasting drum                                                                                   |
 
 ### Control & Electrical Components
 

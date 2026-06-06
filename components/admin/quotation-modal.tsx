@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
+import { useAdminLocale } from "./admin-locale-context";
 
 interface QuotationLine {
   product: Product;
@@ -60,7 +61,11 @@ function getVariantPrice(
     case "SELLING":
       return computeSellingPrice(variant.costPrice, product.revenuePercent);
     case "LISTED":
-      return computeListedPrice(variant.costPrice, product.revenuePercent, product.distributorPercent);
+      return computeListedPrice(
+        variant.costPrice,
+        product.revenuePercent,
+        product.distributorPercent,
+      );
   }
 }
 
@@ -71,6 +76,7 @@ export function QuotationModal({
   products: Product[];
   onClose: () => void;
 }) {
+  const { t } = useAdminLocale();
   const [lines, setLines] = useState<QuotationLine[]>(() =>
     products.map((p) => ({
       product: p,
@@ -103,7 +109,7 @@ export function QuotationModal({
   async function handleGenerate() {
     const validLines = lines.filter((l) => l.variantId && l.quantity > 0);
     if (validLines.length === 0) {
-      setError("Add at least one item with a variant");
+      setError(t.quotation.addAtLeastOne);
       return;
     }
 
@@ -127,21 +133,29 @@ export function QuotationModal({
       });
       onClose();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to generate quotation");
+      setError(e instanceof Error ? e.message : t.quotation.failedGenerate);
     } finally {
       setGenerating(false);
     }
   }
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-black/35" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 grid place-items-center bg-black/35"
+      onClick={onClose}
+    >
       <div
         className="flex max-h-[85vh] w-[640px] max-w-[90vw] flex-col rounded-lg border border-border bg-background shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex shrink-0 items-center justify-between border-b border-border px-5 py-4">
-          <h2 className="text-base font-semibold">Generate Quotation</h2>
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onClose}>
+          <h2 className="text-base font-semibold">{t.quotation.title}</h2>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-7 w-7"
+            onClick={onClose}
+          >
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -155,58 +169,58 @@ export function QuotationModal({
 
           <div>
             <div className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Quotation settings
+              {t.quotation.settings}
             </div>
             <div className="grid grid-cols-2 gap-2.5">
               <div className="flex flex-col gap-1">
-                <Label className="text-xs">Name</Label>
+                <Label className="text-xs">{t.quotation.name}</Label>
                 <Input
                   value={recipientName}
                   onChange={(e) => setRecipientName(e.target.value)}
-                  placeholder="Customer name"
+                  placeholder={t.quotation.customerName}
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <Label className="text-xs">Company</Label>
+                <Label className="text-xs">{t.quotation.company}</Label>
                 <Input
                   value={recipientCompany}
                   onChange={(e) => setRecipientCompany(e.target.value)}
-                  placeholder="Company name"
+                  placeholder={t.quotation.companyName}
                 />
               </div>
               <div className="col-span-2 flex flex-col gap-1">
-                <Label className="text-xs">Address</Label>
+                <Label className="text-xs">{t.quotation.address}</Label>
                 <Input
                   value={recipientAddress}
                   onChange={(e) => setRecipientAddress(e.target.value)}
-                  placeholder="Delivery address"
+                  placeholder={t.quotation.deliveryAddress}
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <Label className="text-xs">Sender Name</Label>
+                <Label className="text-xs">{t.quotation.senderName}</Label>
                 <Input
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
-                  placeholder="Your name"
+                  placeholder={t.quotation.yourName}
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <Label className="text-xs">Sender Phone</Label>
+                <Label className="text-xs">{t.quotation.senderPhone}</Label>
                 <Input
                   value={senderPhone}
                   onChange={(e) => setSenderPhone(e.target.value)}
-                  placeholder="Phone number"
+                  placeholder={t.quotation.phoneNumber}
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <Label className="text-xs">Language</Label>
+                <Label className="text-xs">{t.quotation.language}</Label>
                 <select
                   className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                 >
-                  <option value="vi">Vietnamese</option>
-                  <option value="en">English</option>
+                  <option value="vi">{t.quotation.vietnamese}</option>
+                  <option value="en">{t.quotation.english}</option>
                 </select>
               </div>
             </div>
@@ -214,7 +228,7 @@ export function QuotationModal({
 
           <div>
             <div className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Items ({lines.length})
+              {t.quotation.items} ({lines.length})
             </div>
             <div className="flex flex-col gap-3">
               {lines.map((line, idx) => {
@@ -222,7 +236,11 @@ export function QuotationModal({
                   (v) => v.id === line.variantId,
                 );
                 const basePrice = selectedVariant
-                  ? getVariantPrice(selectedVariant, line.product, line.priceType)
+                  ? getVariantPrice(
+                      selectedVariant,
+                      line.product,
+                      line.priceType,
+                    )
                   : 0;
                 const overrideNum = line.priceOverride
                   ? Number(line.priceOverride)
@@ -234,7 +252,10 @@ export function QuotationModal({
                   (line.discountPercent > 0 || overrideNum > 0) &&
                   finalUnit !== basePrice;
                 return (
-                  <div key={line.product.id} className="rounded-md border border-border p-3">
+                  <div
+                    key={line.product.id}
+                    className="rounded-md border border-border p-3"
+                  >
                     <div className="mb-2.5 flex items-center gap-2.5">
                       <div className="h-10 w-10 shrink-0 overflow-hidden rounded bg-muted">
                         {line.product.images &&
@@ -271,7 +292,9 @@ export function QuotationModal({
                     <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] items-end gap-2.5">
                       {line.product.variants.length > 1 && (
                         <div className="col-span-full flex flex-col gap-1">
-                          <Label className="text-xs">Variant</Label>
+                          <Label className="text-xs">
+                            {t.quotation.variant}
+                          </Label>
                           <select
                             className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                             value={line.variantId}
@@ -289,11 +312,13 @@ export function QuotationModal({
                       )}
                       {line.product.variants.length === 0 && (
                         <div className="col-span-full py-1.5 text-xs italic text-muted-foreground">
-                          No variants available
+                          {t.quotation.noVariants}
                         </div>
                       )}
                       <div className="flex flex-col gap-1">
-                        <Label className="text-xs">Price Type</Label>
+                        <Label className="text-xs">
+                          {t.quotation.priceType}
+                        </Label>
                         <select
                           className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                           value={line.priceType}
@@ -306,13 +331,17 @@ export function QuotationModal({
                             })
                           }
                         >
-                          <option value="COST">Cost</option>
-                          <option value="SELLING">Selling</option>
-                          <option value="LISTED">Listed</option>
+                          <option value="COST">{t.quotation.costType}</option>
+                          <option value="SELLING">
+                            {t.quotation.sellingType}
+                          </option>
+                          <option value="LISTED">
+                            {t.quotation.listedType}
+                          </option>
                         </select>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <Label className="text-xs">Qty</Label>
+                        <Label className="text-xs">{t.quotation.qty}</Label>
                         <Input
                           type="number"
                           min={1}
@@ -328,7 +357,9 @@ export function QuotationModal({
                         />
                       </div>
                       <div className="flex flex-col gap-1">
-                        <Label className="text-xs">Discount %</Label>
+                        <Label className="text-xs">
+                          {t.quotation.discountPercent}
+                        </Label>
                         <Input
                           type="number"
                           min={0}
@@ -344,7 +375,9 @@ export function QuotationModal({
                         />
                       </div>
                       <div className="flex flex-col gap-1">
-                        <Label className="text-xs">Price Override</Label>
+                        <Label className="text-xs">
+                          {t.quotation.priceOverride}
+                        </Label>
                         <Input
                           type="text"
                           value={line.priceOverride}
@@ -353,7 +386,7 @@ export function QuotationModal({
                               priceOverride: e.target.value,
                             })
                           }
-                          placeholder="Optional"
+                          placeholder={t.quotation.optional}
                         />
                       </div>
                     </div>
@@ -370,9 +403,7 @@ export function QuotationModal({
                             </span>
                             <span className="ml-auto font-medium text-muted-foreground">
                               × {line.quantity} ={" "}
-                              {formatPrice(
-                                roundUp(finalUnit * line.quantity),
-                              )}{" "}
+                              {formatPrice(roundUp(finalUnit * line.quantity))}{" "}
                               ₫
                             </span>
                           </>
@@ -380,8 +411,7 @@ export function QuotationModal({
                           <span className="ml-auto font-medium text-muted-foreground">
                             {formatPrice(roundUp(basePrice))} ₫ ×{" "}
                             {line.quantity} ={" "}
-                            {formatPrice(roundUp(basePrice * line.quantity))}{" "}
-                            ₫
+                            {formatPrice(roundUp(basePrice * line.quantity))} ₫
                           </span>
                         )}
                       </div>
@@ -421,7 +451,7 @@ export function QuotationModal({
                   <div className="mt-3 flex flex-col gap-1.5 border-t-2 border-border px-3 pt-2.5 font-mono text-sm">
                     <div className="flex items-center justify-between">
                       <span className="font-semibold text-muted-foreground">
-                        Total Cost
+                        {t.quotation.totalCost}
                       </span>
                       <span className="font-medium text-muted-foreground">
                         {formatPrice(totalCost)} ₫
@@ -429,7 +459,7 @@ export function QuotationModal({
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="font-semibold text-muted-foreground">
-                        Total Price
+                        {t.quotation.totalPrice}
                       </span>
                       <span className="text-sm font-bold">
                         {formatPrice(totalPrice)} ₫
@@ -437,7 +467,7 @@ export function QuotationModal({
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="font-semibold text-muted-foreground">
-                        Profit
+                        {t.quotation.profit}
                       </span>
                       <span
                         className={cn(
@@ -448,8 +478,7 @@ export function QuotationModal({
                         )}
                       >
                         {profitPct >= 0 ? "+" : ""}
-                        {profitPct.toFixed(1)}%
-                        {" · "}
+                        {profitPct.toFixed(1)}%{" · "}
                         {formatPrice(totalPrice - totalCost)} ₫
                       </span>
                     </div>
@@ -461,13 +490,13 @@ export function QuotationModal({
 
         <div className="flex shrink-0 justify-end gap-2 border-t border-border px-5 py-3">
           <Button variant="outline" onClick={onClose}>
-            Cancel
+            {t.quotation.cancel}
           </Button>
           <Button
             disabled={generating || lines.every((l) => !l.variantId)}
             onClick={handleGenerate}
           >
-            {generating ? "Generating..." : "Generate PDF"}
+            {generating ? t.quotation.generating : t.quotation.generatePdf}
           </Button>
         </div>
       </div>

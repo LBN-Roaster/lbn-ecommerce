@@ -93,7 +93,7 @@ LBN tạo ra những chiếc máy không chỉ đẹp mà còn bền – chuẩn
 
 ### Linh kiện điều khiển & điện
 
-- PLC Delta - Đài Loan 
+- PLC Delta - Đài Loan
 - Màn hình cảm ứng Delta - Đài loan
 - Biến tần Delta - Đài Loan hoặc tương đương
 - Module nhiệt độ Autonics - Hàn Quốc

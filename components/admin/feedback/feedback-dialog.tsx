@@ -24,6 +24,7 @@ import {
   FeedbackPriority,
   FeedbackStatus,
 } from "lib/feedback/types";
+import { useAdminLocale } from "../admin-locale-context";
 
 interface FeedbackDialogProps {
   open: boolean;
@@ -40,6 +41,8 @@ export function FeedbackDialog({
   defaultStatus,
   onSave,
 }: FeedbackDialogProps) {
+  const { t } = useAdminLocale();
+  const fd = t.feedbackDialog;
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState<FeedbackCategory>("feature");
@@ -109,39 +112,39 @@ export function FeedbackDialog({
       <DialogContent className="sm:max-w-[480px]">
         <DialogHeader>
           <DialogTitle className="text-[15px]">
-            {item ? "Edit feedback" : "New feedback"}
+            {item ? fd.editTitle : fd.newTitle}
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-1.5">
             <Label htmlFor="title" className="text-[12.5px]">
-              Title
+              {fd.title}
             </Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Brief summary of the feedback"
+              placeholder={fd.titlePlaceholder}
               required
             />
           </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="description" className="text-[12.5px]">
-              Description
+              {fd.description}
             </Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Details about this feedback…"
+              placeholder={fd.descriptionPlaceholder}
               rows={3}
             />
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             <div className="space-y-1.5">
-              <Label className="text-[12.5px]">Category</Label>
+              <Label className="text-[12.5px]">{fd.category}</Label>
               <Select
                 value={category}
                 onValueChange={(v) => setCategory(v as FeedbackCategory)}
@@ -150,15 +153,15 @@ export function FeedbackDialog({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="bug">Bug</SelectItem>
-                  <SelectItem value="feature">Feature</SelectItem>
-                  <SelectItem value="improvement">Improvement</SelectItem>
+                  <SelectItem value="bug">{fd.bug}</SelectItem>
+                  <SelectItem value="feature">{fd.feature}</SelectItem>
+                  <SelectItem value="improvement">{fd.improvement}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-1.5">
-              <Label className="text-[12.5px]">Priority</Label>
+              <Label className="text-[12.5px]">{fd.priority}</Label>
               <Select
                 value={priority}
                 onValueChange={(v) => setPriority(v as FeedbackPriority)}
@@ -167,15 +170,15 @@ export function FeedbackDialog({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="low">Low</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="low">{fd.low}</SelectItem>
+                  <SelectItem value="medium">{fd.medium}</SelectItem>
+                  <SelectItem value="high">{fd.high}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-1.5">
-              <Label className="text-[12.5px]">Status</Label>
+              <Label className="text-[12.5px]">{fd.statusLabel}</Label>
               <Select
                 value={status}
                 onValueChange={(v) => handleStatusChange(v as FeedbackStatus)}
@@ -184,9 +187,9 @@ export function FeedbackDialog({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="backlog">Backlog</SelectItem>
-                  <SelectItem value="in-progress">In Progress</SelectItem>
-                  <SelectItem value="done">Done</SelectItem>
+                  <SelectItem value="backlog">{fd.backlog}</SelectItem>
+                  <SelectItem value="in-progress">{fd.inProgress}</SelectItem>
+                  <SelectItem value="done">{fd.doneStatus}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -195,7 +198,7 @@ export function FeedbackDialog({
           {status === "done" && (
             <div className="space-y-1.5">
               <Label htmlFor="doneAt" className="text-[12.5px]">
-                Done date
+                {fd.doneDate}
               </Label>
               <Input
                 id="doneAt"
@@ -209,37 +212,37 @@ export function FeedbackDialog({
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1.5">
               <Label htmlFor="author" className="text-[12.5px]">
-                Submitted by
+                {fd.submittedBy}
               </Label>
               <Input
                 id="author"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
-                placeholder="Name or team"
+                placeholder={fd.submittedByPlaceholder}
               />
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="assignee" className="text-[12.5px]">
-                In charge
+                {fd.inCharge}
               </Label>
               <Input
                 id="assignee"
                 value={assignee}
                 onChange={(e) => setAssignee(e.target.value)}
-                placeholder="Person responsible"
+                placeholder={fd.inChargePlaceholder}
               />
             </div>
           </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="solution" className="text-[12.5px]">
-              Solution
+              {fd.solution}
             </Label>
             <Textarea
               id="solution"
               value={solution}
               onChange={(e) => setSolution(e.target.value)}
-              placeholder="Describe the solution or resolution…"
+              placeholder={fd.solutionPlaceholder}
               rows={3}
             />
           </div>
@@ -251,10 +254,10 @@ export function FeedbackDialog({
               size="sm"
               onClick={() => onOpenChange(false)}
             >
-              Cancel
+              {fd.cancel}
             </Button>
             <Button type="submit" size="sm">
-              {item ? "Save changes" : "Add feedback"}
+              {item ? fd.saveChanges : fd.addFeedback}
             </Button>
           </div>
         </form>

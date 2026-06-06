@@ -20,9 +20,7 @@ export default function CollectionListClient({
 
   const areaParam = searchParams.get("area");
 
-  const pathCollection = collections.find((c) =>
-    pathname.endsWith(c.path),
-  );
+  const pathCollection = collections.find((c) => pathname.endsWith(c.path));
   const effectiveArea = areaParam ?? pathCollection?.area;
 
   const filtered = effectiveArea

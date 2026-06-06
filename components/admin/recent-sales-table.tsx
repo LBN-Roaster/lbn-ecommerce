@@ -1,3 +1,5 @@
+"use client";
+
 import { formatDate, formatVND, type Sale } from "lib/sales";
 import {
   Table,
@@ -7,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useAdminLocale } from "./admin-locale-context";
 
 type Props = {
   sales: Sale[];
@@ -14,15 +17,14 @@ type Props = {
 };
 
 export function RecentSalesTable({ sales, limit }: Props) {
+  const { t } = useAdminLocale();
   const rows = limit !== undefined ? sales.slice(0, limit) : sales;
 
   if (rows.length === 0) {
     return (
       <div className="py-10 text-center text-sm text-muted-foreground">
-        <div className="font-medium">No sales yet</div>
-        <div className="mt-1 text-xs">
-          Sales will appear here once data/sales.json has entries.
-        </div>
+        <div className="font-medium">{t.salesTable.noSales}</div>
+        <div className="mt-1 text-xs">{t.salesTable.noSalesHint}</div>
       </div>
     );
   }
@@ -31,11 +33,11 @@ export function RecentSalesTable({ sales, limit }: Props) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[110px]">Date</TableHead>
-          <TableHead>Product</TableHead>
-          <TableHead>Buyer</TableHead>
-          <TableHead>Location</TableHead>
-          <TableHead className="text-right">Price</TableHead>
+          <TableHead className="w-[110px]">{t.salesTable.date}</TableHead>
+          <TableHead>{t.salesTable.product}</TableHead>
+          <TableHead>{t.salesTable.buyer}</TableHead>
+          <TableHead>{t.salesTable.location}</TableHead>
+          <TableHead className="text-right">{t.salesTable.price}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

@@ -86,21 +86,21 @@ LBN creates machines that are not only beautiful but also durable, precise, and 
 
 ### Technical Specifications
 
-| Specification       | Value                                                |
-| ------------------- | ---------------------------------------------------- |
-| Roasting capacity   | 15 kg/batch                                          |
-| Roasting time       | 10 – 20 min/batch                                    |
-| Throughput          | 45 – 90 kg/h                                        |
-| Dimensions (LxWxH)  | ≈ 2395 x 870 x 2275 mm                               |
-| Weight              | ~ 800 kg                                            |
-| Control mode        | Automatic / Manual                                   |
-| Gas type            | LPG / LNG / Natural                                  |
-| Electrical power    | 2.12 KW – 3 phase 380V 50/60Hz                       |
-| Roasting profiles   | Save 20 profiles (temperature, drum speed, airflow…)  |
-| Fully automatic     | Option: runs 100% according to saved profile          |
-| Connectivity        | Wireless, compatible with Artisan software            |
-| Cooling time        | < 5 min                                              |
-| Filtration system   | Cyclone + Airlock with automatic chaff discharge      |
+| Specification      | Value                                                |
+| ------------------ | ---------------------------------------------------- |
+| Roasting capacity  | 15 kg/batch                                          |
+| Roasting time      | 10 – 20 min/batch                                    |
+| Throughput         | 45 – 90 kg/h                                         |
+| Dimensions (LxWxH) | ≈ 2395 x 870 x 2275 mm                               |
+| Weight             | ~ 800 kg                                             |
+| Control mode       | Automatic / Manual                                   |
+| Gas type           | LPG / LNG / Natural                                  |
+| Electrical power   | 2.12 KW – 3 phase 380V 50/60Hz                       |
+| Roasting profiles  | Save 20 profiles (temperature, drum speed, airflow…) |
+| Fully automatic    | Option: runs 100% according to saved profile         |
+| Connectivity       | Wireless, compatible with Artisan software           |
+| Cooling time       | < 5 min                                              |
+| Filtration system  | Cyclone + Airlock with automatic chaff discharge     |
 
 ### Control & Electrical Components
 

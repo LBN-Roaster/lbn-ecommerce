@@ -8,17 +8,19 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronLeft } from "lucide-react";
+import { useAdminLocale } from "components/admin/admin-locale-context";
 
 export default function EditProductPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
+  const { t } = useAdminLocale();
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getProduct(id)
       .then(setProduct)
-      .catch(() => setError("Product not found"));
+      .catch(() => setError(t.editProduct.notFound));
   }, [id]);
 
   if (error) {
@@ -35,7 +37,7 @@ export default function EditProductPage() {
     return (
       <div className="max-w-[1480px] p-7 pb-12">
         <div className="py-10 text-center text-sm text-muted-foreground">
-          Loading...
+          {t.editProduct.loading}
         </div>
       </div>
     );

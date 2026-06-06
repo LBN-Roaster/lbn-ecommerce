@@ -6,7 +6,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 const images = [
-  { src: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk" },
+  {
+    src: "https://drive.google.com/uc?export=view&id=1iGvspqa6cTe9hdoLdglRoPe75jr1tUrk",
+  },
   { src: "/images/1.5KG.png" },
   { src: "/images/6KG.png" },
   { src: "/images/3KG.jpg" },
@@ -17,7 +19,7 @@ export function GallerySection({ dict }: { dict: Dictionary }) {
   const [active, setActive] = useState<{ src: string } | null>(null);
 
   return (
-    <section className="bg-neutral-50 py-20 dark:bg-neutral-900">
+    <section className="bg-white py-20 dark:bg-neutral-900">
       <div className="mx-auto max-w-7xl px-4">
         <FadeUp className="mb-10 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-600">

@@ -15,11 +15,36 @@ export default async function SearchLayout({
   const dict = getDictionary(locale as Locale);
 
   const sortingList = [
-    { title: dict.sorting.relevance, slug: null, sortKey: "RELEVANCE" as const, reverse: false },
-    { title: dict.sorting.trending, slug: "trending-desc", sortKey: "BEST_SELLING" as const, reverse: false },
-    { title: dict.sorting.latest, slug: "latest-desc", sortKey: "CREATED_AT" as const, reverse: true },
-    { title: dict.sorting.priceAsc, slug: "price-asc", sortKey: "PRICE" as const, reverse: false },
-    { title: dict.sorting.priceDesc, slug: "price-desc", sortKey: "PRICE" as const, reverse: true },
+    {
+      title: dict.sorting.relevance,
+      slug: null,
+      sortKey: "RELEVANCE" as const,
+      reverse: false,
+    },
+    {
+      title: dict.sorting.trending,
+      slug: "trending-desc",
+      sortKey: "BEST_SELLING" as const,
+      reverse: false,
+    },
+    {
+      title: dict.sorting.latest,
+      slug: "latest-desc",
+      sortKey: "CREATED_AT" as const,
+      reverse: true,
+    },
+    {
+      title: dict.sorting.priceAsc,
+      slug: "price-asc",
+      sortKey: "PRICE" as const,
+      reverse: false,
+    },
+    {
+      title: dict.sorting.priceDesc,
+      slug: "price-desc",
+      sortKey: "PRICE" as const,
+      reverse: true,
+    },
   ];
 
   return (

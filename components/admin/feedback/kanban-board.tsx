@@ -21,8 +21,10 @@ import { FeedbackCard } from "./feedback-card";
 import { FeedbackDialog } from "./feedback-dialog";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useAdminLocale } from "../admin-locale-context";
 
 export function KanbanBoard() {
+  const { t } = useAdminLocale();
   const [items, setItems] = useState<FeedbackItem[]>([]);
   const [activeItem, setActiveItem] = useState<FeedbackItem | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -146,9 +148,11 @@ export function KanbanBoard() {
     <>
       <div className="mb-5 flex items-end justify-between gap-6">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Feedback</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {t.feedbackPage.title}
+          </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Track and prioritize user feedback
+            {t.feedbackPage.subtitle}
           </p>
         </div>
         <Button
@@ -157,7 +161,7 @@ export function KanbanBoard() {
           className="gap-1.5"
         >
           <Plus className="h-4 w-4" />
-          Add feedback
+          {t.feedbackPage.addFeedback}
         </Button>
       </div>
 
@@ -169,17 +173,25 @@ export function KanbanBoard() {
         onDragEnd={handleDragEnd}
       >
         <div className="grid auto-cols-fr grid-flow-col gap-4">
-          {COLUMNS.map((col) => (
-            <KanbanColumn
-              key={col.id}
-              id={col.id}
-              label={col.label}
-              items={getColumnItems(col.id)}
-              onAdd={handleAdd}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-            />
-          ))}
+          {COLUMNS.map((col) => {
+            const columnLabels: Record<string, string> = {
+              backlog: t.feedbackDialog.backlog,
+              "in-progress": t.feedbackDialog.inProgress,
+              done: t.feedbackDialog.doneStatus,
+            };
+            return (
+              <KanbanColumn
+                key={col.id}
+                id={col.id}
+                label={columnLabels[col.id] ?? col.label}
+                items={getColumnItems(col.id)}
+                onAdd={handleAdd}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                dropLabel={t.feedbackColumn.dropHere}
+              />
+            );
+          })}
         </div>
 
         <DragOverlay>

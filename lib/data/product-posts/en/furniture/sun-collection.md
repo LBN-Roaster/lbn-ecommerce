@@ -28,8 +28,8 @@ The Sun Collection furniture set includes 1 table and 4 chairs with modern desig
 
 ### Technical Specifications
 
-| Product | Dimensions (LxWxH)    |
-| ------- | --------------------- |
+| Product | Dimensions (LxWxH)   |
+| ------- | -------------------- |
 | Table   | 2000 x 1000 x 760 mm |
 | Chair   | 580 x 680 x 800 mm   |
 

@@ -5,12 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -21,6 +16,8 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { GripVertical, Trash2, Plus, X, ImageIcon } from "lucide-react";
+import { useAdminLocale } from "./admin-locale-context";
+import type { AdminDictionary } from "lib/i18n";
 
 export interface VariantOption {
   name: string;
@@ -54,11 +51,13 @@ function OptionRowEditing({
   onChange,
   onRemove,
   onDone,
+  labels,
 }: {
   option: VariantOption;
   onChange: (updated: VariantOption) => void;
   onRemove: () => void;
   onDone: () => void;
+  labels: AdminDictionary["variantBuilder"];
 }) {
   const addRef = useRef<HTMLInputElement>(null);
 
@@ -90,7 +89,7 @@ function OptionRowEditing({
         <div className="flex items-end gap-2.5">
           <DragHandle />
           <div className="flex flex-1 flex-col gap-1.5">
-            <Label>Option name</Label>
+            <Label>{labels.optionName}</Label>
             <Input
               value={option.name}
               onChange={(e) => onChange({ ...option, name: e.target.value })}
@@ -109,7 +108,7 @@ function OptionRowEditing({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <Label>Option values</Label>
+          <Label>{labels.optionValues}</Label>
           <div className="flex flex-col gap-1.5">
             {option.values.map((v, i) => (
               <div key={i} className="flex items-center gap-2.5">
@@ -135,7 +134,7 @@ function OptionRowEditing({
               <Input
                 ref={addRef}
                 className="flex-1"
-                placeholder="Add another value"
+                placeholder={labels.addValue}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
@@ -150,7 +149,7 @@ function OptionRowEditing({
 
         <div>
           <Button type="button" variant="outline" onClick={onDone}>
-            Done
+            {labels.done}
           </Button>
         </div>
       </div>
@@ -161,9 +160,11 @@ function OptionRowEditing({
 function OptionRowCollapsed({
   option,
   onEdit,
+  editLabel,
 }: {
   option: VariantOption;
   onEdit: () => void;
+  editLabel: string;
 }) {
   return (
     <div className="flex items-center gap-3 border-b border-border py-3.5">
@@ -182,7 +183,7 @@ function OptionRowCollapsed({
         </div>
       </div>
       <Button type="button" variant="outline" size="sm" onClick={onEdit}>
-        Edit
+        {editLabel}
       </Button>
     </div>
   );
@@ -193,11 +194,13 @@ function VariantEditModal({
   data,
   onSave,
   onClose,
+  labels,
 }: {
   combo: string[];
   data: VariantData;
   onSave: (d: VariantData) => void;
   onClose: () => void;
+  labels: AdminDictionary["variantBuilder"];
 }) {
   const [price, setPrice] = useState(data.price);
   const [quantity, setQuantity] = useState(data.quantity);
@@ -225,7 +228,7 @@ function VariantEditModal({
         </div>
         <div className="flex flex-col gap-3.5 px-5 py-4">
           <div className="flex flex-col gap-1.5">
-            <Label>Price (₫)</Label>
+            <Label>{labels.priceCurrency}</Label>
             <Input
               type="text"
               inputMode="numeric"
@@ -234,7 +237,7 @@ function VariantEditModal({
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label>Quantity</Label>
+            <Label>{labels.quantity}</Label>
             <Input
               type="number"
               value={quantity}
@@ -244,7 +247,7 @@ function VariantEditModal({
         </div>
         <div className="flex justify-end gap-2 border-t border-border px-5 py-3">
           <Button type="button" variant="outline" onClick={onClose}>
-            Cancel
+            {labels.cancel}
           </Button>
           <Button
             type="button"
@@ -253,7 +256,7 @@ function VariantEditModal({
               onClose();
             }}
           >
-            Done
+            {labels.done}
           </Button>
         </div>
       </div>
@@ -266,6 +269,8 @@ export function VariantBuilder({
   defaultOptions = [],
   defaultPrice = "",
 }: VariantBuilderProps) {
+  const { t } = useAdminLocale();
+  const vb = t.variantBuilder;
   const [options, setOptions] = useState<VariantOption[]>(defaultOptions);
   const [hasVariants, setHasVariants] = useState(defaultOptions.length > 0);
   const [editingSet, setEditingSet] = useState<Set<number>>(
@@ -374,7 +379,7 @@ export function VariantBuilder({
   const optionsCard = (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm">Options</CardTitle>
+        <CardTitle className="text-sm">{vb.options}</CardTitle>
       </CardHeader>
       <CardContent>
         <input type="hidden" name={name} value={JSON.stringify(options)} />
@@ -385,11 +390,8 @@ export function VariantBuilder({
         />
 
         <label className="flex cursor-pointer items-center gap-2 text-sm">
-          <Checkbox
-            checked={hasVariants}
-            onCheckedChange={toggleVariants}
-          />
-          <span>This product has options, like size or color</span>
+          <Checkbox checked={hasVariants} onCheckedChange={toggleVariants} />
+          <span>{vb.hasOptions}</span>
         </label>
 
         {hasVariants && (
@@ -402,12 +404,14 @@ export function VariantBuilder({
                   onChange={(updated) => updateOption(i, updated)}
                   onRemove={() => removeOption(i)}
                   onDone={() => stopEditing(i)}
+                  labels={vb}
                 />
               ) : (
                 <OptionRowCollapsed
                   key={i}
                   option={opt}
                   onEdit={() => startEditing(i)}
+                  editLabel={vb.edit}
                 />
               ),
             )}
@@ -420,7 +424,7 @@ export function VariantBuilder({
                   onClick={addOption}
                 >
                   <Plus className="h-4 w-4" />
-                  Add another option
+                  {vb.addOption}
                 </button>
               </div>
             )}
@@ -435,9 +439,9 @@ export function VariantBuilder({
       <>
         <Card>
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-background px-4 py-3">
-            <span className="text-sm font-semibold">Variants</span>
+            <span className="text-sm font-semibold">{vb.variants}</span>
             <div className="flex items-center gap-2 text-[12.5px]">
-              <span className="text-muted-foreground">Select</span>
+              <span className="text-muted-foreground">{vb.select}</span>
               <button
                 type="button"
                 className="font-medium text-primary hover:underline"
@@ -449,7 +453,7 @@ export function VariantBuilder({
                   }
                 }}
               >
-                {allSelected ? "None" : "All"}
+                {allSelected ? vb.none : vb.allLabel}
               </button>
               {options
                 .filter((o) => o.values.length > 0)
@@ -488,9 +492,9 @@ export function VariantBuilder({
                   />
                 </TableHead>
                 <TableHead className="w-14" />
-                <TableHead>Variant</TableHead>
-                <TableHead className="w-[140px]">Price</TableHead>
-                <TableHead className="w-20">Quantity</TableHead>
+                <TableHead>{vb.variant}</TableHead>
+                <TableHead className="w-[140px]">{vb.priceLabel}</TableHead>
+                <TableHead className="w-20">{vb.quantity}</TableHead>
                 <TableHead className="w-[60px]" />
               </TableRow>
             </TableHeader>
@@ -561,7 +565,7 @@ export function VariantBuilder({
                         className="h-7 text-xs"
                         onClick={() => setEditingCombo(combo)}
                       >
-                        Edit
+                        {vb.edit}
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -577,6 +581,7 @@ export function VariantBuilder({
             data={getVariantData(editingCombo)}
             onSave={(d) => setVariantData(editingCombo, d)}
             onClose={() => setEditingCombo(null)}
+            labels={vb}
           />
         )}
       </>

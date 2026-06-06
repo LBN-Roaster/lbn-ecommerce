@@ -52,12 +52,12 @@ The LBN Afterburner processes smoke generated during coffee roasting by complete
 
 ## Technical Specifications
 
-| Specification       | Value           |
-| ------------------- | --------------- |
-| Combustion Temp.    | 600–800°C       |
-| Compatibility       | 6–60kg roasters |
-| Power Supply        | 220V / 50Hz     |
-| Origin              | Vietnam         |
+| Specification    | Value           |
+| ---------------- | --------------- |
+| Combustion Temp. | 600–800°C       |
+| Compatibility    | 6–60kg roasters |
+| Power Supply     | 220V / 50Hz     |
+| Origin           | Vietnam         |
 
 ## Warranty
 
