@@ -1,6 +1,36 @@
 export type PriceVisibility = "VISIBLE" | "HIDDEN" | "CONTACT_US";
 export type PriceType = "COST" | "SELLING" | "LISTED";
 
+export type MachineStatus =
+  | "IN_PRODUCTION"
+  | "READY_FOR_SHIPPING"
+  | "SOLD"
+  | "CONSIGNMENT";
+
+export interface Machine {
+  id: string;
+  serialNumber: string;
+  productVariantId: string;
+  status: MachineStatus;
+  warrantyMonths: number;
+  createdDate: string;
+  updatedDate: string;
+}
+
+export interface CreateMachinePayload {
+  serialNumber: string;
+  productVariantId: string;
+  status: MachineStatus;
+  warrantyMonths: number;
+}
+
+export interface UpdateMachinePayload {
+  serialNumber: string;
+  productVariantId: string;
+  status: MachineStatus;
+  warrantyMonths: number;
+}
+
 export interface ProductVariant {
   id: string;
   attributes: Record<string, unknown>;

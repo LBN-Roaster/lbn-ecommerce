@@ -10,6 +10,7 @@ import {
   Map,
   MessageSquareText,
   Package,
+  Cpu,
   TrendingUp,
   Settings,
   Languages,
@@ -91,6 +92,22 @@ export function Sidebar() {
               )}
             />
             {t.sidebar.products}
+          </Link>
+          <Link
+            href="/admin/machines"
+            className={cn(
+              "flex items-center gap-2.5 rounded-md px-2.5 py-[7px] text-[13.5px] text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground",
+              pathname.startsWith("/admin/machines") &&
+                "bg-background text-foreground shadow-sm font-medium",
+            )}
+          >
+            <Cpu
+              className={cn(
+                "h-4 w-4 text-muted-foreground",
+                pathname.startsWith("/admin/machines") && "text-primary",
+              )}
+            />
+            {t.sidebar.machines}
           </Link>
           <Link
             href="/admin/sales"

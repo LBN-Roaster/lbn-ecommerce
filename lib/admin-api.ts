@@ -3,6 +3,9 @@ import type {
   Product,
   CreateProductPayload,
   UpdateProductPayload,
+  Machine,
+  CreateMachinePayload,
+  UpdateMachinePayload,
 } from "./backend-api";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
@@ -49,6 +52,31 @@ export function updateProduct(
 
 export function deleteProduct(id: string): Promise<void> {
   return apiFetch<void>(`/api/admin/products/${id}`, { method: "DELETE" });
+}
+
+export function getMachines(): Promise<Machine[]> {
+  return apiFetch<Machine[]>("/api/admin/machines");
+}
+
+export function createMachine(data: CreateMachinePayload): Promise<Machine> {
+  return apiFetch<Machine>("/api/admin/machines", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateMachine(
+  id: string,
+  data: UpdateMachinePayload,
+): Promise<Machine> {
+  return apiFetch<Machine>(`/api/admin/machines/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteMachine(id: string): Promise<void> {
+  return apiFetch<void>(`/api/admin/machines/${id}`, { method: "DELETE" });
 }
 
 export interface QuotationItem {

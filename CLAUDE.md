@@ -1,7 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. 
 
+PRIORITIZE USING SHADCN FOR UI COMPONENTS WHENENVER POSSIBLE
 ## Collaboration Preferences
 
 - Before making any changes to the codebase, always propose a few plans, then implement the one I pick.

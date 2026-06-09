@@ -15,6 +15,7 @@ export interface AdminDictionary {
     installationsMap: string;
     data: string;
     products: string;
+    machines: string;
     sales: string;
     feedback: string;
     settings: string;
@@ -240,6 +241,50 @@ export interface AdminDictionary {
     notFound: string;
     loading: string;
   };
+  machinesPage: {
+    title: string;
+    subtitle: string;
+    addMachine: string;
+  };
+  machineTable: {
+    searchPlaceholder: string;
+    all: string;
+    inProduction: string;
+    readyForShipping: string;
+    sold: string;
+    consignment: string;
+    loadingMachines: string;
+    noMatch: string;
+    noMachines: string;
+    tryDifferent: string;
+    addFirst: string;
+    serialNumber: string;
+    productVariant: string;
+    status: string;
+    warranty: string;
+    warrantyUnit: string;
+    createdDate: string;
+    edit: string;
+    delete: string;
+    deleteConfirm: string;
+  };
+  machineForm: {
+    registerTitle: string;
+    editTitle: string;
+    serialNumber: string;
+    serialNumberPlaceholder: string;
+    productVariant: string;
+    selectVariant: string;
+    noVariantsAvailable: string;
+    status: string;
+    warrantyMonths: string;
+    warrantyMonthsPlaceholder: string;
+    saving: string;
+    register: string;
+    saveChanges: string;
+    cancel: string;
+    somethingWrong: string;
+  };
 }
 
 export interface Dictionary {
@@ -351,6 +396,7 @@ export const viAdmin: AdminDictionary = {
     installationsMap: "Bản đồ lắp đặt",
     data: "Dữ liệu",
     products: "Sản phẩm",
+    machines: "Máy",
     sales: "Doanh số",
     feedback: "Phản hồi",
     settings: "Cài đặt",
@@ -575,6 +621,50 @@ export const viAdmin: AdminDictionary = {
   editProduct: {
     notFound: "Không tìm thấy sản phẩm",
     loading: "Đang tải...",
+  },
+  machinesPage: {
+    title: "Máy",
+    subtitle: "Đăng ký và theo dõi máy vật lý",
+    addMachine: "Thêm máy",
+  },
+  machineTable: {
+    searchPlaceholder: "Tìm theo số serial...",
+    all: "Tất cả",
+    inProduction: "Đang sản xuất",
+    readyForShipping: "Sẵn sàng xuất",
+    sold: "Đã bán",
+    consignment: "Ký gửi",
+    loadingMachines: "Đang tải máy...",
+    noMatch: "Không có máy phù hợp",
+    noMachines: "Chưa có máy",
+    tryDifferent: "Thử từ khóa khác",
+    addFirst: "Đăng ký máy đầu tiên để bắt đầu",
+    serialNumber: "Số serial",
+    productVariant: "Biến thể sản phẩm",
+    status: "Trạng thái",
+    warranty: "Bảo hành",
+    warrantyUnit: "tháng",
+    createdDate: "Ngày tạo",
+    edit: "Sửa",
+    delete: "Xóa",
+    deleteConfirm: "Xóa máy này?",
+  },
+  machineForm: {
+    registerTitle: "Đăng ký máy mới",
+    editTitle: "Chỉnh sửa máy",
+    serialNumber: "Số serial",
+    serialNumberPlaceholder: "VD: LBN-2024-001",
+    productVariant: "Biến thể sản phẩm",
+    selectVariant: "Chọn biến thể...",
+    noVariantsAvailable: "Không có biến thể",
+    status: "Trạng thái",
+    warrantyMonths: "Bảo hành (tháng)",
+    warrantyMonthsPlaceholder: "12",
+    saving: "Đang lưu...",
+    register: "Đăng ký",
+    saveChanges: "Lưu thay đổi",
+    cancel: "Hủy",
+    somethingWrong: "Đã xảy ra lỗi",
   },
 };
 
