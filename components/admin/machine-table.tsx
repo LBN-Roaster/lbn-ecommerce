@@ -60,23 +60,11 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("vi-VN");
 }
 
-function variantLabel(product: Product, variantId: string): string {
-  const variant = product.variants.find((v) => v.id === variantId);
-  if (!variant) return product.model;
-  const attrs = Object.entries(variant.attributes ?? {});
-  if (attrs.length === 0) return product.model;
-  return `${product.model} — ${attrs.map(([k, v]) => `${k}: ${v}`).join(", ")}`;
-}
-
-function buildVariantOptions(
+function findProductByVariantId(
   products: Product[],
-): { id: string; label: string }[] {
-  return products.flatMap((p) =>
-    p.variants.map((v) => ({
-      id: v.id,
-      label: variantLabel(p, v.id),
-    })),
-  );
+  variantId: string,
+): Product | undefined {
+  return products.find((p) => p.variants.some((v) => v.id === variantId));
 }
 
 function DeleteButton({
@@ -151,7 +139,7 @@ export function MachineTable() {
     getProducts().then(setProducts);
   }, []);
 
-  const variantOptions = buildVariantOptions(products);
+  const selectedProduct = findProductByVariantId(products, form.productVariantId);
 
   const filtered = machines.filter((m) => {
     if (activeTab !== "all" && m.status !== activeTab) return false;
@@ -261,23 +249,27 @@ export function MachineTable() {
                 {t.machineForm.productVariant}
               </Label>
               <Select
-                value={form.productVariantId}
-                onValueChange={(v) =>
-                  setForm((f) => ({ ...f, productVariantId: v }))
-                }
+                value={selectedProduct?.id ?? ""}
+                onValueChange={(productId) => {
+                  const p = products.find((p) => p.id === productId);
+                  setForm((f) => ({
+                    ...f,
+                    productVariantId: p?.variants[0]?.id ?? "",
+                  }));
+                }}
               >
                 <SelectTrigger id="product-variant">
                   <SelectValue placeholder={t.machineForm.selectVariant} />
                 </SelectTrigger>
                 <SelectContent>
-                  {variantOptions.length === 0 ? (
+                  {products.length === 0 ? (
                     <SelectItem value="_none" disabled>
                       {t.machineForm.noVariantsAvailable}
                     </SelectItem>
                   ) : (
-                    variantOptions.map((opt) => (
-                      <SelectItem key={opt.id} value={opt.id}>
-                        {opt.label}
+                    products.map((p) => (
+                      <SelectItem key={p.id} value={p.id}>
+                        {p.model}
                       </SelectItem>
                     ))
                   )}
@@ -433,16 +425,16 @@ export function MachineTable() {
               </TableHeader>
               <TableBody>
                 {filtered.map((m) => {
-                  const variantOpt = variantOptions.find(
-                    (v) => v.id === m.productVariantId,
-                  );
+                  const productName =
+                    findProductByVariantId(products, m.productVariantId)
+                      ?.model ?? m.productVariantId;
                   return (
                     <TableRow key={m.id}>
                       <TableCell className="font-mono text-[13px] font-medium">
                         {m.serialNumber}
                       </TableCell>
                       <TableCell className="max-w-[220px] truncate text-[13px] text-muted-foreground">
-                        {variantOpt?.label ?? m.productVariantId}
+                        {productName}
                       </TableCell>
                       <TableCell>
                         <Badge variant={statusMeta[m.status]?.variant}>
