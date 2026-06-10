@@ -29,7 +29,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Search, Plus } from "lucide-react";
+import { Check, Search, Plus } from "lucide-react";
 import { useAdminLocale } from "./admin-locale-context";
 import {
   getMachines,
@@ -104,6 +104,7 @@ export function MachineTable() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editing, setEditing] = useState<Machine | null>(null);
   const [form, setForm] = useState<MachineFormState>(EMPTY_FORM);
+  const [productSearch, setProductSearch] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [saving, startSaving] = useTransition();
 
@@ -161,6 +162,7 @@ export function MachineTable() {
   function openRegister() {
     setEditing(null);
     setForm(EMPTY_FORM);
+    setProductSearch("");
     setFormError(null);
     setDrawerOpen(true);
   }
@@ -173,6 +175,9 @@ export function MachineTable() {
       status: machine.status,
       warrantyMonths: String(machine.warrantyMonths),
     });
+    setProductSearch(
+      findProductByVariantId(products, machine.productVariantId)?.model ?? "",
+    );
     setFormError(null);
     setDrawerOpen(true);
   }
@@ -245,36 +250,61 @@ export function MachineTable() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="product-variant">
-                {t.machineForm.productVariant}
-              </Label>
-              <Select
-                value={selectedProduct?.id ?? ""}
-                onValueChange={(productId) => {
-                  const p = products.find((p) => p.id === productId);
-                  setForm((f) => ({
-                    ...f,
-                    productVariantId: p?.variants[0]?.id ?? "",
-                  }));
-                }}
-              >
-                <SelectTrigger id="product-variant">
-                  <SelectValue placeholder={t.machineForm.selectVariant} />
-                </SelectTrigger>
-                <SelectContent>
-                  {products.length === 0 ? (
-                    <SelectItem value="_none" disabled>
-                      {t.machineForm.noVariantsAvailable}
-                    </SelectItem>
-                  ) : (
-                    products.map((p) => (
-                      <SelectItem key={p.id} value={p.id}>
+              <Label>{t.machineForm.productVariant}</Label>
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder={t.machineForm.selectVariant}
+                  value={productSearch}
+                  onChange={(e) => setProductSearch(e.target.value)}
+                  className="pl-8"
+                />
+              </div>
+              <div className="max-h-44 overflow-y-auto rounded-md border border-border bg-background">
+                {products.filter((p) =>
+                  p.model
+                    .toLowerCase()
+                    .includes(productSearch.toLowerCase()),
+                ).length === 0 ? (
+                  <p className="px-3 py-2 text-sm text-muted-foreground">
+                    {t.machineForm.noVariantsAvailable}
+                  </p>
+                ) : (
+                  products
+                    .filter((p) =>
+                      p.model
+                        .toLowerCase()
+                        .includes(productSearch.toLowerCase()),
+                    )
+                    .map((p) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        className={cn(
+                          "flex w-full items-center gap-2 px-3 py-2 text-left text-sm transition-colors hover:bg-accent",
+                          selectedProduct?.id === p.id &&
+                            "bg-accent font-medium",
+                        )}
+                        onClick={() =>
+                          setForm((f) => ({
+                            ...f,
+                            productVariantId: p.variants[0]?.id ?? "",
+                          }))
+                        }
+                      >
+                        <Check
+                          className={cn(
+                            "h-3.5 w-3.5 shrink-0",
+                            selectedProduct?.id === p.id
+                              ? "opacity-100"
+                              : "opacity-0",
+                          )}
+                        />
                         {p.model}
-                      </SelectItem>
+                      </button>
                     ))
-                  )}
-                </SelectContent>
-              </Select>
+                )}
+              </div>
             </div>
 
             <div className="flex flex-col gap-1.5">
