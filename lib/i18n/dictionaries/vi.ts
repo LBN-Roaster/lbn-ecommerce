@@ -246,6 +246,14 @@ export interface AdminDictionary {
     subtitle: string;
     addMachine: string;
   };
+  serialGuide: {
+    title: string;
+    subtitle: string;
+    example: string;
+    position: string;
+    codes: string;
+    meaning: string;
+  };
   machineTable: {
     searchPlaceholder: string;
     all: string;
@@ -665,6 +673,14 @@ export const viAdmin: AdminDictionary = {
     saveChanges: "Lưu thay đổi",
     cancel: "Hủy",
     somethingWrong: "Đã xảy ra lỗi",
+  },
+  serialGuide: {
+    title: "Cấu trúc số serial",
+    subtitle: "Hướng dẫn đọc mã số máy",
+    example: "Ví dụ",
+    position: "Vị trí",
+    codes: "Mã",
+    meaning: "Ý nghĩa",
   },
 };
 

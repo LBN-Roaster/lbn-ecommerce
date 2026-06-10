@@ -280,6 +280,14 @@ export const enAdmin: AdminDictionary = {
     cancel: "Cancel",
     somethingWrong: "Something went wrong",
   },
+  serialGuide: {
+    title: "Serial Number Format",
+    subtitle: "How to read the machine serial number",
+    example: "Example",
+    position: "Position",
+    codes: "Code",
+    meaning: "Meaning",
+  },
 };
 
 const en: Dictionary = {
