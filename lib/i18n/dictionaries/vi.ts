@@ -293,6 +293,22 @@ export interface AdminDictionary {
     cancel: string;
     somethingWrong: string;
   };
+  machineApiKey: {
+    action: string;
+    title: string;
+    description: string;
+    generate: string;
+    generating: string;
+    regenerate: string;
+    warning: string;
+    copy: string;
+    copied: string;
+    revoke: string;
+    revoking: string;
+    revoked: string;
+    close: string;
+    failed: string;
+  };
 }
 
 export interface Dictionary {
@@ -673,6 +689,23 @@ export const viAdmin: AdminDictionary = {
     saveChanges: "Lưu thay đổi",
     cancel: "Hủy",
     somethingWrong: "Đã xảy ra lỗi",
+  },
+  machineApiKey: {
+    action: "Khóa API",
+    title: "Khóa API",
+    description: "Tạo khóa API mới cho máy này để máy gọi được vào hệ thống.",
+    generate: "Tạo khóa API",
+    generating: "Đang tạo...",
+    regenerate: "Tạo khóa khác",
+    warning:
+      "Khóa chỉ hiển thị một lần. Hãy sao chép và lưu lại ngay — sau khi đóng sẽ không xem lại được.",
+    copy: "Sao chép",
+    copied: "Đã sao chép",
+    revoke: "Thu hồi khóa này",
+    revoking: "Đang thu hồi...",
+    revoked: "Khóa đã được thu hồi",
+    close: "Đóng",
+    failed: "Không tạo được khóa API",
   },
   serialGuide: {
     title: "Cấu trúc số serial",

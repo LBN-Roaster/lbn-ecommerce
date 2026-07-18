@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/table";
 import { Check, Search, Plus } from "lucide-react";
 import { useAdminLocale } from "./admin-locale-context";
+import { MachineApiKeyDialog } from "./machine-api-key-dialog";
 import {
   getMachines,
   getProducts,
@@ -107,6 +108,7 @@ export function MachineTable() {
   const [productSearch, setProductSearch] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [saving, startSaving] = useTransition();
+  const [apiKeyMachine, setApiKeyMachine] = useState<Machine | null>(null);
 
   const statusMeta: Record<
     MachineStatus,
@@ -140,7 +142,10 @@ export function MachineTable() {
     getProducts().then(setProducts);
   }, []);
 
-  const selectedProduct = findProductByVariantId(products, form.productVariantId);
+  const selectedProduct = findProductByVariantId(
+    products,
+    form.productVariantId,
+  );
 
   const filtered = machines.filter((m) => {
     if (activeTab !== "all" && m.status !== activeTab) return false;
@@ -153,8 +158,9 @@ export function MachineTable() {
   const tabCounts: Record<FilterTab, number> = {
     all: machines.length,
     IN_PRODUCTION: machines.filter((m) => m.status === "IN_PRODUCTION").length,
-    READY_FOR_SHIPPING: machines.filter((m) => m.status === "READY_FOR_SHIPPING")
-      .length,
+    READY_FOR_SHIPPING: machines.filter(
+      (m) => m.status === "READY_FOR_SHIPPING",
+    ).length,
     SOLD: machines.filter((m) => m.status === "SOLD").length,
     CONSIGNMENT: machines.filter((m) => m.status === "CONSIGNMENT").length,
   };
@@ -238,7 +244,9 @@ export function MachineTable() {
 
           <div className="flex flex-col gap-5 p-6">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="serial-number">{t.machineForm.serialNumber}</Label>
+              <Label htmlFor="serial-number">
+                {t.machineForm.serialNumber}
+              </Label>
               <Input
                 id="serial-number"
                 placeholder={t.machineForm.serialNumberPlaceholder}
@@ -262,9 +270,7 @@ export function MachineTable() {
               </div>
               <div className="max-h-44 overflow-y-auto rounded-md border border-border bg-background">
                 {products.filter((p) =>
-                  p.model
-                    .toLowerCase()
-                    .includes(productSearch.toLowerCase()),
+                  p.model.toLowerCase().includes(productSearch.toLowerCase()),
                 ).length === 0 ? (
                   <p className="px-3 py-2 text-sm text-muted-foreground">
                     {t.machineForm.noVariantsAvailable}
@@ -375,6 +381,17 @@ export function MachineTable() {
         </SheetContent>
       </Sheet>
 
+      {apiKeyMachine && (
+        <MachineApiKeyDialog
+          machineId={apiKeyMachine.id}
+          serialNumber={apiKeyMachine.serialNumber}
+          open
+          onOpenChange={(open) => {
+            if (!open) setApiKeyMachine(null);
+          }}
+        />
+      )}
+
       <div className="mb-5 flex items-end justify-between gap-6">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
@@ -433,9 +450,7 @@ export function MachineTable() {
               {search ? t.machineTable.noMatch : t.machineTable.noMachines}
             </div>
             <div className="mt-1 text-xs">
-              {search
-                ? t.machineTable.tryDifferent
-                : t.machineTable.addFirst}
+              {search ? t.machineTable.tryDifferent : t.machineTable.addFirst}
             </div>
           </div>
         ) : (
@@ -450,7 +465,7 @@ export function MachineTable() {
                     {t.machineTable.warranty}
                   </TableHead>
                   <TableHead>{t.machineTable.createdDate}</TableHead>
-                  <TableHead className="w-[100px]" />
+                  <TableHead className="w-[170px]" />
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -484,6 +499,12 @@ export function MachineTable() {
                             onClick={() => openEdit(m)}
                           >
                             {t.machineTable.edit}
+                          </button>
+                          <button
+                            className="text-xs text-muted-foreground hover:text-foreground hover:underline"
+                            onClick={() => setApiKeyMachine(m)}
+                          >
+                            {t.machineApiKey.action}
                           </button>
                           <DeleteButton
                             id={m.id}

@@ -280,6 +280,24 @@ export const enAdmin: AdminDictionary = {
     cancel: "Cancel",
     somethingWrong: "Something went wrong",
   },
+  machineApiKey: {
+    action: "API key",
+    title: "API key",
+    description:
+      "Generate a new API key so this machine can authenticate against the system.",
+    generate: "Generate API key",
+    generating: "Generating...",
+    regenerate: "Generate another",
+    warning:
+      "This key is shown only once. Copy and store it now — you will not be able to see it again after closing.",
+    copy: "Copy",
+    copied: "Copied",
+    revoke: "Revoke this key",
+    revoking: "Revoking...",
+    revoked: "Key revoked",
+    close: "Close",
+    failed: "Failed to generate API key",
+  },
   serialGuide: {
     title: "Serial Number Format",
     subtitle: "How to read the machine serial number",

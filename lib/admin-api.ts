@@ -6,6 +6,7 @@ import type {
   Machine,
   CreateMachinePayload,
   UpdateMachinePayload,
+  MachineApiKeyCreated,
 } from "./backend-api";
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
@@ -77,6 +78,25 @@ export function updateMachine(
 
 export function deleteMachine(id: string): Promise<void> {
   return apiFetch<void>(`/api/admin/machines/${id}`, { method: "DELETE" });
+}
+
+/** Issues a new API key. The plaintext token is only present in this response. */
+export function issueMachineApiKey(
+  machineId: string,
+): Promise<MachineApiKeyCreated> {
+  return apiFetch<MachineApiKeyCreated>(
+    `/api/admin/machines/${machineId}/api-keys`,
+    { method: "POST" },
+  );
+}
+
+export function revokeMachineApiKey(
+  machineId: string,
+  keyId: string,
+): Promise<void> {
+  return apiFetch<void>(`/api/admin/machines/${machineId}/api-keys/${keyId}`, {
+    method: "DELETE",
+  });
 }
 
 export interface QuotationItem {

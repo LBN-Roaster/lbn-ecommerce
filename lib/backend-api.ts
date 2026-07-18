@@ -31,6 +31,14 @@ export interface UpdateMachinePayload {
   warrantyMonths: number;
 }
 
+export interface MachineApiKeyCreated {
+  keyId: string;
+  /** Full plaintext token — returned only once, at issue time. */
+  token: string;
+  expiresAt: string | null;
+  createdAt: string;
+}
+
 export interface ProductVariant {
   id: string;
   attributes: Record<string, unknown>;
